@@ -1,0 +1,434 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="../../html/course.css" media="screen,projection" />
+    <title>Analysis of ChIP-seq data</title>
+  </head>
+  <body>
+
+<h1>ChiP-Seq: Peak calling using MACS</h1>
+  
+      <a name='toc'></a><h2>Contents</h2>
+
+  
+    <ul>
+	<li><a href='#intro'>Step 0 : About the dataset.</a></li>
+<!--	<li><a href='#flowchart'>Flow chart of the analysis</a></li> -->
+	<li><a href='#geo'>Step 1 : Find datasets on Gene Expression Omnibus</a></li>
+	<li><a href='#gal'>Step 2 : retrieve data on Galaxy</a></li>
+	<li><a href='#qual'>Step 3 : data inspection</a></li>
+	<li><a href='#peaks'>Step 4 : peak-calling using MACS on ER ChiP-Seq.</a></li>
+	<li><a href='#igv'>Step 5 : Visualizing the results with Integrated Genome Browser (IGV).</a></li>
+	<li><a href='#peaks'>Step 6 : peak-calling using MACS on ER ChiP-Seq after siGATA3 treatment.</a></li>    </ul>
+
+<hr><a name='intro'></a><h2>Step 0 : About the dataset.</h2>
+<p><b>Goal</b>: how do we obtain the datasets referenced in a publication ? </p>
+      
+<p>For this tutorial we will use CHiP-Seq datasets produced recently by <a href='http://www.ncbi.nlm.nih.gov/pubmed/23172872'>Theodorou <i>et al</i></a>. The authors used ChIP-Seq technology in order to systematically identify ESR1 binding regions across the human genome. Importantly, they demonstrated that knock-down of GATA3 through siRNA strongly affect ESR1 binding sites. The corresponding abstract of this article is provided below.</p>
+
+<h4>Abstract</h4>
+<p>Estrogen receptor (ESR1) drives growth in the majority of human breast cancers by binding to regulatory elements and inducing transcription events that promote tumor growth. Differences in enhancer occupancy by ESR1 contribute to the diverse expression profiles and clinical outcome observed in breast cancer patients. GATA3 is an ESR1-cooperating transcription factor mutated in breast tumors; however, its genomic properties are not fully defined. </p>
+<p>In order to investigate the composition of enhancers involved in estrogen-induced transcription and the potential role of GATA3, we performed extensive ChIP-sequencing in unstimulated breast cancer cells and following estrogen treatment. We find that GATA3 is pivotal in mediating enhancer accessibility at regulatory regions involved in ESR1-mediated transcription. GATA3 silencing resulted in a global redistribution of cofactors and active histone marks prior to estrogen stimulation. These global genomic changes altered the ESR1-binding profile that subsequently occurred following estrogen, with events exhibiting both loss and gain in binding affinity, implying a GATA3-mediated redistribution of ESR1 binding. The GATA3-mediated redistributed ESR1 profile correlated with changes in gene expression, suggestive of its functionality. Chromatin loops at the TFF locus involving ESR1-bound enhancers occurred independently of ESR1 when GATA3 was silenced, indicating that GATA3, when present on the chromatin, may serve as a licensing factor for estrogen-ESR1-mediated interactions between cis-regulatory elements. Together, these experiments suggest that GATA3 directly impacts ESR1 enhancer accessibility, and may potentially explain the contribution of mutant-GATA3 in the heterogeneity of ESR1+ breast cancer.</p>
+
+<!--<hr><a name='flowchart'></a><h2>Flow chart</h2>
+   
+<p align="center"><a target='main' href='img/flow_chart.png'><img style="text-align:center" border='1' src='img/flow_chart.png'></a></p> -->
+	
+<hr><a name='geo'>
+</a><h2>Step 1 : Find datasets on Gene Expression Omnibus</h2>
+
+<p>Gene Expression Omnibus (<a target="_blank" href='http://www.ncbi.nlm.nih.gov/geo/'>GEO</a>) is a public repository that provide tools to submit, access and mine functional genomics data.  Data may be related to array- or sequence-based technologies. For HTS data, GEO provides both processed data (such as *.bam, *.bed, *.wig files) and links to raw data. Raw data are available from the Sequence Read Archive (<a target="_blank" href='http://trace.ncbi.nlm.nih.gov/Traces/sra/'>SRA</a>) database (including 454, IonTorrent, Illumina, SOLiD, Helicos and Complete Genomics). Both web sites propose search engines to query their databases.  </p>
+
+   <div class='protocol'>
+   	<ul>
+            <li>Go to <a target="_blank" href="http://www.ncbi.nlm.nih.gov/geo/">GEO web site</a>.</li>
+            <li>Choose "Search" and paste GSE40129 (GSE stands for GEO Series Experiment). Click "GO" to get information about this experiment.</li>
+            <li>In the "sample section" (middle of the page), click on "More" to visualize all sample names.</li>
+            <li>Click on GSM986059 hyperlink (GSM stands for GEO SaMple) to get information about this sample.</li>
+            <li>In the "relations" section, select "SRX176856" hyperlink to open the SRA page corresponding to this sample.</li> 
+            <li> Click on the SRR link (bottom right) to access the record of the run. </li>
+            <li>On the new page, click on the <b>Reads</b> tab to view the read sequence.</b>            <li>From there, you might also download the dataset as a .sra file, but we <b>will not do it in the context of this practical</b> (beware, this would take time and occupy disk space, since SRA files typically weight several hundred Mb !).</li>
+	</ul>
+   </div>
+   
+   
+   <div class='exo'> 
+     <ul>
+       <li>What is the HTS platform used to sequence this sample ?</li>
+       <li>Is this experiment single-end or paire-end sequencing ? </li>
+       <li>How many runs (<i>i.e.</i> lanes) are associated to this sample ? </li>
+       <li>How many reads were produced (# of Spots) ?</li>
+       <li>Select SRR540192 hyperlink. What is the sequence of the first read ?</li>         
+     </ul>
+   </div>
+
+
+<hr><a name='gal'></a>
+<h2>Step 2 : retrieve data on Galaxy</h2>
+
+<p><b>Goal :</b> Retrieve BAM files that contain alignment results.</p>
+
+   <h3>Cloning shared data.</h3>
+
+<p> Analysis of the whole dataset can be time consuming. Thus, in order to illustrate the peak-calling procedure, BAM files  have been split into several files each of them containing the reads aligned to a given chromosome.</p>
+<p> In the next section, we will search for ER (Estrogen Receptor) binding sites in control samples (ChIP Estrogen Receptor on MCF-7 cell line treated with E2). To this aim we need both:</p>
+
+<ul>
+<li><b>a ChIP sample</b> (<i>e.g;</i>  siNT_ER_E2_r1_SRR540188.hg19.UNIQALIGN.*.bam). Note that r1, r2 and r3 stand for replicate 1, 2 and 3.</li>
+<li>and <b>an input sample</b> (only one replicate is available, MCF-7_input_r3_SRR540220.hg19.UNIQALIGN.*.bam).</p> </li>
+</ul> 
+
+    <div class='protocol'>
+      <ul>
+		<li>Log into your Galaxy account.</li>
+		<li>Create a new History: in the upper left corner select <b>History > Create New</b>.</li>
+		<li>Rename the history: in the upper left corner, double-click on <b>Unnamed history</b> and rename this workspace to 'ChIP-seq peak calling'.  </li>
+		<li>Use <b>Shared data > data libraries > tp-mardi-chipseq-herrmann.</b></li>
+		<li>Click on the <b>blue arrow</b> next to <b>BAM</b> to expand the directory content.</li>
+		<li>The datasets have been split into distinct chromosomes (1 to 9) to speed up analysis for this practical; select your favorite chromosome by clicking on the blue arrow next to it.</li>
+		<li>Select  <b>MCF-7_input_r3_SRR540220.hg19.UNIQALIGN.*.bam</b> and <b>siNT_ER_E2_r1_SRR540188.hg19.UNIQALIGN.*.bam</b> files.</p>
+		<li>select <b>import into current history</b> then click GO</li>
+		<li>For both files, use <b>Edit attributes</b> and set <b>Database/Build</b> to GRCh37/hg19.</li>
+      </ul>
+    </div>
+
+
+
+<hr><a name='qual'></a>
+<h2>Step 3 : Data inspection.</h2>
+
+<p><b>Goal:</b> Before starting the peak calling analysis, it is interesting to determine the type of alignments enclosed in the BAM files, and the <b>level of duplicates</b></p>
+
+    <div class='protocol'>
+<p>What does the  BAM files contain ?</p>
+      <ul>
+			<li>In the <b>search tools box</b>, search for the <b>flagstats</b> tool.</li>
+			<li>Run this tool on the BAM files you imported, and note the number of reads.</li>
+	   </ul>	
+	   
+<p>One interesting aspect is the level of duplicates in the dataset; </p>	<ul>
+		<li>Run FastQC on the BAM file; check for biases and levels of duplicate reads</li>
+	</ul>
+</div>
+
+
+<hr><a name='peaks'></a>
+<h2>Step 4 : peak-calling using MACS on ER ChiP-Seq.</h2>
+<p><b>Goal:</b> We will perform peak calling for the ESR1 ChIP-seq datasets, using the input dataset as control.</p>
+<div class='protocol'>
+<p>Peak calling will be performed using MACS (version 1.4.1).</p> 
+<p>Select the tools <b>MACS14</b> in the <b>Mardi 19 ChIP-seq</b> section and fill the form as below</p>
+
+  <ul>
+    <li><b>Experiment name</b> : give a name for the MACS run (siNT_ESR1_MACS).</li>
+    <li><b>Paired end sequencing:</b> MACS can handle single or paired-end data; here we will select single end.</li>
+    <li><b>ChIP-seq tag file</b> : select the BAM file containing the treatment (ChIP).</li>
+    <li><b>ChIP-seq control file</b> : select the BAM file for the input.</li>
+    <li><b>Effective genome size</b>: Select the size of associated chromosome (see table below).</li>
+    <li><b>Tag size </b>: these are Illumina datasets of read size 36.</li>
+    <li><b>Save shifted raw tag count at every bp into a wiggle file</b> : select save. This will output WIG files for the treatment and the input.</li>
+    <li><b>Diagnosis report:</b> select <b>Produce a diagnosis report.</b></li>
+    <li>All other options should be set to default.</li>
+   </ul>
+</div>
+
+
+
+<table>
+<tr>
+<th>Chromosome </th>
+<th>Size</th>
+</tr>
+<tr>
+<td>Full genome</td>
+<td>2.7e9</td>
+</tr>
+<tr>
+<td>chr1</td>
+<td>249250621</td>
+</tr>
+<tr>
+<td>chr2</td>
+<td>243199373</td>
+</tr>
+<tr>
+<td>chr3</td>
+<td>198022430</td>
+</tr>
+<tr>
+<td>chr4</td>
+<td>191154276</td>
+</tr>
+<tr>
+<td>chr5</td>
+<td>180915260</td>
+</tr>
+<tr>
+<td>chr6</td>
+<td>171115067</td>
+</tr>
+<tr>
+<td>chr7</td>
+<td>159138663</td>
+</tr>
+<tr>
+<td>chr8</td>
+<td>146364022</td>
+</tr>
+<tr>
+<td>chr9</td>
+<td>141213431</td>
+</tr>
+</table>
+
+<p><b>Table 1:</b> Chromosome sizes for hg19.</p>
+
+
+<div class='protocol'>
+<p>MACS running using these options should generate 4 result files:</p>
+<ul>
+  <li>A html report describing the model built by MACS.</li>
+  <li>A wig file for the treatment and control dataset.</li>
+  <li>A bed file containing the peaks.</li>
+</ul>
+</div>
+
+<div class='exo'>
+<ul>
+  <li>How many peaks have been called by MACS ? Use the <b>Line/Word/Character count</b> in the <b>toolbox</b> to count the number of lines in the bed file.</li>
+  <li>Use the </b>sort</b> tool in the toolbox to sort MACS peaks according to the score.</li>
+</ul>
+</div>
+
+
+
+
+<a name="igv"></a>
+<hr>
+<h2>Step 5 : Viewing the results with Integrated Genome Browser (IGV).</h2>
+<p><b>Goal:</b> Visualising the reads mapped onto the selected chromosome (BAM files), the read density along the chromosome (bigwig files, see below) and the peaks defined by the MACS algorithm (bed file).</p>
+
+<p> The <a href="http://www.broadinstitute.org/igv/home">Integrative Genomics Viewer</a> (IGV) is a high-performance visualization tool for interactive exploration of large, integrated genomic datasets. It supports a wide variety of data types, including array-based and next-generation sequence data, and genomic annotations.</p>
+
+<h3>Converting wig files to bigwig.</h3>
+<p>In order to improve the performance when displaying *.wig files in a genome browser it is advised to transform them to bigwig file format (a compressed an indexed version of the file).</p>
+<div class='protocol'>
+<ul>
+  <li>Use <b>Wig/BedGraph-to-bigWig</b> converter in the <b>toolbox</b> to transform the 2 *.wig files produced by MACS into the bigwig format.</li>
+</ul>
+</div>
+
+<h3>Downloading the files.</h3>
+<div class='protocol'>
+<p>Dowload the <b>2 bigwig files</b> (read density), the <b>bed file</b> (peaks), and the <b>2 corresponding BAM files</b> (input and ChiP) together <b>with their indexes</b> (*.bai files).</p>
+</div>
+
+<h3>Loading the tracks in IGV.</h3>
+<div class='protocol'>
+      <ul><li>Download IGV and launch it with 750 MB or 1.2 Gb depending of your machine.</li>
+        <li>Select hg19 genome and go to the chromosome of interest.</li>
+        <li>Load the <b>2 bigwig files.</b></li>
+        <li>For each Bigwig file, right click on the left panel of their corresponding track and select <b>Set data range > max </b> to 50.</li>
+        <li>Load the <b>bed file.</b></li>
+        <li>Load the <b>BAM files (select the *.bam file not the *.bai).</b></li>
+        <li>Go to the location of the best peak. You can directly paste its coordinates (chrom,Start,End) into the serach box of IGV.</li>
+        <li>For each BAM file, right click on the left panel of their corresponding track and select <b>Color Alignment by > Read Strand</b>.</li> 
+        <li>Unzoom and and select regions displaying high signal based on bigwig tracks.</li>
+</div>
+
+
+
+<a name="igv"></a>
+<hr>
+<h2>Step 6 : peak-calling using MACS on ER ChiP-Seq after siGATA3 treatment.</h2>
+<p>Treatment of MCF-7 cells using siRNA to GATA3 is expected to induce a re-localization of ER binding sites.</p>
+
+<div class='exo'>
+      <ul><li>	.</li>
+        <li>In the shared library, select one of the replicate of ER ChiP-Seq after GATA3 treatment ( siGATA_ER_E2_r*_SRR540189.hg19.UNIQALIGN.*.bam) and import it to your current workspace (select the same chromosome !!). Edit attributes</b> and set <b>Database/Build</b> to GRCh37/hg19. </li>
+        <li>Perform Peak calling.</li>
+        <li>Using <b>Operate on Genomic Intervals > Substract</b> extract the ER peaks that were lost after siGATA3 treatment. Sort them using the MACS score.</p></li>
+        <li>What can we conclude about peaks that were lost upon siRNA to GATA3 treatment ?</li>
+</div>
+
+
+<p></p>
+ 
+<!--<h1>ChIP-Seq: quality filtering and read mapping</h1>
+  
+      <a name='toc'></a><h2>Contents</h2>
+
+  
+    <ol>
+	<li><a href='#intro'>CHiP-Seq dataset description</a></li>
+	<li><a href='#flowchart'>Flow chart of the analysis</a></li>
+	<li><a href='#geo'>Getting informations about the experiment using the Gene Expression omnibus and Sequence Read Archive websites</a></li>
+	<li><a href='#qual'>Quality control of sequencing data</a></li>
+	<li><a href='#trim'>Read trimming and filtering</a></li>
+	<li><a href='#bowtie'>Mapping reads with bowtie</a></li>
+	<li><a href='#igv'>Visualizing the results with Integrated Genome Browser (IGV).</a></li>
+	<li><a href='#troubles'>If you get troubles</a>
+    </ol>
+
+<hr><a name='intro'></a><h2>CHiP-Seq dataset description</h2>
+      
+<p>For this tutorial we will use CHiP-Seq datasets produced recently by <a href='http://www.ncbi.nlm.nih.gov/pubmed/23172872'>Theodorou <i>et al</i></a>. The authors used ChIP-Seq technology in order to systematically identify ESR1 binding regions across the human genome. The corresponding abstract of this article is provided below.</p>
+
+<h3>abstract</h3>
+<p>Estrogen receptor (ESR1) drives growth in the majority of human breast cancers by binding to regulatory elements and inducing transcription events that promote tumor growth. Differences in enhancer occupancy by ESR1 contribute to the diverse expression profiles and clinical outcome observed in breast cancer patients. GATA3 is an ESR1-cooperating transcription factor mutated in breast tumors; however, its genomic properties are not fully defined. In order to investigate the composition of enhancers involved in estrogen-induced transcription and the potential role of GATA3, we performed extensive ChIP-sequencing in unstimulated breast cancer cells and following estrogen treatment. We find that GATA3 is pivotal in mediating enhancer accessibility at regulatory regions involved in ESR1-mediated transcription. GATA3 silencing resulted in a global redistribution of cofactors and active histone marks prior to estrogen stimulation. These global genomic changes altered the ESR1-binding profile that subsequently occurred following estrogen, with events exhibiting both loss and gain in binding affinity, implying a GATA3-mediated redistribution of ESR1 binding. The GATA3-mediated redistributed ESR1 profile correlated with changes in gene expression, suggestive of its functionality. Chromatin loops at the TFF locus involving ESR1-bound enhancers occurred independently of ESR1 when GATA3 was silenced, indicating that GATA3, when present on the chromatin, may serve as a licensing factor for estrogen-ESR1-mediated interactions between cis-regulatory elements. Together, these experiments suggest that GATA3 directly impacts ESR1 enhancer accessibility, and may potentially explain the contribution of mutant-GATA3 in the heterogeneity of ESR1+ breast cancer.</p>
+
+<hr><a name='flowchart'></a><h2>Flow chart</h2>
+   
+<a target='main' href='../images/flow_chart_read_processing_and_mapping.png'><img border='1' src='../images/flow_chart_read_processing_and_mapping.png'></a>
+
+<hr><a name='geo'>
+</a><h2>Getting informations about the experiment using the Gene Expression omnibus and Sequence Read Archive websites</h2>
+Gene Expression Omnibus (<a target="_blank" href='http://www.ncbi.nlm.nih.gov/geo/'>GEO</a>) is a public repository that provide tools to submit, access and mine functional genomics data.  Data may be related to array- or sequence-based technologies. For HTS data, GEO provides both processed data (such as *.bam, *.bed, *.wig files) and links to raw data. Raw data are available from the Sequence Read Archive (<a target="_blank" href='http://trace.ncbi.nlm.nih.gov/Traces/sra/'>SRA</a>) database (including 454, IonTorrent, Illumina, SOLiD, Helicos and Complete Genomics). Both web sites propose search engines to query their databases.  
+
+   <div class='protocol'>
+   	<ol>
+            <li>Go to <a target="_blank" href="http://www.ncbi.nlm.nih.gov/geo/">GEO web site</a>.</li>
+            <li>Choose "Query>GEO accession" and paste GSE40129 (GSE stands for GEO Series Experiment). Click "GO" to get information about this experiment.</li>
+            <li>In the "sample section" (middle of the page), click on "More" to visualize all sample names.</li>
+            <li>Click on GSM986063 hyperlink (GSM stands for GEO SaMple) to get information about this sample.</li>
+            <li>In the "relations" section, select "SRX176860" hyperlink to open the SRA page corresponding to this sample.</li> 
+	</ol>
+   </div>
+   
+   <div class='exo'> 
+         </ol>
+            <li>What is the HTS platform used to sequence this sample ?</li>
+            <li>Is this experiment single-end or paire-end sequencing ? </li>
+            <li>How many runs (<i>i.e.</i> lanes) are associated to this sample ? </li>
+            <li>How many reads were produced (# of Spots) ?</li>
+            <li>Select SRR540192 hyperlink. What is the sequence of the first read ?</li>         
+      </ol>
+   </div>
+
+<hr><a name='qual'>
+<h2>Quality control of sequencing data</h2>
+<h3>Loading fastq files in galaxy</h3>
+    <p> Analysis of the whole dataset can be time consuming. Thus, in order to illustrate the mapping procedure, data were previously retrieved from SRA, fastq-transformed using <a href="http://www.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=software">SRA toolkit</a> (<tt>fastq-dump</tt> command) and mapped to the human genome (version hg19). A subset of reads that aligned onto chromosome 21 was extracted and will be used for this tutorial. Although analysis can be performed programmatically (using a shell script for instance), here, we will use the Galaxy framework, available from <a href="http://abims.sb-roscoff.fr/">ABIMS</a> bioinformatics platform.A subset of the run SRR540192 (ChIP ER on MCF-7 treated with E2) is available from ABIMS ftp web site (see below). </p>
+      
+
+    <div class='protocol'>
+      <ol>
+      <li>Download the subset of SRR540192 run <a href="	http://biow.sb-roscoff.fr/download/dputhier/siNT_ER_E2_r3.SRR540192.chr21.andNoise.fastq">here</a>.</li>
+		<li>Open a connection to the <a target='_blank' href="http://galaxy.sb-roscoff.fr/">Galaxy server</a>.</li>
+		<li>In the upper left corner, click on <tt>Unnamed history</tt> and rename this workspace to 'ER_chr21_mapping'.  </li>
+		<li>Select <tt> DATA MANAGEMENT > Get Data > Upload File</tt>. Press <tt>Choose file</tt> button and browse to file 'siNT_ER_E2_r3.SRR540192.chr21.andNoise.fastq'. Select fastqsanger as <tt>File Format</tt> and hg19 (full) as a <tt>reference genome</tt>. Press <tt>Execute</tt>.</li>
+		<li>Select <tt>NGS TOOLS > NGS: QC and manipulation > FASTQ Groomer</tt>. Set <tt>File to groom</tt> to 'siNT_ER_E2_r3.SRR540192.chr21.andNoise.fastq', and press <tt>Execute</tt></li>
+		<li>Rename the output of the previous step into 'siNT_ER_E2_r3.chr21.groom' (use the pencil that is associated to each item of the history to edit their attributes).</li>
+      </ol>
+    </div>
+
+
+<h3>Quality control with FastQC</h3>
+
+<p><a href="http://www.bioinformatics.bbsrc.ac.uk/projects/fastqc"> FastQC </a> aims to provide a simple way to do some quality control checks on raw sequence data coming from high throughput sequencing pipelines. It provides a modular set of analyses which you can use to give a quick impression of whether your data has any problems of which you should be aware before doing any further analysis. FastQC can be run as a stand alone interactive application for the immediate analysis of small numbers of FastQ files, in a non-interactive mode (through shell commands) where it would be suitable for integrating into a larger analysis pipeline for the systematic processing of large numbers of files or through the Galaxy framework.</p>
+<p>It is important to stress that although the analysis results appear to give a pass/fail result, these evaluations must be taken in the context of what you expect from your library. A 'normal' sample as far as FastQC is concerned is random and diverse. Some experiments may be expected to produce libraries which are biased in particular ways. You should treat the summary evaluations therefore as pointers to where you should concentrate your attention and understand why your library may not look random and diverse.</p>
+<div class='protocol'>
+      <ol>
+        <li>Use <tt> NGS TOOLS > NGS: QC and manipulation > FastQC:Read QC</tt>.</li>
+        <li>Select 'siNT_ER_E2_r3.chr21.groom' in <tt>Short read data from your current history</tt> dropdown list. Press <tt>execute</tt>.</li>
+        <li> Display the data for the corresponding result in your <tt>history</tt> (right panel).</li>
+      </ol>
+</div>
+<p></p>
+    <div class='exo'>
+      <p>
+        <ul>
+            <li>Carefully inspect all the statistics. What do you think of the overall quality of the sequencing ?</li>
+            
+        </ul>
+    </div>
+
+
+<hr><a name="trim"></a>
+<h2>Read trimming and filtering</h2>
+<p>Read trimming is a pre-processing step in which input read ends with poor quality values are cut (most generally the right end). However one should keep in mind that this step is crucial when working with numerous aligners such as bowtie. Indeed as bowtie does not perform "hard-clipping" (that is clip sequence NOT present in the reference) it may be unable to align a large fraction of the dataset when poor quality ends are kept. Several software may be used to perform sequence trimming : </p>. 
+
+<ul>
+<li><a target="blank" href="http://hannonlab.cshl.edu/fastx_toolkit/">FASTX-Toolkit<a> (cut a defined number of nucleotides)</li>
+<li><a target="blank" href="http://github.com/najoshi/sickle">sickle<a> (sliding window-based trimming)</li>
+<li><a target="blank" href="http://code.google.com/p/cutadapt/">cutadapt<a> (delete ends using bwa algorithm)</li>
+<li><a target="blank" href="http://bioconductor.org/packages/2.11/bioc/html/ShortRead.html">the ShortRead Bioconductor package<a> (rule may be user-defined)</li>
+</ul>
+
+<tt>Here we will use prinseq </tt>
+
+<div class='protocol'>
+      <ol>
+        <li>Search for the <tt>prinseq</tt> tool using the galaxy search engine (upper left corner). Select <tt>prinseq_lite</tt> tool.</li>
+			<li>From <tt>reads fastq file</tt> dropdown list select'siNT_ER_E2_r3.SRR540192.chr21.andNoise.fastq'. Set <tt>ns_max_n</tt> to 2, <tt>trim_qual_right</tt> to 20, <tt>min_len</tt> to 25 and press <tt>execute</tt>.</li>
+			<li>Perform a new fastqc analysis using the trimmed read as input. The number of reads should be reduced.</li>
+			<li>Check the proportion of duplicate reads ('Sequence Duplication Levels'). High level of PCR duplicates means that you provided to little material for sequencing (poor library complexity).</li>
+      </ol>
+</div>
+
+<hr><a name="bowtie"></a>
+<h2>Mapping reads with bowtie</h2>
+<p>Among the genome aligners, bowtie is one of a most popular mostly because it can achieve fast alignment of millions of reads. Although, the mapping strategy differs between version 1 and 2, the overall pipeline is identical. Bowtie uses a "seed and extend" strategy meaning that it will first try to find matches for 5' ends of the reads (the seeds, whose length is controlled through -l arguments) in the reference genome (using an index build using Burrows Wheeler Transform algorithm). In the second step,  it will try to extend these matches using dynamic programming.</p>
+<p>Bowtie offers many parameters that can modify the way alignment is performed. In the case of ChIP-Seq analysis, one crucial issue is to control for multi-reads (reads that map to several positions onto the reference genome) that may produce artificial peaks. This parameter may be controlled trough the <tt>-m</tt> arguments. Here, we will instruct bowtie to discard multihits (although more advanced policies have been proposed).</p>
+
+<div class='protocol'>
+      <ol> 
+        <li>From the tool panel, select <tt>NGS TOOLS > NGS: Mapping > Map with Bowtie for Illumina</tt>.
+        <ol>
+        		<li>Set <tt>Select a reference genome</tt> to 'hg19'.</li>
+        		<li>Set <tt>Bowtie settings to use</tt> to 'full parameter list'.</li>
+        		<li>Set <tt>Maximum number of mismatches permitted in the seed</tt> to '1'.</li>
+        		<li>Set <tt>Suppress all alignments for a read if more than n reportable alignments exist (-m)</tt> to 1.</li>
+        		<li>Download the result from bowtie (a sam file).</li>
+        	</ol></li>
+        
+</div>
+
+
+
+<a name="igv"></a>
+<hr><h2>Viewing the results with Integrated Genome Browser (IGV).</h2>
+<p> The <a href="http://www.broadinstitute.org/igv/home">Integrative Genomics Viewer</a> (IGV) is a high-performance visualization tool for interactive exploration of large, integrated genomic datasets. It supports a wide variety of data types, including array-based and next-generation sequence data, and genomic annotations.</p>
+
+
+<div class='protocol'>
+      <ol><li>Download IGV and launch it with 750 MB or 1.2 Gb depending of your machine.</li>
+        <li>Select hg19 genome and go to chromosome 21.</li>
+        <li>Select <tt>Tools > Run Igvtools</tt>.  Select <tt>command > sort</tt>, select <tt>iput file</tt> and browse to the sam file. Press <tt>Run</tt>.</li>
+        <li>Select <tt>command > index</tt>, select <tt>input file</tt> and browse to the sorted sam file. Press <tt>Run</tt>.</li>
+        <li>Select <tt>command > count</tt>, select <tt>input file</tt> and browse to the sorted sam file (! not the *.bai)). Press <tt>Run</tt>.</li>
+        <li>Close the igvtools window.</li>
+        <li>Load the tdf and sorted sam file.</li>
+        <li>Go to TFF1 gene.</li>
+        <li>Unzoom and and select regions displaying high signal based on tdf track</li>
+</div>
+
+<p><b>NB:</b>The tdf file is a IGV specific format that is closed to the bigWig format (the compressed version of wig format).</p>
+
+
+<hr><a name='troubles'>
+</a><h2>If you get troubles</h2>
+
+  <b>If you get troubles computing all steps of the analysis ...</b>
+
+    <p> The full analysis have been pre-computed on is available has work spaces (histories) through the Galaxy web server. The following items are availables:
+    <ul>
+      <li><a href='http://galaxy.sb-roscoff.fr/u/dputhier/h/erchr21mappingshared'>Fastq file, Fastqc report, sam file.</a></li>
+<p></p>
+    <p> If needed (just do it in case there is no alternative solution), import the data using the following procedure.
+
+        <ol>
+         <li>Click on one of the link above</li>
+        <li>In the top-right corner of the window, click <i>Import history</i></li>
+        <li>In the message box, click the link <i>Start using this
+            history</i></li>
+        <li> You can manage histories using <i>options > Saved history </i>  
+        </ol>
+    </div>
+
+    <hr>
+    
+ 
+-->
+
+</body> 
+</html>

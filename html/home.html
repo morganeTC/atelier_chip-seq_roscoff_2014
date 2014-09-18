@@ -1,0 +1,160 @@
+
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="course.css" media="screen,projection" />
+    <title>Analysis of ChIP-seq data</title>
+  </head>
+  <body>
+
+    <h1 align=center>Workshop: ChIP-Seq Data Analysis </h1>
+
+    <h2>Formateurs</h2>
+    <ol>
+      <li><a target="_blank" href="http://biologie.univ-mrs.fr/carlherrmann/">Carl Herrmann</a><sup>1</sup></li>
+      <li><a target="_blank" href="http://www.bigre.ulb.ac.be/Users/defrance/">Matthieu Defrance</a><sup>2</sup></li>
+      <li><a target="_blank" href="http://tagc.univ-mrs.fr/tagc/index.php/research/network-bioinformatics/dputhier">Denis Puthier</a><sup>3</sup></li>
+      <li><a target="_blank" href="mailto:mthomas@biologie.ens.fr">Morgane Thomas-Chollier</a><sup>4</sup></li>      
+	  <!--      <li><a target="_blank" href="mailto:olivier.sand@good.ibl.fr">Olivier Sand</a><sup></sup></li>    
+				<li><a target="_blank" href="http://jacques.van-helden.perso.luminy.univmed.fr/">Jacques van Helden</a><sup>1</sup></li> -->
+    </ol>
+
+    <ul>    
+      <ol>
+
+		<p><li>Cancer Regulatory Genomics group, EILSLABS, 
+			<br>Web: <a target="_blank" href="http://biologie.univ-mrs.fr/carlherrmann/home.html">http://biologie.univ-mrs.fr/carlherrmann/home.html</a>
+			<br>Build. TP3 - DKFZ Heidelberg iBioS (B080) Im Neuenheimer Feld 580 D-69120 Heidelberg.
+		</li></p>
+
+		<p><li> Laboratory of cancer epigenetics
+			<br>Université; Libre de Bruxelles
+			<br>Facult&eacute; de M&eacute;decine CP614. Route de Lennik, 808. 1070 Bruxelles, Belgium
+		</li></p>
+
+		<p><li>Lab. Technological Advances for Genomics and Clinics (TAGC)
+			<br>Web: <a target="_blank" href="http://tagc.univ-mrs.fr/tagc/">http://tagc.univ-mrs.fr/tagc/</a>
+			<br>Aix-Marseille Universit&eacute; (AMU).
+			<br>INSERM Unit U1090, 163, Avenue de Luminy, 13288 MARSEILLE cedex 09. France
+		</li></p>
+		<p><li>
+			CSB group, Institut de Biologie de l'&Eacute;cole Normale Sup&eacute;rieure
+			<br>Institut de Biologie de l'&Eacute;cole Normale Sup&eacute;rieure, 46 rue d'Ulm F-75230 Paris cedex 05 . France
+			<br>Web: <a target='_blank' href='http://morgane.bardiaux.fr/'>http://morgane.bardiaux.fr/</a>
+		</li></p>
+      </ol>
+    </ul>
+
+<hr>
+    <h2>Sessions</h2>
+    
+    <table class="simple">
+
+      <tr valign="top">
+		<th>Session</th>
+		<th>Date</th>
+		<th>From</th>
+		<th>To</th>
+		<th>Subject</th>
+		<th>Theory</th>
+		<th>Practice</th>
+      </tr>
+
+
+
+      <tr valign="top">
+		<td>1</td>
+		<td>07/10</td>
+		<td>14:00</td>
+		<td>16:30</td>
+		<td>Peak calling</td>
+		<td>
+		  <ol>
+			<li>Assessing ChIP-Seq quality.</li>
+			<li>Normalizing ChIP-Seq data.</li>
+			<li>Diversity of peak-calling approaches.</li>
+			<li>MACS algorithm.</li>
+			<li>Sicer algorithm.</li>
+			<li>Impact of peak-calling parameters on the number and quality of the peaks.</li>
+			<li>Further reading.</li>
+		  </ol>
+		</td>
+		<td>
+		  <b>Tutorials</b>
+		  <ol>
+			<li><a href="../tutorial/00_read_mapping/mapping_tutorial.html">Read mapping, visualisation with IGV</a></li>
+			<li><a href="../tutorial/01_peak_calling/peak_calling_tutorial.html">Peak Calling</a></li>
+		  </ol>
+		</td>
+      </tr>
+
+
+
+      <tr valign="top">
+		<td>2</td>
+		<td>07/10</td>
+		<td>16:30</td>
+		<td>17:30</td>
+		<td>From ChIP-Seq results to functionnal annotations</td>
+		<td>
+		  <ol>
+			<li>Annotating peaks</li>
+			<li>(GREAT, deepTools(?), ReMAP(?), UCSC,...)</li>
+		  </ol>
+		</td>
+		<td>
+		  <b>Tutorials</b>
+		  <ol>
+			<li><a href="../tutorial/02_annotation/Chip-seq_peak_annotation_protocol_CH.pdf">UCSC, GREAT (Genomic Regions Enrichment of Annotations Tool), deepTools</a></li>
+		  </ol>
+		</td>
+      </tr>
+
+
+      <tr valign="top">
+		<td>3</td>
+		<td>08/10</td>
+		<td>08:00</td>
+		<td>10:00</td>
+		<td>Detecting motifs in ChIP-seq peaks (talk)</td>
+		<td rowspan='2'>
+
+		  <ol>
+			<li>String-based motif discovery</li>
+			<li>Comparing discovered motifs with transcription factor databases.</li>
+			<li>Predicting binding sites</li>
+			<li>Estimating peak quality on the basis of motif enrichment</li>
+		  </ol>
+		</td>
+		<td rowspan='2'>
+		  <b>Tutorial</b>
+		  <ol start="3">
+			<li><a href="../tutorial/04_motif/ChIP-seq_motif_analysis_tutorial_Jacques_van-Helden.pdf">Motif analysis on ChIP-seq peaks</a></li>
+		  </ol>
+		</td>
+	  </tr>
+
+
+
+
+
+    </table>
+
+    <hr>
+ 
+     <h2>Further reading</h2>   
+    
+    		  <p><b>Peak-motifs protocol</b></p>
+		  <p>Thomas-Chollier, M., Darbo, E., Herrmann, C., Defrance,
+			M., Thieffry, D. & van Helden, J. (2012). A complete workflow
+			for the analysis of full-size ChIP-seq (and similar) data sets
+			using peak-motifs. Nature Protocols 7, 1551-68.
+			<br>PMID <a target='_blank' href='http://www.ncbi.nlm.nih.gov/pubmed/22836136'>22836136</a>.
+		  </p>
+		      		  <p><b>Theodorou article</b></p>
+		  <p>Theodorou V1, Stark R, Menon S, Carroll JS (2013). GATA3 acts upstream of FOXA1 in mediating ESR1 binding by shaping enhancer accessibility. Genome Res.,23(1):12-22.
+			<br>PMID <a target='_blank' href='http://www.ncbi.nlm.nih.gov/pubmed/22836136'>22836136</a>.
+		  </p>
+		  
+		  <hr>
+  </body>
+</html>
