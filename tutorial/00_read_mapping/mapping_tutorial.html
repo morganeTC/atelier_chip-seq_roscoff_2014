@@ -23,7 +23,7 @@
 
 <hr><a name='intro'></a><h2>CHiP-Seq dataset description</h2>
       
-<p>For this tutorial we will use CHiP-Seq datasets produced recently by <a href='http://www.ncbi.nlm.nih.gov/pubmed/23172872'>Theodorou <i>et al</i></a>. The authors used ChIP-Seq technology in order to systematically identify ESR1 binding regions across the human genome. Importantly, they demonstrated that knock-down of GATA3 through siRNA greatly affect ESR1 binding. The corresponding abstract of this article is provided below.</p>
+<p>For this tutorial we will use CHiP-Seq datasets produced by <a href='http://www.ncbi.nlm.nih.gov/pubmed/23172872'>Theodorou <i>et al</i></a>. The authors used ChIP-Seq technology in order to systematically identify ESR1 binding regions across the human genome. Importantly, they demonstrated that knock-down of GATA3 through siRNA greatly affect ESR1 binding. The corresponding abstract of this article is provided below.</p>
 
 <h4>Abstract</h4>
 <p>Estrogen receptor (ESR1) drives growth in the majority of human breast cancers by binding to regulatory elements and inducing transcription events that promote tumor growth. Differences in enhancer occupancy by ESR1 contribute to the diverse expression profiles and clinical outcome observed in breast cancer patients. GATA3 is an ESR1-cooperating transcription factor mutated in breast tumors; however, its genomic properties are not fully defined. </p>
@@ -85,9 +85,12 @@
 
     <div class='protocol'>
       <ul>
-		<li>In the upper left corner, click on <tt>Unnamed history</tt> and rename this workspace to 'ER_chr21_mapping'.  </li>
-		<li>Use <tt>Shared data > data libraries > tp-mardi-chipseq-herrmann > fastq siNT_ER_E2_r3.SRR540192.chr21.andNoise.fastq > import this dataset into selected history</tt>. Select the 'ER_chr21_mapping' history and click on <tt>Import library datasets</tt>.</li>
-		<li>Select <tt>NGS TOOLS > NGS: QC and manipulation > FASTQ Groomer</tt>. Set <tt>File to groom</tt> to 'siNT_ER_E2_r3.SRR540192.chr21.andNoise.fastq', and press <tt>Execute</tt></li>
+		<li>In the upper left corner, click on <b>Unnamed history</b> and rename this workspace to 'ER_chr21_mapping'.  </li>
+		<li>In the left menu, select <b>Get Data > Upload File</b>. set File format as <b>BED</b>, copy and paste the URL below in the <b>URL/text</b> area and set genome to <b>hg19</b>. </li>
+			<ul>
+				<li>http://denis.puthier.perso.luminy.univ-amu.fr/COURSES/CHIP-SEQ/PRACTICAL/data/siNT_ER_E2_r3_SRX176860_chr21_0.6_Noise.fastq.gz</li>
+			</ul>
+		<li>Select <b>NGS TOOLS > NGS: QC and manipulation > FASTQ Groomer</b>. Set <b>File to groom</b> to 'siNT_ER_E2_r3.SRR540192.chr21.andNoise.fastq', and press <b>Execute</b></li>
 		<li>Rename the output of the previous step into 'siNT_ER_E2_r3.chr21.groom' (use the pencil that is associated to each item of the history to edit their attributes).</li>
       </ul>
     </div>
@@ -99,9 +102,9 @@
 <p>It is important to stress that although the analysis results appear to give a pass/fail result, these evaluations must be taken in the context of what you expect from your library. A 'normal' sample as far as FastQC is concerned is random and diverse. Some experiments may be expected to produce libraries which are biased in particular ways. You should treat the summary evaluations therefore as pointers to where you should concentrate your attention and understand why your library may not look random and diverse.</p>
 <div class='protocol'>
       <ul>
-        <li>Use <tt> NGS TOOLS > NGS: QC and manipulation > FastQC:Read QC</tt>.</li>
-        <li>Select 'siNT_ER_E2_r3.chr21.groom' in <tt>Short read data from your current history</tt> dropdown list. Press <tt>execute</tt>.</li>
-        <li> Display the data for the corresponding result in your <tt>history</tt> (right panel).</li>
+        <li>Use <b> NGS TOOLS > NGS: QC and manipulation > FastQC:Read QC</b>.</li>
+        <li>Select 'siNT_ER_E2_r3.chr21.groom' in <b>Short read data from your current history</b> dropdown list. Press <b>execute</b>.</li>
+        <li> Display the data for the corresponding result in your <b>history</b> (right panel).</li>
       </ul>
 </div>
 <p></p>
@@ -131,8 +134,8 @@
 
 <div class='protocol'>
       <ul>
-        <li>Search for the <tt>sickle</tt> tool using the galaxy search engine (upper left corner). Select <tt>sickle</tt> tool.</li>
-			<li>From <tt>reads fastq file</tt> dropdown list select'siNT_ER_E2_r3.SRR540192.chr21.andNoise.groom'. Set <tt>Quality Threshold</tt> to 20, <tt>Length Threshold</tt> to 25, <tt>min_len</tt> to 25 and press <tt>execute</tt>.</li>
+        <li>Search for the <b>sickle</b> tool using the galaxy search engine (upper left corner). Select <b>sickle</b> tool.</li>
+			<li>From <b>reads fastq file</b> dropdown list select'siNT_ER_E2_r3.SRR540192.chr21.andNoise.groom'. Set <b>Quality Threshold</b> to 20, <b>Length Threshold</b> to 25, <b>min_len</b> to 25 and press <b>execute</b>.</li>
 			<li>Rename the output into siNT_ER_E2_r3.chr21.sickle</li>
 			<li>Perform a new fastqc analysis using the trimmed read as input. The number of reads should be reduced.</li>
 			<li>Check the proportion of duplicate reads ('Sequence Duplication Levels'). High level of PCR duplicates means that you provided to little material for sequencing (poor library complexity).</li>
@@ -142,17 +145,17 @@
 <hr><a name="bowtie"></a>
 <h2>Mapping reads with bowtie</h2>
 <p>Among the genome aligners, bowtie is one of a most popular mostly because it can achieve fast alignment of millions of reads. Although, the mapping strategy differs between version 1 and 2, the overall pipeline is identical. Bowtie uses a "seed and extend" strategy meaning that it will first try to find matches for 5' ends of the reads (the seeds, whose length is controlled through -l arguments) in the reference genome (using an index build using Burrows Wheeler Transform algorithm). In the second step,  it will try to extend these matches using dynamic programming.</p>
-<p>Bowtie offers many parameters that can modify the way alignment is performed. In the case of ChIP-Seq analysis, one crucial issue is to control for multi-reads (reads that map to several positions onto the reference genome) that may produce artificial peaks. This parameter may be controlled trough the <tt>-m</tt> arguments. Here, we will instruct bowtie to discard multihits (although more advanced policies have been proposed).</p>
+<p>Bowtie offers many parameters that can modify the way alignment is performed. In the case of ChIP-Seq analysis, one crucial issue is to control for multi-reads (reads that map to several positions onto the reference genome) that may produce artificial peaks. This parameter may be controlled trough the <b>-m</b> arguments. Here, we will instruct bowtie to discard multihits (although more advanced policies have been proposed).</p>
 
 <div class='protocol'>
       <ul> 
-        <li>From the tool panel, select <tt>NGS TOOLS > NGS: Mapping > Map with Bowtie for Illumina. Fill the form as follow:</tt>.
+        <li>From the tool panel, select <b>NGS TOOLS > NGS: Mapping > Map with Bowtie for Illumina. Fill the form as follow:</b>.
         <ul>
 	                <li>Select "Use a built-in index".</li>
-        		<li>Set <tt>Select a reference genome</tt> to 'HG19'.</li>
-        		<li>Set <tt>Bowtie settings to use</tt> to 'full parameter list'.</li>
-        		<li>Set <tt>Suppress all alignments for a read if more than n reportable alignments exist</tt> to '1'.</li>
-			<li>Select the <tt>flagstat</tt> tool from the <tt>toolbox</tt> to compute some simple statistics about read mapping.</li>
+        		<li>Set <b>Select a reference genome</b> to 'HG19'.</li>
+        		<li>Set <b>Bowtie settings to use</b> to 'full parameter list'.</li>
+        		<li>Set <b>Suppress all alignments for a read if more than n reportable alignments exist</b> to '1'.</li>
+			<li>Select the <b>flagstat</b> tool from the <b>toolbox</b> to compute some simple statistics about read mapping.</li>
         		<li>Download the result from bowtie (a sam file).</li>
         </ul></li>
         </ul>
@@ -168,9 +171,9 @@
 <div class='protocol'>
       <ul><li>Download IGV and launch it with 750 MB or 1.2 Gb depending of your machine.</li>
         <li>Select hg19 genome and go to chromosome 21.</li>
-        <li>Select <tt>Tools > Run Igvtools</tt>.  Select <tt>command > sort</tt>, select <tt>iput file</tt> and browse to the sam file. Press <tt>Run</tt>.</li>
-        <li>Select <tt>command > index</tt>, select <tt>input file</tt> and browse to the sorted sam file. Press <tt>Run</tt>.</li>
-        <li>Select <tt>command > count</tt>, select <tt>input file</tt> and browse to the sorted sam file (! not the *.bai)). Press <tt>Run</tt>.</li>
+        <li>Select <b>Tools > Run Igvtools</b>.  Select <b>command > sort</b>, select <b>iput file</b> and browse to the sam file. Press <b>Run</b>.</li>
+        <li>Select <b>command > index</b>, select <b>input file</b> and browse to the sorted sam file. Press <b>Run</b>.</li>
+        <li>Select <b>command > count</b>, select <b>input file</b> and browse to the sorted sam file (! not the *.bai)). Press <b>Run</b>.</li>
         <li>Close the igvtools window.</li>
         <li>Load the tdf and sorted sam file.</li>
         <li>Go to TFF1 gene.</li>
@@ -187,7 +190,7 @@
     <div class='exo'>
       <p>Using the same procedure, align reads obtained from the input sample on hg19 genome. The input will be used to model the local genomic background in the Peak-Calling step.</p>
       <ul>
-      <li>Input reads can be obtained are available from <tt>Shared data > data libraries > tp-mardi-chipseq-herrmann > fastq MCF-7_input_r3.SRR540220.chr21.andNoise.fastq</tt>.</li>
+      <li>Input reads can be obtained are available from <b>Shared data > data libraries > tp-mardi-chipseq-herrmann > fastq MCF-7_input_r3.SRR540220.chr21.andNoise.fastq</b>.</li>
       </ul>
     </div>
     
@@ -246,16 +249,16 @@ Gene Expression Omnibus (<a target="_blank" href='http://www.ncbi.nlm.nih.gov/ge
 <hr><a name='qual'>
 <h2>Quality control of sequencing data</h2>
 <h3>Loading fastq files in galaxy</h3>
-    <p> Analysis of the whole dataset can be time consuming. Thus, in order to illustrate the mapping procedure, data were previously retrieved from SRA, fastq-transformed using <a href="http://www.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=software">SRA toolkit</a> (<tt>fastq-dump</tt> command) and mapped to the human genome (version hg19). A subset of reads that aligned onto chromosome 21 was extracted and will be used for this tutorial. Although analysis can be performed programmatically (using a shell script for instance), here, we will use the Galaxy framework, available from <a href="http://abims.sb-roscoff.fr/">ABIMS</a> bioinformatics platform.A subset of the run SRR540192 (ChIP ER on MCF-7 treated with E2) is available from ABIMS ftp web site (see below). </p>
+    <p> Analysis of the whole dataset can be time consuming. Thus, in order to illustrate the mapping procedure, data were previously retrieved from SRA, fastq-transformed using <a href="http://www.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=software">SRA toolkit</a> (<b>fastq-dump</b> command) and mapped to the human genome (version hg19). A subset of reads that aligned onto chromosome 21 was extracted and will be used for this tutorial. Although analysis can be performed programmatically (using a shell script for instance), here, we will use the Galaxy framework, available from <a href="http://abims.sb-roscoff.fr/">ABIMS</a> bioinformatics platform.A subset of the run SRR540192 (ChIP ER on MCF-7 treated with E2) is available from ABIMS ftp web site (see below). </p>
       
 
     <div class='protocol'>
       <ol>
       <li>Download the subset of SRR540192 run <a href="	http://biow.sb-roscoff.fr/download/dputhier/siNT_ER_E2_r3.SRR540192.chr21.andNoise.fastq">here</a>.</li>
 		<li>Open a connection to the <a target='_blank' href="http://galaxy.sb-roscoff.fr/">Galaxy server</a>.</li>
-		<li>In the upper left corner, click on <tt>Unnamed history</tt> and rename this workspace to 'ER_chr21_mapping'.  </li>
-		<li>Select <tt> DATA MANAGEMENT > Get Data > Upload File</tt>. Press <tt>Choose file</tt> button and browse to file 'siNT_ER_E2_r3.SRR540192.chr21.andNoise.fastq'. Select fastqsanger as <tt>File Format</tt> and hg19 (full) as a <tt>reference genome</tt>. Press <tt>Execute</tt>.</li>
-		<li>Select <tt>NGS TOOLS > NGS: QC and manipulation > FASTQ Groomer</tt>. Set <tt>File to groom</tt> to 'siNT_ER_E2_r3.SRR540192.chr21.andNoise.fastq', and press <tt>Execute</tt></li>
+		<li>In the upper left corner, click on <b>Unnamed history</b> and rename this workspace to 'ER_chr21_mapping'.  </li>
+		<li>Select <b> DATA MANAGEMENT > Get Data > Upload File</b>. Press <b>Choose file</b> button and browse to file 'siNT_ER_E2_r3.SRR540192.chr21.andNoise.fastq'. Select fastqsanger as <b>File Format</b> and hg19 (full) as a <b>reference genome</b>. Press <b>Execute</b>.</li>
+		<li>Select <b>NGS TOOLS > NGS: QC and manipulation > FASTQ Groomer</b>. Set <b>File to groom</b> to 'siNT_ER_E2_r3.SRR540192.chr21.andNoise.fastq', and press <b>Execute</b></li>
 		<li>Rename the output of the previous step into 'siNT_ER_E2_r3.chr21.groom' (use the pencil that is associated to each item of the history to edit their attributes).</li>
       </ol>
     </div>
@@ -267,9 +270,9 @@ Gene Expression Omnibus (<a target="_blank" href='http://www.ncbi.nlm.nih.gov/ge
 <p>It is important to stress that although the analysis results appear to give a pass/fail result, these evaluations must be taken in the context of what you expect from your library. A 'normal' sample as far as FastQC is concerned is random and diverse. Some experiments may be expected to produce libraries which are biased in particular ways. You should treat the summary evaluations therefore as pointers to where you should concentrate your attention and understand why your library may not look random and diverse.</p>
 <div class='protocol'>
       <ol>
-        <li>Use <tt> NGS TOOLS > NGS: QC and manipulation > FastQC:Read QC</tt>.</li>
-        <li>Select 'siNT_ER_E2_r3.chr21.groom' in <tt>Short read data from your current history</tt> dropdown list. Press <tt>execute</tt>.</li>
-        <li> Display the data for the corresponding result in your <tt>history</tt> (right panel).</li>
+        <li>Use <b> NGS TOOLS > NGS: QC and manipulation > FastQC:Read QC</b>.</li>
+        <li>Select 'siNT_ER_E2_r3.chr21.groom' in <b>Short read data from your current history</b> dropdown list. Press <b>execute</b>.</li>
+        <li> Display the data for the corresponding result in your <b>history</b> (right panel).</li>
       </ol>
 </div>
 <p></p>
@@ -293,12 +296,12 @@ Gene Expression Omnibus (<a target="_blank" href='http://www.ncbi.nlm.nih.gov/ge
 <li><a target="blank" href="http://bioconductor.org/packages/2.11/bioc/html/ShortRead.html">the ShortRead Bioconductor package<a> (rule may be user-defined)</li>
 </ul>
 
-<tt>Here we will use prinseq </tt>
+<b>Here we will use prinseq </b>
 
 <div class='protocol'>
       <ol>
-        <li>Search for the <tt>prinseq</tt> tool using the galaxy search engine (upper left corner). Select <tt>prinseq_lite</tt> tool.</li>
-			<li>From <tt>reads fastq file</tt> dropdown list select'siNT_ER_E2_r3.SRR540192.chr21.andNoise.fastq'. Set <tt>ns_max_n</tt> to 2, <tt>trim_qual_right</tt> to 20, <tt>min_len</tt> to 25 and press <tt>execute</tt>.</li>
+        <li>Search for the <b>prinseq</b> tool using the galaxy search engine (upper left corner). Select <b>prinseq_lite</b> tool.</li>
+			<li>From <b>reads fastq file</b> dropdown list select'siNT_ER_E2_r3.SRR540192.chr21.andNoise.fastq'. Set <b>ns_max_n</b> to 2, <b>trim_qual_right</b> to 20, <b>min_len</b> to 25 and press <b>execute</b>.</li>
 			<li>Perform a new fastqc analysis using the trimmed read as input. The number of reads should be reduced.</li>
 			<li>Check the proportion of duplicate reads ('Sequence Duplication Levels'). High level of PCR duplicates means that you provided to little material for sequencing (poor library complexity).</li>
       </ol>
@@ -307,16 +310,16 @@ Gene Expression Omnibus (<a target="_blank" href='http://www.ncbi.nlm.nih.gov/ge
 <hr><a name="bowtie"></a>
 <h2>Mapping reads with bowtie</h2>
 <p>Among the genome aligners, bowtie is one of a most popular mostly because it can achieve fast alignment of millions of reads. Although, the mapping strategy differs between version 1 and 2, the overall pipeline is identical. Bowtie uses a "seed and extend" strategy meaning that it will first try to find matches for 5' ends of the reads (the seeds, whose length is controlled through -l arguments) in the reference genome (using an index build using Burrows Wheeler Transform algorithm). In the second step,  it will try to extend these matches using dynamic programming.</p>
-<p>Bowtie offers many parameters that can modify the way alignment is performed. In the case of ChIP-Seq analysis, one crucial issue is to control for multi-reads (reads that map to several positions onto the reference genome) that may produce artificial peaks. This parameter may be controlled trough the <tt>-m</tt> arguments. Here, we will instruct bowtie to discard multihits (although more advanced policies have been proposed).</p>
+<p>Bowtie offers many parameters that can modify the way alignment is performed. In the case of ChIP-Seq analysis, one crucial issue is to control for multi-reads (reads that map to several positions onto the reference genome) that may produce artificial peaks. This parameter may be controlled trough the <b>-m</b> arguments. Here, we will instruct bowtie to discard multihits (although more advanced policies have been proposed).</p>
 
 <div class='protocol'>
       <ol> 
-        <li>From the tool panel, select <tt>NGS TOOLS > NGS: Mapping > Map with Bowtie for Illumina</tt>.
+        <li>From the tool panel, select <b>NGS TOOLS > NGS: Mapping > Map with Bowtie for Illumina</b>.
         <ol>
-        		<li>Set <tt>Select a reference genome</tt> to 'hg19'.</li>
-        		<li>Set <tt>Bowtie settings to use</tt> to 'full parameter list'.</li>
-        		<li>Set <tt>Maximum number of mismatches permitted in the seed</tt> to '1'.</li>
-        		<li>Set <tt>Suppress all alignments for a read if more than n reportable alignments exist (-m)</tt> to 1.</li>
+        		<li>Set <b>Select a reference genome</b> to 'hg19'.</li>
+        		<li>Set <b>Bowtie settings to use</b> to 'full parameter list'.</li>
+        		<li>Set <b>Maximum number of mismatches permitted in the seed</b> to '1'.</li>
+        		<li>Set <b>Suppress all alignments for a read if more than n reportable alignments exist (-m)</b> to 1.</li>
         		<li>Download the result from bowtie (a sam file).</li>
         	</ol></li>
         
@@ -332,9 +335,9 @@ Gene Expression Omnibus (<a target="_blank" href='http://www.ncbi.nlm.nih.gov/ge
 <div class='protocol'>
       <ol><li>Download IGV and launch it with 750 MB or 1.2 Gb depending of your machine.</li>
         <li>Select hg19 genome and go to chromosome 21.</li>
-        <li>Select <tt>Tools > Run Igvtools</tt>.  Select <tt>command > sort</tt>, select <tt>iput file</tt> and browse to the sam file. Press <tt>Run</tt>.</li>
-        <li>Select <tt>command > index</tt>, select <tt>input file</tt> and browse to the sorted sam file. Press <tt>Run</tt>.</li>
-        <li>Select <tt>command > count</tt>, select <tt>input file</tt> and browse to the sorted sam file (! not the *.bai)). Press <tt>Run</tt>.</li>
+        <li>Select <b>Tools > Run Igvtools</b>.  Select <b>command > sort</b>, select <b>iput file</b> and browse to the sam file. Press <b>Run</b>.</li>
+        <li>Select <b>command > index</b>, select <b>input file</b> and browse to the sorted sam file. Press <b>Run</b>.</li>
+        <li>Select <b>command > count</b>, select <b>input file</b> and browse to the sorted sam file (! not the *.bai)). Press <b>Run</b>.</li>
         <li>Close the igvtools window.</li>
         <li>Load the tdf and sorted sam file.</li>
         <li>Go to TFF1 gene.</li>
