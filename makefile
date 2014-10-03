@@ -16,13 +16,14 @@ comma := ,
 FILELIST=$(subst $(comma), , $(FILES))
 
 pushFiles:
-	git pull
-	git add $(FILELIST)
-	git commit -m 'Updated'
-	git push
 	git checkout gh-pages
 	git pull
-	git rebase  origin/master
-	git push origin gh-pages
-	git checkout master
+	git add $(FILELIST)
+	git commit -m "Updated"
+	git push
+	#git checkout gh-pages
+	#git pull
+	#git rebase master
+	#git push origin gh-pages
+	#git checkout master
 
