@@ -21,6 +21,7 @@ pushFiles:
 	git commit -m "Updated"
 	git push
 	git checkout gh-pages
+	git pull
 	git rebase master
 	git push origin gh-pages
 	git checkout master
