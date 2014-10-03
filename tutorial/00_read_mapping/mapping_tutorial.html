@@ -80,7 +80,7 @@
 <h2>Quality control of sequencing data</h2>
 <h4>Loading fastq files in galaxy</h4>
 
-<p> Analysis of the whole dataset can be time consuming. Thus, in order to illustrate the mapping procedure, data were previously retrieved from SRA, fastq-transformed using <a href="http://www.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=software">SRA toolkit</a> (<b>fastq-dump</b> command) and mapped to the human genome (version hg19). A subset of reads that aligned onto chromosome 21 was extracted and will be used for this tutorial. Although analysis can be performed programmatically (using a shell script for instance), here, we will use the Galaxy framework. A subset of the run SRR540192 (ChIP Estrogen Receptor on MCF-7 treated with E2) is available for download (see below). The input will be processed in the later sections. </p>
+<p> Analysis of the whole dataset can be time consuming. Thus, in order to illustrate the mapping procedure, data were previously retrieved from SRA, fastq-transformed using <a href="http://www.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=software">SRA toolkit</a> (<b>fastq-dump</b> command) and mapped to the human genome. A subset of reads that aligned onto chromosome 21 was extracted and will be used for this tutorial. Although analysis can be performed programmatically (using a shell script for instance), here, we will use the Galaxy framework. A subset of the run SRR540192 (ChIP Estrogen Receptor on MCF-7 treated with E2) is available for download (see below). The input will be processed in the later sections. </p>
       
 
     <div class='protocol'>
@@ -152,7 +152,7 @@
         <li>From the tool panel, select <b>NGS TOOLS > NGS: Mapping > Map with Bowtie for Illumina. Fill the form as follow:</b>.
         <ul>
 	                <li>Select "Use a built-in index".</li>
-        		<li>Set <b>Select a reference genome</b> to 'HG19'.</li>
+        		<li>Set <b>Select a reference genome</b> to 'Homo Sapiens Chromosome 21 GRC	h38'.</li>
         		<li>Set <b>Bowtie settings to use</b> to 'full parameter list'.</li>
         		<li>Set <b>Suppress all alignments for a read if more than n reportable alignments exist</b> to '1'.</li>
 			<li>Select the <b>flagstat</b> tool from the <b>toolbox</b> to compute some simple statistics about read mapping.</li>
@@ -162,7 +162,6 @@
 </div>
 
 
-
 <a name="igv"></a>
 <hr><h2>Viewing the results with Integrated Genome Browser (IGV).</h2>
 <p> The <a href="http://www.broadinstitute.org/igv/home">Integrative Genomics Viewer</a> (IGV) is a high-performance visualization tool for interactive exploration of large, integrated genomic datasets. It supports a wide variety of data types, including array-based and next-generation sequence data, and genomic annotations.</p>
@@ -170,7 +169,7 @@
 
 <div class='protocol'>
       <ul><li>Download IGV and launch it with 750 MB or 1.2 Gb depending of your machine.</li>
-        <li>Select hg19 genome and go to chromosome 21.</li>
+        <li>Select hg38 genome and go to chromosome 21.</li>
         <li>Select <b>Tools > Run Igvtools</b>.  Select <b>command > sort</b>, select <b>iput file</b> and browse to the sam file. Press <b>Run</b>.</li>
         <li>Select <b>command > index</b>, select <b>input file</b> and browse to the sorted sam file. Press <b>Run</b>.</li>
         <li>Select <b>command > count</b>, select <b>input file</b> and browse to the sorted sam file (! not the *.bai)). Press <b>Run</b>.</li>
