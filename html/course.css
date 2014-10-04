@@ -157,7 +157,8 @@ quote {
        padding-right: 5px;
        #border: 1px solid #9999ff;
        #color: Black;
-       background-color: #FFEEFF;
+       background-color: #CCFFCC;
+#       background-color: #FFEEFF;
        color: rgb(51, 51,153);
        #margin-right: 30%
 }
