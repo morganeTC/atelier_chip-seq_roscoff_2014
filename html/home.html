@@ -1,7 +1,7 @@
 
 <html>
   <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
     <link rel="stylesheet" type="text/css" href="course.css" media="screen,projection" />
     <title>Analysis of ChIP-seq data</title>
   </head>
@@ -45,7 +45,7 @@
       </ol>
     </ul>
 
-<hr>
+	<hr>
     <h2>Sessions</h2>
     
     <table class="simple">
@@ -70,92 +70,94 @@
 		<td>ChIP-seq : peak-calling et analyse differentielle</td>
 		<td>
 		  <ol>
-		  <li>Qualité et normalization des données de ChIP-seq</li>
-		  <li>Introduction sur le peak-calling</li>
-		  <li>Diversité des approches</li>
-		  <li>les outils MACS et SICER.</li>
-		  <li>Impact of des paramètres sur le nombre et la qualité des pics.</li>
-		  <li>Analyse différentielle (avec répliquats -> DESeq; sans répliquats -> SICER)</i>
-		  </ol>
-		</td>
-		<td>
+			<li>Qualité et normalization des données de ChIP-seq</li>
+			<li>Introduction sur le peak-calling</li>
+			<li>Diversité des approches</li>
+			<li>les outils MACS et SICER.</li>
+			<li>Impact of des paramètres sur le nombre et la qualité des pics.</li>
+			<li>Analyse différentielle (avec répliquats -> DESeq; sans répliquats -> SICER)</i>
+</ol>
+</td>
+<td>
 
-		  <ol>
-		  - basé sur jeu de données de Theodorou et al (http://www.ncbi.nlm.nih.gov/pubmed/23172872 ; http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE40129) 
-- peak calling MACS / SICER sur TF et marques d'histones 
-- analyse différentielle 
-- visualisation des résultats dans IGV 
-			<li><a href="../tutorial/00_read_mapping/mapping_tutorial.html">Read mapping, visualisation with IGV</a></li>
-			<li><a href="../tutorial/01_peak_calling/peak_calling_tutorial.html">Peak Calling</a></li>
-		  </ol>
-		</td>
-      </tr>
-
-
-
-      <tr valign="top">
-		<td>2</td>
-		<td> Mercredi 08/10</td>
-		<td>8:30</td>
-		<td>10:00</td>
-		<td>Annotation fonctionnelle</td>
-		<td>
-		  <ol>
-			<li>Annotation de pics (gène le plus proche ; annotation fonctionnelle avec GREAT)</li>
-			<li>(GREAT, deepTools(?), ReMAP(?), UCSC,...)</li>
-			<li>lien ChIP-seq /RNA-seq (et éventuellement méthylation de l'ADN ??)</li>
-		  </ol>
-		</td>
-		<td>
-		  <ol>
-		  - annotation des pics obtenus la veille 
-- annotation fonctionnelle TF et marques d'histone 
-			<li><a href="../tutorial/02_annotation/Chip-seq_peak_annotation_protocol_CH.pdf">UCSC, GREAT (Genomic Regions Enrichment of Annotations Tool), deepTools</a></li>
-		  </ol>
-		</td>
-      </tr>
+  <ol>
+	<li>Basé sur jeu de données de <a href="http://www.ncbi.nlm.nih.gov/pubmed/23172872">Theodorou et al.</a> ( GEO accession: <a href="http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE40129">GSE40129</a>) </li>
+	<ul>
+	  <li>Peak calling MACS / SICER sur TF et marques d'histones.</li>
+	  <li>Analyse différentielle.</li>
+	  <li>Visualisation des résultats dans IGV.</li>
+	</ul>
+	<li><a href="../tutorial/00_read_mapping/mapping_tutorial.html">(Read mapping, visualisation with IGV)</a></li>
+	<li><a href="../tutorial/01_peak_calling/peak_calling_tutorial.html">Peak Calling</a></li>
+  </ul>
+</td>
+</tr>
 
 
-      <tr valign="top">
-		<td>3</td>
-		<td>Mercredi 08/10</td>
-		<td>10:30</td>
-		<td>12:30</td>
-		<td>Détection de motifs dans les pics</td>
-		<td>
-		  <ol>
-			<li>String-based motif discovery</li>
-			<li>Comparing discovered motifs with transcription factor databases.</li>
-			<li>Predicting binding sites</li>
-			<li>Estimating peak quality on the basis of motif enrichment</li>
-		  </ol>
-		</td>
-		<td>
-		  <ol>
-			<li><a href="../tutorial/04_motif/ChIP-seq_motif_analysis_tutorial_Jacques_van-Helden.pdf">Motif analysis on ChIP-seq peaks</a></li>
-		  </ol>
-		</td>
-	  </tr>
+
+<tr valign="top">
+  <td>2</td>
+  <td> Mercredi 08/10</td>
+  <td>8:30</td>
+  <td>10:00</td>
+  <td>Annotation fonctionnelle</td>
+  <td>
+	<ol>
+	  <li>Annotation de pics (gène le plus proche ; annotation fonctionnelle avec GREAT)</li>
+	  <li>(GREAT, deepTools(?), ReMAP(?), UCSC,...)</li>
+	  <li>lien ChIP-seq /RNA-seq (et éventuellement méthylation de l'ADN ??)</li>
+	</ol>
+  </td>
+  <td>
+	<ol>
+	  <li>annotation des pics obtenus la veille </li>
+	  <li> annotation fonctionnelle TF et marques d'histone </li>
+	  <li><a href="../tutorial/02_annotation/Chip-seq_peak_annotation_protocol_CH.pdf">UCSC, GREAT (Genomic Regions Enrichment of Annotations Tool), deepTools</a></li>
+	</ol>
+  </td>
+</tr>
 
 
-    </table>
+<tr valign="top">
+  <td>3</td>
+  <td>Mercredi 08/10</td>
+  <td>10:30</td>
+  <td>12:30</td>
+  <td>Détection de motifs dans les pics</td>
+  <td>
+	<ol>
+	  <li>String-based motif discovery</li>
+	  <li>Comparing discovered motifs with transcription factor databases.</li>
+	  <li>Predicting binding sites</li>
+	  <li>Estimating peak quality on the basis of motif enrichment</li>
+	</ol>
+  </td>
+  <td>
+	<ol>
+	  <li><a href="../tutorial/04_motif/ChIP-seq_motif_analysis_tutorial_Jacques_van-Helden.pdf">Motif analysis on ChIP-seq peaks</a></li>
+	</ol>
+  </td>
+</tr>
 
-    <hr>
- 
-     <h2>Further reading</h2>   
-    
-    		  <p><b>Peak-motifs protocol</b></p>
-		  <p>Thomas-Chollier, M., Darbo, E., Herrmann, C., Defrance,
-			M., Thieffry, D. & van Helden, J. (2012). A complete workflow
-			for the analysis of full-size ChIP-seq (and similar) data sets
-			using peak-motifs. Nature Protocols 7, 1551-68.
-			<br>PMID <a target='_blank' href='http://www.ncbi.nlm.nih.gov/pubmed/22836136'>22836136</a>.
-		  </p>
-		      		  <p><b>Theodorou article</b></p>
-		  <p>Theodorou V1, Stark R, Menon S, Carroll JS (2013). GATA3 acts upstream of FOXA1 in mediating ESR1 binding by shaping enhancer accessibility. Genome Res.,23(1):12-22.
-			<br>PMID <a target='_blank' href='http://www.ncbi.nlm.nih.gov/pubmed/22836136'>22836136</a>.
-		  </p>
-		  
-		  <hr>
-  </body>
+
+</table>
+
+<hr>
+
+<h2>Further reading</h2>   
+
+<p><b>Peak-motifs protocol</b></p>
+<p>Thomas-Chollier, M., Darbo, E., Herrmann, C., Defrance,
+  M., Thieffry, D. & van Helden, J. (2012). A complete workflow
+  for the analysis of full-size ChIP-seq (and similar) data sets
+  using peak-motifs. Nature Protocols 7, 1551-68.
+  <br>PMID <a target='_blank' href='http://www.ncbi.nlm.nih.gov/pubmed/22836136'>22836136</a>.
+</p>
+<p><b>Theodorou article</b></p>
+<p>Theodorou V1, Stark R, Menon S, Carroll JS (2013). GATA3 acts upstream of FOXA1 in mediating ESR1 binding by shaping enhancer accessibility. Genome Res.,23(1):12-22.
+  <br>PMID <a target='_blank' href='http://www.ncbi.nlm.nih.gov/pubmed/22836136'>22836136</a>.
+</p>
+
+<hr>
+</body>
 </html>
