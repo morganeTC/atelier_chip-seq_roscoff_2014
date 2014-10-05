@@ -1,16 +1,162 @@
-<html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="course.css" media="screen,projection" />
-    <title>Analysis of ChIP-seq data</title>
-  </head>
-  <body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
 
-    <h1 align=center>Workshop: Analysis of ChIP-seq data</h1>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<meta name="description" content=""/>
+	<meta name="keywords" content="" />
+	<meta name="author" content="carl" />
+	<title>Workshop: ChIP-Seq Data Analysis</title>
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+<style type="text/css">
 
-    <h2>Datasets for the training</h2>
+#wrapper{
+  margin:0 auto;
+  #padding:15px 15% 8em;
+  text-align:left
+}
+#content {
+  max-width:70em;
+  width:100%;
+  margin:0 auto;
+  padding-bottom:20px;
+  overflow:hidden
+}
+.demo {
+  margin:1.5em 0;
+  padding:1.5em 1.5em 0.75em;
+  border:1px solid #ccc;
+  position:relative;
+  overflow:hidden
+}
+
+.post {
+  position:relative;
+  overflow:hidden
+}
+.collapse p {padding:0 10px 1em}
+
+.switch {position:absolute; top:1.5em; right: 1.5em; padding:3px}
+
+#.post .switch {position:static; text-align:right}
+
+.post .main{margin-bottom:0; padding-bottom:0}
+
+.other li, .summary {margin-bottom:.3em; padding:1em; border:1px solid #e8e7e8; background-color:#f8f7f8}
+
+.other ul {list-style-type:none; text-align:center}
 
 
-    <h3>GATA3 acts upstream of FOXA1 in mediating ER binding by shaping enhancer accessibility</h3>
+.expand{padding-bottom:.75em}
+
+/* --- Links  --- */
+
+#download {
+  border-style:none;
+  background:white;
+}
+
+.expand a {
+  display:block;
+  padding:3px 10px
+}
+.expand a:link, .expand a:visited {
+  border-width:1px;
+  background-image:url(img/arrow-down.gif);
+  background-repeat:no-repeat;
+  background-position:98% 50%;
+}
+.expand a:hover, .expand a:active, .expand a:focus {
+}
+.expand a.open:link, .expand a.open:visited {
+  #border-style:solid;
+  #background:#eee url(img/arrow-up.gif) no-repeat 98% 50%
+  color:black;
+}
+</style>
+<!--[if lte IE 6]>
+<style type="text/css">
+h3 a, .demo {position:relative; height:1%}
+</style>
+<![endif]-->
+
+<!--[if lte IE 6]>
+<script type="text/javascript">
+   try { document.execCommand( "BackgroundImageCache", false, true); } catch(e) {};
+</script>
+<![endif]-->
+<!--[if !lt IE 6]><!-->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="scripts/expand.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+$(function() {
+    $("#content h3.expand").toggler();
+    $("#content h2.expand").toggler();
+    $("#content div.demo").expandAll({trigger: "h3.expand", ref: "h3.expand"});
+    $("#content div.other").expandAll({
+      expTxt : "[Show]", 
+      cllpsTxt : "[Hide]",
+      ref : "ul.collapse",
+      showMethod : "show",
+      hideMethod : "hide"
+    });
+    $("#content div.post").expandAll({
+      expTxt : "[Show tip]", 
+      cllpsTxt : "[Hide tip]",
+      ref : "div.collapse", 
+      localLinks: "p.top a"    
+    });    
+});
+//--><!]]>
+</script>
+<!--<![endif]-->
+</head>
+
+<body>
+
+<div id="site-wrapper">
+
+	<div id="header">
+
+		<div id="top">
+
+			<div class="left" id="logo">
+								
+<a href="#"><h2 class="label label-green">Workshop: ChIP-Seq Data Analysis</h2></a>
+			</div>
+
+			<div class="clearer">&nbsp;</div>
+
+		</div>
+
+		<div class="navigation" id="sub-nav">
+
+			<ul class="tabbed">
+				<li class="current-tab"><a href="../index.html">Home</a></li>
+				<li ><a href="session1.html">Session1:Peak calling</a></li>
+				<li><a href="session2.html">Session2:Annotation Fonctionelle</a></li>
+				<li><a href="session3.html">Session3: Analyse de motifs</a></li>
+			</ul>
+
+			<div class="clearer">&nbsp;</div>
+
+			<div class="clearer">&nbsp;</div>
+
+		</div>
+
+	</div>
+
+	<div class="main" id="main-two-columns">
+
+		<div class="left" id="main-content">
+
+			<h2 id="contents"> Dataset for the training </h2>
+			
+			<p/>
+	
+				Theodorou V, Stark R, Menon S, Carroll JS <i>GATA3 acts upstream of FOXA1 in mediating ESR1 binding by shaping enhancer accessibility.</i> Genome Research, 23(1):12-22. 2013 <a href="http://www.ncbi.nlm.nih.gov/pubmed/23172872" target='_blank'>[Pubmed]</a>
+				<a href="http://genome.cshlp.org/content/23/1/12.long" target='_blank'> [Article] </a><br/>
 
     <p>GEO Series <a target='_blank' href='http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE40129'>GSE40129</a></p>
 
@@ -54,6 +200,67 @@
       <tr><td>ZR751_input_r1</td><td>ZR751</td><td>r1</td><td><a target='_blank' href='http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM986092'>GSM986092</a></td><td><a target='_blank' href='http://www.ncbi.nlm.nih.gov/sra?term=SRX176889'>SRX176889</a></td><td></td></tr>
       <tr><td>ZR751_input_r1</td><td>ZR751</td><td>r1</td><td><a target='_blank' href='http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM986092'>GSM986092</a></td><td><a target='_blank' href='http://www.ncbi.nlm.nih.gov/sra?term=SRX176889'>SRX176889</a></td><td></td></tr>
       </table>
-      <hr>
-  </body>
+
+
+</div>	    	    	
+	
+<!-- SIDE BAR -->		
+
+		<div class="right sidebar" id="sidebar">
+		
+			<h5>Formateurs</h5>
+			<ul>
+			<li><a href="http://biologie.univ-mrs.fr/carlherrmann/home.html" target="_blank">Carl Herrmann</a></li>	
+			<li><a href="https://www.researchgate.net/profile/Matthieu_Defrance" target="_blank">Matthieu Defrance</a></li>
+			<li><a href="http://tagc.univ-mrs.fr/tagc/index.php/research/network-bioinformatics/dputhier" target="_blank">Denis Puthier</a></li>
+			<li><a href="http://morgane.bardiaux.fr" target="_blank">Morgane Thomas-Chollier</a></li>
+			</ul>
+			<p/>
+			<h5>Jeux de données</h5>
+			<ul>
+			<li>Theodorou V, Stark R, Menon S, Carroll JS <i>GATA3 acts upstream of FOXA1 in mediating ESR1 binding by shaping enhancer accessibility.</i> Genome Research, 23(1):12-22. 2013 <a href="http://www.ncbi.nlm.nih.gov/pubmed/23172872" target='_blank'>[Pubmed]</a>
+				<a href="http://genome.cshlp.org/content/23/1/12.long" target='_blank'> [Article] </a><br/>
+				<u>données et accession:</u><a href="html/datasets.html"> Liste complète</a><br/>
+				</li>	
+			</ul>
+			<h5>Liste des outils</h5>
+			<ul>
+			</ul>
+			<a target="_blank" href="http://ecole-bioinfo-aviesan.sb-roscoff.fr/">
+			<h5>Ecole de Bioinformatique Aviesan</h5></a>
+			 <a target="_blank" href="http://www.aviesan.fr/"><img border="0" width="120" alt="AVIESAN" src="img/aviesan_logo_0.png"></a>
+
+			
+
+		</div>
+
+		<div class="clearer">&nbsp;</div>
+
+	</div>
+
+	<div id="footer">
+
+		<div class="left" id="footer-left">
+			
+		
+			
+			<p>&copy; 2014 Morgane Thomas-Chollier. All rights Reserved</p>
+
+			<p class="quiet"><a href="http://templates.arcsin.se/">Website template</a> by <a href="http://arcsin.se/">Arcsin</a></p>
+			
+			<div class="clearer">&nbsp;</div>
+
+		</div>
+
+		<div class="right" id="footer-right">
+
+		</div>
+
+		<div class="clearer">&nbsp;</div>
+
+	</div>
+
+</div>
+
+</body>
 </html>
