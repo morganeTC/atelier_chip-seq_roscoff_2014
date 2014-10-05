@@ -242,14 +242,17 @@ $(function() {
 	<div class="collapse">
           <ol>
 	    <li>In a web browser window open the <a href="http://rsat.sb-roscoff.fr/" target="_blank">RSAT</a> web page</li>
-	    <li>In the menu (left side) click on the NGS-ChIP-seq drop down menu, and select the tool: fetch-sequences from UCSC.</li>
-	    <li>Select the genome of interest, in this case: <b>canFam2</b>.</li>
-	    <li>There are several options to input a bed file: Paste
-	      the coordinates, input from a URL, and upload the file
-	      from your computer. In this case, to prevent traffic between the teaching room and internet, 
-	      we will favor using the URL option. Right click on this <a href="./data/dataset_cebpa_dog/do61+do79_cfam_CEBPA_liver.bed.SWEMBL.3.3.bed">link</a> and "copy link location" to get the URL of the peak coordinates (BED) file. Alternatively, save the file on your computer and use the "upload" method.</li>	    
-	    <li>Introduce your email address to receive a mail once the job is done. </li>
-	    <li>Click on Go once the form is complete.</li>
+	    <li>In the menu (left side) click on the NGS-ChIP-seq drop down menu, and select the tool: <b>fetch-sequences from UCSC</b>.</li>
+	    <li>Select the genome of interest, in this case: human, assembly <b>hg19</b>.</li>
+	    <li>Genomic coordinates can be provided in 3 alternative ways:
+	    <ul><li>Paste the content of the BED file, (not very convenient for large peak sets).</li>
+		<li>Specify a URL. This option is generally suitable for importing peaks from a Galaxy server or any other Web site.</li>
+		<li>Upload a file from your computer.</li>
+		</ul>
+ In this case, to prevent traffic between the teaching room and internet, 
+	      we will favor using the URL option. Right click on this <a href="../../data/siGATA_ER_E2_r3_MACS_PeakSplitter.bed">link</a> and "copy link location" to get the URL of the peak coordinates (BED) file. Paste it the the box. </li>	    
+	    <li>Leave all other parameters unchanged and click on the button “GO”. </li>
+
             <img class="bordered" src="./figures/Screen1_c.png" alt="fetch_seq_SC1" width="550"/>
 	    <li>When the job is finished you will receive a link to the fasta file containing the sequences corresponding to the coordinates in the bed file.</li>
 	  </ol>
@@ -415,201 +418,6 @@ $(function() {
   </div>
 </div>
 
-
-	    	
-
-<!-- FNR data set -->
-
-<div class="demo">
-  <h2 id="peak" class="expand">ChIP-seq in bacteria</h2>
-  <div class="collapse">
-    <div class="notice">
-      <b>Goal:</b> Apply the knowledge acquire today in a second data set.
-    </div>
-    <h3 class="expand">1 - FNR ChIP-seq in <i>E. coli</i> K12 </h3>
-    <div class="collapse">
-      <p>Myers, et al. recently published a paper where they characterized through ChIP-seq the binding profile for the transcription factor FNR <a href="http://dx.plos.org/10.1371/journal.pgen.1003565">(Paper)</a> in <i>Escherichia coli</i> K12MG1655  . </p>
-      <p>Data was processed in the following way:</p>
-      <ol>
-	<li>Raw reads were downloaded from GEO database. ID:<a href=L"http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE41195"></a>GSE41195.</li>
-	<li>Reads were aligned to <i>E.coli</i> K12 MG1655 genome, version <b>NC_000913.2</b> using bowtie. </li>
-	<li>Peaks were called using MACS with parameters: --gsize 4639675 --name "macs14"  --bw 400 --keep-dup 1 --bdg --single-profile --diag.</li>
-	<li>The peak set is <a href="./data/FNR_coli/macs14_peaks.bed">here</a>.</li>
-      </ol>
-    </div>
-    <h3 class="expand">2 - Get the genome sequence</h3>
-    <div class="collapse">
-      <p>We will require to have the fasta file for the <b>NC_000913.2</b> version of the <i>E.coli</i> K12 MG1655 genome for the following step. </p>
-      <ol>
-	<li>We will download this file from <a href="http://www.ncbi.nlm.nih.gov/nuccore/NC_000913.2">NCBI</a>.</li>
-	<li>In the "Send to" menu, select file and then specify fasta format.</li>
-	<p><img class="bordered" src="./figures/NCBI_genome_ecoli.png" alt="FNRSC1" width="550"/></p>
-      </ol>
-
-    </div>
-<h3 class="expand">3 - Fetching peak sequences with Galaxy</h3>
-    <div class="collapse">
-      <p><a href="https://usegalaxy.org/">Galaxy</a> provides access through the web to useful tools for NGS analysis. We will use the tool <i>Extract Genomic DNA</i> to get the peak regions from the fasta file of the <i>E. coli</i> K12 MG1655 genome. This tool is specially useful for genomes that are not supported by resources like UCSC genome browser.</p>
-      <ol>
-	<li>Go to Galaxy:<a href="https://usegalaxy.org/">https://usegalaxy.org/</a>, and login. In case you don't have a user please create one, is fast and it might be useful in the future.</li>
-	<li>Now we will upload the genome (fasta format) and peaks (bed format) files into Galaxy through the tool <i>Upload File</i> under the "Get Data" menu. Select the corresponding type of data and select "unspecified" genome (the <i>E. coli</i> K12 genome availablable in Galaxy does not correspond to the verision we are using).</li>
-	<p><img class="bordered" src="./figures/galaxy_upload_files_2.png" alt="FNRSC2" width="550"/></p>
-	<li>The tool "Extract Genomic DNA" can be found under the <i>Fetch Sequences</i> dropdown menu.</li>
-	<li>Select the bed and fasta files saved in the history as inputs and execute the job.</li>
-	<p><img class="bordered" src="./figures/galaxy_fetch_2.png" alt="FNRSC3" width="550"/></p>
-	<li>Once the job is finished the result will appear in the history.</li>
-      </ol>
-      <div class="post">
-        <div class="success"><b>Fetching sequences for new genomes</b>
-	  <ol>
-            <li>Do you know other options to fetch peak sequences for genomes that are new or not supported?</li>
-            <div class="collapse"> 
-              You can also do this using the command line.
-	      <pre>$ bedtools getfasta -fi Escherichia_coli_K_12_MG1655.fasta -bed macs14_peaks.bed -fo macs14_peaks.fa </pre>
-	    </div>
-	  </ol>
-	  <b>Anticipated Results:</b><a href="./results/session1/4_E_coliK12_peaks-seq_galaxy.fasta"> fasta file.</a>
-	  
-        </div>
-      </div>
-     
-    </div>
-    <h3 class="expand">4 - Motif Discovery </h3>
-    <div class="collapse">
-      Now that we have the peak sequences we can do motif discovery. 
-      <p>You now know what to do!</p>
-      <ol>
-	<li>Go to the RSAT <a href="http://rsat.sb-roscoff.fr/">web page</a>.</li>
-	<li>Fill the form and input the peak sequences in fasta format.</li>
-	<li>Select the desired options.</li>
-	<li>Go!</li>
-      </ol>
-      
-      <div class="post">
-        <div class="success"><b>Tunning parameters</b>
-	  <ol>
-            <li>Which parameters did you use?</li>
-            <li>Did you select any specific set of motifs to compare with? Why?</li>
-	    <li>Which algorithm gave you the expected motif?</li>
-	    <li>Try comparing the discovered motifs with motifs from binding interfaces of proteins in <a href="http://floresta.eead.csic.es/footprintdb/index.php">footprintDB</a>, these motifs are inferred from a collection of protein-DNA complexes.
-	  </ol>
-	  <b>Anticipated Results:</b> <a href="./results/session1/6_peak-motifs_archive_FNR_Ecoli/peak-motifs_synthesis.html"> [Default parameters]</a> <a href="results/session1/6_peak-motifs_archive_FNR_Ecoli_dyad/peak-motifs_synthesis.html"> [Tunned parameters]</a>	    
-        </div>	  
-      </div>
-
-    </div>
-
- <h3 class="expand">5 - Focusing motif discovery on the summits </h3>
-    <div class="collapse">
-      The last analysis didn't show the expected results. Probably because the peaks were to long and this can difficult the search. We will now center the search around +/- 50 base pairs of the reported <a href="./data/FNR_coli/macs14_summits.bed">summits</a>.
-      <ol>
-	<li>Go back to the galaxy server.</li>
-	<li>Upload the summits</li>
-	<li>We will use the tool <i>Compute</i> under the Text Manipulation menu. We will use this tool twice, one to calculate the start-50 bps and end +50 bps.</li>
-	<p><img class="bordered" src="./figures/galaxy_compute_2.png" alt="FNRSC3" width="550"/></p>
-	<li>With the tool <i>Cut</i> under the Text Manipulation menu we will select the first,sixth and seventh columns to create a new bed file.</li>
-	<p><img class="bordered" src="./figures/galaxy_cut_2.png" alt="FNRSC4" width="550"/></p>
-	<li>As done before, use the bed file to obtain the sequences from the genome data file.</li>
-      </ol>
-      
-      <div class="post">
-        <div class="success"><b>Signal in the summit</b>
-	  <ol>
-            <li>Now the results show the expected FNR motif.</li>
-	  </ol>
-	  <b>Anticipated Results:</b> <a href="./results/session1/5_FNR_summit_50bps_sequences.fasta">[summit fasta file]</a> <a href="./results/session1/6_peak-motifs_archive_FNR_Ecoli_summits_50bps/peak-motifs_synthesis.html"> [Summit peak-motifs]</a>	    
-        </div>	  
-      </div>
-
-    </div>
-    
-  </div>
-</div>
-			
-<!-- ENRICHMENT -->
-<div class="demo">
-  <h2 id="vizu" class="expand">Measure the enrichment of your peak for expected motifs</h2>
-  <div class="collapse">
-    <div class="notice">
-      <b>Goal:</b> To identify weather there is enrichment for a set of specific motifs in a collection of peaks.      
-    </div>
-    <h3 class="expand">1 - Motif enrichment in RSAT</h3>
-    <div class="collapse">
-      <i>matrix-quality</i> is a tool that highlights the enrichment of binding sites in sequence sets obtained from high-throughput ChIP-chip, and ChIP–seq and experiments, to assess enrichment it combines information from theoretical and empirical score distributions.
-      The tool can be found under the Matrix Tools menu in the <a href="http://rsat.sb-roscoff.fr/"> RSAT </a> web. The following paper describes in detail the algorithm behind this tool.
-      <ul>
-	<li>Medina-Rivera, A., Abreu-Goodger, C., Thomas-Chollier, M., Salgado, H., Collado-Vides, J., & Van Helden, J. (2011).<i> Theoretical and empirical quality assessment of transcription factor-binding motifs. </i> Nucleic Acids Research, 39(3), 808–824.<a href="http://nar.oxfordjournals.org/cgi/pmidlookup?view=long&pmid=20923783"> [Paper] </a></li>  
-      </ul>
-    </div>
-    <h3 class="expand">2 - Enrichment of liver Transcription factors binding sites in ChIP-seq peak sequences </h3>
-    <div class="collapse">
-      In a recent paper, Ballester, et al. in press, characterized the binding profile for other three relevant transcription factors in liver: OCT1 (HNF6), FOXA1 and HNF4A. The matrices reported in this paper for mouse can be found <a href="data/dataset_cebpa_dog/Liver_TFs_mmus_ballester_zoo-chip.tf">here</a>. 
-      We will use <i>matrix-qualt</i> to assess enrichment for the four TFs (CEBPa, OCT1, HNF4A and FOXA1).
-      <ol>
-	<li>Define a title for the job. We will use the title:<b>CEBPa motif enrichment in ChIP-seq</b></li>
-	<li>Paste the motifs to be used and select <b>transfac</b> format.</li>
-	<li>Input the peak sequences using the URL.</li>
-	<p><img class="bordered" src="./figures/matrix_quality_SC1_2.png" alt="MQSC1" width="550"/></p>
-	<li>Permutations are used as negative control, select 2.</li>
-	<li>Enter your email.</li>
-	<li>Go!</li>
-	<p><img class="bordered" src="./figures/matrix_quality_SC2_2.png" alt="MQSC1" width="550"/></p>
-
-      </ol>
-      
-    </div>
- <h3 class="expand">3 - Understanding enrichment graphs</h3>
-    <div class="collapse">
-      First we will analyse the enrichment for CEBPa reported motif in the collection of peaks from the ChIP-seq in dog liver.
-      <ol>
-	<li>Decreasing cumulative distribution function (dCDF).</li>
-	<p><img class="bordered" src="./results/session1/7_matrix-quality/do560plusdo843_mmus_cebpa_liver_meme_top_m1/matrix-quality_2014-09-05.235841_do560plusdo843_mmus_cebpa_liver_meme_top_m1_score_distrib_compa.png" alt="MQ3" width="550"/></p>
-	<li>Decreasing cumulative distribution function (dCDF) in logy scale. The logarithm scale facilitates observing differences in high scores.</li>
-	<p><img class="bordered" src="./results/session1/7_matrix-quality/do560plusdo843_mmus_cebpa_liver_meme_top_m1/matrix-quality_2014-09-05.235841_do560plusdo843_mmus_cebpa_liver_meme_top_m1_score_distrib_compa_logy.png" alt="MQ4" width="550"/></p>
-	<li>Receiver Operating Characteristic (ROC) curves.</li>
-	<p><img class="bordered" src="./results/session1/7_matrix-quality/do560plusdo843_mmus_cebpa_liver_meme_top_m1/matrix-quality_2014-09-05.235841_do560plusdo843_mmus_cebpa_liver_meme_top_m1_score_distrib_compa_roc_xlog.png" alt="MQ5" width="550"/></p>
-      </ol>
-       <div class="post">
-	    <div class="success"><b>Is the CEBPa motif enriched?</b></p>
-	      <b>Anticipated Results:</b> In comparison with the theoretical score distribution with the empirical one using the CEBPA motif shows enrichment for high score values. High scores are more likely to be related to biologically relevant sites. 
-		<li><a href="./results/session1/7_matrix-quality/matrix-quality_2014-09-05.235841_synthesis.html">matrix-quality result</a>.</li>
-	    </div>
-       </div>  
-       
-    </div>
-    
-    
-    
-    
-  </div>	
-</div>
-
-
-<!--Background Model-->	
-
-<div class="demo">
-  <h2 id="mapping" class="expand">Background model</h2>
-  <div class="collapse">
-    <div class="notice">
-      <b>Goal:</b> Understand the relevance of background model selection and how to create one.
-      <br/>
-    </div>
-    <h3 class="expand">1 - Creating a background model</h3>
-    <div class="collapse">
-      <p>The tool <i>creat-background-model</i> can be used to create a costumized background model from the a set of sequences.</p>
-      <ol>
-	<li>Input the peak sequences in fasta format.</li>
-	<li>Select the markov order to be used.</li>
-	<li>Specify an email.</li>
-      </ol>
-      <p><img class="bordered" src="./figures/creat_bgmodel_2.png" alt="VSC1" width="550"/> </p>
-      
-    </div>
-    
-    
-    
-  </div>
-</div>
 
 
 
