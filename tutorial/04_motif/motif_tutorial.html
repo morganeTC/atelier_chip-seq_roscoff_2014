@@ -1,0 +1,680 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<meta name="description" content=""/>
+	<meta name="keywords" content="" />
+	<meta name="author" content="carl" />
+	<title>Workshop: ChIP-Seq Data Analysis</title>
+	<link rel="stylesheet" type="text/css" href="../../html/style.css" media="screen" />
+<style type="text/css">
+
+#wrapper{
+  margin:0 auto;
+  #padding:15px 15% 8em;
+  text-align:left
+}
+#content {
+  max-width:70em;
+  width:100%;
+  margin:0 auto;
+  padding-bottom:20px;
+  overflow:hidden
+}
+.demo {
+  margin:1.5em 0;
+  padding:1.5em 1.5em 0.75em;
+  border:1px solid #ccc;
+  position:relative;
+  overflow:hidden
+}
+
+.post {
+  position:relative;
+  overflow:hidden
+}
+.collapse p {padding:0 10px 1em}
+
+.switch {position:absolute; top:1.5em; right: 1.5em; padding:3px}
+
+#.post .switch {position:static; text-align:right}
+
+.post .main{margin-bottom:0; padding-bottom:0}
+
+.other li, .summary {margin-bottom:.3em; padding:1em; border:1px solid #e8e7e8; background-color:#f8f7f8}
+
+.other ul {list-style-type:none; text-align:center}
+
+
+.expand{padding-bottom:.75em}
+
+/* --- Links  --- */
+
+#download {
+  border-style:none;
+  background:white;
+}
+
+.expand a {
+  display:block;
+  padding:3px 10px
+}
+.expand a:link, .expand a:visited {
+  border-width:1px;
+  background-image:url(img/arrow-down.gif);
+  background-repeat:no-repeat;
+  background-position:98% 50%;
+}
+.expand a:hover, .expand a:active, .expand a:focus {
+}
+.expand a.open:link, .expand a.open:visited {
+  #border-style:solid;
+  #background:#eee url(img/arrow-up.gif) no-repeat 98% 50%
+  color:black;
+}
+</style>
+<!--[if lte IE 6]>
+<style type="text/css">
+h3 a, .demo {position:relative; height:1%}
+</style>
+<![endif]-->
+
+<!--[if lte IE 6]>
+<script type="text/javascript">
+   try { document.execCommand( "BackgroundImageCache", false, true); } catch(e) {};
+</script>
+<![endif]-->
+<!--[if !lt IE 6]><!-->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="../../html/scripts/expand.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+$(function() {
+    $("#content h3.expand").toggler();
+    $("#content h2.expand").toggler();
+    $("#content div.demo").expandAll({trigger: "h3.expand", ref: "h3.expand"});
+    $("#content div.other").expandAll({
+      expTxt : "[Show]", 
+      cllpsTxt : "[Hide]",
+      ref : "ul.collapse",
+      showMethod : "show",
+      hideMethod : "hide"
+    });
+    $("#content div.post").expandAll({
+      expTxt : "[Show tip]", 
+      cllpsTxt : "[Hide tip]",
+      ref : "div.collapse", 
+      localLinks: "p.top a"    
+    });    
+});
+//--><!]]>
+</script>
+<!--<![endif]-->
+
+
+    <script type="text/javascript" src="syntaxhighlight/shCore.js"></script>
+    <script type="text/javascript" src="syntaxhighlight/shBrushBash.js"></script>
+    <script type="text/javascript" src="syntaxhighlight/shBrushR.js"></script>
+    <link type="text/css" rel="stylesheet" href="syntaxhighlight/shCore.css"/>
+    <link type="text/css" rel="stylesheet" href="syntaxhighlight/shThemeDefault.css"/>
+    
+    <script type="text/javascript">
+      SyntaxHighlighter.config.clipboardSwf = 'syntaxhighlight/clipboard.swf';
+      SyntaxHighlighter.all();
+      
+    </script>
+
+</head>
+
+<body>
+
+<div id="site-wrapper">
+
+	<div id="header">
+
+		<div id="top">
+
+			<div class="left" id="logo">
+				<a href="#"><h2 class="label label-green">Workshop: ChIP-Seq Data Analysis</h2></a>
+			</div>
+
+
+
+			<div class="clearer">&nbsp;</div>
+
+		</div>
+
+		<div class="navigation" id="sub-nav">
+
+			<ul class="tabbed">
+				<li ><a href="../../index.html">Home</a></li>
+				<li ><a href="../../tutorial/01_peak_calling/peak_calling_tutorial.html">Session1:Peak calling</a></li>
+				<li><a href="session2.html">Session2:Annotation Fonctionelle</a></li>
+				<li class="current-tab"><a href="../../tutorial/04_motif/motif_tutorial.html">Session3: Analyse de motifs</a></li>
+			</ul>
+
+			<div class="clearer">&nbsp;</div>
+
+		</div>
+
+	</div>
+
+	<div class="main" id="main-two-columns">
+
+		<div class="left" id="main-content">
+
+			<h2 id="contents"> Introduction </h2>
+			<b>Goal</b><br/>
+
+<u>The aim is to :</u>
+<ul>
+<li> Get familiar with motif analysis of ChIP-seq data.</li>
+<li> Learn de novo motif discovery methods.</li>
+</ul>
+
+<u>In practice :</u>
+<ul>
+<li> Motif discovery with <i>peak-motifs</i>.</li>
+<li> Random controls</li>
+<li> Motif discovery with <i>MEME-chip</i></li>
+</ul>
+
+
+
+
+<div id="wrapper"> 
+  <div id="content"> 
+    
+    <!-- SEQUENCES -->	 
+    <div class="demo">
+      <h2 id="download" class="expand">Retrieving sequences from your peaks</h2>
+      <div class="collapse">
+        <div class="notice">
+	  <b>Goal:</b> Given a set of peaks from a ChIP-seq experiment in a  <a href="http://genome.ucsc.edu/FAQ/FAQformat.html#format1" target='_blank'>bed format</a>, retrieve the sequences corresponding to those coordinates from the genome in fasta format.
+	  <br/>
+	</div>
+        
+	<h3 class="expand">1 - Peak dataset: ER factor in human MCF7 cells </h3>
+	<div class="collapse">
+
+          <p>Theodorou et al published a ChIP-seq
+          experiment in the MCF7 cell line (breast cancer) to identify genomic locations bound by
+          the transcription factor
+          Estrogen receptor alpha (ESR1)<a href="http://genome.cshlp.org/content/23/1/12.long"
+          target='_blank'>(PMID:23172872)</a>. The particularity of this system is that it is inducible
+          with the E2 (oestradiol) hormone. The authors were interested in evaluating the role of another transcription factor (GATA3)
+          They thus performed the following experiments (with E2 induction):
+          <ul>
+          <li> inhibiting the GATA3 factor by small interference RNA (files with prefix siGATA in the Table below)</li>
+ 		  <li> control  (files with prefix siNT)</li>
+ 		  </ul>
+ 		  <a href="../../html/datasets.html">List of all datasets published in this work</a>.
+
+		Peak regions were obtained by running the peak calling program MACS on the aligned reads (as in the previous session). The multi-peak regions were further split into individual peaks using the <a href="http://www.ebi.ac.uk/research/bertone/software" target="_blank">PeakSplitter</a> tool.
+	  <br/><br/>
+	  <b>Description of the peaks</b>:
+	  
+	  <table>
+	   <tr>
+	  <th>Peak BED file</th>
+	  <th>Number of peaks</th>
+	  <th>Sum of peak sizes (bp)</th>
+	  </tr>
+	  
+	  <tr>
+	  <td><a href="../../data/siGATA_ER_E2_r3_MACS_PeakSplitter.bed">siGATA_ER_E2_r3_MACS_PeakSplitter.bed</a></td>
+	  <td>7.041</td>
+	  <td>1.476.646</td>
+	  </tr>
+	  
+	  <tr>
+	  <td><a href="../../data/siNT_ER_E2_r3_MACS_PeakSplitter.bed">siNT_ER_E2_r3_MACS_PeakSplitter.bed </a></td>
+	  <td>6.991</td>
+	  <td>1.801.622</td>
+	  </tr>
+
+	  </table>
+	
+        </div>
+        
+	<h3 class="expand">2 - Fetch sequences from a bed file </h3>
+	<div class="collapse">
+          <ol>
+	    <li>In a web browser window open the <a href="http://rsat.sb-roscoff.fr/" target="_blank">RSAT</a> web page</li>
+	    <li>In the menu (left side) click on the NGS-ChIP-seq drop down menu, and select the tool: fetch-sequences from UCSC.</li>
+	    <li>Select the genome of interest, in this case: <b>canFam2</b>.</li>
+	    <li>There are several options to input a bed file: Paste
+	      the coordinates, input from a URL, and upload the file
+	      from your computer. In this case, to prevent traffic between the teaching room and internet, 
+	      we will favor using the URL option. Right click on this <a href="./data/dataset_cebpa_dog/do61+do79_cfam_CEBPA_liver.bed.SWEMBL.3.3.bed">link</a> and "copy link location" to get the URL of the peak coordinates (BED) file. Alternatively, save the file on your computer and use the "upload" method.</li>	    
+	    <li>Introduce your email address to receive a mail once the job is done. </li>
+	    <li>Click on Go once the form is complete.</li>
+            <img class="bordered" src="./figures/Screen1_c.png" alt="fetch_seq_SC1" width="550"/>
+	    <li>When the job is finished you will receive a link to the fasta file containing the sequences corresponding to the coordinates in the bed file.</li>
+	  </ol>
+	  
+	  <div class="post">
+	    <div class="success"><b>Check point:</b> Did you recover all sequences in the bed file?</p>
+	      <b>Anticipated Results</b>
+	      <ol>
+		<li><a href="./results/session1/1_do61+do79_cfam_CEBPA_liver.SWEMBL.3.3_peaks.fasta">Fasta file</a>.</li>
+		<li><a href="./results/session1/1_do61+do79_cfam_CEBPA_liver.SWEMBL.3.3_peaks_log.txt">Log</a>.</li>
+	    </div>
+	  </div>  
+	  
+	  <div class="error"><b>Selecting the correct genome version:</b> Genomes are constantly updated with the improvement of sequencing technologies, alignment tools and annotations.  Always verify you are selecting the correct version.</p>
+	    <b>Results:</b> At this point, you should have the URL link to the fasta file. 
+	  </div>
+	  
+	</div>         
+	
+      </div>         
+    </div>         
+    
+    
+    
+    <!-- PEAK-MOTIFS-->	     
+    
+    
+    <div class="demo">
+      <h2 id="quality" class="expand" >Discovering motifs from peak sequences</h2>
+      <div class="collapse">
+        <div class="notice">
+	  <b>Goal:</b>Discover binding motifs or patterns from a fasta file containing ChIP-seq determined binding regions of a transcription factor. 
+	</div>
+        <h3 class="expand">1 - Getting to know peak-motifs</h3>
+        <div class="collapse">
+	  <i>peak-motifs</i> is a computational pipeline that discovers motifs in peak sequences, compares them with databases, exports putative binding sites for visualization in the UCSC genome browser and generates an extensive report. </br>
+	The following articles describe peak-motifs and its usage:
+	<ol>
+	  <li>Thomas-Chollier, M., Herrmann, C., Defrance, M., Sand, O., Thieffry, D. and van Helden, J. (2011).<i> RSAT peak-motifs: motif analysis in full-size ChIP-seq datasets</i> Nucleic Acids Research doi:10.1093/nar/gkr1104, 9.<a href="http://nar.oxfordjournals.org/content/40/4/e31.long"> [Paper] </a></li> 
+	  <li>Thomas-Chollier M, Darbo E, Herrmann C, Defrance M, Thieffry D, van Helden J. (2012). <i>A complete workflow for the analysis of full-size ChIP-seq (and similar) data sets using peak-motifs</i>. Nat Protoc 7(8): 1551-1568. <a href="http://www.nature.com/nprot/journal/v7/n8/full/nprot.2012.088.html"> [Paper]</a></li>
+	</ol>
+	In this section we will get familiar with this tool and its general usage.
+	Its basic usage requires as input:
+	<ol>
+          <li>Title for the analysis. For the studied dataset, use <b>CEBPa_ChIP-seq_in_dog_liver</b></li>
+	  <li>A set of peak sequences in fasta format. Sequences can be pasted in the available box, input from a URL, and uploading a file from your computer. Alternatively, the sequences can come directly from another RSAT program (like <i>fetch-sequences</i>), as detailed just below.</li>      
+	  <li>Introduce your email address to receive a mail once the job is done. </li>
+	</ol>
+	<img class="bordered" src="./figures/Screen2_a.png" alt="fetch_seq_SC2" width="550"/> 
+<br/>
+	<b>Passing results from one tool to the next one:</b> As a suite of tools, RSAT is designed to pass the output from one tool as input into related tools. E.g: From the output display in <i>fetch-sequences</i>, you can directly send the sequences to <i>peak-motifs</i>.
+	
+	<img class="bordered" src="./figures/Screen1_2_PM_color.png" alt="fetch_seq_SC3" width="550"/>
+	<br/>
+	The <i>peak-motifs</i> output is formed by the following parts:
+	<ol>
+	  <li><b>Sequence Composition:</b>The distribution of sequence lengths provides a useful way to detect outlier peaks (i.e., exceptionally long peaks that may ‘dilute’ the motif signal) or irregular length distributions resulting from problems during the peak-calling procedure. Nucleotide and dinucleotide compositions are computed and displayed in the form of heat maps and positional profiles</li>
+	  <img class="bordered" src="./figures/peak-motifs_archive_cebpa_liver_dog_SC1.png" alt="PMSC3" width="550"/> 
+	  
+	  <li><b>Motif Discovery:</b>The workflow combines four word-based pattern-discovery algorithms that rely on two complementary criteria (overrepresentation and positional bias) to detect exceptional words (oligonucleotides) and spaced pairs of words (dyads). Significant words are used as seeds to build probabilistic description of motifs (position-specific scoring matrices), indicating residue variability at each position of the motif. Motif discovery will be done only using oligonucleotides detection by default.</li>
+	  <img class="bordered" src="./figures/peak-motifs_archive_cebpa_liver_dog_SC2.png" alt="PMSC3" width="550"/> 
+	  
+	  <li><b>Motif comparisons:</b> Discovered motifs are compared with one or several public databases of annotated motifs to predict associated transcription factors. Comparison results are displayed as multiple motif alignments to highlight matches with several annotated motifs (e.g., factors belonging to the same family, composite motifs bound by protein complexes). Motif comparison is perfomred against vertebrate transcription factors binding motifs in <a href="http://jaspar.genereg.net/" target='_blank'>JASPAR database</a>. </li>
+	  <li><b>Binding site predictions:</b>Sequences are scanned with the discovered motifs to locate binding sites, and their positioning within peaks is analyzed (coverage, positional distribution along peaks).</li>
+	  <img class="bordered" src="./figures/peak-motifs_archive_cebpa_liver_dog_SC3.png" alt="PMSC3" width="550"/> 
+	  
+	</ol>
+	
+	<div class="post">
+          <div class="success"><b>Understanding <i>peak-motifs</i> results</b>
+	    <ol>
+            <li>Do you have any concerns regarding peak compotition?</li>
+            <li>Are there any significant motifs discovered?</li>
+            <li>Were you expecting these results?</li>
+	    </ol>
+	    <b>Anticipated Results:</b><a href="./results/session1/2_peak-motifs_archive_cebpa_liver_dog/peak-motifs_synthesis.html">peak-motifs results</a>
+
+          </div>
+
+	</div>
+      </div>
+      <h3 class="expand">2 - Fine-tuning peak-motifs parameters </h3>
+      <div class="collapse">
+	Several parameters can be tunned in <i>peak-motifs</i> in order to obtain better results.
+	<ol>
+	  <li><b>Reduce peak sequences:</b>  In our previous results it is possible to observe that most of the discovered motifs lay in the middle parts of the peaks. In order to focus our anaysis to this section of the peaks we can use this option and reduce the sequence length.</li> 
+	  <img class="bordered" src="figures/Screen_peak_motifs_cutseq.png" alt="PMSC4" width="550"/>
+	  <li><b>Motif-discovery parameters:</b> The choice of motif discovery algorithms markedly affects the result. It is recommended to combine the analysis of overrepresentation (oligo-analysis) and positional bias (position-analysis). Other available analysis are based on: spaced pairs (dyad-analysis) and locally overrepresented words (local-word).</li>
+	  <img class="bordered" src="figures/Screen_peak_motifs_motif_dis.png" alt="PMSC5" width="550"/>
+	  <li><b>Motif Comparison:</b> There are several databases that contain binding motifs available. Users can also add their own collections, in this case we will add as well the motif reported by Schmidt,Wilson and Ballester based on a CEBPa ChIP-seq done in mouse [<a href="./data/dataset_cebpa_dog/do560+do843_mmus_cebpa_liver_top_meme.tf" target='_blank'>motif</a>]</li>
+	  <img class="bordered" src="figures/Screen_peak_motifs_motif_comp.png" alt="PMSC6" width="550"/>
+	  <li><b>Locate motifs:</b> Locating discovered motifs in peaks can be useful to detect potitional bias, once an intersting motif is found it becomes important to locate the site in the genomic context, there are options available in <i>peak-motifs</i> that facilitate this task.</li>
+	  <img class="bordered" src="figures/Screen_peak_motifs_motif_locate.png" alt="PMSC7" width="550"/>
+	</ol>
+	<div class="post">
+          <div class="success"><b>Results and parameters</b>
+	    <ol>
+              <li>Try different combinations of parameters. How would you improve these results?</li>
+              <li>How different is the discovered dog CEBPa motif in comparison to the mouse reported motif?</li>
+	    </ol>
+	    <a href="./results/session1/3_peak-motifs_archive_cebpa_liver_dog/peak-motifs_synthesis.html "><b>Anticipated Results</b></a>	    
+          </div>	  
+	</div>
+	
+      </div>
+      
+    </div>
+    
+</div>
+
+
+
+
+<!--Visualisation -->	
+
+<div class="demo">
+  <h2 id="mapping" class="expand">Visualizing the sites in the context of genome annotations</h2>
+  <div class="collapse">
+    <div class="notice">
+      <b>Goal:</b> Visualize the predicted binding sites with the discovered motifs in genomic context.
+      <br/>
+    </div>
+    <h3 class="expand">1 - UCSC browser </h3>
+    <div class="collapse">
+      <p>Visualization of ChIP-seq data in the genome context can be very useful; it can be used to empirically assess quality and to identify interesting genomic regions.</p>
+      <p><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=canFam2&position=chrX%3A112423225-112747804&hgsid=198963761_uRsmrbdyiFmQRhnsq1KM2m5zgDBS">USCS browser</a> contains several annotations and data sets (mostly for human and model organisms) that can be visualized together with user specified samples.</p>
+      <p><img class="bordered" src="./figures/ucsc_browser_SC1.png" alt="VSC1" width="550"/> </p>
+      <p>Users can create and share personalized sessions with their data.</p>
+      <p><img class="bordered" src="./figures/ucsc_browser_SC2.png" alt="VSC2" width="550"/>  </p>
+      You can find a session we prepared containing the dog data set <a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?hgS_doOtherUser=submit&hgS_otherUserName=amedina&hgS_otherUserSessionName=canFam2_eccb14">here</a>
+    </div>
+    
+    <h3 class="expand">2 - Load predicted binding sites into UCSC browser </h3>
+    <div class="collapse">
+      To visualize our binding sites predictions we need to:
+      <ol>
+	<li>Dowload the bed file with the coordinates for the predicted sites from the <i>peak-motifs</i> output</li>
+	<p><img class="bordered" src="./figures/ucsc_browser_SC3_color.png" alt="VSC3" width="550"/>  </p>
+	<li>In UCSC browser select: My Data / Custom Tracks / add custom tracks. </li>
+	<li>Select the bed file and click on submit</li>
+	<li>This task can take time, don't close the window!!</li>
+	<li>Once is loaded you will see one track per motif in the table </li>
+	<li>Now go back to genome browser </li>
+      </ol>
+      
+    </div>
+    <h3 class="expand">3 - Interpretation</h3>
+    <div class="collapse">
+      <div class="post">
+        <div class="success"><b>Sites in perspective</b>
+	  <ol>
+            <li>Do all peaks have sites?</li>
+            <li>Did you expect this results?</li>
+	    <li>Do you have any interesting findings?</li>
+	     
+	  </ol>
+	  <b>Anticipated Results:</b> <a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?hgS_doOtherUser=submit&hgS_otherUserName=amedina&hgS_otherUserSessionName=canFam2_eccb14_with_sites">UCSC Session.</a>	    
+        </div>	  
+      </div>
+
+    </div>
+    
+  </div>
+</div>
+
+
+	    	
+
+<!-- FNR data set -->
+
+<div class="demo">
+  <h2 id="peak" class="expand">ChIP-seq in bacteria</h2>
+  <div class="collapse">
+    <div class="notice">
+      <b>Goal:</b> Apply the knowledge acquire today in a second data set.
+    </div>
+    <h3 class="expand">1 - FNR ChIP-seq in <i>E. coli</i> K12 </h3>
+    <div class="collapse">
+      <p>Myers, et al. recently published a paper where they characterized through ChIP-seq the binding profile for the transcription factor FNR <a href="http://dx.plos.org/10.1371/journal.pgen.1003565">(Paper)</a> in <i>Escherichia coli</i> K12MG1655  . </p>
+      <p>Data was processed in the following way:</p>
+      <ol>
+	<li>Raw reads were downloaded from GEO database. ID:<a href=L"http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE41195"></a>GSE41195.</li>
+	<li>Reads were aligned to <i>E.coli</i> K12 MG1655 genome, version <b>NC_000913.2</b> using bowtie. </li>
+	<li>Peaks were called using MACS with parameters: --gsize 4639675 --name "macs14"  --bw 400 --keep-dup 1 --bdg --single-profile --diag.</li>
+	<li>The peak set is <a href="./data/FNR_coli/macs14_peaks.bed">here</a>.</li>
+      </ol>
+    </div>
+    <h3 class="expand">2 - Get the genome sequence</h3>
+    <div class="collapse">
+      <p>We will require to have the fasta file for the <b>NC_000913.2</b> version of the <i>E.coli</i> K12 MG1655 genome for the following step. </p>
+      <ol>
+	<li>We will download this file from <a href="http://www.ncbi.nlm.nih.gov/nuccore/NC_000913.2">NCBI</a>.</li>
+	<li>In the "Send to" menu, select file and then specify fasta format.</li>
+	<p><img class="bordered" src="./figures/NCBI_genome_ecoli.png" alt="FNRSC1" width="550"/></p>
+      </ol>
+
+    </div>
+<h3 class="expand">3 - Fetching peak sequences with Galaxy</h3>
+    <div class="collapse">
+      <p><a href="https://usegalaxy.org/">Galaxy</a> provides access through the web to useful tools for NGS analysis. We will use the tool <i>Extract Genomic DNA</i> to get the peak regions from the fasta file of the <i>E. coli</i> K12 MG1655 genome. This tool is specially useful for genomes that are not supported by resources like UCSC genome browser.</p>
+      <ol>
+	<li>Go to Galaxy:<a href="https://usegalaxy.org/">https://usegalaxy.org/</a>, and login. In case you don't have a user please create one, is fast and it might be useful in the future.</li>
+	<li>Now we will upload the genome (fasta format) and peaks (bed format) files into Galaxy through the tool <i>Upload File</i> under the "Get Data" menu. Select the corresponding type of data and select "unspecified" genome (the <i>E. coli</i> K12 genome availablable in Galaxy does not correspond to the verision we are using).</li>
+	<p><img class="bordered" src="./figures/galaxy_upload_files_2.png" alt="FNRSC2" width="550"/></p>
+	<li>The tool "Extract Genomic DNA" can be found under the <i>Fetch Sequences</i> dropdown menu.</li>
+	<li>Select the bed and fasta files saved in the history as inputs and execute the job.</li>
+	<p><img class="bordered" src="./figures/galaxy_fetch_2.png" alt="FNRSC3" width="550"/></p>
+	<li>Once the job is finished the result will appear in the history.</li>
+      </ol>
+      <div class="post">
+        <div class="success"><b>Fetching sequences for new genomes</b>
+	  <ol>
+            <li>Do you know other options to fetch peak sequences for genomes that are new or not supported?</li>
+            <div class="collapse"> 
+              You can also do this using the command line.
+	      <pre>$ bedtools getfasta -fi Escherichia_coli_K_12_MG1655.fasta -bed macs14_peaks.bed -fo macs14_peaks.fa </pre>
+	    </div>
+	  </ol>
+	  <b>Anticipated Results:</b><a href="./results/session1/4_E_coliK12_peaks-seq_galaxy.fasta"> fasta file.</a>
+	  
+        </div>
+      </div>
+     
+    </div>
+    <h3 class="expand">4 - Motif Discovery </h3>
+    <div class="collapse">
+      Now that we have the peak sequences we can do motif discovery. 
+      <p>You now know what to do!</p>
+      <ol>
+	<li>Go to the RSAT <a href="http://rsat.sb-roscoff.fr/">web page</a>.</li>
+	<li>Fill the form and input the peak sequences in fasta format.</li>
+	<li>Select the desired options.</li>
+	<li>Go!</li>
+      </ol>
+      
+      <div class="post">
+        <div class="success"><b>Tunning parameters</b>
+	  <ol>
+            <li>Which parameters did you use?</li>
+            <li>Did you select any specific set of motifs to compare with? Why?</li>
+	    <li>Which algorithm gave you the expected motif?</li>
+	    <li>Try comparing the discovered motifs with motifs from binding interfaces of proteins in <a href="http://floresta.eead.csic.es/footprintdb/index.php">footprintDB</a>, these motifs are inferred from a collection of protein-DNA complexes.
+	  </ol>
+	  <b>Anticipated Results:</b> <a href="./results/session1/6_peak-motifs_archive_FNR_Ecoli/peak-motifs_synthesis.html"> [Default parameters]</a> <a href="results/session1/6_peak-motifs_archive_FNR_Ecoli_dyad/peak-motifs_synthesis.html"> [Tunned parameters]</a>	    
+        </div>	  
+      </div>
+
+    </div>
+
+ <h3 class="expand">5 - Focusing motif discovery on the summits </h3>
+    <div class="collapse">
+      The last analysis didn't show the expected results. Probably because the peaks were to long and this can difficult the search. We will now center the search around +/- 50 base pairs of the reported <a href="./data/FNR_coli/macs14_summits.bed">summits</a>.
+      <ol>
+	<li>Go back to the galaxy server.</li>
+	<li>Upload the summits</li>
+	<li>We will use the tool <i>Compute</i> under the Text Manipulation menu. We will use this tool twice, one to calculate the start-50 bps and end +50 bps.</li>
+	<p><img class="bordered" src="./figures/galaxy_compute_2.png" alt="FNRSC3" width="550"/></p>
+	<li>With the tool <i>Cut</i> under the Text Manipulation menu we will select the first,sixth and seventh columns to create a new bed file.</li>
+	<p><img class="bordered" src="./figures/galaxy_cut_2.png" alt="FNRSC4" width="550"/></p>
+	<li>As done before, use the bed file to obtain the sequences from the genome data file.</li>
+      </ol>
+      
+      <div class="post">
+        <div class="success"><b>Signal in the summit</b>
+	  <ol>
+            <li>Now the results show the expected FNR motif.</li>
+	  </ol>
+	  <b>Anticipated Results:</b> <a href="./results/session1/5_FNR_summit_50bps_sequences.fasta">[summit fasta file]</a> <a href="./results/session1/6_peak-motifs_archive_FNR_Ecoli_summits_50bps/peak-motifs_synthesis.html"> [Summit peak-motifs]</a>	    
+        </div>	  
+      </div>
+
+    </div>
+    
+  </div>
+</div>
+			
+<!-- ENRICHMENT -->
+<div class="demo">
+  <h2 id="vizu" class="expand">Measure the enrichment of your peak for expected motifs</h2>
+  <div class="collapse">
+    <div class="notice">
+      <b>Goal:</b> To identify weather there is enrichment for a set of specific motifs in a collection of peaks.      
+    </div>
+    <h3 class="expand">1 - Motif enrichment in RSAT</h3>
+    <div class="collapse">
+      <i>matrix-quality</i> is a tool that highlights the enrichment of binding sites in sequence sets obtained from high-throughput ChIP-chip, and ChIP–seq and experiments, to assess enrichment it combines information from theoretical and empirical score distributions.
+      The tool can be found under the Matrix Tools menu in the <a href="http://rsat.sb-roscoff.fr/"> RSAT </a> web. The following paper describes in detail the algorithm behind this tool.
+      <ul>
+	<li>Medina-Rivera, A., Abreu-Goodger, C., Thomas-Chollier, M., Salgado, H., Collado-Vides, J., & Van Helden, J. (2011).<i> Theoretical and empirical quality assessment of transcription factor-binding motifs. </i> Nucleic Acids Research, 39(3), 808–824.<a href="http://nar.oxfordjournals.org/cgi/pmidlookup?view=long&pmid=20923783"> [Paper] </a></li>  
+      </ul>
+    </div>
+    <h3 class="expand">2 - Enrichment of liver Transcription factors binding sites in ChIP-seq peak sequences </h3>
+    <div class="collapse">
+      In a recent paper, Ballester, et al. in press, characterized the binding profile for other three relevant transcription factors in liver: OCT1 (HNF6), FOXA1 and HNF4A. The matrices reported in this paper for mouse can be found <a href="data/dataset_cebpa_dog/Liver_TFs_mmus_ballester_zoo-chip.tf">here</a>. 
+      We will use <i>matrix-qualt</i> to assess enrichment for the four TFs (CEBPa, OCT1, HNF4A and FOXA1).
+      <ol>
+	<li>Define a title for the job. We will use the title:<b>CEBPa motif enrichment in ChIP-seq</b></li>
+	<li>Paste the motifs to be used and select <b>transfac</b> format.</li>
+	<li>Input the peak sequences using the URL.</li>
+	<p><img class="bordered" src="./figures/matrix_quality_SC1_2.png" alt="MQSC1" width="550"/></p>
+	<li>Permutations are used as negative control, select 2.</li>
+	<li>Enter your email.</li>
+	<li>Go!</li>
+	<p><img class="bordered" src="./figures/matrix_quality_SC2_2.png" alt="MQSC1" width="550"/></p>
+
+      </ol>
+      
+    </div>
+ <h3 class="expand">3 - Understanding enrichment graphs</h3>
+    <div class="collapse">
+      First we will analyse the enrichment for CEBPa reported motif in the collection of peaks from the ChIP-seq in dog liver.
+      <ol>
+	<li>Decreasing cumulative distribution function (dCDF).</li>
+	<p><img class="bordered" src="./results/session1/7_matrix-quality/do560plusdo843_mmus_cebpa_liver_meme_top_m1/matrix-quality_2014-09-05.235841_do560plusdo843_mmus_cebpa_liver_meme_top_m1_score_distrib_compa.png" alt="MQ3" width="550"/></p>
+	<li>Decreasing cumulative distribution function (dCDF) in logy scale. The logarithm scale facilitates observing differences in high scores.</li>
+	<p><img class="bordered" src="./results/session1/7_matrix-quality/do560plusdo843_mmus_cebpa_liver_meme_top_m1/matrix-quality_2014-09-05.235841_do560plusdo843_mmus_cebpa_liver_meme_top_m1_score_distrib_compa_logy.png" alt="MQ4" width="550"/></p>
+	<li>Receiver Operating Characteristic (ROC) curves.</li>
+	<p><img class="bordered" src="./results/session1/7_matrix-quality/do560plusdo843_mmus_cebpa_liver_meme_top_m1/matrix-quality_2014-09-05.235841_do560plusdo843_mmus_cebpa_liver_meme_top_m1_score_distrib_compa_roc_xlog.png" alt="MQ5" width="550"/></p>
+      </ol>
+       <div class="post">
+	    <div class="success"><b>Is the CEBPa motif enriched?</b></p>
+	      <b>Anticipated Results:</b> In comparison with the theoretical score distribution with the empirical one using the CEBPA motif shows enrichment for high score values. High scores are more likely to be related to biologically relevant sites. 
+		<li><a href="./results/session1/7_matrix-quality/matrix-quality_2014-09-05.235841_synthesis.html">matrix-quality result</a>.</li>
+	    </div>
+       </div>  
+       
+    </div>
+    
+    
+    
+    
+  </div>	
+</div>
+
+
+<!--Background Model-->	
+
+<div class="demo">
+  <h2 id="mapping" class="expand">Background model</h2>
+  <div class="collapse">
+    <div class="notice">
+      <b>Goal:</b> Understand the relevance of background model selection and how to create one.
+      <br/>
+    </div>
+    <h3 class="expand">1 - Creating a background model</h3>
+    <div class="collapse">
+      <p>The tool <i>creat-background-model</i> can be used to create a costumized background model from the a set of sequences.</p>
+      <ol>
+	<li>Input the peak sequences in fasta format.</li>
+	<li>Select the markov order to be used.</li>
+	<li>Specify an email.</li>
+      </ol>
+      <p><img class="bordered" src="./figures/creat_bgmodel_2.png" alt="VSC1" width="550"/> </p>
+      
+    </div>
+    
+    
+    
+  </div>
+</div>
+
+
+
+		</div>
+		
+	</div>
+</div>
+	
+<!-- SIDE BAR -->		
+
+		<div class="right sidebar" id="sidebar">
+		
+			<h5>Formateurs</h5>
+			<ul>
+			<li><a href="http://biologie.univ-mrs.fr/carlherrmann/home.html" target="_blank">Carl Herrmann</a></li>	
+			<li><a href="https://www.researchgate.net/profile/Matthieu_Defrance" target="_blank">Matthieu Defrance</a></li>
+			<li><a href="http://tagc.univ-mrs.fr/tagc/index.php/research/network-bioinformatics/dputhier" target="_blank">Denis Puthier</a></li>
+			<li><a href="http://morgane.bardiaux.fr" target="_blank">Morgane Thomas-Chollier</a></li>
+			</ul>
+			<p/>
+			<h5>Jeux de données</h5>
+			<ul>
+			<li>Theodorou V, Stark R, Menon S, Carroll JS <i>GATA3 acts upstream of FOXA1 in mediating ESR1 binding by shaping enhancer accessibility.</i> Genome Research, 23(1):12-22. 2013 <a href="http://www.ncbi.nlm.nih.gov/pubmed/23172872" target='_blank'>[Pubmed]</a>
+				<a href="http://genome.cshlp.org/content/23/1/12.long" target='_blank'> [Article] </a><br/>
+				<u>données et accession:</u><a href="../../html/datasets.html"> Liste complète</a><br/>
+				</li>	
+			</ul>
+			<h5>Liste des outils</h5>
+			<ul>
+			</ul>
+			<a target="_blank" href="http://ecole-bioinfo-aviesan.sb-roscoff.fr/">
+			<h5>Ecole de Bioinformatique Aviesan</h5></a>
+			 <a target="_blank" href="http://www.aviesan.fr/"><img border="0" width="120" alt="AVIESAN" src="html/img/aviesan_logo_0.png"></a>
+
+			
+
+		</div>
+
+		<div class="clearer">&nbsp;</div>
+
+	</div>
+
+	<div id="footer">
+
+		<div class="left" id="footer-left">
+			
+		
+			
+			<p>&copy; 2014 Morgane Thomas-Chollier. All rights Reserved</p>
+
+			<p class="quiet"><a href="http://templates.arcsin.se/">Website template</a> by <a href="http://arcsin.se/">Arcsin</a></p>
+			
+			<div class="clearer">&nbsp;</div>
+
+		</div>
+
+		<div class="right" id="footer-right">
+
+		</div>
+
+		<div class="clearer">&nbsp;</div>
+
+	</div>
+
+</div>
+
+</body>
+</html>
