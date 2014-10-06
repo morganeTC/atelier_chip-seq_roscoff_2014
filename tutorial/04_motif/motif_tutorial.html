@@ -241,33 +241,47 @@ $(function() {
 	<h3 class="expand">2 - Fetch sequences from a bed file </h3>
 	<div class="collapse">
           <ol>
-	    <li>In a web browser window open the <a href="http://rsat.sb-roscoff.fr/" target="_blank">RSAT</a> web page</li>
-	    <li>In the menu (left side) click on the NGS-ChIP-seq drop down menu, and select the tool: <b>fetch-sequences from UCSC</b>.</li>
+	    <li>In a web browser window open the <a href="http://rsat.sb-roscoff.fr/" target="_blank">RSAT (Roscoff)</a> or <a href="http://rsat.fr/" target="_blank"> RSAT (Marseille)</a> web page</li>
+	    <li>In the menu (left side) click on the <b>NGS-ChIP-seq</b> drop down menu, and select the tool: <b>fetch-sequences from UCSC</b>.</li>
 	    <li>Select the genome of interest, in this case: human, assembly <b>hg19</b>.</li>
+		<div class="error"><b>Select the correct genome version:</b> New genome assemblies are constantly updated with new annotations and sequences.  Always verify you are selecting the correct version, corresponding to the coordinates (choice of assembly was made during the read mapping step).
+	  </div>
+
 	    <li>Genomic coordinates can be provided in 3 alternative ways:
 	    <ul><li>Paste the content of the BED file, (not very convenient for large peak sets).</li>
 		<li>Specify a URL. This option is generally suitable for importing peaks from a Galaxy server or any other Web site.</li>
 		<li>Upload a file from your computer.</li>
 		</ul>
  In this case, to prevent traffic between the teaching room and internet, 
-	      we will favor using the URL option. Right click on this <a href="../../data/siGATA_ER_E2_r3_MACS_PeakSplitter.bed">link</a> and "copy link location" to get the URL of the peak coordinates (BED) file. Paste it the the box. </li>	    
+	      we will favor using the URL option. Right click on the first link in the table above (dataset <b>siGATA_ER_E2_r3_MACS_PeakSplitter.bed</b>) and "copy link location" to get the URL of the peak coordinates (BED) file. Paste it the the box. </li>	    
+	    
+	    <img class="bordered" src="images/1_fetch_seq.png" alt="1_fetch_seq.png" width="550"/>
+	    <br/>
 	    <li>Leave all other parameters unchanged and click on the button “GO”. </li>
-
-            <img class="bordered" src="./figures/Screen1_c.png" alt="fetch_seq_SC1" width="550"/>
-	    <li>When the job is finished you will receive a link to the fasta file containing the sequences corresponding to the coordinates in the bed file.</li>
+		
+		  <div class="post">
+   				<div class="success"> What is the result of this <b>fetch-sequences</b> tool ?<br/>
+                </div>
+            	<div class="collapse"> 
+            	<img class="bordered" src="images/2_fetch_seq_result.png" alt="2_fetch_seq_result" width="550"/>
+            	<br/>
+            	The program returns 3 links to files : the input BED file (coordinates), the corresponding sequences (FASTA file), and a log text file that contain information on the execution of the program.
+                </div>
+   				</div>
+        <li>click on the link of the log file, and look for the number of sequences retrieved. </li> 
+         <div class="post">
+   				<div class="success"> Always check that you retrieved all sequences.<br/>
+                </div>
+            	<div class="collapse"> 
+            	According to the table above, the coordinate BED file contain 7.041 regions. The log file has this line :
+            	<pre>; sequences           	7041 </pre>
+            	All sequences were retrieved.
+                </div>
+   				</div>
+	    <li>The FASTA file contain the sequences. To continue the tutorial, you can download it on your computer to keep a copy of them (you will not need it, but it is always safe to keep a trace).</li>
 	  </ol>
 	  
-	  <div class="post">
-	    <div class="success"><b>Check point:</b> Did you recover all sequences in the bed file?</p>
-	      <b>Anticipated Results</b>
-	      <ol>
-		<li><a href="./results/session1/1_do61+do79_cfam_CEBPA_liver.SWEMBL.3.3_peaks.fasta">Fasta file</a>.</li>
-		<li><a href="./results/session1/1_do61+do79_cfam_CEBPA_liver.SWEMBL.3.3_peaks_log.txt">Log</a>.</li>
-	    </div>
-	  </div>  
-	  
-	  <div class="error"><b>Selecting the correct genome version:</b> Genomes are constantly updated with the improvement of sequencing technologies, alignment tools and annotations.  Always verify you are selecting the correct version.</p>
-	    <b>Results:</b> At this point, you should have the URL link to the fasta file. 
+	  <div class="error">At this point, you should have retrieved the sequences corresponding to your coordinate (BED) file. 
 	  </div>
 	  
 	</div>         
@@ -284,28 +298,55 @@ $(function() {
       <h2 id="quality" class="expand" >Discovering motifs from peak sequences</h2>
       <div class="collapse">
         <div class="notice">
-	  <b>Goal:</b>Discover binding motifs or patterns from a fasta file containing ChIP-seq determined binding regions of a transcription factor. 
+	  <b>Goal:</b>Discover binding motifs from a fasta file containing ChIP-seq determined binding regions of a transcription factor. 
 	</div>
-        <h3 class="expand">1 - Getting to know peak-motifs</h3>
+        <h3 class="expand" >1 - Getting to know peak-motifs</h3>
         <div class="collapse">
+	  
 	  <i>peak-motifs</i> is a computational pipeline that discovers motifs in peak sequences, compares them with databases, exports putative binding sites for visualization in the UCSC genome browser and generates an extensive report. </br>
 	The following articles describe peak-motifs and its usage:
-	<ol>
+	<ul>
 	  <li>Thomas-Chollier, M., Herrmann, C., Defrance, M., Sand, O., Thieffry, D. and van Helden, J. (2011).<i> RSAT peak-motifs: motif analysis in full-size ChIP-seq datasets</i> Nucleic Acids Research doi:10.1093/nar/gkr1104, 9.<a href="http://nar.oxfordjournals.org/content/40/4/e31.long"> [Paper] </a></li> 
 	  <li>Thomas-Chollier M, Darbo E, Herrmann C, Defrance M, Thieffry D, van Helden J. (2012). <i>A complete workflow for the analysis of full-size ChIP-seq (and similar) data sets using peak-motifs</i>. Nat Protoc 7(8): 1551-1568. <a href="http://www.nature.com/nprot/journal/v7/n8/full/nprot.2012.088.html"> [Paper]</a></li>
-	</ol>
+	</ul>
 	In this section we will get familiar with this tool and its general usage.
-	Its basic usage requires as input:
-	<ol>
-          <li>Title for the analysis. For the studied dataset, use <b>CEBPa_ChIP-seq_in_dog_liver</b></li>
-	  <li>A set of peak sequences in fasta format. Sequences can be pasted in the available box, input from a URL, and uploading a file from your computer. Alternatively, the sequences can come directly from another RSAT program (like <i>fetch-sequences</i>), as detailed just below.</li>      
-	  <li>Introduce your email address to receive a mail once the job is done. </li>
-	</ol>
-	<img class="bordered" src="./figures/Screen2_a.png" alt="fetch_seq_SC2" width="550"/> 
-<br/>
-	<b>Passing results from one tool to the next one:</b> As a suite of tools, RSAT is designed to pass the output from one tool as input into related tools. E.g: From the output display in <i>fetch-sequences</i>, you can directly send the sequences to <i>peak-motifs</i>.
 	
-	<img class="bordered" src="./figures/Screen1_2_PM_color.png" alt="fetch_seq_SC3" width="550"/>
+	<ol>
+                <li> From the result page before, click on the button <b>peak-motifs</b> at the bottom of the page, to automatically transfer the sequences to this tool.
+                Note that peak-motifs is also accessible from the left menu, in the <b>NGS ChIP-seq</b></li>
+                <li>A new page appear, displaying a form.</li>
+                 <img class="bordered" src="images/3_RSAT.png" alt="3_RSAT" width="550"/>
+                <li>The default peak-motifs web form only displays the essential options. There are only two
+mandatory parameters.<br/>
+a. The title box, which you will set as <b>siGATA_ER_E2_r3</b></br>
+b. The sequences, that have been automatically passed from <b>fetch-sequences</b>. Alternatively, sequences can be pasted in the available box, input from a URL, and uploading a file from your computer. </li>
+ 
+ <li>We could launch the analysis like this, but we will now modify some of the advanced options in order to fine-tune the analysis according
+to your data set.	
+	<ul><li> Open the "Reduce peak sequences" title, and make sure the "Cut peak sequences: +/- " option is set to <b>0</b> (we wish to analyse our full dataset)</li>
+	<li>Open the “Motif Discovery parameters” title, and check the oligomer sizes 6 and 7 (but not 8). Check "Discover over-represented spaced word pairs [dyad-analysis]"</li>
+	 <img class="bordered" src="images/4_RSAT.png" alt="4_RSAT" width="550"/>
+	 <li>Under “Compare discovered motifs with databases”, we'll keep "JASPAR core vertebrates" as the studied organism is human.</li>
+     <li>Under “Locate motifs and export predicted sites as custom UCSC tracks”, select "Peak coordinates specified in fasta headers of the test sequence file (Galaxy format)".</li>
+	<img class="bordered" src="images/5_RSAT.png" alt="5_RSAT" width="550"/>
+	</ul>
+</li>
+
+                <li>You can indicate your email address in order to receive notification of the task submission and completion. This is particularly useful because the full analysis may take some time for very large datasets.</li>
+                
+                
+   				<li>Click “GO”. As soon as the query has been launched, you should receive an email indicating confirming the task submission, and providing a link to the future result page.</li>
+            
+   				
+   				<li>The Web page also displays a link, You can already click on this link. The report will be progressively updated during the processing of the workflow.</b></li>
+
+<div class="post">
+   				<div class="success"> Understanding the <b> peak-motifs</b> result report .<br/>
+                </div>
+            	<div class="collapse"> 
+            	
+                
+
 	<br/>
 	The <i>peak-motifs</i> output is formed by the following parts:
 	<ol>
@@ -320,21 +361,18 @@ $(function() {
 	  <img class="bordered" src="./figures/peak-motifs_archive_cebpa_liver_dog_SC3.png" alt="PMSC3" width="550"/> 
 	  
 	</ol>
-	
+	</div>
+   				</div>
 	<div class="post">
-          <div class="success"><b>Understanding <i>peak-motifs</i> results</b>
-	    <ol>
-            <li>Do you have any concerns regarding peak compotition?</li>
-            <li>Are there any significant motifs discovered?</li>
-            <li>Were you expecting these results?</li>
-	    </ol>
+          <div class="success">Do we discover significant motifs ? Are these motifs biologically relevant? In particular, did the program discover motifs related
+to ER or GATA3 ?</li></b>
 	    <b>Anticipated Results:</b><a href="./results/session1/2_peak-motifs_archive_cebpa_liver_dog/peak-motifs_synthesis.html">peak-motifs results</a>
 
           </div>
 
 	</div>
       </div>
-      <h3 class="expand">2 - Fine-tuning peak-motifs parameters </h3>
+      <h3 class="expand">2 - Differential analysis </h3>
       <div class="collapse">
 	Several parameters can be tunned in <i>peak-motifs</i> in order to obtain better results.
 	<ol>

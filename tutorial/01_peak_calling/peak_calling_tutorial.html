@@ -1,71 +1,239 @@
-<html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="../../html/course.css" media="screen,projection" />
-    <title>Analysis of ChIP-seq data</title>
-  </head>
-  <body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
 
-<h1>ChiP-Seq: Visualization and peak-calling</h1>
-  
-      <a name='toc'></a><h2>Contents</h2>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<meta name="description" content=""/>
+	<meta name="keywords" content="" />
+	<meta name="author" content="carl" />
+	<title>Workshop: ChIP-Seq Data Analysis</title>
+	<link rel="stylesheet" type="text/css" href="../../html/style.css" media="screen" />
+<style type="text/css">
 
-  
-    <ul>
-	<li><a href='#intro'>Step 0 : About the dataset.</a></li>
-<!--	<li><a href='#flowchart'>Flow chart of the analysis</a></li> -->
-	<li><a href='#geo'>Step 1 : Find datasets on Gene Expression Omnibus</a></li>
-	<li><a href='#gal'>Step 2 : retrieve data on Galaxy</a></li>
-	<li><a href='#qual'>Step 3 : data inspection</a></li>
-	<li><a href='#peaks'>Step 4 : peak-calling using MACS on ER ChiP-Seq.</a></li>
-	<li><a href='#igv'>Step 5 : Visualizing the results with Integrated Genome Browser (IGV).</a></li>
-	<li><a href='#peaks'>Step 6 : peak-calling using MACS on ER ChiP-Seq after siGATA3 treatment.</a></li>    </ul>
+#wrapper{
+  margin:0 auto;
+  #padding:15px 15% 8em;
+  text-align:left
+}
+#content {
+  max-width:70em;
+  width:100%;
+  margin:0 auto;
+  padding-bottom:20px;
+  overflow:hidden
+}
+.demo {
+  margin:1.5em 0;
+  padding:1.5em 1.5em 0.75em;
+  border:1px solid #ccc;
+  position:relative;
+  overflow:hidden
+}
 
-<hr><a name='intro'></a><h2>Step 0 : About the dataset.</h2>
+.post {
+  position:relative;
+  overflow:hidden
+}
+.collapse p {padding:0 10px 1em}
+
+.switch {position:absolute; top:1.5em; right: 1.5em; padding:3px}
+
+#.post .switch {position:static; text-align:right}
+
+.post .main{margin-bottom:0; padding-bottom:0}
+
+.other li, .summary {margin-bottom:.3em; padding:1em; border:1px solid #e8e7e8; background-color:#f8f7f8}
+
+.other ul {list-style-type:none; text-align:center}
+
+
+.expand{padding-bottom:.75em}
+
+/* --- Links  --- */
+
+#download {
+  border-style:none;
+  background:white;
+}
+
+.expand a {
+  display:block;
+  padding:3px 10px
+}
+.expand a:link, .expand a:visited {
+  border-width:1px;
+  background-image:url(img/arrow-down.gif);
+  background-repeat:no-repeat;
+  background-position:98% 50%;
+}
+.expand a:hover, .expand a:active, .expand a:focus {
+}
+.expand a.open:link, .expand a.open:visited {
+  #border-style:solid;
+  #background:#eee url(img/arrow-up.gif) no-repeat 98% 50%
+  color:black;
+}
+</style>
+<!--[if lte IE 6]>
+<style type="text/css">
+h3 a, .demo {position:relative; height:1%}
+</style>
+<![endif]-->
+
+<!--[if lte IE 6]>
+<script type="text/javascript">
+   try { document.execCommand( "BackgroundImageCache", false, true); } catch(e) {};
+</script>
+<![endif]-->
+<!--[if !lt IE 6]><!-->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="../../html/scripts/expand.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+$(function() {
+    $("#content h3.expand").toggler();
+    $("#content h2.expand").toggler();
+    $("#content div.demo").expandAll({trigger: "h3.expand", ref: "h3.expand"});
+    $("#content div.other").expandAll({
+      expTxt : "[Show]", 
+      cllpsTxt : "[Hide]",
+      ref : "ul.collapse",
+      showMethod : "show",
+      hideMethod : "hide"
+    });
+    $("#content div.post").expandAll({
+      expTxt : "[Show tip]", 
+      cllpsTxt : "[Hide tip]",
+      ref : "div.collapse", 
+      localLinks: "p.top a"    
+    });    
+});
+//--><!]]>
+</script>
+<!--<![endif]-->
+
+
+    <script type="text/javascript" src="syntaxhighlight/shCore.js"></script>
+    <script type="text/javascript" src="syntaxhighlight/shBrushBash.js"></script>
+    <script type="text/javascript" src="syntaxhighlight/shBrushR.js"></script>
+    <link type="text/css" rel="stylesheet" href="syntaxhighlight/shCore.css"/>
+    <link type="text/css" rel="stylesheet" href="syntaxhighlight/shThemeDefault.css"/>
+    
+    <script type="text/javascript">
+      SyntaxHighlighter.config.clipboardSwf = 'syntaxhighlight/clipboard.swf';
+      SyntaxHighlighter.all();
       
-<p>For this tutorial we will use ChIP-seq datasets produced by <a href='http://www.ncbi.nlm.nih.gov/pubmed/23172872'>Theodorou <i>et al</i></a>. The authors used ChIP-Seq technology in order to systematically identify ESR1 binding regions across the human genome. Importantly, they demonstrated that knock-down of GATA3 through siRNA strongly affect ESR1 binding sites. The corresponding abstract of the article is provided below.</p>
+    </script>
 
-<h4>Abstract</h4>
+</head>
+
+<body>
+
+<div id="site-wrapper">
+
+	<div id="header">
+
+		<div id="top">
+
+			<div class="left" id="logo">
+				<a href="#"><h2 class="label label-green">Workshop: ChIP-Seq Data Analysis</h2></a>
+			</div>
+
+
+
+			<div class="clearer">&nbsp;</div>
+
+		</div>
+
+		<div class="navigation" id="sub-nav">
+
+			<ul class="tabbed">
+				<li ><a href="../../index.html">Home</a></li>
+				<li class="current-tab"><a href="../../tutorial/01_peak_calling/peak_calling_tutorial.html">Session1:Peak calling</a></li>
+				<li><a href="session2.html">Session2:Annotation Fonctionelle</a></li>
+				<li ><a href="../../tutorial/04_motif/motif_tutorial.html">Session3: Analyse de motifs</a></li>
+			</ul>
+
+			<div class="clearer">&nbsp;</div>
+
+		</div>
+
+	</div>
+
+	<div class="main" id="main-two-columns">
+
+		<div class="left" id="main-content">
+
+			<h2 id="contents"> Introduction </h2>
+			<b>Goal</b><br/>
+
+<u>The aim is to :</u>
+<ul>
+<li> Understand how to process reads to obtain peaks (peak-calling).</li>
+<li> Become familiar with differential analysis of peaks</li>
+</ul>
+
+<u>In practice :</u>
+<ul>
+<li> Obtain dataset from GEO</li>
+<li> Analyze mapped reads</li>
+<li> Obtain set(s) of peaks, handle replicates</li>
+<li> Differential analysis of peaks</li>
+</ul>
+
+
+
+
+<div id="wrapper"> 
+  <div id="content"> 
+    
+    <!-- GEO -->	 
+    <div class="demo">
+      <h2 id="download" class="expand">Retrieve datasets on Gene Expression Omnibus</h2>
+      <div class="collapse">
+        <div class="notice">
+	  <b>Goal:</b> this first exercice is meant to demonstrate how one can typically retrieve published datasets from the Gene Expression Omnibus website, for further analysis. However, we will then use datasets that have already been downloaded and pre-processed to save time. </b> .
+	  <br/>
+	</div>
+        
+	<h3 class="expand">1 - About the dataset </h3>
+	<div class="collapse">
+
+          <p>For this tutorial we will use ChIP-seq datasets produced by <a href='http://www.ncbi.nlm.nih.gov/pubmed/23172872'>Theodorou <i>et al</i></a>. The authors used ChIP-Seq technology in order to systematically identify Estrogen receptor (abbreviated as ER or ERS1) binding regions across the human genome. Importantly, they demonstrated that knock-down of GATA3 through siRNA strongly affect ESR1 binding sites. The corresponding abstract of the article is provided below.</p>
+
+<h5>Abstract</h5>
 <i><p>Estrogen receptor (ESR1) drives growth in the majority of human breast cancers by binding to regulatory elements and inducing transcription events that promote tumor growth. Differences in enhancer occupancy by ESR1 contribute to the diverse expression profiles and clinical outcome observed in breast cancer patients. GATA3 is an ESR1-cooperating transcription factor mutated in breast tumors; however, its genomic properties are not fully defined. <br>
 In order to investigate the composition of enhancers involved in estrogen-induced transcription and the potential role of GATA3, we performed extensive ChIP-sequencing in unstimulated breast cancer cells and following estrogen treatment. We find that GATA3 is pivotal in mediating enhancer accessibility at regulatory regions involved in ESR1-mediated transcription. GATA3 silencing resulted in a global redistribution of cofactors and active histone marks prior to estrogen stimulation. These global genomic changes altered the ESR1-binding profile that subsequently occurred following estrogen, with events exhibiting both loss and gain in binding affinity, implying a GATA3-mediated redistribution of ESR1 binding. The GATA3-mediated redistributed ESR1 profile correlated with changes in gene expression, suggestive of its functionality. Chromatin loops at the TFF locus involving ESR1-bound enhancers occurred independently of ESR1 when GATA3 was silenced, indicating that GATA3, when present on the chromatin, may serve as a licensing factor for estrogen-ESR1-mediated interactions between cis-regulatory elements. Together, these experiments suggest that GATA3 directly impacts ESR1 enhancer accessibility, and may potentially explain the contribution of mutant-GATA3 in the heterogeneity of ESR1+ breast cancer.</p></i>
 
-<p>
-</p>
+<p>Within the article, there is a section mentioning the accession number of the dataset produced :
+<h5>Data access</h5>
 
-<p></p>
-
-<!--<hr><a name='flowchart'></a><h2>Flow chart</h2>
-   
-<p align="center"><a target='main' href='img/flow_chart.png'><img style="text-align:center" border='1' src='img/flow_chart.png'></a></p> -->
+<i>The microarray data and ChIP-seq data from this study have been deposited in the NCBI Gene Expression Omnibus (GEO) (http://www.ncbi.nlm.nih.gov/geo/) under accession nos. GSE39623 and <b>GSE40129</b>, respectively. </p></i>
 	
-<hr><a name='geo'>
-</a><h2>Step 1 : Find datasets on Gene Expression Omnibus</h2>
-
-<div class=attention>
-<b>Goal:</b> this first exercice is meant to demonstrate how one can typically retrieve published datasets from the Gene Expression Omnibus website, for further analysis.
-However, we will then use datasets that have already been downloaded and pre-processed to save time.
-</div>
-<p></p>
-
-<p>Gene Expression Omnibus (<a target="_blank" href='http://www.ncbi.nlm.nih.gov/geo/'>GEO</a>) is a public repository that provide tools to submit, access and mine functional genomics data.  Data may be related to array- or sequence-based technologies. For HTS data, GEO provides both processed data (such as *.bam, *.bed, *.wig files) and links to raw data. Raw data are available from the Sequence Read Archive (<a target="_blank" href='http://trace.ncbi.nlm.nih.gov/Traces/sra/'>SRA</a>) database (including 454, IonTorrent, Illumina, SOLiD, Helicos and Complete Genomics). Both web sites propose search engines to query their databases.  </p>
-
-   <div class='protocol'>
-   <b>Procedure : </b>
-   	<ul>
+        </div>
+        
+	<h3 class="expand">2 - Find the dataset on Gene Expression Omnibus </h3>
+	<div class="collapse">
+	<p>Gene Expression Omnibus (<a target="_blank" href='http://www.ncbi.nlm.nih.gov/geo/'>GEO</a>) is a public repository that provide tools to submit, access and mine functional genomics data.  Data may be related to array- or sequence-based technologies. For HTS data, GEO provides both processed data (such as *.bam, *.bed, *.wig files) and links to raw data. Raw data are available from the Sequence Read Archive (<a target="_blank" href='http://trace.ncbi.nlm.nih.gov/Traces/sra/'>SRA</a>) database (including 454, IonTorrent, Illumina, SOLiD, Helicos and Complete Genomics). Both web sites propose search engines to query their databases.  </p>
+<p><b>Procedure : </b>
+   	<ol>
             <li>Go to <a target="_blank" href="http://www.ncbi.nlm.nih.gov/geo/">GEO web site</a>.</li>
-            <li>Choose "Search" and paste GSE40129 (GSE stands for GEO Series Experiment). Click "GO" to get information about this experiment.</li>
+            <li>Choose "Search" and paste <b>GSE40129</b> (GSE stands for GEO Series Experiment). Click "GO" to get information about this experiment.</li>
             <li>In the "sample section" (middle of the page), click on "More" to visualize all sample names.</li>
             <li>Click on GSM986059 hyperlink (GSM stands for GEO SaMple) to get information about this sample.</li>
             <li>In the "relations" section, select "SRX176856" hyperlink to open the SRA page corresponding to this sample.</li> 
             <li> Click on the SRR link (bottom right) to access the record of the run. </li>
             <li>On the new page, click on the <b>Reads</b> tab to view the read sequence.</b>
-            </ul>            From there, you might also download the dataset as a .sra file, but we <b>will not do it in the context of this practical</b> (beware, this would take time and occupy disk space, since SRA files typically weight several hundred Mb !).
-
-   </div>
-   
-   
-   <div class='exo'> 
-   <b>Questions:</b>
-     <ul>
+            </ol>
+            From there, you might also download the dataset as a .sra file, but we <b>will not do it in the context of this practical</b> (beware, this would take time and occupy disk space, since SRA files typically weight several hundred Mb !).
+</p>
+	
+	
+         		
+		  <div class="post">
+   				<div class="success"> Questions:<br/>
+   				
+   				<ul>
        <li>What is the HTS platform used to sequence this sample ?</li>
        <li>Is this experiment single-end or paire-end sequencing ? </li>
        <li>What is the read length ?</li>
@@ -73,218 +241,317 @@ However, we will then use datasets that have already been downloaded and pre-pro
        <li>How many reads were produced (# of Spots) ?</li>
        <li>Select SRR540192 hyperlink. What is the sequence of the first read ?</li>         
      </ul>
-   </div>
+                </div>
+            	
+   				</div>
+        
+	  
+	  <div class="error">At this point, you should be able to find a given dataset in GEO, and obtain the raw data (reads). 
+	  </div>
+	  
+	</div>         
+	
+      </div>         
+    </div>         
+    
+    
+    
+    <!-- PEAK-MOTIFS-->	     
+    
+    
+    <div class="demo">
+      <h2 id="quality" class="expand" >Analyze the mapped reads</h2>
+      <div class="collapse">
+        <div class="notice">
+	  <b>Goal:</b> Retrieve BAM files that contain alignment results, inspect and analyze the mapped reads.
+	</div>
+        <h3 class="expand" >1 - Getting the mapped reads (BAM) within Galaxy</h3>
+        <div class="collapse">
+        For the sake of time and to avoid repetitions of processing steps already covered in other tutorials, we have already performed quality-check of the reads and mapping. 
+        The steps are described <a href="../00_read_mapping/mapping_tutorial.html" target="_blank">here</a>.We encourage participants to check these steps later.
+	  <p/>
+	   
 
-
-<hr><a name='gal'></a>
-<h2>Step 2 : retrieve data on Galaxy</h2>
-
-<div class=attention><b>Goal :</b> Retrieve BAM files that contain alignment results.</div>
-
-   <h3>Importing shared history.</h3>
-
-<p> In the next section, we will search for ER (Estrogen Receptor) binding sites in control samples (ChIP Estrogen Receptor on MCF-7 cell line treated with E2).</p>
+<p> In the next section, we will search for ER (Estrogen Receptor) binding sites in control samples (ChIP Estrogen Receptor on MCF-7 cell line treated with E2).
 In this tutorial, we will focus on <b>quality control</b> of the aligned datasets, <b>peak calling</b> and <b>differential binding analysis</b>. Hence, the starting point will be <b>bam files of aligned reads</b> for the different datasets:
+<ul>
+<li> ChIP-seq on estrogen receptor (ER) in wild-type condition (siNT), after estrogen induction (E2) (3 replicates available,<i>siNT_ER_E2_r1,2,3</i>) </li>
+<li> ChIP-seq on estrogen receptor (ER) after GATA knockout (siGATA), after estrogen induction (E2) (3 replicates available,<i>siGATA_ER_E2_r1,2,3</i>)</li>
+<li> ChIP-seq on the histone mark H3K4me1 in siNT (1 replicate available,<i>siNT_H3K4me1_Veh_r1</i>)</li>
+<li> ChIP-seq on the histone mark H3K4me1 in siGATA (1 replicate available,<i>siGATA_H3K4me1_Veh_r1</i>)</li>
+<li> input control in MCF7 cells (1 replicate available)</li>
+</ul>
+
+<p><b>Procedure to import shared history:</h5> </b>
 <ol>
-<li> 3 replicates of ChIP-seq on estrogen receptor (ER) in wild-type condition (siNT), after estrogen induction (E2) </li>
-<li> 3 replicates of ChIP-seq on estrogen receptor (ER) after GATA knockout (siGATA), after estrogen induction (E2) </li>
-<li> 1 replicate of ChIP-seq on the histone mark H3K4me1 in siNT</li>
-<li> 1 replicate of ChIP-seq on the histone mark H3K4me1 in siGATA</li>
-<li> 1 input control file in MCF7 cells</li>
-</ol>
-
-
-    <div class='protocol'>
-      <ol>
 		<li>Log into your Galaxy account.</li>
 		<li>Use <b>Shared data > published histories > ChIP-seq datasets</b></li>
 		<li>Click on the history name, then in the top right of the page on <b>Import history</b></li>
 <li>The datasets should appear in a newly created history called <b>Imported: ChIP-seq datasets</b></li>
 <li>Rename this history</li>
       </ol>
-    </div>
 
 
-
-<hr><a name='qual'></a>
-<h2>Step 3 : Preliminary data inspection</h2>
-
-<div class=attention><b>Goal:</b> Before starting the peak calling analysis, it is interesting to determine the type of alignments enclosed in the BAM files, and the <b>level of duplicates</b></div>
-
-
-    <div class='protocol'>
-<p>How many reads does the  BAM files contain ?</p>
-      <ul>
+      </div>
+      <h3 class="expand">2 - Number of mapped reads </h3>
+      <div class="collapse">
+	<p>Before starting the peak calling analysis, it is interesting to determine the type of alignments enclosed in the BAM files, and the <b>level of duplicates</b>.</p>
+	
+	<b>Procedure</b>:
+	    <ol>
 			<li>In the <b>search tools box</b>, search for the <b>flagstats</b> tool.</li>
-			<li>Run this tool on the BAM files you imported, and note the number of reads.</li>
-	   </ul>		   
-</div>
+			<li>Run this tool on 2 BAM files you imported: <b>siNT_ER_E2_r3</b> and <b>siGATA_ER_E2_r3</b>.</li>
+	   </ol>	
+		<div class="post">
+   				<div class="success"> <b>Question:</b> How many reads does the  BAM files contain ?<br/>
+                </div>
+                <div class="collapse"> 
+                The table below sumarizes the results for all datasets (all flagstat files are accessible in the Galaxy shared history <b>Chip_Seq_Result_Chr21</b>).
+<table>
+<tr>
+<th>BAM file</th><th>Nb reads</th>
+</tr>
 
-We will now convert a BAM file to a <a href="http://www.genome.ucsc.edu/goldenPath/help/bigWig.html" target="blank"> bigWig</a> file, which we can then upload to IGV for visual inspection. We will do this separately for signal and input, and then produce a combined file in which the background noise has been subtracted from the signal.
+<tr>
+<td>siNT_ER_E2_r1</td><td>21 377 808</td>
+</tr>
+<tr>
+<td>siNT_ER_E2_r2</td><td>12 035 808</td>
+</tr>
+<tr>
+<td>siNT_ER_E2_r3</td><td><b>26 826 609</b></td>
+</tr>
+<tr>
+<td>siGATA_ER_E2_r1</td><td>14 177 394</td>
+</tr>
+<tr>
+<td>siGATA_ER_E2_r2</td><td>11 588 402</td>
+</tr>
+<tr>
+<td>siGATA_ER_E2_r3</td><td><b>27 429 291</b></td>
+</tr>
+<tr>
+<td>siNT_H3K4me1_Veh_r1</td><td>22 205 385</td>
+</tr>
+<tr>
+<td>siGATA_H3K4me1_Veh_r1</td><td>22 227 392</td>
+</tr>
+<tr>
+<td>MCF_input_r3</td><td>19 361 330</td>
+</tr>
 
-   <h3>Coverage for individual BAM files</h3>
 
-    <div class='protocol'>
-<ul>
+</table>
+                </div>
+            	 </div>
+   		  </div>	
+   				
+   				    <h3 class="expand">3 - Coverage for individual BAM files </h3>
+    <div class="collapse">
+<p>We will now convert a BAM file to a <a href="http://www.genome.ucsc.edu/goldenPath/help/bigWig.html" target="blank"> bigWig</a> file, which we can then upload to IGV for visual inspection. We will do this separately for signal and input, and then produce a combined file in which the background noise has been subtracted from the signal.</p>
+
+<b>Procedure</b>:
+<ol>
 <li> find the tool <b>bamCoverage</b> in the <b>deepTools</b> section</li>
-<li> select the BAM file for one of the signal files (either ER ChIP or H3K4me1), and run the tool <b>on one chromosome to reduce computational time (your favorite one!)!</b></li>
+<li> select the BAM file for the signal file <b>siNT_ER_E2_r3</b>, and run the tool <b>on chromosome 21 to reduce computational time !</b></li>
 <li>for <i>Average size of fragment length</i>, choose 150 bp. We will check later on whether this estimation is corrrect !</li>
 <li> download the resulting file and open it in the IGV browser</li>
-<li> repeat the same operation for the BAM file corresponding to the input, and open the resulting bigwig file along the previous one in IGV.</li>
-<li>repeat the operation for all ER ChIP-seq datasets.</li>
-</ul>
-</div>
+<li> repeat the same operation for the BAM file corresponding to the <b>input</b>, and open the resulting bigwig file along the previous one in IGV.</li>
+</ol>
 
-<div class=exo>
-<b>Questions:</b>
+
+		<div class="post">
+   				<div class="success"> <b>Questions:</b>
 <ol>
 <li>Do you see regions that seem to be enriched in signal compared to background ?</li>
-<li>Do you recognize any region where both tracks show enrichment ? Could these correspond to copy-number alterations in the MCF7 cell line ?</li>
+<li><span style="background-color: #FFFF00">Do you recognize any region where both tracks show enrichment ? Could these correspond to copy-number alterations in the MCF7 cell line ?</span></li>
 <li>If you compare ER ChIP-seq with H3K4me1 ChIP-seq, do you see a difference in the shape of the data (sharper peaks or broader domains of enrichment) ?</li>
 </ol>
-</div>
 
-   <h3>Combined coverage file</h3>
+                </div>
+                <div class="collapse"> 
+               All bigwig files for chr21 are accessible in the Galaxy shared history <b>Chip_Seq_Result_Chr21</b>.
 
-We want to combine the treatment and input files into one signal file which should indicate the level of signal, taking into account the background noise estimated from the input file. In order to do this, we will use the <b>bamCompare</b> tool from the <b>deepTools</b> toolbox, and use various normalization strategies discussed during the presentation.
-<p></p>
-<div class=protocol>
+
+    </div>
+	
+	   </div> 	
+	   </div>
+	   
+	   	 <h3 class="expand">4 - Combined coverage file </h3>
+    <div class="collapse">
+<p>We want to combine the treatment and input files into one signal file which should indicate the level of signal, taking into account the background noise estimated from the input file. In order to do this, we will use the <b>bamCompare</b> tool from the <b>deepTools</b> toolbox, and use various normalization strategies discussed during the presentation.
+</p>
+
 <b>Procedure</b>
-<ul>
+<ol>
 <li> select the <b>bamCompare</b> tool</li>
-<li> select one treatment BAM file (the one that you used in the previous exercice !) and the input BAM file</li>
+<li> select the <b>siNT_ER_E2_r3</b> treatment BAM file and the input BAM file</li>
 <li>choose the SES normalization method in <i>Method to use for scaling the largest sample to the smallest</i></li>
-<li>choose a particular chromorome</li>
-</ul>
+<li>choose a particular chromosome (chr21)</li>
+</ol>
 
-</div>
-
-<div class=exo>
-<b>Exercice:</b>
+				<div class="post">
+   				<div class="success"> <b>Exercice:</b>
 Compare the individual coverage files (treatment and input) and the combined one.
-</div>
+                </div>
 
-<h3>Comparing replicates and distinct datasets</h3>
+	      	</div>	
+      </div>
+      
+      <h3 class="expand">5 - Comparing replicates and distinct datasets </h3>
+    <div class="collapse">
+       <p> When we have replicates, a important check is to what extend they agree between each other. We can compute the correlation of the signal of two datasets in windows over all the genome; this can also be used to compare to distinct datasets and determine, which ones are closest.<br>
+We will apply this to the 8 datasets we have (excluding the input datasets), using the tool <b>bamCorrelate</b> of the deepTools toolbox.</p>
 
-When we have replicates, a important check is to what extend they agree between each other. We can compute the correlation of the signal of two datasets in windows over all the genome; this can also be used to compare to distinct datasets and determine, which ones are closest.<br>
-We will apply this to the 8 datasets we have (excluding the input datasets), using the tool <b>bamCorrelate</b> of the deepTools toolbox.
-
-<p></p>
-<div class=protocol>
 <b>Procedure</b>
-<ul>
+<ol>
 <li> Find the tool <b>bamCorrelate</b> in the list of tools</li>
 <li> Supply the 8 bam files coresponding to treatment (exclude input!)</li>
 <li> Select <b>Pearson correlation</b></li>
-<li><b>Important: restrict to one chromosome (your favorite one !)</b></li>
-</ul>
+<li><b>Important: restrict to one chromosome (<b>chr21</b>)</b></li>
+</ol>
 
-</div>
-
-
-<div class=exo>
-<b>Questions :</b>
+	<div class="post">
+   				<div class="success"> <b>Questions :</b>
 <ol>
 <li> Which of the samples seem to cluster best ?</li>
 <li> What about the replicates ?</li>
-<li> Check with your neighbors how it looks like on a different chromosome.</li>
+<li> <span style="background-color: #FFFF00">Check with your neighbors how it looks like on a different chromosome.</span></li>
 </ol>
+
+                </div>
+	      	</div>	
+
+        
+        </div>
+      
+    </div>
+    
 </div>
-<p></p>
 
 
-<hr><a name='peaks'></a>
-<h2>Step 4 : peak-calling using MACS on ER ChIP-Seq.</h2>
-<div class=attention><b>Goal:</b> Now that we are (hopefully) convinced that the dataset contains signal, we will perform peak calling for the ESR1 ChIP-seq datasets, 
+
+
+<!--PEAK CALLING -->	
+
+<div class="demo">
+  <h2 id="mapping" class="expand">Peak-calling using MACS on ER ChIP-Seq</h2>
+  <div class="collapse">
+    <div class="notice">
+      <b>Goal:</b> Now that we are (hopefully) convinced that the dataset contains signal, we will perform peak calling for the ESR1 ChIP-seq datasets, 
 using the input dataset as control to identify statistically enriched regions (a.k.a. peaks). Peak calling will be performed using MACS (version 1.4.1).</div>
 
-<div class='protocol'>
-<b>Procedure</b> 
-<p>Select the tools <b>MACS14</b>  fill the form as below</p>
+    <h3 class="expand">1 - Single replicate </h3>
+    <div class="collapse">
+     <b>Procedure</b> 
+	<p>Select the tools <b>MACS14</b> and fill the form as below :</p>
 
   <ul>
-    <li><b>Experiment name</b> : give a name for the MACS run (siNT_ESR1_MACS).</li>
+    <li><b>Experiment name</b> : give a name for the MACS run (siNT_ESR1_r3_MACS).</li>
     <li><b>Paired end sequencing:</b> MACS can handle single or paired-end data; here we will select single end.</li>
-    <li><b>ChIP-seq tag file</b> : select the BAM file containing the treatment (ChIP).</li>
+    <li><b>ChIP-seq tag file</b> : select the BAM file containing the treatment (ChIP): <b>siNT_ER_E2_r3</b></li>
     <li><b>ChIP-seq control file</b> : select the BAM file for the input.</li>
     <li><b>Effective genome size</b>: this is the mappable genome size; default is hg19</li>
     <li><b>Tag size </b>: these are Illumina datasets of read size 36.</li>
     <li><b>Diagnosis report:</b> select <b>Produce a diagnosis report.</b></li>
     <li>All other options should be set to default.</li>
    </ul>
-<b>Repeat this operation on all the siGATA_ER and siNT_ER replicates (6 files) !!</b>
 
-</div>
-
-MACS running using these options should generate 2 result files:
+ <div class="post">
+        <div class="success"><b> Question:</b>What type of files does MACS return ?
+	    </div>	
+	    <div class="collapse">
+	    MACS running using these options should generate 2 result files:
 <ul>
-  <li>A html report describing the model built by MACS.</li>
+  <li>A html report describing the model built by MACS, and links to additional files</li>
   <li>A bed file containing the peaks.</li>
 </ul>
 
-<div class="exo">
-<b>Peaks model</b><p></p>
+	    </div>  
+      </div>
+      
+       <div class="post">
+        <div class="success"><b> Peaks model</b></br>
 Look at the pdf file generated by MACS: what fragment length has been determined by MACS ? Is this consistent accross replicates/experiments ?
 
-</div>
-
-<div class='exo'>
-<b>Peaks</b>
+	    </div>	
+      </div>
+      
+       <div class="post">
+        <div class="success"><b>Peaks</b>
 <ul>
   <li>How many peaks have been called by MACS ? Use the <b>Line/Word/Character count</b> in the <b>toolbox</b> to count the number of lines in the bed file.</li>
   <li>Use the </b>sort</b> tool in the toolbox to sort MACS peaks according to the score.</li>
 </ul>
-</div>
 
+	    </div>	
+      </div>
 
-<h3>Consensus set of peaks</h3>
-
-Here, we have 3 replicates for each condition, and therefor 3 sets of peaks. We can build a consensus set by determining the peaks that are found in all 3 replicates. This very simple procedure is likely to reduce the number of false positive peaks (keep in mind however that we might also have a increased false negative rate, if one of the replicates departs largely from the others...)
-
-<div class=protocol>
+    </div>
+    
+    <h3 class="expand">2 - Consensus set of peaks </h3>
+    <div class="collapse">
+     <p>Here, we have 3 replicates for each condition, and therefor 3 sets of peaks. We can build a consensus set by determining the peaks that are found in all 3 replicates. This very simple procedure is likely to reduce the number of false positive peaks (keep in mind however that we might also have a increased false negative rate, if one of the replicates departs largely from the others...).
+</p>
 <b>Procedure</b>
 <ol>
 <li>use the tool <b>intersectBed</b>, and make the intersection of the files containing the peaks for replicate 1 and 2</li>
 <li>intersect again the resulting file with the peaks of replicate 3; do this for siNT and siGATA</li> 
 </ol>
-</div>
 
-<div class=exo>
+<div class="post">
+        <div class="success"><b>Question:</b>
 How many consensus peaks do we have for each condition ?
-</div>
+	    </div>	
+      </div>
 
 
+      
+    </div>
 
-<a name="igv"></a>
-<hr>
-<h2>Step 5 : Differential analysis.</h2>
-<div class=attention><b>Goal:</b> Treatment of MCF-7 cells using siRNA to GATA3 is expected to induce a re-localization of ER binding sites.
+    </div>
+    </div>
+
+    <!-- DIFFERENTIAL -->	 
+    <div class="demo">
+      <h2 id="download" class="expand">Differential analysis</h2>
+      <div class="collapse">
+        <div class="notice">
+<b>Goal:</b> Treatment of MCF-7 cells using siRNA to GATA3 is expected to induce a re-localization of ER binding sites.
 Hence, we want to compare the 2 consensus sets of peaks to determine common/specific peaks. We will compare a "naive" approach with a more quantitative approach.
-</div>
+	  <br/>
+	</div>
+        
+	<h3 class="expand">1 - Simple approach </h3>
+	<div class="collapse">
 
-<h3>Simple approach</h3>
-
-<div class=protocol>
 <b>Procedure</b><br>
-use the tool <b>intersectBed</b>, and make the intersection of the two consensus peak sets for siNT and siGATA
-</div>
-
-<div class=exo>
+<ol>
+<li>use the tool <b>intersectBed</b>, and make the intersection of the two consensus peak sets for siNT and siGATA</li>
+</ol>
+	<div class="post">
+        <div class="success"><b>Question:</b>
 <ol>
 <li>How many common peaks do we have ?</li>
 <li>How many specific peaks do we have for siNT and siGATA ?</li>
 </ol>
-</div>
+	    </div>	
+      </div>
 
-<h3>Quantitative differential analysis using diffBind</h3>
+        </div>
+        
+	<h3 class="expand">2 - Quantitative differential analysis using diffBind </h3>
+	<div class="collapse">
 
-Having replicates, we can perform a <b>quantitative analysis</b> to identify differentially bound regions. This method is based on the read counts in certain regions, and the identification of regions that show a significant difference in read counts between 2 conditions. This is very similar to the analysis of <b>differential expression</b> in RNA-seq, and indeed the underlying statistical models are often the same.<br>
+<p>Having replicates, we can perform a <b>quantitative analysis</b> to identify differentially bound regions. This method is based on the read counts in certain regions, and the identification of regions that show a significant difference in read counts between 2 conditions. This is very similar to the analysis of <b>differential expression</b> in RNA-seq, and indeed the underlying statistical models are often the same.<br>
 Several tools exist, but are not all implemented under Galaxy. We will work with the output file of a tool called <a href=http://www.bioconductor.org/packages/release/bioc/html/DiffBind.html> diffBind</a> which is part of the Bioconductor packages.<br>
 DiffBind works by focusing on peak regions shared between a certain number of samples (here : 2 or 3 samples). These regions are then analyszed for differential binding using either <a href="http://www.bioconductor.org/packages/release/bioc/html/edgeR.html" >edgeR</a> or <a href="http://www.bioconductor.org/packages/release/bioc/html/DESeq2.html" > DESeq2</a>.
-<p></p>
-<div class=protocol>
+</p>
+
 <b>Procedure</b><br>
 <ol>
+<li>The files are located in the Galaxy history as <b>ER.m2.db.bed</b> and <b>ER.m3.db.bed</b></li>
 <li>Determine the number of differential peaks in the 2 files <b>ER.m2.db.bed</b> and <b>ER.m3.db.bed</b></li>
 <li>Import the 2 bed files into the IGV session; your IGV session should contain
 <ul>
@@ -296,12 +563,10 @@ DiffBind works by focusing on peak regions shared between a certain number of sa
 
 </li>
 </ol>
-
-</div>
-
-
-<div class="exo">
-<b>Question</b>
+	
+         		
+		  <div class="post">
+   				<div class="success"> <b>Question</b>
 <ol>
 <li>Zoom into several differentially bound regions, and look at the peaks determined by MACS. </li>
 <li>Can you determine cases in which
@@ -315,20 +580,82 @@ Make screenshots of these different situation a try to get an explanation for ea
  </li>
 
 </ol>
+
+                </div>
+            	
+   				</div>
+        	  
+	</div>         
+	
+      </div>         
+    </div> 
+
+
+
+
+
+		</div>
+		
+	</div>
+</div>
+	
+<!-- SIDE BAR -->		
+
+		<div class="right sidebar" id="sidebar">
+		
+			<h5>Formateurs</h5>
+			<ul>
+			<li><a href="http://biologie.univ-mrs.fr/carlherrmann/home.html" target="_blank">Carl Herrmann</a></li>	
+			<li><a href="https://www.researchgate.net/profile/Matthieu_Defrance" target="_blank">Matthieu Defrance</a></li>
+			<li><a href="http://tagc.univ-mrs.fr/tagc/index.php/research/network-bioinformatics/dputhier" target="_blank">Denis Puthier</a></li>
+			<li><a href="http://morgane.bardiaux.fr" target="_blank">Morgane Thomas-Chollier</a></li>
+			</ul>
+			<p/>
+			<h5>Jeux de données</h5>
+			<ul>
+			<li>Theodorou V, Stark R, Menon S, Carroll JS <i>GATA3 acts upstream of FOXA1 in mediating ESR1 binding by shaping enhancer accessibility.</i> Genome Research, 23(1):12-22. 2013 <a href="http://www.ncbi.nlm.nih.gov/pubmed/23172872" target='_blank'>[Pubmed]</a>
+				<a href="http://genome.cshlp.org/content/23/1/12.long" target='_blank'> [Article] </a><br/>
+				<u>données et accession:</u><a href="../../html/datasets.html"> Liste complète</a><br/>
+				</li>	
+			</ul>
+			<h5>Liste des outils</h5>
+			<ul>
+			</ul>
+			<a target="_blank" href="http://ecole-bioinfo-aviesan.sb-roscoff.fr/">
+			<h5>Ecole de Bioinformatique Aviesan</h5></a>
+			 <a target="_blank" href="http://www.aviesan.fr/"><img border="0" width="120" alt="AVIESAN" src="html/img/aviesan_logo_0.png"></a>
+
+			
+
+		</div>
+
+		<div class="clearer">&nbsp;</div>
+
+	</div>
+
+	<div id="footer">
+
+		<div class="left" id="footer-left">
+			
+		
+			
+			<p>&copy; 2014 Morgane Thomas-Chollier. All rights Reserved</p>
+
+			<p class="quiet"><a href="http://templates.arcsin.se/">Website template</a> by <a href="http://arcsin.se/">Arcsin</a></p>
+			
+			<div class="clearer">&nbsp;</div>
+
+		</div>
+
+		<div class="right" id="footer-right">
+
+		</div>
+
+		<div class="clearer">&nbsp;</div>
+
+	</div>
+
 </div>
 
- 
-
-
-
-
-
-
- 
-
-</body> 
-
- <hr>
-<i>Ecole AVIESAN - Station Marine Roscoff 2014</i>
-
+</body>
 </html>
