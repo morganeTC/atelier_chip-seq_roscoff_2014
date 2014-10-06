@@ -149,10 +149,18 @@
 
 <div class='protocol'>
       <ul> 
+		<li>From the tool panel, select <b>Get data > Upload File</b>. Fill the form as follow:</li>
+     		<ul>
+			<li>Set File Format as "fasta".</li>	
+			<li> In the URL/Text: area, copy and paste: http://hgdownload.soe.ucsc.edu/goldenPath/hg19/chromosomes/chr21.fa.gz. Click <b>Execute</b>.</li>
+			<li>Set genome to <b>hg19</b> and press execute.</li>
+			</ul>
+				
+		</li>
         <li>From the tool panel, select <b>NGS TOOLS > NGS: Mapping > Map with Bowtie for Illumina. Fill the form as follow:</b>.
         <ul>
-	                <li>Select "Use a built-in index".</li>
-        		<li>Set <b>Select a reference genome</b> to 'Homo Sapiens Chromosome 21 GRC	h38'.</li>
+	            <li>Set <b>Will you select a reference genome from your history or use a built-in index</b> to <b>Use one from the history</b>.</li>
+        		<li>Set <b>Select the reference genome</b> to <b>chr21.fa</b>.</li>
         		<li>Set <b>Bowtie settings to use</b> to 'full parameter list'.</li>
         		<li>Set <b>Suppress all alignments for a read if more than n reportable alignments exist</b> to '1'.</li>
 			<li>Select the <b>flagstat</b> tool from the <b>toolbox</b> to compute some simple statistics about read mapping.</li>
@@ -169,7 +177,7 @@
 
 <div class='protocol'>
       <ul><li>Download IGV and launch it with 750 MB or 1.2 Gb depending of your machine.</li>
-        <li>Select hg38 genome and go to chromosome 21.</li>
+        <li>Select hg19 genome and go to chromosome 21.</li>
         <li>Select <b>Tools > Run Igvtools</b>.  Select <b>command > sort</b>, select <b>iput file</b> and browse to the sam file. Press <b>Run</b>.</li>
         <li>Select <b>command > index</b>, select <b>input file</b> and browse to the sorted sam file. Press <b>Run</b>.</li>
         <li>Select <b>command > count</b>, select <b>input file</b> and browse to the sorted sam file (! not the *.bai)). Press <b>Run</b>.</li>
