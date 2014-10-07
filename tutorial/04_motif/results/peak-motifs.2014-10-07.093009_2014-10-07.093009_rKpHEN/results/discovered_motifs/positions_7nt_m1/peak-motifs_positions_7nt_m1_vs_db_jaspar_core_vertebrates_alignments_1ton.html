@@ -1,0 +1,1145 @@
+<html>
+<head><title>One-to-n alignments</title><style type='text/css'>
+/* Style sheet for the HTML formatting of RSAT results */
+
+/* BODY  */
+body {
+       font-family: Verdana, Helvetica, Arial, sans-serif;
+       font-size: 70%;
+       margin-top: 2px;
+       margin-left: 20px;
+       text-align: justify;
+       background: #ffffff;
+       margin-right: 20px;
+/*       background: #0D73A7 url(images/bullet2-normal.gif) no-repeat 7px 7px;*/
+}
+
+
+/* div for menu */
+
+#Menu_space {
+	margin-top:120px;
+	margin-bottom:300px;
+}
+#Menu_wait {
+	position:absolute;
+	top:120px;
+	left:50%;
+	width:400px;
+	margin-left: -200px;
+	padding:10px;
+	text-align:center;
+	}
+
+#Menu {
+	position:absolute;
+	top:120px;
+	left:50%;
+	width:800px;
+	margin-left: -400px;
+	padding:10px;
+	background-color:#eee;
+	border:1px dashed #999;
+	line-height:17px;
+	font-size: 110%;
+	voice-family: "\"}\"";
+	voice-family:inherit;
+	text-align:left;
+	}
+
+#Menu h3 {
+	margin:0;
+	text-align:center;
+	padding-bottom:5px;
+}
+
+#Menu ul {
+	list-style-type:none;
+}
+
+/* TABLE */
+#Menu table {
+	margin: 10px 10px 10px;
+}
+
+#Menu  td, th {
+	font-size: 70%;
+	padding: 2px 10px;
+	vertical-align:top;
+}
+
+.menulink a:link,a:visited {
+	color:#cc6600;
+	background: transparent;
+	text-decoration: none;
+	}
+
+.menulink a:visited {
+	color:#cc6600;
+	background: transparent;
+	text-decoration: none;
+	}
+
+.menulink A:active {
+	color: #cc6600;
+	background: transparent;
+	text-decoration: none
+}
+
+.menulink A:hover {
+	text-decoration: underline;
+	color: #cc6600;
+}
+
+
+/* Links  */
+
+A:link,A:visited {
+	color: #0D73A7;
+	background: transparent;
+	text-decoration: none;
+}
+
+A:active {
+	color: #ff0000;
+	background: transparent;
+	text-decoration: none
+}
+
+A:hover {
+	text-decoration: underline;
+	color: #cc6600;
+}
+
+/* Headers  */
+
+h1 {
+	margin-top: 10px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	margin-bottom: 0px;
+	padding-left: 10px;
+	border: 1px solid #2D282E;
+	background-color: #0D73A7;
+	font-size: 16px;
+	color: #D6EEFA;
+}
+h1 a:link, h1 a:visited {
+	color: #D6EEFA;
+}
+
+h1 a:hover {
+	color: #ffffff;
+}
+
+h2 {
+	margin-top: 10px;
+	padding-top: 15px;
+	margin-bottom: 0px;
+	color: #002266;
+	font-size: 15px;
+}
+
+h3 {
+	margin-top: 6px;
+	padding-top: 6px;
+	margin-bottom: 0px;
+	color: #002266;
+	font-size: 11px;
+}
+
+h4 {
+	margin-top: 4px;
+	padding-top: 4px;
+	margin-bottom: 0px;
+	color : #2D282E;
+	font-size: 11px;
+}
+
+h2.motif {
+	margin-top: 3px;
+	padding-top: 0px;
+	margin-bottom: 4px;
+	color : #2D282E;
+	font-size: 12px;
+}
+
+/* Other tag formatting  */
+hr {
+	border: 1px dotted #2D282E;
+	height: 1px;
+}
+
+hr.solid {
+	border: 1px solid #2D282E;
+	height: 1px;
+}
+
+pre,tt {
+         font-size: 12px;
+}
+
+pre { 
+      background:#EEEEEE;
+ }
+
+
+center {
+	margin-top: 5px;
+	margin-bottom: 20px;
+	font-weight: bold;
+}
+
+blockquote {
+	color : #cc6600;
+	font-size: 12px;
+}
+
+body blockquote.information {
+	color : #009900;
+	font-size: 12px;
+}
+
+body blockquote.warning {
+	color : #aa0000;
+	font-size: 12px;
+}
+
+blockquote.demo {
+	color : #000000;
+	font-size: 12px;
+	font-style:italic;
+}
+
+
+
+/* TABLE */
+table.simple {
+	margin: 10px 20px 20px;
+	color: #000000;
+}
+
+table.simple td,table.list th {
+	font-size: 70%;
+	padding: 2px 10px;
+	background-color: #FFFFFF;
+}
+
+table.simple th {
+	font-size: 70%;
+	background-color: #F6E6CA;
+}
+
+/* TABLE */
+
+/* table with white bg and small fonts */
+table.whitebg {
+	margin: 10px 20px 20px;
+	color: #000000;
+	border-left: 1px solid #cbcbb4;
+	border-top: 1px solid #cbcbb4;
+	border-spacing: 0px;
+}
+
+table.whitebg td,table.whitebg th {
+	font-size: 70%;
+	border-right: 1px solid #cbcbb4;
+	border-bottom: 1px solid #cbcbb4;
+	padding: 2px 10px;
+	background-color: #FFFFFF;
+}
+
+
+/* table with blue bg and small font */
+table.whitebg th {
+	font-size: 70%;
+	background-color: #F6E6CA;
+}
+
+table.bluebg {
+	color: #333333;
+	border-left: 1px solid #cbcbb4;
+	border-top: 1px solid #cbcbb4;
+	}
+
+table.bluebg td,table.bluebg th {
+	font-size: 70%;
+	border-right: 1px solid #cbcbb4;
+	border-bottom: 1px solid #cbcbb4;
+	background-color: #D6EEFA;
+}
+
+table.bluebg th {
+	background-color: #0D73A7;
+	color: #D6EEFA;
+}
+	
+/* Table on result pages - compatible with the sorttable type defined by javascript */
+
+table.sortable {
+	margin: 10px 20px 20px;
+	color: #000000;
+	border-left: 1px solid #cbcbb4;
+	border-right: 1px solid #cbcbb4;
+	border-top: 1px solid #cbcbb4;
+	border-bottom: 1px solid #cbcbb4;
+	border-spacing: 0px;
+}
+
+table.sortable td,table.sortable th {
+	padding: 2px 10px;
+	font-size: 70%;
+	border-right: 1px solid #cbcbb4;
+	border-bottom: 1px solid #cbcbb4;
+	padding: 2px 10px;
+	background-color: #FFFFFF;
+}
+
+table.sortable th {
+	font-size: 70%;
+	background-color: #0D73A7;
+	color: #D6EEFA;
+}
+
+
+/* LINK TABLE ON RESULTS PAGES */
+table.resultlink {
+	margin-left:5px;
+	width : 90%;
+	color: #2D282E;
+	background-color: #D6EEFA;
+}
+
+
+table.resultlink td, table.resultlink th {
+	font-size: 70%;
+	padding-left:5px;
+	padding-right:3px;
+	text-align :left;
+}
+
+/* COLLAPSIBLE MENUS */
+
+.menu_heading_open {
+	background: url(images_html/arrow_box_down.gif) no-repeat 5px 7px;
+	text-decoration: none;
+	padding: 0px 6px 4px 21px;
+	margin: 0;
+	cursor: pointer;
+	font-weight: bold;
+	display: block;
+}
+
+.menu_heading_closed {
+	background: url(images_html/arrow_box.gif) no-repeat 5px 7px;
+	text-decoration: underline; 
+	display: block;
+	padding:0px 6px 4px 21px;
+	margin: 0;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.menu_collapsible {
+	display: none;
+	margin-bottom: 10px;
+	margin-left: 30px;
+}
+
+.menu_collapsible_display {
+   display: block;
+   margin-bottom: 10px;
+   margin-left: 30px;
+}
+</style>
+</head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+
+<script type="text/javascript">
+ <!-- 
+var stIsIE = /*@cc_on!@*/false;
+
+sorttable = {
+  init: function() {
+    // quit if this function has already been called
+    if (arguments.callee.done) return;
+    // flag this function so we don't do the same thing twice
+    arguments.callee.done = true;
+    // kill the timer
+    if (_timer) clearInterval(_timer);
+    
+    if (!document.createElement || !document.getElementsByTagName) return;
+    
+    sorttable.DATE_RE = /^(\d\d?)[\/\.-](\d\d?)[\/\.-]((\d\d)?\d\d)$/;
+    
+    forEach(document.getElementsByTagName('table'), function(table) {
+      if (table.className.search(/\bsortable\b/) != -1) {
+        sorttable.makeSortable(table);
+      }
+    });
+    
+  },
+  
+  makeSortable: function(table) {
+    if (table.getElementsByTagName('thead').length == 0) {
+      // table doesn't have a tHead. Since it should have, create one and
+      // put the first table row in it.
+      the = document.createElement('thead');
+      the.appendChild(table.rows[0]);
+      table.insertBefore(the,table.firstChild);
+    }
+    // Safari doesn't support table.tHead, sigh
+    if (table.tHead == null) table.tHead = table.getElementsByTagName('thead')[0];
+    
+    if (table.tHead.rows.length != 1) return; // can't cope with two header rows
+    
+    // Sorttable v1 put rows with a class of "sortbottom" at the bottom (as
+    // "total" rows, for example). This is B&R, since what you're supposed
+    // to do is put them in a tfoot. So, if there are sortbottom rows,
+    // for backwards compatibility, move them to tfoot (creating it if needed).
+    sortbottomrows = [];
+    for (var i=0; i<table.rows.length; i++) {
+      if (table.rows[i].className.search(/\bsortbottom\b/) != -1) {
+        sortbottomrows[sortbottomrows.length] = table.rows[i];
+      }
+    }
+    if (sortbottomrows) {
+      if (table.tFoot == null) {
+        // table doesn't have a tfoot. Create one.
+        tfo = document.createElement('tfoot');
+        table.appendChild(tfo);
+      }
+      for (var i=0; i<sortbottomrows.length; i++) {
+        tfo.appendChild(sortbottomrows[i]);
+      }
+      delete sortbottomrows;
+    }
+    
+    // work through each column and calculate its type
+    headrow = table.tHead.rows[0].cells;
+    for (var i=0; i<headrow.length; i++) {
+      // manually override the type with a sorttable_type attribute
+      if (!headrow[i].className.match(/\bsorttable_nosort\b/)) { // skip this col
+        mtch = headrow[i].className.match(/\bsorttable_([a-z0-9]+)\b/);
+        if (mtch) { override = mtch[1]; }
+	      if (mtch && typeof sorttable["sort_"+override] == 'function') {
+	        headrow[i].sorttable_sortfunction = sorttable["sort_"+override];
+	      } else {
+	        headrow[i].sorttable_sortfunction = sorttable.guessType(table,i);
+	      }
+	      // make it clickable to sort
+	      headrow[i].sorttable_columnindex = i;
+	      headrow[i].sorttable_tbody = table.tBodies[0];
+	      dean_addEvent(headrow[i],"click", function(e) {
+
+          if (this.className.search(/\bsorttable_sorted\b/) != -1) {
+            // if we're already sorted by this column, just 
+            // reverse the table, which is quicker
+            sorttable.reverse(this.sorttable_tbody);
+            this.className = this.className.replace('sorttable_sorted',
+                                                    'sorttable_sorted_reverse');
+            this.removeChild(document.getElementById('sorttable_sortfwdind'));
+            sortrevind = document.createElement('span');
+            sortrevind.id = "sorttable_sortrevind";
+            sortrevind.innerHTML = stIsIE ? '&nbsp<font face="webdings">5</font>' : '&nbsp;&#x25B4;';
+            this.appendChild(sortrevind);
+            return;
+          }
+          if (this.className.search(/\bsorttable_sorted_reverse\b/) != -1) {
+            // if we're already sorted by this column in reverse, just 
+            // re-reverse the table, which is quicker
+            sorttable.reverse(this.sorttable_tbody);
+            this.className = this.className.replace('sorttable_sorted_reverse',
+                                                    'sorttable_sorted');
+            this.removeChild(document.getElementById('sorttable_sortrevind'));
+            sortfwdind = document.createElement('span');
+            sortfwdind.id = "sorttable_sortfwdind";
+            sortfwdind.innerHTML = stIsIE ? '&nbsp<font face="webdings">6</font>' : '&nbsp;&#x25BE;';
+            this.appendChild(sortfwdind);
+            return;
+          }
+          
+          // remove sorttable_sorted classes
+          theadrow = this.parentNode;
+          forEach(theadrow.childNodes, function(cell) {
+            if (cell.nodeType == 1) { // an element
+              cell.className = cell.className.replace('sorttable_sorted_reverse','');
+              cell.className = cell.className.replace('sorttable_sorted','');
+            }
+          });
+          sortfwdind = document.getElementById('sorttable_sortfwdind');
+          if (sortfwdind) { sortfwdind.parentNode.removeChild(sortfwdind); }
+          sortrevind = document.getElementById('sorttable_sortrevind');
+          if (sortrevind) { sortrevind.parentNode.removeChild(sortrevind); }
+          
+          this.className += ' sorttable_sorted';
+          sortfwdind = document.createElement('span');
+          sortfwdind.id = "sorttable_sortfwdind";
+          sortfwdind.innerHTML = stIsIE ? '&nbsp<font face="webdings">6</font>' : '&nbsp;&#x25BE;';
+          this.appendChild(sortfwdind);
+
+	        // build an array to sort. This is a Schwartzian transform thing,
+	        // i.e., we "decorate" each row with the actual sort key,
+	        // sort based on the sort keys, and then put the rows back in order
+	        // which is a lot faster because you only do getInnerText once per row
+	        row_array = [];
+	        col = this.sorttable_columnindex;
+	        rows = this.sorttable_tbody.rows;
+	        for (var j=0; j<rows.length; j++) {
+	          row_array[row_array.length] = [sorttable.getInnerText(rows[j].cells[col]), rows[j]];
+	        }
+	        /* If you want a stable sort, uncomment the following line */
+	        //sorttable.shaker_sort(row_array, this.sorttable_sortfunction);
+	        /* and comment out this one */
+	        row_array.sort(this.sorttable_sortfunction);
+	        
+	        tb = this.sorttable_tbody;
+	        for (var j=0; j<row_array.length; j++) {
+	          tb.appendChild(row_array[j][1]);
+	        }
+	        
+	        delete row_array;
+	      });
+	    }
+    }
+  },
+  
+  guessType: function(table, column) {
+    // guess the type of a column based on its first non-blank row
+    sortfn = sorttable.sort_alpha;
+    for (var i=0; i<table.tBodies[0].rows.length; i++) {
+      text = sorttable.getInnerText(table.tBodies[0].rows[i].cells[column]);
+      if (text != '') {
+        if (text.match(/^-?[£$¤]?[\d,.]+%?$/)||text.match(/^\d+((\.|,)\d+)?(E|e)(\+|\-)\d+/)) {
+          return sorttable.sort_numeric;
+        }
+        // check for a date: dd/mm/yyyy or dd/mm/yy 
+        // can have / or . or - as separator
+        // can be mm/dd as well
+        possdate = text.match(sorttable.DATE_RE)
+        if (possdate) {
+          // looks like a date
+          first = parseInt(possdate[1]);
+          second = parseInt(possdate[2]);
+          if (first > 12) {
+            // definitely dd/mm
+            return sorttable.sort_ddmm;
+          } else if (second > 12) {
+            return sorttable.sort_mmdd;
+          } else {
+            // looks like a date, but we can't tell which, so assume
+            // that it's dd/mm (English imperialism!) and keep looking
+            sortfn = sorttable.sort_ddmm;
+          }
+        }
+      }
+    }
+    return sortfn;
+  },
+  
+  getInnerText: function(node) {
+    // gets the text we want to use for sorting for a cell.
+    // strips leading and trailing whitespace.
+    // this is *not* a generic getInnerText function; it's special to sorttable.
+    // for example, you can override the cell text with a customkey attribute.
+    // it also gets .value for <input> fields.
+    
+    hasInputs = (typeof node.getElementsByTagName == 'function') &&
+                 node.getElementsByTagName('input').length;
+    
+    if (node.getAttribute("sorttable_customkey") != null) {
+      return node.getAttribute("sorttable_customkey");
+    }
+    else if (typeof node.textContent != 'undefined' && !hasInputs) {
+      return node.textContent.replace(/^\s+|\s+$/g, '');
+    }
+    else if (typeof node.innerText != 'undefined' && !hasInputs) {
+      return node.innerText.replace(/^\s+|\s+$/g, '');
+    }
+    else if (typeof node.text != 'undefined' && !hasInputs) {
+      return node.text.replace(/^\s+|\s+$/g, '');
+    }
+    else {
+      switch (node.nodeType) {
+        case 3:
+          if (node.nodeName.toLowerCase() == 'input') {
+            return node.value.replace(/^\s+|\s+$/g, '');
+          }
+        case 4:
+          return node.nodeValue.replace(/^\s+|\s+$/g, '');
+          break;
+        case 1:
+        case 11:
+          var innerText = '';
+          for (var i = 0; i < node.childNodes.length; i++) {
+            innerText += sorttable.getInnerText(node.childNodes[i]);
+          }
+          return innerText.replace(/^\s+|\s+$/g, '');
+          break;
+        default:
+          return '';
+      }
+    }
+  },
+  
+  reverse: function(tbody) {
+    // reverse the rows in a tbody
+    newrows = [];
+    for (var i=0; i<tbody.rows.length; i++) {
+      newrows[newrows.length] = tbody.rows[i];
+    }
+    for (var i=newrows.length-1; i>=0; i--) {
+       tbody.appendChild(newrows[i]);
+    }
+    delete newrows;
+  },
+  
+  /* sort functions
+     each sort function takes two parameters, a and b
+     you are comparing a[0] and b[0] */
+  /* Numeric order */
+  sort_numeric: function(a,b) {
+	aa = parseFloat(a[0].replace(/[^0-9.\-eE]/g,''));
+	if (isNaN(aa)) aa = 0;
+	bb = parseFloat(b[0].replace(/[^0-9.\-eE]/g,''));
+	if (isNaN(bb)) bb = 0;
+	return aa-bb;
+    },
+//   sort_numeric: function(a,b) {
+//     aa = parseFloat(a[0].replace(/[^0-9.-eE]/g,''));
+//     if (isNaN(aa)) aa = 0;
+//     bb = parseFloat(b[0].replace(/[^0-9.-eE]/g,'')); 
+//     if (isNaN(bb)) bb = 0;    
+//     return aa-bb;
+//   },
+
+  /* alphabetical order */
+  sort_alpha: function(a,b) {
+    if (a[0]==b[0]) return 0;
+    if (a[0]<b[0]) return -1;
+    return 1;
+  },
+
+  /* sort dates formatted as ddmm (day first, month after) */
+  sort_ddmm: function(a,b) {
+    mtch = a[0].match(sorttable.DATE_RE);
+    y = mtch[3]; m = mtch[2]; d = mtch[1];
+    if (m.length == 1) m = '0'+m;
+    if (d.length == 1) d = '0'+d;
+    dt1 = y+m+d;
+    mtch = b[0].match(sorttable.DATE_RE);
+    y = mtch[3]; m = mtch[2]; d = mtch[1];
+    if (m.length == 1) m = '0'+m;
+    if (d.length == 1) d = '0'+d;
+    dt2 = y+m+d;
+    if (dt1==dt2) return 0;
+    if (dt1<dt2) return -1;
+    return 1;
+  },
+
+  /* sort dates formatted as mmdd (month first, day after) */
+  sort_mmdd: function(a,b) {
+    mtch = a[0].match(sorttable.DATE_RE);
+    y = mtch[3]; d = mtch[2]; m = mtch[1];
+    if (m.length == 1) m = '0'+m;
+    if (d.length == 1) d = '0'+d;
+    dt1 = y+m+d;
+    mtch = b[0].match(sorttable.DATE_RE);
+    y = mtch[3]; d = mtch[2]; m = mtch[1];
+    if (m.length == 1) m = '0'+m;
+    if (d.length == 1) d = '0'+d;
+    dt2 = y+m+d;
+    if (dt1==dt2) return 0;
+    if (dt1<dt2) return -1;
+    return 1;
+  },
+  
+  shaker_sort: function(list, comp_func) {
+    // A stable sort function to allow multi-level sorting of data
+    // see: http://en.wikipedia.org/wiki/Cocktail_sort
+    // thanks to Joseph Nahmias
+    var b = 0;
+    var t = list.length - 1;
+    var swap = true;
+
+    while(swap) {
+        swap = false;
+        for(var i = b; i < t; ++i) {
+            if ( comp_func(list[i], list[i+1]) > 0 ) {
+                var q = list[i]; list[i] = list[i+1]; list[i+1] = q;
+                swap = true;
+            }
+        } // for
+        t--;
+
+        if (!swap) break;
+
+        for(var i = t; i > b; --i) {
+            if ( comp_func(list[i], list[i-1]) < 0 ) {
+                var q = list[i]; list[i] = list[i-1]; list[i-1] = q;
+                swap = true;
+            }
+        } // for
+        b++;
+
+    } // while(swap)
+  }  
+}
+
+/* ******************************************************************
+   Supporting functions: bundled here to avoid depending on a library
+   ****************************************************************** */
+
+// Dean Edwards/Matthias Miller/John Resig
+
+/* for Mozilla/Opera9 */
+if (document.addEventListener) {
+    document.addEventListener("DOMContentLoaded", sorttable.init, false);
+}
+
+/* for Internet Explorer */
+/*@cc_on @*/
+/*@if (@_win32)
+    document.write("<script id=__ie_onload defer src=javascript:void(0)><\/script>");
+    var script = document.getElementById("__ie_onload");
+    script.onreadystatechange = function() {
+        if (this.readyState == "complete") {
+            sorttable.init(); // call the onload handler
+        }
+    };
+/*@end @*/
+
+/* for Safari */
+if (/WebKit/i.test(navigator.userAgent)) { // sniff
+    var _timer = setInterval(function() {
+        if (/loaded|complete/.test(document.readyState)) {
+            sorttable.init(); // call the onload handler
+        }
+    }, 10);
+}
+
+/* for other browsers */
+window.onload = sorttable.init;
+
+// written by Dean Edwards, 2005
+// with input from Tino Zijdel, Matthias Miller, Diego Perini
+
+// http://dean.edwards.name/weblog/2005/10/add-event/
+
+function dean_addEvent(element, type, handler) {
+	if (element.addEventListener) {
+		element.addEventListener(type, handler, false);
+	} else {
+		// assign each event handler a unique ID
+		if (!handler.$$guid) handler.$$guid = dean_addEvent.guid++;
+		// create a hash table of event types for the element
+		if (!element.events) element.events = {};
+		// create a hash table of event handlers for each element/event pair
+		var handlers = element.events[type];
+		if (!handlers) {
+			handlers = element.events[type] = {};
+			// store the existing event handler (if there is one)
+			if (element["on" + type]) {
+				handlers[0] = element["on" + type];
+			}
+		}
+		// store the event handler in the hash table
+		handlers[handler.$$guid] = handler;
+		// assign a global event handler to do all the work
+		element["on" + type] = handleEvent;
+	}
+};
+// a counter used to create unique IDs
+dean_addEvent.guid = 1;
+
+function removeEvent(element, type, handler) {
+	if (element.removeEventListener) {
+		element.removeEventListener(type, handler, false);
+	} else {
+		// delete the event handler from the hash table
+		if (element.events && element.events[type]) {
+			delete element.events[type][handler.$$guid];
+		}
+	}
+};
+
+function handleEvent(event) {
+	var returnValue = true;
+	// grab the event object (IE uses a global event object)
+	event = event || fixEvent(((this.ownerDocument || this.document || this).parentWindow || window).event);
+	// get a reference to the hash table of event handlers
+	var handlers = this.events[event.type];
+	// execute each event handler
+	for (var i in handlers) {
+		this.$$handleEvent = handlers[i];
+		if (this.$$handleEvent(event) === false) {
+			returnValue = false;
+		}
+	}
+	return returnValue;
+};
+
+function fixEvent(event) {
+	// add W3C standard event methods
+	event.preventDefault = fixEvent.preventDefault;
+	event.stopPropagation = fixEvent.stopPropagation;
+	return event;
+};
+fixEvent.preventDefault = function() {
+	this.returnValue = false;
+};
+fixEvent.stopPropagation = function() {
+  this.cancelBubble = true;
+}
+
+// Dean's forEach: http://dean.edwards.name/base/forEach.js
+/*
+	forEach, version 1.0
+	Copyright 2006, Dean Edwards
+	License: http://www.opensource.org/licenses/mit-license.php
+*/
+
+// array-like enumeration
+if (!Array.forEach) { // mozilla already supports this
+	Array.forEach = function(array, block, context) {
+		for (var i = 0; i < array.length; i++) {
+			block.call(context, array[i], i, array);
+		}
+	};
+}
+
+// generic enumeration
+Function.prototype.forEach = function(object, block, context) {
+	for (var key in object) {
+		if (typeof this.prototype[key] == "undefined") {
+			block.call(context, object[key], key, object);
+		}
+	}
+};
+
+// character enumeration
+String.forEach = function(string, block, context) {
+	Array.forEach(string.split(""), function(chr, index) {
+		block.call(context, chr, index, string);
+	});
+};
+
+// globally resolve forEach enumeration
+var forEach = function(object, block, context) {
+	if (object) {
+		var resolve = Object; // default
+		if (object instanceof Function) {
+			// functions have a "length" property
+			resolve = Function;
+		} else if (object.forEach instanceof Function) {
+			// the object implements a custom forEach method so use that
+			object.forEach(block, context);
+			return;
+		} else if (typeof object == "string") {
+			// the object is a string
+			resolve = String;
+		} else if (typeof object.length == "number") {
+			// the object is array-like
+			resolve = Array;
+		}
+		resolve.forEach(object, block, context);
+	}
+}
+
+// --> 
+</script>
+<body>
+<h1>One-to-n alignments</h1>
+<p><pre><b>Command:</b> compare-matrices  -v 1 -mode matches -format1 transfac -file1 $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/positions_7nt_m1/peak-motifs_positions_7nt_m1.tf -format2 tf -file2 $RSAT/public_html/data/motif_databases/JASPAR/jaspar_core_vertebrates_2013-11.tf -mode matches -DR -uth offset_rank 1 -lth w 5 -lth Wr 0.3 -lth cor 0.75 -lth Ncor 0.4 -return matrix_name,matrix_id,cor,Ncor,logoDP,NIcor,NsEucl,SSD,NSW,match_rank,width,strand,offset,consensus,alignments_1ton -sort Ncor -o $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/positions_7nt_m1/peak-motifs_positions_7nt_m1_vs_db_jaspar_core_vertebrates
+</pre></p>
+<h2>One-to-n matrix alignment; reference matrix: positions_7nt_m1_shift2	; 10 matrices	; sort_field=rank_mean</h2>
+<p><table class='sortable'>
+<tr><th>Matrix name</th><th>Aligned logos</th><th>cor</th>
+<th>Ncor</th>
+<th>logoDP</th>
+<th>NIcor</th>
+<th>NsEucl</th>
+<th>SSD</th>
+<th>NSW</th>
+<th>rcor</th>
+<th>rNcor</th>
+<th>rlogoDP</th>
+<th>rNIcor</th>
+<th>rNsEucl</th>
+<th>rSSD</th>
+<th>rNSW</th>
+<th>rank_mean</th>
+<th>match_rank</th>
+<th>Aligned matrices</th>
+</tr><tr>
+<td style='background-color: #FFFFFF;'>positions_7nt_m1_shift2 (positions_7nt_m1)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_positions_7nt_m1_vs_db_jaspar_core_vertebrates_aligned_logos/positions_7nt_m1_shift2.png'><img border=0 src='peak-motifs_positions_7nt_m1_vs_db_jaspar_core_vertebrates_aligned_logos/positions_7nt_m1_shift2.png'></a></td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;'><pre>; positions_7nt_m1; m=0 (reference); ncol1=15; shift=2; ncol=21; --byCCAGGTCACCtkg----
+; Alignment reference
+a	0	0	63	54	14	13	282	3	3	6	6	273	5	32	53	54	67	0	0	0	0
+c	0	0	79	94	235	262	2	5	5	5	275	4	254	210	68	66	72	0	0	0	0
+g	0	0	74	64	18	6	4	279	281	10	6	10	15	17	57	80	109	0	0	0	0
+t	0	0	75	79	24	10	3	4	2	270	4	4	17	32	113	91	43	0	0	0	0
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0112.1_shift4 (ESR1)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_positions_7nt_m1_vs_db_jaspar_core_vertebrates_aligned_logos/MA0112.1_shift4.png'><img border=0 src='peak-motifs_positions_7nt_m1_vs_db_jaspar_core_vertebrates_aligned_logos/MA0112.1_shift4.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.869</td>
+<td style='background-color: #FFFFFF;'>0.565</td>
+<td style='background-color: #FFFFFF;'>6.130</td>
+<td style='background-color: #FFFFFF;'>0.554</td>
+<td style='background-color: #FFFFFF;'>0.935</td>
+<td style='background-color: #FFFFFF;'>1.424</td>
+<td style='background-color: #FFFFFF;'>0.945</td>
+<td style='background-color: #FFFFFF;'>2</td>
+<td style='background-color: #FFFFFF;'>3</td>
+<td style='background-color: #FFFFFF;'>6</td>
+<td style='background-color: #FFFFFF;'>4</td>
+<td style='background-color: #FFFFFF;'>1</td>
+<td style='background-color: #FFFFFF;'>3</td>
+<td style='background-color: #FFFFFF;'>2</td>
+<td style='background-color: #FFFFFF;'>3.000</td>
+<td style='background-color: #FFFFFF;'>1</td>
+<td style='background-color: #FFFFFF;'><pre>; positions_7nt_m1 versus MA0112.1 (ESR1); m=1/9; ncol2=18; w=13; offset=2; strand=D; shift=4; score=      3; ----ccAGGTCaCcrtGrCCy
+; cor=0.869; Ncor=0.565; logoDP=6.130; NIcor=0.554; NsEucl=0.935; SSD=1.424; NSW=0.945; rcor=2; rNcor=3; rlogoDP=6; rNIcor=4; rNsEucl=1; rSSD=3; rNSW=2; rank_mean=3.000; match_rank=1
+a	0	0	0	0	1	1	7	2	0	0	0	6	1	2	3	1	1	5	0	0	2
+c	0	0	0	0	5	5	1	0	0	0	7	0	7	5	2	1	0	1	8	9	4
+g	0	0	0	0	1	1	1	7	9	0	2	2	1	1	4	1	8	3	0	0	0
+t	0	0	0	0	2	2	0	0	0	9	0	1	0	1	0	6	0	0	1	0	3
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0258.2_shift6 (ESR2)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_positions_7nt_m1_vs_db_jaspar_core_vertebrates_aligned_logos/MA0258.2_shift6.png'><img border=0 src='peak-motifs_positions_7nt_m1_vs_db_jaspar_core_vertebrates_aligned_logos/MA0258.2_shift6.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.887</td>
+<td style='background-color: #FFFFFF;'>0.513</td>
+<td style='background-color: #FFFFFF;'>6.109</td>
+<td style='background-color: #FFFFFF;'>0.504</td>
+<td style='background-color: #FFFFFF;'>0.935</td>
+<td style='background-color: #FFFFFF;'>1.036</td>
+<td style='background-color: #FFFFFF;'>0.953</td>
+<td style='background-color: #FFFFFF;'>1</td>
+<td style='background-color: #FFFFFF;'>5</td>
+<td style='background-color: #FFFFFF;'>7</td>
+<td style='background-color: #FFFFFF;'>5</td>
+<td style='background-color: #FFFFFF;'>3</td>
+<td style='background-color: #FFFFFF;'>1</td>
+<td style='background-color: #FFFFFF;'>1</td>
+<td style='background-color: #FFFFFF;'>3.286</td>
+<td style='background-color: #FFFFFF;'>2</td>
+<td style='background-color: #FFFFFF;'><pre>; positions_7nt_m1 versus MA0258.2 (ESR2); m=2/9; ncol2=15; w=11; offset=4; strand=D; shift=6; score= 3.2857; ------rGGTCAsmstGaCCy
+; cor=0.887; Ncor=0.513; logoDP=6.109; NIcor=0.504; NsEucl=0.935; SSD=1.036; NSW=0.953; rcor=1; rNcor=5; rlogoDP=7; rNIcor=5; rNsEucl=3; rSSD=1; rNSW=1; rank_mean=3.286; match_rank=2
+a	0	0	0	0	0	0	5410	429	59	74	0	8098	502	2092	1808	1602	1121	3278	434	1111	834
+c	0	0	0	0	0	0	96	0	0	147	7621	1	4202	3235	2510	975	398	2056	6469	5854	2708
+g	0	0	0	0	0	0	2563	7170	8143	989	533	57	2738	1688	2173	533	6658	1391	363	0	606
+t	0	0	0	0	0	0	174	644	41	7033	89	87	801	1228	1752	5133	66	1518	977	1278	4095
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0071.1_shift2 (RORA_1)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_positions_7nt_m1_vs_db_jaspar_core_vertebrates_aligned_logos/MA0071.1_shift2.png'><img border=0 src='peak-motifs_positions_7nt_m1_vs_db_jaspar_core_vertebrates_aligned_logos/MA0071.1_shift2.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.832</td>
+<td style='background-color: #FFFFFF;'>0.555</td>
+<td style='background-color: #FFFFFF;'>8.394</td>
+<td style='background-color: #FFFFFF;'>0.568</td>
+<td style='background-color: #FFFFFF;'>0.910</td>
+<td style='background-color: #FFFFFF;'>1.634</td>
+<td style='background-color: #FFFFFF;'>0.918</td>
+<td style='background-color: #FFFFFF;'>4</td>
+<td style='background-color: #FFFFFF;'>4</td>
+<td style='background-color: #FFFFFF;'>1</td>
+<td style='background-color: #FFFFFF;'>3</td>
+<td style='background-color: #FFFFFF;'>5</td>
+<td style='background-color: #FFFFFF;'>4</td>
+<td style='background-color: #FFFFFF;'>4</td>
+<td style='background-color: #FFFFFF;'>3.571</td>
+<td style='background-color: #FFFFFF;'>3</td>
+<td style='background-color: #FFFFFF;'><pre>; positions_7nt_m1 versus MA0071.1 (RORA_1); m=3/9; ncol2=10; w=10; offset=0; strand=D; shift=2; score= 3.5714; --wwcwAGGTCA---------
+; cor=0.832; Ncor=0.555; logoDP=8.394; NIcor=0.568; NsEucl=0.910; SSD=1.634; NSW=0.918; rcor=4; rNcor=4; rlogoDP=1; rNIcor=3; rNsEucl=5; rSSD=4; rNSW=4; rank_mean=3.571; match_rank=3
+a	0	0	15	9	6	11	21	0	0	0	0	25	0	0	0	0	0	0	0	0	0
+c	0	0	1	1	12	2	0	0	0	0	25	0	0	0	0	0	0	0	0	0	0
+g	0	0	2	0	4	5	4	25	25	0	0	0	0	0	0	0	0	0	0	0	0
+t	0	0	7	15	3	7	0	0	0	25	0	0	0	0	0	0	0	0	0	0	0
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0112.2_shift1 (ESR1)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_positions_7nt_m1_vs_db_jaspar_core_vertebrates_aligned_logos/MA0112.2_shift1.png'><img border=0 src='peak-motifs_positions_7nt_m1_vs_db_jaspar_core_vertebrates_aligned_logos/MA0112.2_shift1.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.819</td>
+<td style='background-color: #FFFFFF;'>0.614</td>
+<td style='background-color: #FFFFFF;'>3.822</td>
+<td style='background-color: #FFFFFF;'>0.578</td>
+<td style='background-color: #FFFFFF;'>0.935</td>
+<td style='background-color: #FFFFFF;'>1.909</td>
+<td style='background-color: #FFFFFF;'>0.936</td>
+<td style='background-color: #FFFFFF;'>7</td>
+<td style='background-color: #FFFFFF;'>1</td>
+<td style='background-color: #FFFFFF;'>9</td>
+<td style='background-color: #FFFFFF;'>2</td>
+<td style='background-color: #FFFFFF;'>2</td>
+<td style='background-color: #FFFFFF;'>8</td>
+<td style='background-color: #FFFFFF;'>3</td>
+<td style='background-color: #FFFFFF;'>4.571</td>
+<td style='background-color: #FFFFFF;'>4</td>
+<td style='background-color: #FFFFFF;'><pre>; positions_7nt_m1 versus MA0112.2 (ESR1); m=4/9; ncol2=20; w=15; offset=-1; strand=D; shift=1; score= 4.5714; -vkscmaGGtCAcccTGaCCy
+; cor=0.819; Ncor=0.614; logoDP=3.822; NIcor=0.578; NsEucl=0.935; SSD=1.909; NSW=0.936; rcor=7; rNcor=1; rlogoDP=9; rNIcor=2; rNsEucl=2; rSSD=8; rNSW=3; rank_mean=4.571; match_rank=4
+a	0	122	107	64	83	134	308	36	19	33	4	398	58	63	64	32	21	305	10	59	26
+c	0	120	80	173	229	232	28	8	18	41	394	13	250	276	258	19	22	106	436	353	165
+g	0	154	164	149	65	47	89	387	420	91	53	27	107	53	97	8	426	31	12	2	22
+t	0	71	117	82	93	57	48	43	18	310	24	37	60	83	56	416	6	33	17	61	262
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0141.1_shift0 (Esrrb)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_positions_7nt_m1_vs_db_jaspar_core_vertebrates_aligned_logos/MA0141.1_shift0.png'><img border=0 src='peak-motifs_positions_7nt_m1_vs_db_jaspar_core_vertebrates_aligned_logos/MA0141.1_shift0.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.832</td>
+<td style='background-color: #FFFFFF;'>0.489</td>
+<td style='background-color: #FFFFFF;'>7.555</td>
+<td style='background-color: #FFFFFF;'>0.497</td>
+<td style='background-color: #FFFFFF;'>0.909</td>
+<td style='background-color: #FFFFFF;'>1.660</td>
+<td style='background-color: #FFFFFF;'>0.917</td>
+<td style='background-color: #FFFFFF;'>5</td>
+<td style='background-color: #FFFFFF;'>6</td>
+<td style='background-color: #FFFFFF;'>4</td>
+<td style='background-color: #FFFFFF;'>6</td>
+<td style='background-color: #FFFFFF;'>6</td>
+<td style='background-color: #FFFFFF;'>5</td>
+<td style='background-color: #FFFFFF;'>5</td>
+<td style='background-color: #FFFFFF;'>5.286</td>
+<td style='background-color: #FFFFFF;'>5</td>
+<td style='background-color: #FFFFFF;'><pre>; positions_7nt_m1 versus MA0141.1 (Esrrb); m=5/9; ncol2=12; w=10; offset=-2; strand=D; shift=0; score= 5.2857; rgsyCAAGGTCA---------
+; cor=0.832; Ncor=0.489; logoDP=7.555; NIcor=0.497; NsEucl=0.909; SSD=1.660; NSW=0.917; rcor=5; rNcor=6; rlogoDP=4; rNIcor=6; rNsEucl=6; rSSD=5; rNSW=5; rank_mean=5.286; match_rank=5
+a	1054	673	420	259	310	3326	3567	32	21	182	9	3458	0	0	0	0	0	0	0	0	0
+c	800	829	1211	1250	2664	32	2	5	12	46	3376	20	0	0	0	0	0	0	0	0	0
+g	985	1370	1209	448	627	248	60	3586	3602	244	170	129	0	0	0	0	0	0	0	0	0
+t	793	767	805	1693	52	50	27	31	17	3175	85	27	0	0	0	0	0	0	0	0	0
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0592.1_shift3 (ESRRA)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_positions_7nt_m1_vs_db_jaspar_core_vertebrates_aligned_logos/MA0592.1_shift3.png'><img border=0 src='peak-motifs_positions_7nt_m1_vs_db_jaspar_core_vertebrates_aligned_logos/MA0592.1_shift3.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.801</td>
+<td style='background-color: #FFFFFF;'>0.587</td>
+<td style='background-color: #FFFFFF;'>8.096</td>
+<td style='background-color: #FFFFFF;'>0.582</td>
+<td style='background-color: #FFFFFF;'>0.904</td>
+<td style='background-color: #FFFFFF;'>2.221</td>
+<td style='background-color: #FFFFFF;'>0.899</td>
+<td style='background-color: #FFFFFF;'>8</td>
+<td style='background-color: #FFFFFF;'>2</td>
+<td style='background-color: #FFFFFF;'>2</td>
+<td style='background-color: #FFFFFF;'>1</td>
+<td style='background-color: #FFFFFF;'>8</td>
+<td style='background-color: #FFFFFF;'>9</td>
+<td style='background-color: #FFFFFF;'>9</td>
+<td style='background-color: #FFFFFF;'>5.571</td>
+<td style='background-color: #FFFFFF;'>6</td>
+<td style='background-color: #FFFFFF;'><pre>; positions_7nt_m1 versus MA0592.1 (ESRRA); m=6/9; ncol2=11; w=11; offset=1; strand=D; shift=3; score= 5.5714; ---yCAAGGTCAcm-------
+; cor=0.801; Ncor=0.587; logoDP=8.096; NIcor=0.582; NsEucl=0.904; SSD=2.221; NSW=0.899; rcor=8; rNcor=2; rlogoDP=2; rNIcor=1; rNsEucl=8; rSSD=9; rNSW=9; rank_mean=5.571; match_rank=6
+a	0	0	0	17	18	200	198	0	0	6	0	197	23	70	0	0	0	0	0	0	0
+c	0	0	0	118	174	2	0	0	0	0	205	1	108	54	0	0	0	0	0	0	0
+g	0	0	0	11	15	6	10	203	207	22	3	10	44	40	0	0	0	0	0	0	0
+t	0	0	0	62	1	0	0	5	1	180	0	0	33	44	0	0	0	0	0	0	0
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0141.2_shift0 (Esrrb)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_positions_7nt_m1_vs_db_jaspar_core_vertebrates_aligned_logos/MA0141.2_shift0.png'><img border=0 src='peak-motifs_positions_7nt_m1_vs_db_jaspar_core_vertebrates_aligned_logos/MA0141.2_shift0.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.831</td>
+<td style='background-color: #FFFFFF;'>0.489</td>
+<td style='background-color: #FFFFFF;'>7.647</td>
+<td style='background-color: #FFFFFF;'>0.496</td>
+<td style='background-color: #FFFFFF;'>0.909</td>
+<td style='background-color: #FFFFFF;'>1.674</td>
+<td style='background-color: #FFFFFF;'>0.916</td>
+<td style='background-color: #FFFFFF;'>6</td>
+<td style='background-color: #FFFFFF;'>7</td>
+<td style='background-color: #FFFFFF;'>3</td>
+<td style='background-color: #FFFFFF;'>7</td>
+<td style='background-color: #FFFFFF;'>7</td>
+<td style='background-color: #FFFFFF;'>6</td>
+<td style='background-color: #FFFFFF;'>6</td>
+<td style='background-color: #FFFFFF;'>6.000</td>
+<td style='background-color: #FFFFFF;'>7</td>
+<td style='background-color: #FFFFFF;'><pre>; positions_7nt_m1 versus MA0141.2 (Esrrb); m=7/9; ncol2=12; w=10; offset=-2; strand=D; shift=0; score=      6; rgsyCAAGGTCA---------
+; cor=0.831; Ncor=0.489; logoDP=7.647; NIcor=0.496; NsEucl=0.909; SSD=1.674; NSW=0.916; rcor=6; rNcor=7; rlogoDP=3; rNIcor=7; rNsEucl=7; rSSD=6; rNSW=6; rank_mean=6.000; match_rank=7
+a	1055	673	403	260	312	3347	3590	33	12	180	9	3478	0	0	0	0	0	0	0	0	0
+c	801	832	1212	1230	2653	32	2	2	11	43	3394	21	0	0	0	0	0	0	0	0	0
+g	984	1352	1212	449	630	248	60	3597	3622	243	167	128	0	0	0	0	0	0	0	0	0
+t	773	767	807	1702	51	27	6	29	16	3192	85	26	0	0	0	0	0	0	0	0	0
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0160.1_shift5 (NR4A2)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_positions_7nt_m1_vs_db_jaspar_core_vertebrates_aligned_logos/MA0160.1_shift5.png'><img border=0 src='peak-motifs_positions_7nt_m1_vs_db_jaspar_core_vertebrates_aligned_logos/MA0160.1_shift5.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.855</td>
+<td style='background-color: #FFFFFF;'>0.456</td>
+<td style='background-color: #FFFFFF;'>6.404</td>
+<td style='background-color: #FFFFFF;'>0.458</td>
+<td style='background-color: #FFFFFF;'>0.897</td>
+<td style='background-color: #FFFFFF;'>1.347</td>
+<td style='background-color: #FFFFFF;'>0.916</td>
+<td style='background-color: #FFFFFF;'>3</td>
+<td style='background-color: #FFFFFF;'>8</td>
+<td style='background-color: #FFFFFF;'>5</td>
+<td style='background-color: #FFFFFF;'>8</td>
+<td style='background-color: #FFFFFF;'>9</td>
+<td style='background-color: #FFFFFF;'>2</td>
+<td style='background-color: #FFFFFF;'>7</td>
+<td style='background-color: #FFFFFF;'>6.000</td>
+<td style='background-color: #FFFFFF;'>8</td>
+<td style='background-color: #FFFFFF;'><pre>; positions_7nt_m1 versus MA0160.1 (NR4A2); m=8/9; ncol2=8; w=8; offset=3; strand=D; shift=5; score=      6; -----aAGGTCAc--------
+; cor=0.855; Ncor=0.456; logoDP=6.404; NIcor=0.458; NsEucl=0.897; SSD=1.347; NSW=0.916; rcor=3; rNcor=8; rlogoDP=5; rNIcor=8; rNsEucl=9; rSSD=2; rNSW=7; rank_mean=6.000; match_rank=8
+a	0	0	0	0	0	8	13	0	3	2	0	14	3	0	0	0	0	0	0	0	0
+c	0	0	0	0	0	1	0	0	0	2	13	0	8	0	0	0	0	0	0	0	0
+g	0	0	0	0	0	3	1	13	11	0	0	0	2	0	0	0	0	0	0	0	0
+t	0	0	0	0	0	1	0	1	0	10	1	0	0	0	0	0	0	0	0	0	0
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0159.1_shift6 (RXR::RAR_DR5)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_positions_7nt_m1_vs_db_jaspar_core_vertebrates_aligned_logos/MA0159.1_shift6.png'><img border=0 src='peak-motifs_positions_7nt_m1_vs_db_jaspar_core_vertebrates_aligned_logos/MA0159.1_shift6.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.780</td>
+<td style='background-color: #FFFFFF;'>0.409</td>
+<td style='background-color: #FFFFFF;'>5.308</td>
+<td style='background-color: #FFFFFF;'>0.406</td>
+<td style='background-color: #FFFFFF;'>0.911</td>
+<td style='background-color: #FFFFFF;'>1.901</td>
+<td style='background-color: #FFFFFF;'>0.914</td>
+<td style='background-color: #FFFFFF;'>9</td>
+<td style='background-color: #FFFFFF;'>9</td>
+<td style='background-color: #FFFFFF;'>8</td>
+<td style='background-color: #FFFFFF;'>9</td>
+<td style='background-color: #FFFFFF;'>4</td>
+<td style='background-color: #FFFFFF;'>7</td>
+<td style='background-color: #FFFFFF;'>8</td>
+<td style='background-color: #FFFFFF;'>7.714</td>
+<td style='background-color: #FFFFFF;'>9</td>
+<td style='background-color: #FFFFFF;'><pre>; positions_7nt_m1 versus MA0159.1 (RXR::RAR_DR5); m=9/9; ncol2=17; w=11; offset=4; strand=D; shift=6; score= 7.7143; ------rGkTCAysgrsAGKT
+; cor=0.780; Ncor=0.409; logoDP=5.308; NIcor=0.406; NsEucl=0.911; SSD=1.901; NSW=0.914; rcor=9; rNcor=9; rlogoDP=8; rNIcor=9; rNsEucl=4; rSSD=7; rNSW=8; rank_mean=7.714; match_rank=9
+a	0	0	0	0	0	0	12	0	1	0	0	22	4	5	5	13	5	17	1	0	2
+c	0	0	0	0	0	0	0	0	0	0	18	0	7	8	4	1	6	3	1	1	1
+g	0	0	0	0	0	0	11	23	13	1	3	1	5	9	11	7	12	3	20	16	3
+t	0	0	0	0	0	0	0	0	9	22	2	0	7	1	3	2	0	0	1	6	17
+</pre></td>
+</tr>
+</table></p>
+</body></html>

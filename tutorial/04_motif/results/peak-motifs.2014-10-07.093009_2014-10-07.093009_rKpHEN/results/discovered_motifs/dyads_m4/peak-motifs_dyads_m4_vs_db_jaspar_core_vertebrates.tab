@@ -1,0 +1,85 @@
+; compare-matrices  -v 1 -mode matches -format1 transfac -file1 $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/dyads_m4/peak-motifs_dyads_m4.tf -format2 tf -file2 $RSAT/public_html/data/motif_databases/JASPAR/jaspar_core_vertebrates_2013-11.tf -mode matches -DR -uth offset_rank 1 -lth w 5 -lth Wr 0.3 -lth cor 0.75 -lth Ncor 0.4 -return matrix_name,matrix_id,cor,Ncor,logoDP,NIcor,NsEucl,SSD,NSW,match_rank,width,strand,offset,consensus,alignments_1ton -sort Ncor -o $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/dyads_m4/peak-motifs_dyads_m4_vs_db_jaspar_core_vertebrates
+; Program version       	1.118
+; Input files
+;	file2 	/vh/rsat/rsat/public_html/data/motif_databases/JASPAR/jaspar_core_vertebrates_2013-11.tf
+;	file1 	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/dyads_m4/peak-motifs_dyads_m4.tf
+; Output files
+;	alignments_1ton	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/dyads_m4/peak-motifs_dyads_m4_vs_db_jaspar_core_vertebrates_alignments_1ton.tab
+;	match_table_txt	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/dyads_m4/peak-motifs_dyads_m4_vs_db_jaspar_core_vertebrates.tab
+;	html_index   	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/dyads_m4/peak-motifs_dyads_m4_vs_db_jaspar_core_vertebrates_index.html
+;	alignments_1ton_html	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/dyads_m4/peak-motifs_dyads_m4_vs_db_jaspar_core_vertebrates_alignments_1ton.html
+;	match_table_html	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/dyads_m4/peak-motifs_dyads_m4_vs_db_jaspar_core_vertebrates.html
+;	prefix       	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/dyads_m4/peak-motifs_dyads_m4_vs_db_jaspar_core_vertebrates
+; Matrices
+;	file1	1 matrices	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/dyads_m4/peak-motifs_dyads_m4.tf
+;		file1	1	13	78	cyAAGGTCACCst
+;	file2	263 matrices	/vh/rsat/rsat/public_html/data/motif_databases/JASPAR/jaspar_core_vertebrates_2013-11.tf
+;		file2		1		11		26		wwyTGyGGTww
+;		file2		2		9		185		GCCcbrrGs
+;		file2		3		6		20		CACGTG
+;		file2		4		6		24		yGCGTG
+;		file2		5		22		24		hwwrGmACryyvtGTwCchrms
+;		file2		6		11		40		CTAGGTGTGAA
+;		file2		7		20		12		drvkcasygrwGcRkrrCsr
+;		file2		8		14		13		TGAmCTTTGmmCyt
+;		file2		9		12		16		bbkGrTGACGym
+;		file2		10		12		39		rrrTGCAATmcc
+;		file2		11		8		10		TTTsGCGC
+;		...	253 more matrices
+; Column content
+;	1	id1          	Identifier of the first matrix
+;	2	id2          	Identifier of the second matrix
+;	3	name1        	Name of the first matrix
+;	4	name2        	Name of the second matrix
+;	5	cor          	Pearson coefficient of correlation between frequency matrices
+;	6	Ncor         	Normalized correlation. Ncor = cor * Wr
+;	7	logoDP       	Dot product between the logo matrices.
+;	8	NIcor        	Normalized Pearson correlation between the information content matrices. NIcor = Icor * Wr
+;	9	NSW          	Normalized Sandelin-Wasserman similarity. NSW = SW/w
+;	10	SSD          	sum of squared distance.
+;	11	NsEucl       	relative Euclidian similarity. NsEucl = (max(dEucl) - dEucl)/max(dEucl)
+;	12	w1           	Width of the first matrix
+;	13	w2           	Width of the second matrix
+;	14	w            	Alignment length (number of overlapping columns between matrix 1 and matrix 2, as a function of the offset)
+;	15	W            	Total alignment length (overlapping + non-overlapping columns). W = w1 + w2 - w
+;	16	Wr           	Relative alignment length (overlap divided by the total alignemnt length). Wr = w/W
+;	17	wr1          	Alignment length relative to the width of the first matrix. wr1 = w/w1
+;	18	wr2          	Alignment length relative to the width of the second matrix. wr2 = w/w2
+;	19	strand       	"strand", i.e. orientation of matrix 2 relative to matrix 1 (D=direct;  R=reverse)
+;	20	offset       	shift of the second matrix relative to the first matrix (negative:left; positive: right)
+;	21	consensus1   	IUPAC consensus of matrix 1 (dots represent non-aligned columns)
+;	22	consensus2   	IUPAC consensus of matrix 2 (dots represent non-aligned columns)
+;	23	rcor         	Matching rank for cor
+;	24	rNcor        	Matching rank for Ncor
+;	25	rlogoDP      	Matching rank for logoDP
+;	26	rNIcor       	Matching rank for NIcor
+;	27	rNsEucl      	Matching rank for NsEucl
+;	28	rSSD         	Matching rank for SSD
+;	29	rNSW         	Matching rank for NSW
+;	30	rank_mean    	Mean of the matching ranks on all selected metrics
+;	31	match_rank   	Rank of the match (sorting by rank_mean)
+#id1	id2	name1	name2	cor	Ncor	logoDP	NIcor	NSW	SSD	NsEucl	w1	w2	w	W	Wr	wr1	wr2	strand	offset	consensus1	consensus2	rcor	rNcor	rlogoDP	rNIcor	rNsEucl	rSSD	rNSW	rank_mean	match_rank
+dyads_m4	MA0071.1	dyads_m4	RORA_1	0.936	0.601	10.432	0.608	0.966	0.6184	0.93821	13	10	9	14	0.6429	0.6923	0.9000	D	-1	cyAAGGTCA....	.wcwAGGTCA                    	4	2	2	2	3	4	4	3.0000	1
+dyads_m4	MA0141.2	dyads_m4	Esrrb	0.968	0.545	9.638	0.544	0.983	0.3124	0.95608	13	12	9	16	0.5625	0.6923	0.7500	D	-3	cyAAGGTCA....	...yCAAGGTCA                  	1	5	5	4	2	2	2	3.0000	2
+dyads_m4	MA0141.1	dyads_m4	Esrrb	0.968	0.545	9.506	0.544	0.983	0.3121	0.95611	13	12	9	16	0.5625	0.6923	0.7500	D	-3	cyAAGGTCA....	...yCAAGGTCA                  	2	6	6	5	1	1	1	3.1429	3
+dyads_m4	MA0160.1	dyads_m4	NR4A2	0.964	0.593	8.026	0.586	0.968	0.5162	0.93649	13	8	8	13	0.6154	0.6154	1.0000	D	2	..AAGGTCAC...	aAGGTCAc                      	3	3	8	3	4	3	3	3.8571	4
+dyads_m4	MA0592.1	dyads_m4	ESRRA	0.883	0.747	10.206	0.719	0.936	1.4062	0.92377	13	11	11	13	0.8462	0.8462	1.0000	D	0	cyAAGGTCACC..	yCAAGGTCAcm                   	6	1	3	1	6	6	6	4.1429	5
+dyads_m4	MA0258.2	dyads_m4	ESR2	0.899	0.500	7.603	0.485	0.941	1.1826	0.92310	13	15	10	18	0.5556	0.7692	0.6667	D	3	...AGGTCACCst	rGGTCAsmst.....               	5	10	10	8	7	5	5	7.1429	6
+dyads_m4	MA0112.1	dyads_m4	ESR1	0.851	0.538	7.739	0.537	0.927	1.7605	0.92182	13	18	12	19	0.6316	0.9231	0.6667	D	1	.yAAGGTCACCst	ccAGGTCaCcrt......            	7	7	9	6	8	8	7	7.4286	7
+dyads_m4	MA0112.2	dyads_m4	ESR1	0.841	0.547	4.679	0.520	0.926	1.9210	0.92461	13	20	13	20	0.6500	1.0000	0.6500	D	-2	cyAAGGTCACCst	..scmaGGtCAcccT.....          	8	4	13	7	5	10	8	7.8571	8
+dyads_m4	MA0505.1	dyads_m4	Nr5a2	0.788	0.510	8.750	0.473	0.887	2.4828	0.89871	13	15	11	17	0.6471	0.8462	0.7333	D	-4	cyAAGGTCACC..	....TCAAGGyCAgs               	10	9	7	9	12	12	14	10.4286	9
+dyads_m4	MA0065.1	dyads_m4	PPARG::RXRA	0.787	0.450	9.805	0.420	0.890	2.6293	0.90445	13	20	12	21	0.5714	0.9231	0.6000	D	-8	cyAAGGTCACCs.	........CAAAGGTCAymk  	11	12	4	12	11	14	12	10.8571	10
+dyads_m4	MA0258.1	dyads_m4	ESR2	0.774	0.489	6.472	0.471	0.894	2.5419	0.90605	13	18	12	19	0.6316	0.9231	0.6667	D	1	.yAAGGTCACCst	cwrGGTCAsgkT......            	13	11	12	10	10	13	11	11.4286	11
+dyads_m4	MA0017.1	dyads_m4	NR2F1	0.821	0.410	0.698	-0.117	0.904	1.7252	0.89680	13	14	9	18	0.5000	0.6923	0.6429	R	-5	cyAAGGTCA....	.....CAAAGKTCA        	9	15	16	16	13	7	9	12.1429	12
+dyads_m4	MA0494.1	dyads_m4	Nr1h3::Rxra	0.764	0.523	0.784	-0.068	0.895	2.7213	0.91027	13	19	13	19	0.6842	1.0000	0.6842	R	0	cyAAGGTCACCst	CMRRGGTYACYYB......           	14	8	15	15	9	15	10	12.2857	13
+dyads_m4	MA0115.1	dyads_m4	NR1H2::RXRA	0.760	0.440	12.314	0.422	0.851	3.2879	0.88344	13	17	11	19	0.5789	0.8462	0.6471	D	-6	cyAAGGTCACC..	......CAAAGGTCAAc             	15	13	1	11	15	16	16	12.4286	14
+dyads_m4	MA0595.1	dyads_m4	SREBF1	0.786	0.419	7.218	0.408	0.889	1.7805	0.88206	13	10	8	15	0.5333	0.6154	0.8000	D	5	.....GTCACCst	rTCACcCC..                    	12	14	11	13	16	9	13	12.5714	15
+dyads_m4	MA0114.1	dyads_m4	HNF4A	0.758	0.401	3.463	0.369	0.884	2.0965	0.88624	13	13	9	17	0.5294	0.6923	0.6923	D	-4	cyAAGGTCA....	....CAAAGkyCa                 	16	16	14	14	14	11	15	14.2857	16
+; Host name	biow
+; Job started	2014-10-07.093735
+; Job done	2014-10-07.093741
+; Seconds	2.48
+;	user	2.48
+;	system	0.13
+;	cuser	3.63
+;	csystem	0.49

@@ -1,0 +1,61 @@
+; convert-matrix  -v 1 -i $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5/peak-motifs_oligos-2str-noov_7nt_mkv5_pssm_count_matrices.tf -from tf -to tab -return counts -return logo -logo_format png,pdf -logo_file $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5/peak-motifs_oligos-2str-noov_7nt_mkv5_pssm_count_matrices_logo -o $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5/peak-motifs_oligos-2str-noov_7nt_mkv5_pssm_count_matrices_links.txt
+; Input files
+;	input	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5/peak-motifs_oligos-2str-noov_7nt_mkv5_pssm_count_matrices.tf
+; Input format        	tf
+; Output files
+;	output	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5/peak-motifs_oligos-2str-noov_7nt_mkv5_pssm_count_matrices_links.txt
+; Output format       	tab
+; pseudo-weight       	1
+a	107	133	3	1	463	1	450	0	1	83	110
+c	184	124	487	482	4	491	3	495	482	223	112
+g	120	154	5	9	25	1	42	0	12	75	152
+t	84	84	0	3	3	2	0	0	0	114	121
+//
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5//peak-motifs_oligos-2str-noov_7nt_mkv5_pssm_count_matrices_logo_m1.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5//peak-motifs_oligos-2str-noov_7nt_mkv5_pssm_count_matrices_logo_m1.pdf
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5//peak-motifs_oligos-2str-noov_7nt_mkv5_pssm_count_matrices_logo_m1_rc.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5//peak-motifs_oligos-2str-noov_7nt_mkv5_pssm_count_matrices_logo_m1_rc.pdf
+a	236	279	0	2	812	0	0	2	805	92	215
+c	164	183	4	1	0	812	0	812	1	220	217
+g	229	255	0	811	2	2	2	0	8	245	181
+t	185	97	810	0	0	0	812	0	0	257	201
+//
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5//peak-motifs_oligos-2str-noov_7nt_mkv5_pssm_count_matrices_logo_m2.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5//peak-motifs_oligos-2str-noov_7nt_mkv5_pssm_count_matrices_logo_m2.pdf
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5//peak-motifs_oligos-2str-noov_7nt_mkv5_pssm_count_matrices_logo_m2_rc.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5//peak-motifs_oligos-2str-noov_7nt_mkv5_pssm_count_matrices_logo_m2_rc.pdf
+a	185	133	557	0	6	5	7	1	557	196	213
+c	88	130	0	0	0	1	1	0	0	95	90
+g	103	105	0	0	2	1	1	0	0	81	94
+t	181	189	0	557	549	550	548	556	0	185	160
+//
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5//peak-motifs_oligos-2str-noov_7nt_mkv5_pssm_count_matrices_logo_m3.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5//peak-motifs_oligos-2str-noov_7nt_mkv5_pssm_count_matrices_logo_m3.pdf
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5//peak-motifs_oligos-2str-noov_7nt_mkv5_pssm_count_matrices_logo_m3_rc.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5//peak-motifs_oligos-2str-noov_7nt_mkv5_pssm_count_matrices_logo_m3_rc.pdf
+a	195	115	1	0	1	0	700	0	0	114	214
+c	160	206	746	744	1	748	20	10	2	274	219
+g	237	283	1	5	20	1	29	739	746	239	151
+t	157	145	1	0	727	0	0	0	1	122	165
+//
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5//peak-motifs_oligos-2str-noov_7nt_mkv5_pssm_count_matrices_logo_m4.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5//peak-motifs_oligos-2str-noov_7nt_mkv5_pssm_count_matrices_logo_m4.pdf
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5//peak-motifs_oligos-2str-noov_7nt_mkv5_pssm_count_matrices_logo_m4_rc.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5//peak-motifs_oligos-2str-noov_7nt_mkv5_pssm_count_matrices_logo_m4_rc.pdf
+a	122	95	1	1	0	0	4	3	0	98	91
+c	288	176	725	680	704	718	1	734	731	306	278
+g	175	277	12	55	36	20	102	2	10	158	233
+t	156	193	3	5	1	3	634	2	0	179	139
+//
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5//peak-motifs_oligos-2str-noov_7nt_mkv5_pssm_count_matrices_logo_m5.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5//peak-motifs_oligos-2str-noov_7nt_mkv5_pssm_count_matrices_logo_m5.pdf
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5//peak-motifs_oligos-2str-noov_7nt_mkv5_pssm_count_matrices_logo_m5_rc.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5//peak-motifs_oligos-2str-noov_7nt_mkv5_pssm_count_matrices_logo_m5_rc.pdf
+; Host name	biow
+; Job started	2014-10-07.093149
+; Job done	2014-10-07.093153
+; Seconds	0.33
+;	user	0.34
+;	system	0.05
+;	cuser	3.66
+;	csystem	0.58

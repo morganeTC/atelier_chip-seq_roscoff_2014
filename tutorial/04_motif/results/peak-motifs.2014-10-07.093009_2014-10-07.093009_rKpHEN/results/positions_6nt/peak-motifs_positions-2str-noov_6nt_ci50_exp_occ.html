@@ -1,0 +1,3434 @@
+<html>
+<header>
+<title>/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/positions_6nt/peak-motifs_positions-2str-noov_6nt_ci50_exp_occ.tab</title>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+
+<script type="text/javascript">
+ <!-- 
+var stIsIE = /*@cc_on!@*/false;
+
+sorttable = {
+  init: function() {
+    // quit if this function has already been called
+    if (arguments.callee.done) return;
+    // flag this function so we don't do the same thing twice
+    arguments.callee.done = true;
+    // kill the timer
+    if (_timer) clearInterval(_timer);
+    
+    if (!document.createElement || !document.getElementsByTagName) return;
+    
+    sorttable.DATE_RE = /^(\d\d?)[\/\.-](\d\d?)[\/\.-]((\d\d)?\d\d)$/;
+    
+    forEach(document.getElementsByTagName('table'), function(table) {
+      if (table.className.search(/\bsortable\b/) != -1) {
+        sorttable.makeSortable(table);
+      }
+    });
+    
+  },
+  
+  makeSortable: function(table) {
+    if (table.getElementsByTagName('thead').length == 0) {
+      // table doesn't have a tHead. Since it should have, create one and
+      // put the first table row in it.
+      the = document.createElement('thead');
+      the.appendChild(table.rows[0]);
+      table.insertBefore(the,table.firstChild);
+    }
+    // Safari doesn't support table.tHead, sigh
+    if (table.tHead == null) table.tHead = table.getElementsByTagName('thead')[0];
+    
+    if (table.tHead.rows.length != 1) return; // can't cope with two header rows
+    
+    // Sorttable v1 put rows with a class of "sortbottom" at the bottom (as
+    // "total" rows, for example). This is B&R, since what you're supposed
+    // to do is put them in a tfoot. So, if there are sortbottom rows,
+    // for backwards compatibility, move them to tfoot (creating it if needed).
+    sortbottomrows = [];
+    for (var i=0; i<table.rows.length; i++) {
+      if (table.rows[i].className.search(/\bsortbottom\b/) != -1) {
+        sortbottomrows[sortbottomrows.length] = table.rows[i];
+      }
+    }
+    if (sortbottomrows) {
+      if (table.tFoot == null) {
+        // table doesn't have a tfoot. Create one.
+        tfo = document.createElement('tfoot');
+        table.appendChild(tfo);
+      }
+      for (var i=0; i<sortbottomrows.length; i++) {
+        tfo.appendChild(sortbottomrows[i]);
+      }
+      delete sortbottomrows;
+    }
+    
+    // work through each column and calculate its type
+    headrow = table.tHead.rows[0].cells;
+    for (var i=0; i<headrow.length; i++) {
+      // manually override the type with a sorttable_type attribute
+      if (!headrow[i].className.match(/\bsorttable_nosort\b/)) { // skip this col
+        mtch = headrow[i].className.match(/\bsorttable_([a-z0-9]+)\b/);
+        if (mtch) { override = mtch[1]; }
+	      if (mtch && typeof sorttable["sort_"+override] == 'function') {
+	        headrow[i].sorttable_sortfunction = sorttable["sort_"+override];
+	      } else {
+	        headrow[i].sorttable_sortfunction = sorttable.guessType(table,i);
+	      }
+	      // make it clickable to sort
+	      headrow[i].sorttable_columnindex = i;
+	      headrow[i].sorttable_tbody = table.tBodies[0];
+	      dean_addEvent(headrow[i],"click", function(e) {
+
+          if (this.className.search(/\bsorttable_sorted\b/) != -1) {
+            // if we're already sorted by this column, just 
+            // reverse the table, which is quicker
+            sorttable.reverse(this.sorttable_tbody);
+            this.className = this.className.replace('sorttable_sorted',
+                                                    'sorttable_sorted_reverse');
+            this.removeChild(document.getElementById('sorttable_sortfwdind'));
+            sortrevind = document.createElement('span');
+            sortrevind.id = "sorttable_sortrevind";
+            sortrevind.innerHTML = stIsIE ? '&nbsp<font face="webdings">5</font>' : '&nbsp;&#x25B4;';
+            this.appendChild(sortrevind);
+            return;
+          }
+          if (this.className.search(/\bsorttable_sorted_reverse\b/) != -1) {
+            // if we're already sorted by this column in reverse, just 
+            // re-reverse the table, which is quicker
+            sorttable.reverse(this.sorttable_tbody);
+            this.className = this.className.replace('sorttable_sorted_reverse',
+                                                    'sorttable_sorted');
+            this.removeChild(document.getElementById('sorttable_sortrevind'));
+            sortfwdind = document.createElement('span');
+            sortfwdind.id = "sorttable_sortfwdind";
+            sortfwdind.innerHTML = stIsIE ? '&nbsp<font face="webdings">6</font>' : '&nbsp;&#x25BE;';
+            this.appendChild(sortfwdind);
+            return;
+          }
+          
+          // remove sorttable_sorted classes
+          theadrow = this.parentNode;
+          forEach(theadrow.childNodes, function(cell) {
+            if (cell.nodeType == 1) { // an element
+              cell.className = cell.className.replace('sorttable_sorted_reverse','');
+              cell.className = cell.className.replace('sorttable_sorted','');
+            }
+          });
+          sortfwdind = document.getElementById('sorttable_sortfwdind');
+          if (sortfwdind) { sortfwdind.parentNode.removeChild(sortfwdind); }
+          sortrevind = document.getElementById('sorttable_sortrevind');
+          if (sortrevind) { sortrevind.parentNode.removeChild(sortrevind); }
+          
+          this.className += ' sorttable_sorted';
+          sortfwdind = document.createElement('span');
+          sortfwdind.id = "sorttable_sortfwdind";
+          sortfwdind.innerHTML = stIsIE ? '&nbsp<font face="webdings">6</font>' : '&nbsp;&#x25BE;';
+          this.appendChild(sortfwdind);
+
+	        // build an array to sort. This is a Schwartzian transform thing,
+	        // i.e., we "decorate" each row with the actual sort key,
+	        // sort based on the sort keys, and then put the rows back in order
+	        // which is a lot faster because you only do getInnerText once per row
+	        row_array = [];
+	        col = this.sorttable_columnindex;
+	        rows = this.sorttable_tbody.rows;
+	        for (var j=0; j<rows.length; j++) {
+	          row_array[row_array.length] = [sorttable.getInnerText(rows[j].cells[col]), rows[j]];
+	        }
+	        /* If you want a stable sort, uncomment the following line */
+	        //sorttable.shaker_sort(row_array, this.sorttable_sortfunction);
+	        /* and comment out this one */
+	        row_array.sort(this.sorttable_sortfunction);
+	        
+	        tb = this.sorttable_tbody;
+	        for (var j=0; j<row_array.length; j++) {
+	          tb.appendChild(row_array[j][1]);
+	        }
+	        
+	        delete row_array;
+	      });
+	    }
+    }
+  },
+  
+  guessType: function(table, column) {
+    // guess the type of a column based on its first non-blank row
+    sortfn = sorttable.sort_alpha;
+    for (var i=0; i<table.tBodies[0].rows.length; i++) {
+      text = sorttable.getInnerText(table.tBodies[0].rows[i].cells[column]);
+      if (text != '') {
+        if (text.match(/^-?[£$¤]?[\d,.]+%?$/)||text.match(/^\d+((\.|,)\d+)?(E|e)(\+|\-)\d+/)) {
+          return sorttable.sort_numeric;
+        }
+        // check for a date: dd/mm/yyyy or dd/mm/yy 
+        // can have / or . or - as separator
+        // can be mm/dd as well
+        possdate = text.match(sorttable.DATE_RE)
+        if (possdate) {
+          // looks like a date
+          first = parseInt(possdate[1]);
+          second = parseInt(possdate[2]);
+          if (first > 12) {
+            // definitely dd/mm
+            return sorttable.sort_ddmm;
+          } else if (second > 12) {
+            return sorttable.sort_mmdd;
+          } else {
+            // looks like a date, but we can't tell which, so assume
+            // that it's dd/mm (English imperialism!) and keep looking
+            sortfn = sorttable.sort_ddmm;
+          }
+        }
+      }
+    }
+    return sortfn;
+  },
+  
+  getInnerText: function(node) {
+    // gets the text we want to use for sorting for a cell.
+    // strips leading and trailing whitespace.
+    // this is *not* a generic getInnerText function; it's special to sorttable.
+    // for example, you can override the cell text with a customkey attribute.
+    // it also gets .value for <input> fields.
+    
+    hasInputs = (typeof node.getElementsByTagName == 'function') &&
+                 node.getElementsByTagName('input').length;
+    
+    if (node.getAttribute("sorttable_customkey") != null) {
+      return node.getAttribute("sorttable_customkey");
+    }
+    else if (typeof node.textContent != 'undefined' && !hasInputs) {
+      return node.textContent.replace(/^\s+|\s+$/g, '');
+    }
+    else if (typeof node.innerText != 'undefined' && !hasInputs) {
+      return node.innerText.replace(/^\s+|\s+$/g, '');
+    }
+    else if (typeof node.text != 'undefined' && !hasInputs) {
+      return node.text.replace(/^\s+|\s+$/g, '');
+    }
+    else {
+      switch (node.nodeType) {
+        case 3:
+          if (node.nodeName.toLowerCase() == 'input') {
+            return node.value.replace(/^\s+|\s+$/g, '');
+          }
+        case 4:
+          return node.nodeValue.replace(/^\s+|\s+$/g, '');
+          break;
+        case 1:
+        case 11:
+          var innerText = '';
+          for (var i = 0; i < node.childNodes.length; i++) {
+            innerText += sorttable.getInnerText(node.childNodes[i]);
+          }
+          return innerText.replace(/^\s+|\s+$/g, '');
+          break;
+        default:
+          return '';
+      }
+    }
+  },
+  
+  reverse: function(tbody) {
+    // reverse the rows in a tbody
+    newrows = [];
+    for (var i=0; i<tbody.rows.length; i++) {
+      newrows[newrows.length] = tbody.rows[i];
+    }
+    for (var i=newrows.length-1; i>=0; i--) {
+       tbody.appendChild(newrows[i]);
+    }
+    delete newrows;
+  },
+  
+  /* sort functions
+     each sort function takes two parameters, a and b
+     you are comparing a[0] and b[0] */
+  /* Numeric order */
+  sort_numeric: function(a,b) {
+	aa = parseFloat(a[0].replace(/[^0-9.\-eE]/g,''));
+	if (isNaN(aa)) aa = 0;
+	bb = parseFloat(b[0].replace(/[^0-9.\-eE]/g,''));
+	if (isNaN(bb)) bb = 0;
+	return aa-bb;
+    },
+//   sort_numeric: function(a,b) {
+//     aa = parseFloat(a[0].replace(/[^0-9.-eE]/g,''));
+//     if (isNaN(aa)) aa = 0;
+//     bb = parseFloat(b[0].replace(/[^0-9.-eE]/g,'')); 
+//     if (isNaN(bb)) bb = 0;    
+//     return aa-bb;
+//   },
+
+  /* alphabetical order */
+  sort_alpha: function(a,b) {
+    if (a[0]==b[0]) return 0;
+    if (a[0]<b[0]) return -1;
+    return 1;
+  },
+
+  /* sort dates formatted as ddmm (day first, month after) */
+  sort_ddmm: function(a,b) {
+    mtch = a[0].match(sorttable.DATE_RE);
+    y = mtch[3]; m = mtch[2]; d = mtch[1];
+    if (m.length == 1) m = '0'+m;
+    if (d.length == 1) d = '0'+d;
+    dt1 = y+m+d;
+    mtch = b[0].match(sorttable.DATE_RE);
+    y = mtch[3]; m = mtch[2]; d = mtch[1];
+    if (m.length == 1) m = '0'+m;
+    if (d.length == 1) d = '0'+d;
+    dt2 = y+m+d;
+    if (dt1==dt2) return 0;
+    if (dt1<dt2) return -1;
+    return 1;
+  },
+
+  /* sort dates formatted as mmdd (month first, day after) */
+  sort_mmdd: function(a,b) {
+    mtch = a[0].match(sorttable.DATE_RE);
+    y = mtch[3]; d = mtch[2]; m = mtch[1];
+    if (m.length == 1) m = '0'+m;
+    if (d.length == 1) d = '0'+d;
+    dt1 = y+m+d;
+    mtch = b[0].match(sorttable.DATE_RE);
+    y = mtch[3]; d = mtch[2]; m = mtch[1];
+    if (m.length == 1) m = '0'+m;
+    if (d.length == 1) d = '0'+d;
+    dt2 = y+m+d;
+    if (dt1==dt2) return 0;
+    if (dt1<dt2) return -1;
+    return 1;
+  },
+  
+  shaker_sort: function(list, comp_func) {
+    // A stable sort function to allow multi-level sorting of data
+    // see: http://en.wikipedia.org/wiki/Cocktail_sort
+    // thanks to Joseph Nahmias
+    var b = 0;
+    var t = list.length - 1;
+    var swap = true;
+
+    while(swap) {
+        swap = false;
+        for(var i = b; i < t; ++i) {
+            if ( comp_func(list[i], list[i+1]) > 0 ) {
+                var q = list[i]; list[i] = list[i+1]; list[i+1] = q;
+                swap = true;
+            }
+        } // for
+        t--;
+
+        if (!swap) break;
+
+        for(var i = t; i > b; --i) {
+            if ( comp_func(list[i], list[i-1]) < 0 ) {
+                var q = list[i]; list[i] = list[i-1]; list[i-1] = q;
+                swap = true;
+            }
+        } // for
+        b++;
+
+    } // while(swap)
+  }  
+}
+
+/* ******************************************************************
+   Supporting functions: bundled here to avoid depending on a library
+   ****************************************************************** */
+
+// Dean Edwards/Matthias Miller/John Resig
+
+/* for Mozilla/Opera9 */
+if (document.addEventListener) {
+    document.addEventListener("DOMContentLoaded", sorttable.init, false);
+}
+
+/* for Internet Explorer */
+/*@cc_on @*/
+/*@if (@_win32)
+    document.write("<script id=__ie_onload defer src=javascript:void(0)><\/script>");
+    var script = document.getElementById("__ie_onload");
+    script.onreadystatechange = function() {
+        if (this.readyState == "complete") {
+            sorttable.init(); // call the onload handler
+        }
+    };
+/*@end @*/
+
+/* for Safari */
+if (/WebKit/i.test(navigator.userAgent)) { // sniff
+    var _timer = setInterval(function() {
+        if (/loaded|complete/.test(document.readyState)) {
+            sorttable.init(); // call the onload handler
+        }
+    }, 10);
+}
+
+/* for other browsers */
+window.onload = sorttable.init;
+
+// written by Dean Edwards, 2005
+// with input from Tino Zijdel, Matthias Miller, Diego Perini
+
+// http://dean.edwards.name/weblog/2005/10/add-event/
+
+function dean_addEvent(element, type, handler) {
+	if (element.addEventListener) {
+		element.addEventListener(type, handler, false);
+	} else {
+		// assign each event handler a unique ID
+		if (!handler.$$guid) handler.$$guid = dean_addEvent.guid++;
+		// create a hash table of event types for the element
+		if (!element.events) element.events = {};
+		// create a hash table of event handlers for each element/event pair
+		var handlers = element.events[type];
+		if (!handlers) {
+			handlers = element.events[type] = {};
+			// store the existing event handler (if there is one)
+			if (element["on" + type]) {
+				handlers[0] = element["on" + type];
+			}
+		}
+		// store the event handler in the hash table
+		handlers[handler.$$guid] = handler;
+		// assign a global event handler to do all the work
+		element["on" + type] = handleEvent;
+	}
+};
+// a counter used to create unique IDs
+dean_addEvent.guid = 1;
+
+function removeEvent(element, type, handler) {
+	if (element.removeEventListener) {
+		element.removeEventListener(type, handler, false);
+	} else {
+		// delete the event handler from the hash table
+		if (element.events && element.events[type]) {
+			delete element.events[type][handler.$$guid];
+		}
+	}
+};
+
+function handleEvent(event) {
+	var returnValue = true;
+	// grab the event object (IE uses a global event object)
+	event = event || fixEvent(((this.ownerDocument || this.document || this).parentWindow || window).event);
+	// get a reference to the hash table of event handlers
+	var handlers = this.events[event.type];
+	// execute each event handler
+	for (var i in handlers) {
+		this.$$handleEvent = handlers[i];
+		if (this.$$handleEvent(event) === false) {
+			returnValue = false;
+		}
+	}
+	return returnValue;
+};
+
+function fixEvent(event) {
+	// add W3C standard event methods
+	event.preventDefault = fixEvent.preventDefault;
+	event.stopPropagation = fixEvent.stopPropagation;
+	return event;
+};
+fixEvent.preventDefault = function() {
+	this.returnValue = false;
+};
+fixEvent.stopPropagation = function() {
+  this.cancelBubble = true;
+}
+
+// Dean's forEach: http://dean.edwards.name/base/forEach.js
+/*
+	forEach, version 1.0
+	Copyright 2006, Dean Edwards
+	License: http://www.opensource.org/licenses/mit-license.php
+*/
+
+// array-like enumeration
+if (!Array.forEach) { // mozilla already supports this
+	Array.forEach = function(array, block, context) {
+		for (var i = 0; i < array.length; i++) {
+			block.call(context, array[i], i, array);
+		}
+	};
+}
+
+// generic enumeration
+Function.prototype.forEach = function(object, block, context) {
+	for (var key in object) {
+		if (typeof this.prototype[key] == "undefined") {
+			block.call(context, object[key], key, object);
+		}
+	}
+};
+
+// character enumeration
+String.forEach = function(string, block, context) {
+	Array.forEach(string.split(""), function(chr, index) {
+		block.call(context, chr, index, string);
+	});
+};
+
+// globally resolve forEach enumeration
+var forEach = function(object, block, context) {
+	if (object) {
+		var resolve = Object; // default
+		if (object instanceof Function) {
+			// functions have a "length" property
+			resolve = Function;
+		} else if (object.forEach instanceof Function) {
+			// the object implements a custom forEach method so use that
+			object.forEach(block, context);
+			return;
+		} else if (typeof object == "string") {
+			// the object is a string
+			resolve = String;
+		} else if (typeof object.length == "number") {
+			// the object is array-like
+			resolve = Array;
+		}
+		resolve.forEach(object, block, context);
+	}
+}
+
+// --> 
+</script>
+<style type='text/css'>
+/* Style sheet for the HTML formatting of RSAT results */
+
+/* BODY  */
+body {
+       font-family: Verdana, Helvetica, Arial, sans-serif;
+       font-size: 70%;
+       margin-top: 2px;
+       margin-left: 20px;
+       text-align: justify;
+       background: #ffffff;
+       margin-right: 20px;
+/*       background: #0D73A7 url(images/bullet2-normal.gif) no-repeat 7px 7px;*/
+}
+
+
+/* div for menu */
+
+#Menu_space {
+	margin-top:120px;
+	margin-bottom:300px;
+}
+#Menu_wait {
+	position:absolute;
+	top:120px;
+	left:50%;
+	width:400px;
+	margin-left: -200px;
+	padding:10px;
+	text-align:center;
+	}
+
+#Menu {
+	position:absolute;
+	top:120px;
+	left:50%;
+	width:800px;
+	margin-left: -400px;
+	padding:10px;
+	background-color:#eee;
+	border:1px dashed #999;
+	line-height:17px;
+	font-size: 110%;
+	voice-family: "\"}\"";
+	voice-family:inherit;
+	text-align:left;
+	}
+
+#Menu h3 {
+	margin:0;
+	text-align:center;
+	padding-bottom:5px;
+}
+
+#Menu ul {
+	list-style-type:none;
+}
+
+/* TABLE */
+#Menu table {
+	margin: 10px 10px 10px;
+}
+
+#Menu  td, th {
+	font-size: 70%;
+	padding: 2px 10px;
+	vertical-align:top;
+}
+
+.menulink a:link,a:visited {
+	color:#cc6600;
+	background: transparent;
+	text-decoration: none;
+	}
+
+.menulink a:visited {
+	color:#cc6600;
+	background: transparent;
+	text-decoration: none;
+	}
+
+.menulink A:active {
+	color: #cc6600;
+	background: transparent;
+	text-decoration: none
+}
+
+.menulink A:hover {
+	text-decoration: underline;
+	color: #cc6600;
+}
+
+
+/* Links  */
+
+A:link,A:visited {
+	color: #0D73A7;
+	background: transparent;
+	text-decoration: none;
+}
+
+A:active {
+	color: #ff0000;
+	background: transparent;
+	text-decoration: none
+}
+
+A:hover {
+	text-decoration: underline;
+	color: #cc6600;
+}
+
+/* Headers  */
+
+h1 {
+	margin-top: 10px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	margin-bottom: 0px;
+	padding-left: 10px;
+	border: 1px solid #2D282E;
+	background-color: #0D73A7;
+	font-size: 16px;
+	color: #D6EEFA;
+}
+h1 a:link, h1 a:visited {
+	color: #D6EEFA;
+}
+
+h1 a:hover {
+	color: #ffffff;
+}
+
+h2 {
+	margin-top: 10px;
+	padding-top: 15px;
+	margin-bottom: 0px;
+	color: #002266;
+	font-size: 15px;
+}
+
+h3 {
+	margin-top: 6px;
+	padding-top: 6px;
+	margin-bottom: 0px;
+	color: #002266;
+	font-size: 11px;
+}
+
+h4 {
+	margin-top: 4px;
+	padding-top: 4px;
+	margin-bottom: 0px;
+	color : #2D282E;
+	font-size: 11px;
+}
+
+h2.motif {
+	margin-top: 3px;
+	padding-top: 0px;
+	margin-bottom: 4px;
+	color : #2D282E;
+	font-size: 12px;
+}
+
+/* Other tag formatting  */
+hr {
+	border: 1px dotted #2D282E;
+	height: 1px;
+}
+
+hr.solid {
+	border: 1px solid #2D282E;
+	height: 1px;
+}
+
+pre,tt {
+         font-size: 12px;
+}
+
+pre { 
+      background:#EEEEEE;
+ }
+
+
+center {
+	margin-top: 5px;
+	margin-bottom: 20px;
+	font-weight: bold;
+}
+
+blockquote {
+	color : #cc6600;
+	font-size: 12px;
+}
+
+body blockquote.information {
+	color : #009900;
+	font-size: 12px;
+}
+
+body blockquote.warning {
+	color : #aa0000;
+	font-size: 12px;
+}
+
+blockquote.demo {
+	color : #000000;
+	font-size: 12px;
+	font-style:italic;
+}
+
+
+
+/* TABLE */
+table.simple {
+	margin: 10px 20px 20px;
+	color: #000000;
+}
+
+table.simple td,table.list th {
+	font-size: 70%;
+	padding: 2px 10px;
+	background-color: #FFFFFF;
+}
+
+table.simple th {
+	font-size: 70%;
+	background-color: #F6E6CA;
+}
+
+/* TABLE */
+
+/* table with white bg and small fonts */
+table.whitebg {
+	margin: 10px 20px 20px;
+	color: #000000;
+	border-left: 1px solid #cbcbb4;
+	border-top: 1px solid #cbcbb4;
+	border-spacing: 0px;
+}
+
+table.whitebg td,table.whitebg th {
+	font-size: 70%;
+	border-right: 1px solid #cbcbb4;
+	border-bottom: 1px solid #cbcbb4;
+	padding: 2px 10px;
+	background-color: #FFFFFF;
+}
+
+
+/* table with blue bg and small font */
+table.whitebg th {
+	font-size: 70%;
+	background-color: #F6E6CA;
+}
+
+table.bluebg {
+	color: #333333;
+	border-left: 1px solid #cbcbb4;
+	border-top: 1px solid #cbcbb4;
+	}
+
+table.bluebg td,table.bluebg th {
+	font-size: 70%;
+	border-right: 1px solid #cbcbb4;
+	border-bottom: 1px solid #cbcbb4;
+	background-color: #D6EEFA;
+}
+
+table.bluebg th {
+	background-color: #0D73A7;
+	color: #D6EEFA;
+}
+	
+/* Table on result pages - compatible with the sorttable type defined by javascript */
+
+table.sortable {
+	margin: 10px 20px 20px;
+	color: #000000;
+	border-left: 1px solid #cbcbb4;
+	border-right: 1px solid #cbcbb4;
+	border-top: 1px solid #cbcbb4;
+	border-bottom: 1px solid #cbcbb4;
+	border-spacing: 0px;
+}
+
+table.sortable td,table.sortable th {
+	padding: 2px 10px;
+	font-size: 70%;
+	border-right: 1px solid #cbcbb4;
+	border-bottom: 1px solid #cbcbb4;
+	padding: 2px 10px;
+	background-color: #FFFFFF;
+}
+
+table.sortable th {
+	font-size: 70%;
+	background-color: #0D73A7;
+	color: #D6EEFA;
+}
+
+
+/* LINK TABLE ON RESULTS PAGES */
+table.resultlink {
+	margin-left:5px;
+	width : 90%;
+	color: #2D282E;
+	background-color: #D6EEFA;
+}
+
+
+table.resultlink td, table.resultlink th {
+	font-size: 70%;
+	padding-left:5px;
+	padding-right:3px;
+	text-align :left;
+}
+
+/* COLLAPSIBLE MENUS */
+
+.menu_heading_open {
+	background: url(images_html/arrow_box_down.gif) no-repeat 5px 7px;
+	text-decoration: none;
+	padding: 0px 6px 4px 21px;
+	margin: 0;
+	cursor: pointer;
+	font-weight: bold;
+	display: block;
+}
+
+.menu_heading_closed {
+	background: url(images_html/arrow_box.gif) no-repeat 5px 7px;
+	text-decoration: underline; 
+	display: block;
+	padding:0px 6px 4px 21px;
+	margin: 0;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.menu_collapsible {
+	display: none;
+	margin-bottom: 10px;
+	margin-left: 30px;
+}
+
+.menu_collapsible_display {
+   display: block;
+   margin-bottom: 10px;
+   margin-left: 30px;
+}
+</style>
+<header>
+<body bgcolor='#ffffff'>
+<PRE> position-analysis -v 1 -i $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/data/sequences/peak-motifs_test_purged_ml30_mis0.fasta -format fasta -sort -return html,chi,sig,distrib,exp_occ,graphs,rank,index -max_graphs 100 -2str -noov -seqtype dna -l 6 -ci 50 -lth_occ 1 -lth_sig 0 -uth_rank 100 -img_format png -title siGATA_ER_E2_r3 -origin center -max_graphs 20 -o $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/positions_6nt/peak-motifs_positions-2str-noov_6nt_ci50.tab
+ Profiles of expected occurrences
+ Position intervals:
+	window	[min,max]	mid	seq	occ
+	1	-10	[-499,-450]	-474.5	2	26
+	2	-9	[-449,-400]	-424.5	4	160
+	3	-8	[-399,-350]	-374.5	17	541
+	4	-7	[-349,-300]	-324.5	47	1634
+	5	-6	[-299,-250]	-274.5	151	4755
+	6	-5	[-249,-200]	-224.5	500	16199
+	7	-4	[-199,-150]	-174.5	1362	45997
+	8	-3	[-149,-100]	-124.5	3060	110050
+	9	-2	[-99,-50]	-74.5	5716	222958
+	10	-1	[-49,0]	-24.5	7041	339537
+	11	0	[1,50]	25.5	7041	331341
+	12	1	[51,100]	75.5	5412	207018
+	13	2	[101,150]	125.5	2816	99975
+	14	3	[151,200]	175.5	1245	40908
+	15	4	[201,250]	225.5	450	14123
+	16	5	[251,300]	275.5	137	4130
+	17	6	[301,350]	325.5	42	1459
+	18	7	[351,400]	375.5	16	467
+	19	8	[401,450]	425.5	4	148
+	20	9	[451,500]	475.5	1	15
+
+ column headers
+	1	seq            	pattern sequence
+	2	id             	pattern identifier
+	3	-474.5         	expected occurrences	in window	1	[-499,-450]
+	4	-424.5         	expected occurrences	in window	2	[-449,-400]
+	5	-374.5         	expected occurrences	in window	3	[-399,-350]
+	6	-324.5         	expected occurrences	in window	4	[-349,-300]
+	7	-274.5         	expected occurrences	in window	5	[-299,-250]
+	8	-224.5         	expected occurrences	in window	6	[-249,-200]
+	9	-174.5         	expected occurrences	in window	7	[-199,-150]
+	10	-124.5         	expected occurrences	in window	8	[-149,-100]
+	11	-74.5          	expected occurrences	in window	9	[-99,-50]
+	12	-24.5          	expected occurrences	in window	10	[-49,0]
+	13	25.5           	expected occurrences	in window	11	[1,50]
+	14	75.5           	expected occurrences	in window	12	[51,100]
+	15	125.5          	expected occurrences	in window	13	[101,150]
+	16	175.5          	expected occurrences	in window	14	[151,200]
+	17	225.5          	expected occurrences	in window	15	[201,250]
+	18	275.5          	expected occurrences	in window	16	[251,300]
+	19	325.5          	expected occurrences	in window	17	[301,350]
+	20	375.5          	expected occurrences	in window	18	[351,400]
+	21	425.5          	expected occurrences	in window	19	[401,450]
+	22	475.5          	expected occurrences	in window	20	[451,500]
+</pre>
+
+<table  class="sortable"  cellspacing=1 cellpadding=3 border=1>
+<tr valign='top'>
+<th align='left' >seq</th>
+<th align='left'>id</th>
+<th align='left'>-474.5</th>
+<th align='left'>-424.5</th>
+<th align='left'>-374.5</th>
+<th align='left'>-324.5</th>
+<th align='left'>-274.5</th>
+<th align='left'>-224.5</th>
+<th align='left'>-174.5</th>
+<th align='left'>-124.5</th>
+<th align='left'>-74.5</th>
+<th align='left'>-24.5</th>
+<th align='left'>25.5</th>
+<th align='left'>75.5</th>
+<th align='left'>125.5</th>
+<th align='left'>175.5</th>
+<th align='left'>225.5</th>
+<th align='left'>275.5</th>
+<th align='left'>325.5</th>
+<th align='left'>375.5</th>
+<th align='left'>425.5</th>
+<th align='left'>475.5</th>
+</tr>
+
+<tr valign='top'>
+<td>aggtca</td>
+<td>aggtca|tgacct</td>
+<td>0.0</td>
+<td>0.3</td>
+<td>1.0</td>
+<td>3.0</td>
+<td>8.7</td>
+<td>29.7</td>
+<td>84.3</td>
+<td>201.7</td>
+<td>408.7</td>
+<td>622.3</td>
+<td>607.3</td>
+<td>379.4</td>
+<td>183.2</td>
+<td>75.0</td>
+<td>25.9</td>
+<td>7.6</td>
+<td>2.7</td>
+<td>0.9</td>
+<td>0.3</td>
+<td>0.0</td>
+</tr>
+
+<tr valign=top>
+<TD>ggtcac</td>
+<td>ggtcac|gtgacc</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.5</td>
+<td>1.7</td>
+<td>4.8</td>
+<td>16.4</td>
+<td>46.7</td>
+<td>111.7</td>
+<td>226.3</td>
+<td>344.6</td>
+<td>336.3</td>
+<td>210.1</td>
+<td>101.5</td>
+<td>41.5</td>
+<td>14.3</td>
+<td>4.2</td>
+<td>1.5</td>
+<td>0.5</td>
+<td>0.2</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>atgacc</td>
+<td>atgacc|ggtcat</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>1.3</td>
+<td>3.9</td>
+<td>13.4</td>
+<td>37.9</td>
+<td>90.7</td>
+<td>183.8</td>
+<td>279.8</td>
+<td>273.1</td>
+<td>170.6</td>
+<td>82.4</td>
+<td>33.7</td>
+<td>11.6</td>
+<td>3.4</td>
+<td>1.2</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaaaaa</td>
+<td>aaaaaa|tttttt</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.6</td>
+<td>1.9</td>
+<td>5.4</td>
+<td>18.5</td>
+<td>52.5</td>
+<td>125.6</td>
+<td>254.4</td>
+<td>387.5</td>
+<td>378.1</td>
+<td>236.3</td>
+<td>114.1</td>
+<td>46.7</td>
+<td>16.1</td>
+<td>4.7</td>
+<td>1.7</td>
+<td>0.5</td>
+<td>0.2</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>caggtc</td>
+<td>caggtc|gacctg</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.6</td>
+<td>1.7</td>
+<td>5.0</td>
+<td>16.9</td>
+<td>47.9</td>
+<td>114.7</td>
+<td>232.3</td>
+<td>353.8</td>
+<td>345.3</td>
+<td>215.7</td>
+<td>104.2</td>
+<td>42.6</td>
+<td>14.7</td>
+<td>4.3</td>
+<td>1.5</td>
+<td>0.5</td>
+<td>0.2</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>ctgacc</td>
+<td>ctgacc|ggtcag</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.6</td>
+<td>1.9</td>
+<td>5.5</td>
+<td>18.7</td>
+<td>53.2</td>
+<td>127.2</td>
+<td>257.7</td>
+<td>392.4</td>
+<td>383.0</td>
+<td>239.3</td>
+<td>115.5</td>
+<td>47.3</td>
+<td>16.3</td>
+<td>4.8</td>
+<td>1.7</td>
+<td>0.5</td>
+<td>0.2</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>atgtca</td>
+<td>atgtca|tgacat</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.6</td>
+<td>1.9</td>
+<td>5.6</td>
+<td>19.1</td>
+<td>54.1</td>
+<td>129.5</td>
+<td>262.3</td>
+<td>399.5</td>
+<td>389.9</td>
+<td>243.6</td>
+<td>117.6</td>
+<td>48.1</td>
+<td>16.6</td>
+<td>4.9</td>
+<td>1.7</td>
+<td>0.5</td>
+<td>0.2</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaggtc</td>
+<td>aaggtc|gacctt</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.5</td>
+<td>1.5</td>
+<td>4.3</td>
+<td>14.6</td>
+<td>41.6</td>
+<td>99.5</td>
+<td>201.5</td>
+<td>306.9</td>
+<td>299.5</td>
+<td>187.1</td>
+<td>90.4</td>
+<td>37.0</td>
+<td>12.8</td>
+<td>3.7</td>
+<td>1.3</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>ttaaaa</td>
+<td>ttaaaa|ttttaa</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.7</td>
+<td>2.1</td>
+<td>6.1</td>
+<td>20.7</td>
+<td>58.8</td>
+<td>140.8</td>
+<td>285.2</td>
+<td>434.4</td>
+<td>423.9</td>
+<td>264.8</td>
+<td>127.9</td>
+<td>52.3</td>
+<td>18.1</td>
+<td>5.3</td>
+<td>1.9</td>
+<td>0.6</td>
+<td>0.2</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaaaat</td>
+<td>aaaaat|attttt</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.7</td>
+<td>2.2</td>
+<td>6.5</td>
+<td>22.1</td>
+<td>62.8</td>
+<td>150.3</td>
+<td>304.6</td>
+<td>463.8</td>
+<td>452.6</td>
+<td>282.8</td>
+<td>136.6</td>
+<td>55.9</td>
+<td>19.3</td>
+<td>5.6</td>
+<td>2.0</td>
+<td>0.6</td>
+<td>0.2</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>catgac</td>
+<td>catgac|gtcatg</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>1.2</td>
+<td>3.5</td>
+<td>11.8</td>
+<td>33.4</td>
+<td>80.0</td>
+<td>162.1</td>
+<td>246.9</td>
+<td>240.9</td>
+<td>150.5</td>
+<td>72.7</td>
+<td>29.7</td>
+<td>10.3</td>
+<td>3.0</td>
+<td>1.1</td>
+<td>0.3</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>agggca</td>
+<td>agggca|tgccct</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.8</td>
+<td>2.3</td>
+<td>6.8</td>
+<td>23.0</td>
+<td>65.4</td>
+<td>156.6</td>
+<td>317.2</td>
+<td>483.1</td>
+<td>471.5</td>
+<td>294.6</td>
+<td>142.3</td>
+<td>58.2</td>
+<td>20.1</td>
+<td>5.9</td>
+<td>2.1</td>
+<td>0.7</td>
+<td>0.2</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>gtgtca</td>
+<td>gtgtca|tgacac</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>1.3</td>
+<td>3.7</td>
+<td>12.8</td>
+<td>36.2</td>
+<td>86.7</td>
+<td>175.6</td>
+<td>267.4</td>
+<td>260.9</td>
+<td>163.0</td>
+<td>78.7</td>
+<td>32.2</td>
+<td>11.1</td>
+<td>3.3</td>
+<td>1.1</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>taaaaa</td>
+<td>taaaaa|ttttta</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.7</td>
+<td>2.0</td>
+<td>5.8</td>
+<td>19.8</td>
+<td>56.4</td>
+<td>134.8</td>
+<td>273.2</td>
+<td>416.0</td>
+<td>405.9</td>
+<td>253.6</td>
+<td>122.5</td>
+<td>50.1</td>
+<td>17.3</td>
+<td>5.1</td>
+<td>1.8</td>
+<td>0.6</td>
+<td>0.2</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>gggtca</td>
+<td>gggtca|tgaccc</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.5</td>
+<td>1.6</td>
+<td>4.5</td>
+<td>15.4</td>
+<td>43.7</td>
+<td>104.7</td>
+<td>212.1</td>
+<td>322.9</td>
+<td>315.1</td>
+<td>196.9</td>
+<td>95.1</td>
+<td>38.9</td>
+<td>13.4</td>
+<td>3.9</td>
+<td>1.4</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>ggtcaa</td>
+<td>ggtcaa|ttgacc</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>1.2</td>
+<td>3.5</td>
+<td>11.9</td>
+<td>33.8</td>
+<td>80.9</td>
+<td>164.0</td>
+<td>249.7</td>
+<td>243.7</td>
+<td>152.2</td>
+<td>73.5</td>
+<td>30.1</td>
+<td>10.4</td>
+<td>3.0</td>
+<td>1.1</td>
+<td>0.3</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaaatt</td>
+<td>aaaatt|aatttt</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.5</td>
+<td>1.5</td>
+<td>4.4</td>
+<td>15.1</td>
+<td>42.8</td>
+<td>102.3</td>
+<td>207.3</td>
+<td>315.6</td>
+<td>308.0</td>
+<td>192.4</td>
+<td>92.9</td>
+<td>38.0</td>
+<td>13.1</td>
+<td>3.8</td>
+<td>1.4</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>gaaaaa</td>
+<td>gaaaaa|tttttc</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.7</td>
+<td>2.0</td>
+<td>5.9</td>
+<td>19.9</td>
+<td>56.6</td>
+<td>135.5</td>
+<td>274.6</td>
+<td>418.1</td>
+<td>408.0</td>
+<td>254.9</td>
+<td>123.1</td>
+<td>50.4</td>
+<td>17.4</td>
+<td>5.1</td>
+<td>1.8</td>
+<td>0.6</td>
+<td>0.2</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaaata</td>
+<td>aaaata|tatttt</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.7</td>
+<td>2.2</td>
+<td>6.5</td>
+<td>22.0</td>
+<td>62.5</td>
+<td>149.5</td>
+<td>302.9</td>
+<td>461.2</td>
+<td>450.1</td>
+<td>281.2</td>
+<td>135.8</td>
+<td>55.6</td>
+<td>19.2</td>
+<td>5.6</td>
+<td>2.0</td>
+<td>0.6</td>
+<td>0.2</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>gacctc</td>
+<td>gacctc|gaggtc</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>1.2</td>
+<td>3.5</td>
+<td>11.8</td>
+<td>33.6</td>
+<td>80.5</td>
+<td>163.0</td>
+<td>248.3</td>
+<td>242.3</td>
+<td>151.4</td>
+<td>73.1</td>
+<td>29.9</td>
+<td>10.3</td>
+<td>3.0</td>
+<td>1.1</td>
+<td>0.3</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaaaag</td>
+<td>aaaaag|cttttt</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.6</td>
+<td>1.9</td>
+<td>5.4</td>
+<td>18.5</td>
+<td>52.7</td>
+<td>126.0</td>
+<td>255.2</td>
+<td>388.7</td>
+<td>379.3</td>
+<td>237.0</td>
+<td>114.4</td>
+<td>46.8</td>
+<td>16.2</td>
+<td>4.7</td>
+<td>1.7</td>
+<td>0.5</td>
+<td>0.2</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>gtcaca</td>
+<td>gtcaca|tgtgac</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.5</td>
+<td>1.6</td>
+<td>4.5</td>
+<td>15.4</td>
+<td>43.7</td>
+<td>104.6</td>
+<td>211.9</td>
+<td>322.7</td>
+<td>314.9</td>
+<td>196.8</td>
+<td>95.0</td>
+<td>38.9</td>
+<td>13.4</td>
+<td>3.9</td>
+<td>1.4</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>ggtgac</td>
+<td>ggtgac|gtcacc</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>1.3</td>
+<td>3.9</td>
+<td>13.1</td>
+<td>37.3</td>
+<td>89.3</td>
+<td>181.0</td>
+<td>275.6</td>
+<td>268.9</td>
+<td>168.0</td>
+<td>81.1</td>
+<td>33.2</td>
+<td>11.5</td>
+<td>3.4</td>
+<td>1.2</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>cctgac</td>
+<td>cctgac|gtcagg</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.5</td>
+<td>1.5</td>
+<td>4.5</td>
+<td>15.3</td>
+<td>43.3</td>
+<td>103.7</td>
+<td>210.1</td>
+<td>319.9</td>
+<td>312.2</td>
+<td>195.0</td>
+<td>94.2</td>
+<td>38.5</td>
+<td>13.3</td>
+<td>3.9</td>
+<td>1.4</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaaaga</td>
+<td>aaaaga|tctttt</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.6</td>
+<td>1.9</td>
+<td>5.5</td>
+<td>18.7</td>
+<td>53.0</td>
+<td>126.7</td>
+<td>256.8</td>
+<td>391.0</td>
+<td>381.6</td>
+<td>238.4</td>
+<td>115.1</td>
+<td>47.1</td>
+<td>16.3</td>
+<td>4.8</td>
+<td>1.7</td>
+<td>0.5</td>
+<td>0.2</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>aatata</td>
+<td>aatata|tatatt</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.3</td>
+<td>1.0</td>
+<td>2.8</td>
+<td>9.5</td>
+<td>26.9</td>
+<td>64.3</td>
+<td>130.2</td>
+<td>198.3</td>
+<td>193.5</td>
+<td>120.9</td>
+<td>58.4</td>
+<td>23.9</td>
+<td>8.2</td>
+<td>2.4</td>
+<td>0.9</td>
+<td>0.3</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>caaaca</td>
+<td>caaaca|tgtttg</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.8</td>
+<td>2.5</td>
+<td>7.2</td>
+<td>24.7</td>
+<td>70.1</td>
+<td>167.7</td>
+<td>339.7</td>
+<td>517.3</td>
+<td>504.8</td>
+<td>315.4</td>
+<td>152.3</td>
+<td>62.3</td>
+<td>21.5</td>
+<td>6.3</td>
+<td>2.2</td>
+<td>0.7</td>
+<td>0.2</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>agaaaa</td>
+<td>agaaaa|ttttct</td>
+<td>0.0</td>
+<td>0.3</td>
+<td>0.9</td>
+<td>2.6</td>
+<td>7.5</td>
+<td>25.7</td>
+<td>73.0</td>
+<td>174.6</td>
+<td>353.7</td>
+<td>538.7</td>
+<td>525.7</td>
+<td>328.5</td>
+<td>158.6</td>
+<td>64.9</td>
+<td>22.4</td>
+<td>6.6</td>
+<td>2.3</td>
+<td>0.7</td>
+<td>0.2</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>tttaaa</td>
+<td>tttaaa|tttaaa</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>1.2</td>
+<td>3.5</td>
+<td>11.9</td>
+<td>33.8</td>
+<td>80.9</td>
+<td>163.8</td>
+<td>249.5</td>
+<td>243.4</td>
+<td>152.1</td>
+<td>73.4</td>
+<td>30.1</td>
+<td>10.4</td>
+<td>3.0</td>
+<td>1.1</td>
+<td>0.3</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaagaa</td>
+<td>aaagaa|ttcttt</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.7</td>
+<td>2.3</td>
+<td>6.6</td>
+<td>22.4</td>
+<td>63.6</td>
+<td>152.2</td>
+<td>308.3</td>
+<td>469.5</td>
+<td>458.1</td>
+<td>286.2</td>
+<td>138.2</td>
+<td>56.6</td>
+<td>19.5</td>
+<td>5.7</td>
+<td>2.0</td>
+<td>0.6</td>
+<td>0.2</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>gagtca</td>
+<td>gagtca|tgactc</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.5</td>
+<td>1.6</td>
+<td>4.7</td>
+<td>16.0</td>
+<td>45.4</td>
+<td>108.7</td>
+<td>220.3</td>
+<td>335.4</td>
+<td>327.3</td>
+<td>204.5</td>
+<td>98.8</td>
+<td>40.4</td>
+<td>14.0</td>
+<td>4.1</td>
+<td>1.4</td>
+<td>0.5</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>cttgac</td>
+<td>cttgac|gtcaag</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>1.1</td>
+<td>3.2</td>
+<td>10.8</td>
+<td>30.8</td>
+<td>73.6</td>
+<td>149.1</td>
+<td>227.1</td>
+<td>221.6</td>
+<td>138.4</td>
+<td>66.9</td>
+<td>27.4</td>
+<td>9.4</td>
+<td>2.8</td>
+<td>1.0</td>
+<td>0.3</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>ataata</td>
+<td>ataata|tattat</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.3</td>
+<td>1.0</td>
+<td>2.8</td>
+<td>9.5</td>
+<td>27.1</td>
+<td>64.7</td>
+<td>131.2</td>
+<td>199.7</td>
+<td>194.9</td>
+<td>121.8</td>
+<td>58.8</td>
+<td>24.1</td>
+<td>8.3</td>
+<td>2.4</td>
+<td>0.9</td>
+<td>0.3</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>accttg</td>
+<td>accttg|caaggt</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.5</td>
+<td>1.4</td>
+<td>4.1</td>
+<td>14.0</td>
+<td>39.8</td>
+<td>95.2</td>
+<td>192.9</td>
+<td>293.7</td>
+<td>286.6</td>
+<td>179.1</td>
+<td>86.5</td>
+<td>35.4</td>
+<td>12.2</td>
+<td>3.6</td>
+<td>1.3</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>gatgac</td>
+<td>gatgac|gtcatc</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>1.1</td>
+<td>3.1</td>
+<td>10.7</td>
+<td>30.3</td>
+<td>72.6</td>
+<td>147.1</td>
+<td>224.0</td>
+<td>218.6</td>
+<td>136.6</td>
+<td>66.0</td>
+<td>27.0</td>
+<td>9.3</td>
+<td>2.7</td>
+<td>1.0</td>
+<td>0.3</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>gtcaac</td>
+<td>gtcaac|gttgac</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.3</td>
+<td>0.8</td>
+<td>2.3</td>
+<td>8.0</td>
+<td>22.6</td>
+<td>54.1</td>
+<td>109.7</td>
+<td>167.0</td>
+<td>163.0</td>
+<td>101.8</td>
+<td>49.2</td>
+<td>20.1</td>
+<td>6.9</td>
+<td>2.0</td>
+<td>0.7</td>
+<td>0.2</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>atgaca</td>
+<td>atgaca|tgtcat</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.5</td>
+<td>1.5</td>
+<td>4.4</td>
+<td>14.9</td>
+<td>42.4</td>
+<td>101.4</td>
+<td>205.4</td>
+<td>312.8</td>
+<td>305.3</td>
+<td>190.7</td>
+<td>92.1</td>
+<td>37.7</td>
+<td>13.0</td>
+<td>3.8</td>
+<td>1.3</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>atttaa</td>
+<td>atttaa|ttaaat</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.5</td>
+<td>1.6</td>
+<td>4.8</td>
+<td>16.3</td>
+<td>46.4</td>
+<td>111.0</td>
+<td>224.9</td>
+<td>342.5</td>
+<td>334.2</td>
+<td>208.8</td>
+<td>100.8</td>
+<td>41.3</td>
+<td>14.2</td>
+<td>4.2</td>
+<td>1.5</td>
+<td>0.5</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>aattta</td>
+<td>aattta|taaatt</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>1.2</td>
+<td>3.4</td>
+<td>11.5</td>
+<td>32.7</td>
+<td>78.3</td>
+<td>158.5</td>
+<td>241.4</td>
+<td>235.6</td>
+<td>147.2</td>
+<td>71.1</td>
+<td>29.1</td>
+<td>10.0</td>
+<td>2.9</td>
+<td>1.0</td>
+<td>0.3</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>aagaaa</td>
+<td>aagaaa|tttctt</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.8</td>
+<td>2.4</td>
+<td>6.9</td>
+<td>23.6</td>
+<td>67.1</td>
+<td>160.6</td>
+<td>325.3</td>
+<td>495.4</td>
+<td>483.4</td>
+<td>302.0</td>
+<td>145.9</td>
+<td>59.7</td>
+<td>20.6</td>
+<td>6.0</td>
+<td>2.1</td>
+<td>0.7</td>
+<td>0.2</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaatta</td>
+<td>aaatta|taattt</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>1.3</td>
+<td>3.9</td>
+<td>13.2</td>
+<td>37.5</td>
+<td>89.6</td>
+<td>181.6</td>
+<td>276.5</td>
+<td>269.9</td>
+<td>168.6</td>
+<td>81.4</td>
+<td>33.3</td>
+<td>11.5</td>
+<td>3.4</td>
+<td>1.2</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>aataat</td>
+<td>aataat|attatt</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>1.3</td>
+<td>3.8</td>
+<td>13.1</td>
+<td>37.2</td>
+<td>88.9</td>
+<td>180.2</td>
+<td>274.4</td>
+<td>267.8</td>
+<td>167.3</td>
+<td>80.8</td>
+<td>33.1</td>
+<td>11.4</td>
+<td>3.3</td>
+<td>1.2</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>ctgaca</td>
+<td>ctgaca|tgtcag</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.5</td>
+<td>1.5</td>
+<td>4.5</td>
+<td>15.2</td>
+<td>43.2</td>
+<td>103.5</td>
+<td>209.6</td>
+<td>319.2</td>
+<td>311.5</td>
+<td>194.6</td>
+<td>94.0</td>
+<td>38.5</td>
+<td>13.3</td>
+<td>3.9</td>
+<td>1.4</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaattt</td>
+<td>aaattt|aaattt</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.2</td>
+<td>0.7</td>
+<td>2.1</td>
+<td>7.1</td>
+<td>20.3</td>
+<td>48.5</td>
+<td>98.2</td>
+<td>149.6</td>
+<td>146.0</td>
+<td>91.2</td>
+<td>44.0</td>
+<td>18.0</td>
+<td>6.2</td>
+<td>1.8</td>
+<td>0.6</td>
+<td>0.2</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>cagggc</td>
+<td>cagggc|gccctg</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.8</td>
+<td>2.5</td>
+<td>7.4</td>
+<td>25.3</td>
+<td>71.7</td>
+<td>171.6</td>
+<td>347.7</td>
+<td>529.5</td>
+<td>516.7</td>
+<td>322.9</td>
+<td>155.9</td>
+<td>63.8</td>
+<td>22.0</td>
+<td>6.4</td>
+<td>2.3</td>
+<td>0.7</td>
+<td>0.2</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>agaata</td>
+<td>agaata|tattct</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.3</td>
+<td>0.9</td>
+<td>2.7</td>
+<td>9.1</td>
+<td>25.8</td>
+<td>61.8</td>
+<td>125.3</td>
+<td>190.8</td>
+<td>186.2</td>
+<td>116.3</td>
+<td>56.2</td>
+<td>23.0</td>
+<td>7.9</td>
+<td>2.3</td>
+<td>0.8</td>
+<td>0.3</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>taataa</td>
+<td>taataa|ttatta</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>1.1</td>
+<td>3.1</td>
+<td>10.5</td>
+<td>29.8</td>
+<td>71.3</td>
+<td>144.5</td>
+<td>220.0</td>
+<td>214.7</td>
+<td>134.1</td>
+<td>64.8</td>
+<td>26.5</td>
+<td>9.2</td>
+<td>2.7</td>
+<td>0.9</td>
+<td>0.3</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>ctgccc</td>
+<td>ctgccc|gggcag</td>
+<td>0.0</td>
+<td>0.3</td>
+<td>0.9</td>
+<td>2.6</td>
+<td>7.5</td>
+<td>25.6</td>
+<td>72.6</td>
+<td>173.6</td>
+<td>351.7</td>
+<td>535.6</td>
+<td>522.7</td>
+<td>326.6</td>
+<td>157.7</td>
+<td>64.5</td>
+<td>22.3</td>
+<td>6.5</td>
+<td>2.3</td>
+<td>0.7</td>
+<td>0.2</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>atttta</td>
+<td>atttta|taaaat</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.6</td>
+<td>1.8</td>
+<td>5.3</td>
+<td>18.1</td>
+<td>51.3</td>
+<td>122.8</td>
+<td>248.7</td>
+<td>378.8</td>
+<td>369.6</td>
+<td>230.9</td>
+<td>111.5</td>
+<td>45.6</td>
+<td>15.8</td>
+<td>4.6</td>
+<td>1.6</td>
+<td>0.5</td>
+<td>0.2</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>gtcaaa</td>
+<td>gtcaaa|tttgac</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>1.2</td>
+<td>3.4</td>
+<td>11.6</td>
+<td>33.0</td>
+<td>79.0</td>
+<td>160.1</td>
+<td>243.8</td>
+<td>237.9</td>
+<td>148.6</td>
+<td>71.8</td>
+<td>29.4</td>
+<td>10.1</td>
+<td>3.0</td>
+<td>1.0</td>
+<td>0.3</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>accctg</td>
+<td>accctg|cagggt</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.5</td>
+<td>1.6</td>
+<td>4.5</td>
+<td>15.4</td>
+<td>43.8</td>
+<td>104.7</td>
+<td>212.2</td>
+<td>323.2</td>
+<td>315.4</td>
+<td>197.0</td>
+<td>95.2</td>
+<td>38.9</td>
+<td>13.4</td>
+<td>3.9</td>
+<td>1.4</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>tgacca</td>
+<td>tgacca|tggtca</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>1.2</td>
+<td>3.6</td>
+<td>12.1</td>
+<td>34.4</td>
+<td>82.2</td>
+<td>166.6</td>
+<td>253.7</td>
+<td>247.6</td>
+<td>154.7</td>
+<td>74.7</td>
+<td>30.6</td>
+<td>10.6</td>
+<td>3.1</td>
+<td>1.1</td>
+<td>0.3</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>aattaa</td>
+<td>aattaa|ttaatt</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>1.2</td>
+<td>3.4</td>
+<td>11.5</td>
+<td>32.5</td>
+<td>77.9</td>
+<td>157.8</td>
+<td>240.3</td>
+<td>234.5</td>
+<td>146.5</td>
+<td>70.7</td>
+<td>28.9</td>
+<td>10.0</td>
+<td>2.9</td>
+<td>1.0</td>
+<td>0.3</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>atataa</td>
+<td>atataa|ttatat</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.3</td>
+<td>0.9</td>
+<td>2.6</td>
+<td>8.9</td>
+<td>25.4</td>
+<td>60.7</td>
+<td>123.0</td>
+<td>187.3</td>
+<td>182.7</td>
+<td>114.2</td>
+<td>55.1</td>
+<td>22.6</td>
+<td>7.8</td>
+<td>2.3</td>
+<td>0.8</td>
+<td>0.3</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>gctgac</td>
+<td>gctgac|gtcagc</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>1.2</td>
+<td>3.4</td>
+<td>11.5</td>
+<td>32.7</td>
+<td>78.2</td>
+<td>158.4</td>
+<td>241.2</td>
+<td>235.4</td>
+<td>147.1</td>
+<td>71.0</td>
+<td>29.1</td>
+<td>10.0</td>
+<td>2.9</td>
+<td>1.0</td>
+<td>0.3</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>tagaaa</td>
+<td>tagaaa|tttcta</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>1.3</td>
+<td>3.8</td>
+<td>13.0</td>
+<td>37.0</td>
+<td>88.6</td>
+<td>179.4</td>
+<td>273.2</td>
+<td>266.6</td>
+<td>166.6</td>
+<td>80.5</td>
+<td>32.9</td>
+<td>11.4</td>
+<td>3.3</td>
+<td>1.2</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>aatgtc</td>
+<td>aatgtc|gacatt</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.5</td>
+<td>1.4</td>
+<td>4.1</td>
+<td>13.9</td>
+<td>39.5</td>
+<td>94.4</td>
+<td>191.3</td>
+<td>291.4</td>
+<td>284.3</td>
+<td>177.7</td>
+<td>85.8</td>
+<td>35.1</td>
+<td>12.1</td>
+<td>3.5</td>
+<td>1.3</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>atattc</td>
+<td>atattc|gaatat</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.2</td>
+<td>0.7</td>
+<td>2.0</td>
+<td>6.7</td>
+<td>18.9</td>
+<td>45.2</td>
+<td>91.6</td>
+<td>139.4</td>
+<td>136.1</td>
+<td>85.0</td>
+<td>41.1</td>
+<td>16.8</td>
+<td>5.8</td>
+<td>1.7</td>
+<td>0.6</td>
+<td>0.2</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>tgaaaa</td>
+<td>tgaaaa|ttttca</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.6</td>
+<td>1.8</td>
+<td>5.2</td>
+<td>17.7</td>
+<td>50.2</td>
+<td>120.1</td>
+<td>243.3</td>
+<td>370.5</td>
+<td>361.6</td>
+<td>225.9</td>
+<td>109.1</td>
+<td>44.6</td>
+<td>15.4</td>
+<td>4.5</td>
+<td>1.6</td>
+<td>0.5</td>
+<td>0.2</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>tgtcaa</td>
+<td>tgtcaa|ttgaca</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>1.3</td>
+<td>3.8</td>
+<td>12.9</td>
+<td>36.6</td>
+<td>87.6</td>
+<td>177.4</td>
+<td>270.2</td>
+<td>263.7</td>
+<td>164.7</td>
+<td>79.6</td>
+<td>32.6</td>
+<td>11.2</td>
+<td>3.3</td>
+<td>1.2</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>gaccta</td>
+<td>gaccta|taggtc</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.2</td>
+<td>0.6</td>
+<td>1.8</td>
+<td>6.2</td>
+<td>17.7</td>
+<td>42.4</td>
+<td>85.8</td>
+<td>130.7</td>
+<td>127.6</td>
+<td>79.7</td>
+<td>38.5</td>
+<td>15.8</td>
+<td>5.4</td>
+<td>1.6</td>
+<td>0.6</td>
+<td>0.2</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>gtcata</td>
+<td>gtcata|tatgac</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.3</td>
+<td>0.8</td>
+<td>2.2</td>
+<td>7.7</td>
+<td>21.7</td>
+<td>52.0</td>
+<td>105.3</td>
+<td>160.4</td>
+<td>156.5</td>
+<td>97.8</td>
+<td>47.2</td>
+<td>19.3</td>
+<td>6.7</td>
+<td>2.0</td>
+<td>0.7</td>
+<td>0.2</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>agaaat</td>
+<td>agaaat|atttct</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.6</td>
+<td>1.7</td>
+<td>5.0</td>
+<td>17.0</td>
+<td>48.3</td>
+<td>115.6</td>
+<td>234.2</td>
+<td>356.6</td>
+<td>348.0</td>
+<td>217.4</td>
+<td>105.0</td>
+<td>43.0</td>
+<td>14.8</td>
+<td>4.3</td>
+<td>1.5</td>
+<td>0.5</td>
+<td>0.2</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>ataaaa</td>
+<td>ataaaa|ttttat</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.7</td>
+<td>2.0</td>
+<td>5.8</td>
+<td>19.9</td>
+<td>56.4</td>
+<td>135.1</td>
+<td>273.6</td>
+<td>416.7</td>
+<td>406.6</td>
+<td>254.1</td>
+<td>122.7</td>
+<td>50.2</td>
+<td>17.3</td>
+<td>5.1</td>
+<td>1.8</td>
+<td>0.6</td>
+<td>0.2</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>agtgac</td>
+<td>agtgac|gtcact</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.5</td>
+<td>1.4</td>
+<td>4.2</td>
+<td>14.4</td>
+<td>40.8</td>
+<td>97.6</td>
+<td>197.7</td>
+<td>301.0</td>
+<td>293.8</td>
+<td>183.5</td>
+<td>88.6</td>
+<td>36.3</td>
+<td>12.5</td>
+<td>3.7</td>
+<td>1.3</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>gtgaca</td>
+<td>gtgaca|tgtcac</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.5</td>
+<td>1.5</td>
+<td>4.3</td>
+<td>14.5</td>
+<td>41.1</td>
+<td>98.4</td>
+<td>199.4</td>
+<td>303.6</td>
+<td>296.3</td>
+<td>185.1</td>
+<td>89.4</td>
+<td>36.6</td>
+<td>12.6</td>
+<td>3.7</td>
+<td>1.3</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>ttagaa</td>
+<td>ttagaa|ttctaa</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>1.1</td>
+<td>3.1</td>
+<td>10.6</td>
+<td>30.0</td>
+<td>71.7</td>
+<td>145.2</td>
+<td>221.2</td>
+<td>215.8</td>
+<td>134.9</td>
+<td>65.1</td>
+<td>26.6</td>
+<td>9.2</td>
+<td>2.7</td>
+<td>1.0</td>
+<td>0.3</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>aggtcg</td>
+<td>aggtcg|cgacct</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.3</td>
+<td>1.0</td>
+<td>3.3</td>
+<td>9.3</td>
+<td>22.1</td>
+<td>44.9</td>
+<td>68.3</td>
+<td>66.7</td>
+<td>41.6</td>
+<td>20.1</td>
+<td>8.2</td>
+<td>2.8</td>
+<td>0.8</td>
+<td>0.3</td>
+<td>0.1</td>
+<td>0.0</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>aggtta</td>
+<td>aggtta|taacct</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.3</td>
+<td>1.0</td>
+<td>2.8</td>
+<td>9.6</td>
+<td>27.3</td>
+<td>65.3</td>
+<td>132.2</td>
+<td>201.4</td>
+<td>196.5</td>
+<td>122.8</td>
+<td>59.3</td>
+<td>24.3</td>
+<td>8.4</td>
+<td>2.4</td>
+<td>0.9</td>
+<td>0.3</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>acctgg</td>
+<td>acctgg|ccaggt</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.6</td>
+<td>1.7</td>
+<td>4.9</td>
+<td>16.6</td>
+<td>47.0</td>
+<td>112.5</td>
+<td>227.8</td>
+<td>347.0</td>
+<td>338.6</td>
+<td>211.6</td>
+<td>102.2</td>
+<td>41.8</td>
+<td>14.4</td>
+<td>4.2</td>
+<td>1.5</td>
+<td>0.5</td>
+<td>0.2</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>catgtc</td>
+<td>catgtc|gacatg</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>1.1</td>
+<td>3.1</td>
+<td>10.6</td>
+<td>30.1</td>
+<td>72.0</td>
+<td>145.9</td>
+<td>222.1</td>
+<td>216.8</td>
+<td>135.4</td>
+<td>65.4</td>
+<td>26.8</td>
+<td>9.2</td>
+<td>2.7</td>
+<td>1.0</td>
+<td>0.3</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>atgaaa</td>
+<td>atgaaa|tttcat</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.5</td>
+<td>1.5</td>
+<td>4.5</td>
+<td>15.2</td>
+<td>43.0</td>
+<td>103.0</td>
+<td>208.7</td>
+<td>317.8</td>
+<td>310.1</td>
+<td>193.7</td>
+<td>93.6</td>
+<td>38.3</td>
+<td>13.2</td>
+<td>3.9</td>
+<td>1.4</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>gactca</td>
+<td>gactca|tgagtc</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.5</td>
+<td>1.4</td>
+<td>4.1</td>
+<td>13.9</td>
+<td>39.5</td>
+<td>94.5</td>
+<td>191.5</td>
+<td>291.6</td>
+<td>284.6</td>
+<td>177.8</td>
+<td>85.9</td>
+<td>35.1</td>
+<td>12.1</td>
+<td>3.5</td>
+<td>1.3</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>gcaaac</td>
+<td>gcaaac|gtttgc</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.5</td>
+<td>1.4</td>
+<td>4.0</td>
+<td>13.7</td>
+<td>38.8</td>
+<td>92.8</td>
+<td>187.9</td>
+<td>286.2</td>
+<td>279.3</td>
+<td>174.5</td>
+<td>84.3</td>
+<td>34.5</td>
+<td>11.9</td>
+<td>3.5</td>
+<td>1.2</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>aagaat</td>
+<td>aagaat|attctt</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.5</td>
+<td>1.4</td>
+<td>4.0</td>
+<td>13.6</td>
+<td>38.5</td>
+<td>92.1</td>
+<td>186.5</td>
+<td>284.1</td>
+<td>277.2</td>
+<td>173.2</td>
+<td>83.6</td>
+<td>34.2</td>
+<td>11.8</td>
+<td>3.5</td>
+<td>1.2</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>attttc</td>
+<td>attttc|gaaaat</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.5</td>
+<td>1.6</td>
+<td>4.5</td>
+<td>15.4</td>
+<td>43.8</td>
+<td>104.9</td>
+<td>212.5</td>
+<td>323.7</td>
+<td>315.8</td>
+<td>197.3</td>
+<td>95.3</td>
+<td>39.0</td>
+<td>13.5</td>
+<td>3.9</td>
+<td>1.4</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>cccctc</td>
+<td>cccctc|gagggg</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>1.2</td>
+<td>3.5</td>
+<td>12.0</td>
+<td>34.0</td>
+<td>81.2</td>
+<td>164.6</td>
+<td>250.6</td>
+<td>244.6</td>
+<td>152.8</td>
+<td>73.8</td>
+<td>30.2</td>
+<td>10.4</td>
+<td>3.0</td>
+<td>1.1</td>
+<td>0.3</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaaatg</td>
+<td>aaaatg|catttt</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.7</td>
+<td>2.0</td>
+<td>5.8</td>
+<td>19.9</td>
+<td>56.5</td>
+<td>135.3</td>
+<td>274.1</td>
+<td>417.4</td>
+<td>407.3</td>
+<td>254.5</td>
+<td>122.9</td>
+<td>50.3</td>
+<td>17.4</td>
+<td>5.1</td>
+<td>1.8</td>
+<td>0.6</td>
+<td>0.2</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccaagg</td>
+<td>ccaagg|ccttgg</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.5</td>
+<td>1.5</td>
+<td>4.5</td>
+<td>15.2</td>
+<td>43.1</td>
+<td>103.2</td>
+<td>209.1</td>
+<td>318.5</td>
+<td>310.8</td>
+<td>194.2</td>
+<td>93.8</td>
+<td>38.4</td>
+<td>13.2</td>
+<td>3.9</td>
+<td>1.4</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaagta</td>
+<td>aaagta|tacttt</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>1.1</td>
+<td>3.3</td>
+<td>11.3</td>
+<td>32.0</td>
+<td>76.7</td>
+<td>155.3</td>
+<td>236.5</td>
+<td>230.8</td>
+<td>144.2</td>
+<td>69.6</td>
+<td>28.5</td>
+<td>9.8</td>
+<td>2.9</td>
+<td>1.0</td>
+<td>0.3</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>gtcaga</td>
+<td>gtcaga|tctgac</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>1.3</td>
+<td>3.8</td>
+<td>13.0</td>
+<td>36.9</td>
+<td>88.3</td>
+<td>179.0</td>
+<td>272.5</td>
+<td>266.0</td>
+<td>166.2</td>
+<td>80.2</td>
+<td>32.8</td>
+<td>11.3</td>
+<td>3.3</td>
+<td>1.2</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>ggggca</td>
+<td>ggggca|tgcccc</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.5</td>
+<td>1.5</td>
+<td>4.4</td>
+<td>14.9</td>
+<td>42.4</td>
+<td>101.4</td>
+<td>205.4</td>
+<td>312.8</td>
+<td>305.3</td>
+<td>190.7</td>
+<td>92.1</td>
+<td>37.7</td>
+<td>13.0</td>
+<td>3.8</td>
+<td>1.3</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>acctga</td>
+<td>acctga|tcaggt</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>1.2</td>
+<td>3.6</td>
+<td>12.1</td>
+<td>34.4</td>
+<td>82.4</td>
+<td>166.9</td>
+<td>254.2</td>
+<td>248.0</td>
+<td>155.0</td>
+<td>74.8</td>
+<td>30.6</td>
+<td>10.6</td>
+<td>3.1</td>
+<td>1.1</td>
+<td>0.3</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>aacctg</td>
+<td>aacctg|caggtt</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>1.4</td>
+<td>3.9</td>
+<td>13.4</td>
+<td>38.1</td>
+<td>91.2</td>
+<td>184.7</td>
+<td>281.3</td>
+<td>274.5</td>
+<td>171.5</td>
+<td>82.8</td>
+<td>33.9</td>
+<td>11.7</td>
+<td>3.4</td>
+<td>1.2</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>acaggt</td>
+<td>acaggt|acctgt</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>1.3</td>
+<td>3.9</td>
+<td>13.2</td>
+<td>37.4</td>
+<td>89.4</td>
+<td>181.1</td>
+<td>275.8</td>
+<td>269.2</td>
+<td>168.2</td>
+<td>81.2</td>
+<td>33.2</td>
+<td>11.5</td>
+<td>3.4</td>
+<td>1.2</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccctga</td>
+<td>ccctga|tcaggg</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.6</td>
+<td>1.7</td>
+<td>5.0</td>
+<td>17.0</td>
+<td>48.2</td>
+<td>115.4</td>
+<td>233.7</td>
+<td>355.9</td>
+<td>347.3</td>
+<td>217.0</td>
+<td>104.8</td>
+<td>42.9</td>
+<td>14.8</td>
+<td>4.3</td>
+<td>1.5</td>
+<td>0.5</td>
+<td>0.2</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>tataaa</td>
+<td>tataaa|tttata</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>1.2</td>
+<td>3.5</td>
+<td>12.1</td>
+<td>34.3</td>
+<td>82.0</td>
+<td>166.1</td>
+<td>253.0</td>
+<td>246.9</td>
+<td>154.2</td>
+<td>74.5</td>
+<td>30.5</td>
+<td>10.5</td>
+<td>3.1</td>
+<td>1.1</td>
+<td>0.3</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>agtcaa</td>
+<td>agtcaa|ttgact</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>1.1</td>
+<td>3.3</td>
+<td>11.3</td>
+<td>32.1</td>
+<td>76.9</td>
+<td>155.8</td>
+<td>237.2</td>
+<td>231.5</td>
+<td>144.6</td>
+<td>69.8</td>
+<td>28.6</td>
+<td>9.9</td>
+<td>2.9</td>
+<td>1.0</td>
+<td>0.3</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>gaggaa</td>
+<td>gaggaa|ttcctc</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.5</td>
+<td>1.5</td>
+<td>4.5</td>
+<td>15.3</td>
+<td>43.5</td>
+<td>104.0</td>
+<td>210.7</td>
+<td>320.8</td>
+<td>313.1</td>
+<td>195.6</td>
+<td>94.5</td>
+<td>38.7</td>
+<td>13.3</td>
+<td>3.9</td>
+<td>1.4</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>attaaa</td>
+<td>attaaa|tttaat</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.5</td>
+<td>1.4</td>
+<td>4.1</td>
+<td>14.0</td>
+<td>39.9</td>
+<td>95.4</td>
+<td>193.2</td>
+<td>294.2</td>
+<td>287.1</td>
+<td>179.4</td>
+<td>86.6</td>
+<td>35.4</td>
+<td>12.2</td>
+<td>3.6</td>
+<td>1.3</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>caaaaa</td>
+<td>caaaaa|tttttg</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.5</td>
+<td>1.6</td>
+<td>4.7</td>
+<td>15.9</td>
+<td>45.1</td>
+<td>107.9</td>
+<td>218.6</td>
+<td>332.8</td>
+<td>324.8</td>
+<td>202.9</td>
+<td>98.0</td>
+<td>40.1</td>
+<td>13.8</td>
+<td>4.0</td>
+<td>1.4</td>
+<td>0.5</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>aattat</td>
+<td>aattat|ataatt</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.3</td>
+<td>1.1</td>
+<td>3.1</td>
+<td>10.5</td>
+<td>29.7</td>
+<td>71.1</td>
+<td>144.0</td>
+<td>219.3</td>
+<td>214.0</td>
+<td>133.7</td>
+<td>64.6</td>
+<td>26.4</td>
+<td>9.1</td>
+<td>2.7</td>
+<td>0.9</td>
+<td>0.3</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>ggaaaa</td>
+<td>ggaaaa|ttttcc</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.6</td>
+<td>1.9</td>
+<td>5.5</td>
+<td>18.7</td>
+<td>53.1</td>
+<td>127.0</td>
+<td>257.2</td>
+<td>391.7</td>
+<td>382.3</td>
+<td>238.8</td>
+<td>115.3</td>
+<td>47.2</td>
+<td>16.3</td>
+<td>4.8</td>
+<td>1.7</td>
+<td>0.5</td>
+<td>0.2</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>agtccc</td>
+<td>agtccc|gggact</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.3</td>
+<td>0.8</td>
+<td>2.2</td>
+<td>7.6</td>
+<td>21.7</td>
+<td>51.9</td>
+<td>105.2</td>
+<td>160.2</td>
+<td>156.3</td>
+<td>97.7</td>
+<td>47.2</td>
+<td>19.3</td>
+<td>6.7</td>
+<td>1.9</td>
+<td>0.7</td>
+<td>0.2</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>ttgaaa</td>
+<td>ttgaaa|tttcaa</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.5</td>
+<td>1.4</td>
+<td>4.1</td>
+<td>13.9</td>
+<td>39.5</td>
+<td>94.4</td>
+<td>191.3</td>
+<td>291.4</td>
+<td>284.3</td>
+<td>177.7</td>
+<td>85.8</td>
+<td>35.1</td>
+<td>12.1</td>
+<td>3.5</td>
+<td>1.3</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>gggaga</td>
+<td>gggaga|tctccc</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.5</td>
+<td>1.5</td>
+<td>4.4</td>
+<td>14.9</td>
+<td>42.3</td>
+<td>101.2</td>
+<td>204.9</td>
+<td>312.1</td>
+<td>304.6</td>
+<td>190.3</td>
+<td>91.9</td>
+<td>37.6</td>
+<td>13.0</td>
+<td>3.8</td>
+<td>1.3</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>gccccc</td>
+<td>gccccc|gggggc</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.3</td>
+<td>0.9</td>
+<td>2.7</td>
+<td>9.1</td>
+<td>25.9</td>
+<td>61.9</td>
+<td>125.4</td>
+<td>191.0</td>
+<td>186.4</td>
+<td>116.5</td>
+<td>56.2</td>
+<td>23.0</td>
+<td>7.9</td>
+<td>2.3</td>
+<td>0.8</td>
+<td>0.3</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>taaaca</td>
+<td>taaaca|tgttta</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.7</td>
+<td>2.2</td>
+<td>6.4</td>
+<td>21.7</td>
+<td>61.5</td>
+<td>147.2</td>
+<td>298.2</td>
+<td>454.1</td>
+<td>443.2</td>
+<td>276.9</td>
+<td>133.7</td>
+<td>54.7</td>
+<td>18.9</td>
+<td>5.5</td>
+<td>2.0</td>
+<td>0.6</td>
+<td>0.2</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaaaac</td>
+<td>aaaaac|gttttt</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.5</td>
+<td>1.5</td>
+<td>4.5</td>
+<td>15.2</td>
+<td>43.3</td>
+<td>103.5</td>
+<td>209.7</td>
+<td>319.4</td>
+<td>311.7</td>
+<td>194.7</td>
+<td>94.0</td>
+<td>38.5</td>
+<td>13.3</td>
+<td>3.9</td>
+<td>1.4</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.0</TD>
+</TR>
+
+<tr valign=top>
+<TD>caaata</td>
+<td>caaata|tatttg</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.7</td>
+<td>2.2</td>
+<td>6.3</td>
+<td>21.4</td>
+<td>60.8</td>
+<td>145.5</td>
+<td>294.8</td>
+<td>449.0</td>
+<td>438.1</td>
+<td>273.7</td>
+<td>132.2</td>
+<td>54.1</td>
+<td>18.7</td>
+<td>5.5</td>
+<td>1.9</td>
+<td>0.6</td>
+<td>0.2</td>
+<td>0.0</TD>
+</TR>
+
+</table>
+
+<pre>
+</PRE>
+</BODY></HTML>

@@ -1,0 +1,86 @@
+; compare-matrices  -v 1 -mode matches -format1 transfac -file1 $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/oligos_6nt_mkv4_m4/peak-motifs_oligos_6nt_mkv4_m4.tf -format2 tf -file2 $RSAT/public_html/data/motif_databases/JASPAR/jaspar_core_vertebrates_2013-11.tf -mode matches -DR -uth offset_rank 1 -lth w 5 -lth Wr 0.3 -lth cor 0.75 -lth Ncor 0.4 -return matrix_name,matrix_id,cor,Ncor,logoDP,NIcor,NsEucl,SSD,NSW,match_rank,width,strand,offset,consensus,alignments_1ton -sort Ncor -o $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/oligos_6nt_mkv4_m4/peak-motifs_oligos_6nt_mkv4_m4_vs_db_jaspar_core_vertebrates
+; Program version       	1.118
+; Input files
+;	file2 	/vh/rsat/rsat/public_html/data/motif_databases/JASPAR/jaspar_core_vertebrates_2013-11.tf
+;	file1 	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/oligos_6nt_mkv4_m4/peak-motifs_oligos_6nt_mkv4_m4.tf
+; Output files
+;	alignments_1ton	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/oligos_6nt_mkv4_m4/peak-motifs_oligos_6nt_mkv4_m4_vs_db_jaspar_core_vertebrates_alignments_1ton.tab
+;	match_table_txt	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/oligos_6nt_mkv4_m4/peak-motifs_oligos_6nt_mkv4_m4_vs_db_jaspar_core_vertebrates.tab
+;	html_index   	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/oligos_6nt_mkv4_m4/peak-motifs_oligos_6nt_mkv4_m4_vs_db_jaspar_core_vertebrates_index.html
+;	alignments_1ton_html	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/oligos_6nt_mkv4_m4/peak-motifs_oligos_6nt_mkv4_m4_vs_db_jaspar_core_vertebrates_alignments_1ton.html
+;	match_table_html	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/oligos_6nt_mkv4_m4/peak-motifs_oligos_6nt_mkv4_m4_vs_db_jaspar_core_vertebrates.html
+;	prefix       	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/oligos_6nt_mkv4_m4/peak-motifs_oligos_6nt_mkv4_m4_vs_db_jaspar_core_vertebrates
+; Matrices
+;	file1	1 matrices	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/oligos_6nt_mkv4_m4/peak-motifs_oligos_6nt_mkv4_m4.tf
+;		file1	1	11	977	cvAGGTCAGsg
+;	file2	263 matrices	/vh/rsat/rsat/public_html/data/motif_databases/JASPAR/jaspar_core_vertebrates_2013-11.tf
+;		file2		1		11		26		wwyTGyGGTww
+;		file2		2		9		185		GCCcbrrGs
+;		file2		3		6		20		CACGTG
+;		file2		4		6		24		yGCGTG
+;		file2		5		22		24		hwwrGmACryyvtGTwCchrms
+;		file2		6		11		40		CTAGGTGTGAA
+;		file2		7		20		12		drvkcasygrwGcRkrrCsr
+;		file2		8		14		13		TGAmCTTTGmmCyt
+;		file2		9		12		16		bbkGrTGACGym
+;		file2		10		12		39		rrrTGCAATmcc
+;		file2		11		8		10		TTTsGCGC
+;		...	253 more matrices
+; Column content
+;	1	id1          	Identifier of the first matrix
+;	2	id2          	Identifier of the second matrix
+;	3	name1        	Name of the first matrix
+;	4	name2        	Name of the second matrix
+;	5	cor          	Pearson coefficient of correlation between frequency matrices
+;	6	Ncor         	Normalized correlation. Ncor = cor * Wr
+;	7	logoDP       	Dot product between the logo matrices.
+;	8	NIcor        	Normalized Pearson correlation between the information content matrices. NIcor = Icor * Wr
+;	9	NSW          	Normalized Sandelin-Wasserman similarity. NSW = SW/w
+;	10	SSD          	sum of squared distance.
+;	11	NsEucl       	relative Euclidian similarity. NsEucl = (max(dEucl) - dEucl)/max(dEucl)
+;	12	w1           	Width of the first matrix
+;	13	w2           	Width of the second matrix
+;	14	w            	Alignment length (number of overlapping columns between matrix 1 and matrix 2, as a function of the offset)
+;	15	W            	Total alignment length (overlapping + non-overlapping columns). W = w1 + w2 - w
+;	16	Wr           	Relative alignment length (overlap divided by the total alignemnt length). Wr = w/W
+;	17	wr1          	Alignment length relative to the width of the first matrix. wr1 = w/w1
+;	18	wr2          	Alignment length relative to the width of the second matrix. wr2 = w/w2
+;	19	strand       	"strand", i.e. orientation of matrix 2 relative to matrix 1 (D=direct;  R=reverse)
+;	20	offset       	shift of the second matrix relative to the first matrix (negative:left; positive: right)
+;	21	consensus1   	IUPAC consensus of matrix 1 (dots represent non-aligned columns)
+;	22	consensus2   	IUPAC consensus of matrix 2 (dots represent non-aligned columns)
+;	23	rcor         	Matching rank for cor
+;	24	rNcor        	Matching rank for Ncor
+;	25	rlogoDP      	Matching rank for logoDP
+;	26	rNIcor       	Matching rank for NIcor
+;	27	rNsEucl      	Matching rank for NsEucl
+;	28	rSSD         	Matching rank for SSD
+;	29	rNSW         	Matching rank for NSW
+;	30	rank_mean    	Mean of the matching ranks on all selected metrics
+;	31	match_rank   	Rank of the match (sorting by rank_mean)
+#id1	id2	name1	name2	cor	Ncor	logoDP	NIcor	NSW	SSD	NsEucl	w1	w2	w	W	Wr	wr1	wr2	strand	offset	consensus1	consensus2	rcor	rNcor	rlogoDP	rNIcor	rNsEucl	rSSD	rNSW	rank_mean	match_rank
+oligos_6nt_mkv4_m4	MA0071.1	oligos_6nt_mkv4_m4	RORA_1	0.977	0.601	10.345	0.606	0.987	0.2059	0.95989	11	10	8	13	0.6154	0.7273	0.8000	D	-2	cvAGGTCA...	..cwAGGTCA                    	1	4	2	4	1	1	1	2.0000	1
+oligos_6nt_mkv4_m4	MA0512.1	oligos_6nt_mkv4_m4	Rxra	0.887	0.739	8.345	0.734	0.947	1.0601	0.92720	11	11	10	12	0.8333	0.9091	0.9091	D	-1	cvAGGTCAGs.	.ArAGKTCAgd                   	5	1	8	1	4	5	6	4.2857	2
+oligos_6nt_mkv4_m4	MA0258.2	oligos_6nt_mkv4_m4	ESR2	0.923	0.489	7.461	0.484	0.958	0.7585	0.93157	11	15	9	17	0.5294	0.8182	0.6000	D	2	..AGGTCAGsg	rGGTCAsms......               	2	8	11	7	3	2	2	5.0000	3
+oligos_6nt_mkv4_m4	MA0141.1	oligos_6nt_mkv4_m4	Esrrb	0.910	0.485	8.828	0.476	0.948	0.8391	0.91904	11	12	8	15	0.5333	0.7273	0.6667	D	-4	cvAGGTCA...	....CAAGGTCA                  	3	9	6	9	6	3	4	5.7143	4
+oligos_6nt_mkv4_m4	MA0258.1	oligos_6nt_mkv4_m4	ESR2	0.885	0.541	6.407	0.539	0.950	1.1049	0.93243	11	18	11	18	0.6111	1.0000	0.6111	D	0	cvAGGTCAGsg	cwrGGTCAsgk.......            	6	6	14	5	2	6	3	6.0000	5
+oligos_6nt_mkv4_m4	MA0141.2	oligos_6nt_mkv4_m4	Esrrb	0.910	0.485	8.936	0.475	0.947	0.8455	0.91873	11	12	8	15	0.5333	0.7273	0.6667	D	-4	cvAGGTCA...	....CAAGGTCA                  	4	10	5	10	7	4	5	6.4286	6
+oligos_6nt_mkv4_m4	MA0592.1	oligos_6nt_mkv4_m4	ESRRA	0.833	0.695	9.293	0.672	0.915	1.6962	0.90791	11	11	10	12	0.8333	0.9091	0.9091	D	-1	cvAGGTCAGs.	.CAAGGTCAcm                   	10	2	4	2	9	11	9	6.7143	7
+oligos_6nt_mkv4_m4	MA0160.1	oligos_6nt_mkv4_m4	NR4A2	0.870	0.633	7.532	0.627	0.925	1.1940	0.90342	11	8	8	11	0.7273	0.7273	1.0000	D	1	.vAGGTCAG..	aAGGTCAc                      	7	3	10	3	12	7	8	7.1429	8
+oligos_6nt_mkv4_m4	MA0112.2	oligos_6nt_mkv4_m4	ESR1	0.840	0.462	4.366	0.459	0.933	1.4838	0.92170	11	20	11	20	0.5500	1.0000	0.5500	D	-3	cvAGGTCAGsg	...cmaGGtCAccc......          	8	13	16	13	5	9	7	10.1429	9
+oligos_6nt_mkv4_m4	MA0072.1	oligos_6nt_mkv4_m4	RORA_2	0.835	0.469	10.206	0.465	0.909	1.6402	0.89938	11	14	9	16	0.5625	0.8182	0.6429	D	-5	cvAGGTCAG..	.....bTAGGTCAr                	9	12	3	12	15	10	11	10.2857	10
+oligos_6nt_mkv4_m4	MA0112.1	oligos_6nt_mkv4_m4	ESR1	0.793	0.485	6.878	0.482	0.915	1.8699	0.91210	11	18	11	18	0.6111	1.0000	0.6111	D	0	cvAGGTCAGsg	ccAGGTCaCcr.......            	12	11	12	8	8	12	10	10.4286	11
+oligos_6nt_mkv4_m4	MA0505.1	oligos_6nt_mkv4_m4	Nr5a2	0.805	0.503	7.773	0.467	0.904	1.9155	0.90214	11	15	10	16	0.6250	0.9091	0.6667	D	-5	cvAGGTCAGs.	.....CAAGGyCAgs               	11	7	9	11	14	13	13	11.1429	12
+oligos_6nt_mkv4_m4	MA0504.1	oligos_6nt_mkv4_m4	NR2C2	0.771	0.565	5.902	0.534	0.903	2.1349	0.90608	11	15	11	15	0.7333	1.0000	0.7333	D	0	cvAGGTCAGsg	mgrGGTCArAG....               	16	5	15	6	11	15	14	11.7143	13
+oligos_6nt_mkv4_m4	MA0066.1	oligos_6nt_mkv4_m4	PPARG	0.776	0.427	6.761	0.428	0.907	2.0524	0.90791	11	20	11	20	0.5500	1.0000	0.5500	D	0	cvAGGTCAGsg	sTrGGTCAcsg.........  	15	16	13	14	10	14	12	13.4286	14
+oligos_6nt_mkv4_m4	MA0065.1	oligos_6nt_mkv4_m4	PPARG::RXRA	0.778	0.428	8.775	0.416	0.895	2.3160	0.90217	11	20	11	20	0.5500	1.0000	0.5500	D	-9	cvAGGTCAGsg	.........AAAGGTCAymk  	14	15	7	16	13	16	15	13.7143	15
+oligos_6nt_mkv4_m4	MA0115.1	oligos_6nt_mkv4_m4	NR1H2::RXRA	0.762	0.424	11.168	0.418	0.860	2.8044	0.88158	11	17	10	18	0.5556	0.9091	0.5882	D	-7	cvAGGTCAGs.	.......AAAGGTCAAc             	17	17	1	15	16	17	17	14.2857	16
+oligos_6nt_mkv4_m4	MA0089.1	oligos_6nt_mkv4_m4	NFE2L1::MafG	0.791	0.431	0.095	-0.131	0.887	1.3618	0.86247	11	6	6	11	0.5455	0.5455	1.0000	R	4	....GTCAGs.	GTCATS                        	13	14	17	17	17	8	16	14.5714	17
+; Host name	biow
+; Job started	2014-10-07.093552
+; Job done	2014-10-07.093558
+; Seconds	2.32
+;	user	2.32
+;	system	0.14
+;	cuser	3.98
+;	csystem	0.51

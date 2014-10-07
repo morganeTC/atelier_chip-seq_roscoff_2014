@@ -1,0 +1,6220 @@
+<html>
+<header>
+<title>/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/merged_words/peak-motifs_merged_words.tab</title>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+
+<script type="text/javascript">
+ <!-- 
+var stIsIE = /*@cc_on!@*/false;
+
+sorttable = {
+  init: function() {
+    // quit if this function has already been called
+    if (arguments.callee.done) return;
+    // flag this function so we don't do the same thing twice
+    arguments.callee.done = true;
+    // kill the timer
+    if (_timer) clearInterval(_timer);
+    
+    if (!document.createElement || !document.getElementsByTagName) return;
+    
+    sorttable.DATE_RE = /^(\d\d?)[\/\.-](\d\d?)[\/\.-]((\d\d)?\d\d)$/;
+    
+    forEach(document.getElementsByTagName('table'), function(table) {
+      if (table.className.search(/\bsortable\b/) != -1) {
+        sorttable.makeSortable(table);
+      }
+    });
+    
+  },
+  
+  makeSortable: function(table) {
+    if (table.getElementsByTagName('thead').length == 0) {
+      // table doesn't have a tHead. Since it should have, create one and
+      // put the first table row in it.
+      the = document.createElement('thead');
+      the.appendChild(table.rows[0]);
+      table.insertBefore(the,table.firstChild);
+    }
+    // Safari doesn't support table.tHead, sigh
+    if (table.tHead == null) table.tHead = table.getElementsByTagName('thead')[0];
+    
+    if (table.tHead.rows.length != 1) return; // can't cope with two header rows
+    
+    // Sorttable v1 put rows with a class of "sortbottom" at the bottom (as
+    // "total" rows, for example). This is B&R, since what you're supposed
+    // to do is put them in a tfoot. So, if there are sortbottom rows,
+    // for backwards compatibility, move them to tfoot (creating it if needed).
+    sortbottomrows = [];
+    for (var i=0; i<table.rows.length; i++) {
+      if (table.rows[i].className.search(/\bsortbottom\b/) != -1) {
+        sortbottomrows[sortbottomrows.length] = table.rows[i];
+      }
+    }
+    if (sortbottomrows) {
+      if (table.tFoot == null) {
+        // table doesn't have a tfoot. Create one.
+        tfo = document.createElement('tfoot');
+        table.appendChild(tfo);
+      }
+      for (var i=0; i<sortbottomrows.length; i++) {
+        tfo.appendChild(sortbottomrows[i]);
+      }
+      delete sortbottomrows;
+    }
+    
+    // work through each column and calculate its type
+    headrow = table.tHead.rows[0].cells;
+    for (var i=0; i<headrow.length; i++) {
+      // manually override the type with a sorttable_type attribute
+      if (!headrow[i].className.match(/\bsorttable_nosort\b/)) { // skip this col
+        mtch = headrow[i].className.match(/\bsorttable_([a-z0-9]+)\b/);
+        if (mtch) { override = mtch[1]; }
+	      if (mtch && typeof sorttable["sort_"+override] == 'function') {
+	        headrow[i].sorttable_sortfunction = sorttable["sort_"+override];
+	      } else {
+	        headrow[i].sorttable_sortfunction = sorttable.guessType(table,i);
+	      }
+	      // make it clickable to sort
+	      headrow[i].sorttable_columnindex = i;
+	      headrow[i].sorttable_tbody = table.tBodies[0];
+	      dean_addEvent(headrow[i],"click", function(e) {
+
+          if (this.className.search(/\bsorttable_sorted\b/) != -1) {
+            // if we're already sorted by this column, just 
+            // reverse the table, which is quicker
+            sorttable.reverse(this.sorttable_tbody);
+            this.className = this.className.replace('sorttable_sorted',
+                                                    'sorttable_sorted_reverse');
+            this.removeChild(document.getElementById('sorttable_sortfwdind'));
+            sortrevind = document.createElement('span');
+            sortrevind.id = "sorttable_sortrevind";
+            sortrevind.innerHTML = stIsIE ? '&nbsp<font face="webdings">5</font>' : '&nbsp;&#x25B4;';
+            this.appendChild(sortrevind);
+            return;
+          }
+          if (this.className.search(/\bsorttable_sorted_reverse\b/) != -1) {
+            // if we're already sorted by this column in reverse, just 
+            // re-reverse the table, which is quicker
+            sorttable.reverse(this.sorttable_tbody);
+            this.className = this.className.replace('sorttable_sorted_reverse',
+                                                    'sorttable_sorted');
+            this.removeChild(document.getElementById('sorttable_sortrevind'));
+            sortfwdind = document.createElement('span');
+            sortfwdind.id = "sorttable_sortfwdind";
+            sortfwdind.innerHTML = stIsIE ? '&nbsp<font face="webdings">6</font>' : '&nbsp;&#x25BE;';
+            this.appendChild(sortfwdind);
+            return;
+          }
+          
+          // remove sorttable_sorted classes
+          theadrow = this.parentNode;
+          forEach(theadrow.childNodes, function(cell) {
+            if (cell.nodeType == 1) { // an element
+              cell.className = cell.className.replace('sorttable_sorted_reverse','');
+              cell.className = cell.className.replace('sorttable_sorted','');
+            }
+          });
+          sortfwdind = document.getElementById('sorttable_sortfwdind');
+          if (sortfwdind) { sortfwdind.parentNode.removeChild(sortfwdind); }
+          sortrevind = document.getElementById('sorttable_sortrevind');
+          if (sortrevind) { sortrevind.parentNode.removeChild(sortrevind); }
+          
+          this.className += ' sorttable_sorted';
+          sortfwdind = document.createElement('span');
+          sortfwdind.id = "sorttable_sortfwdind";
+          sortfwdind.innerHTML = stIsIE ? '&nbsp<font face="webdings">6</font>' : '&nbsp;&#x25BE;';
+          this.appendChild(sortfwdind);
+
+	        // build an array to sort. This is a Schwartzian transform thing,
+	        // i.e., we "decorate" each row with the actual sort key,
+	        // sort based on the sort keys, and then put the rows back in order
+	        // which is a lot faster because you only do getInnerText once per row
+	        row_array = [];
+	        col = this.sorttable_columnindex;
+	        rows = this.sorttable_tbody.rows;
+	        for (var j=0; j<rows.length; j++) {
+	          row_array[row_array.length] = [sorttable.getInnerText(rows[j].cells[col]), rows[j]];
+	        }
+	        /* If you want a stable sort, uncomment the following line */
+	        //sorttable.shaker_sort(row_array, this.sorttable_sortfunction);
+	        /* and comment out this one */
+	        row_array.sort(this.sorttable_sortfunction);
+	        
+	        tb = this.sorttable_tbody;
+	        for (var j=0; j<row_array.length; j++) {
+	          tb.appendChild(row_array[j][1]);
+	        }
+	        
+	        delete row_array;
+	      });
+	    }
+    }
+  },
+  
+  guessType: function(table, column) {
+    // guess the type of a column based on its first non-blank row
+    sortfn = sorttable.sort_alpha;
+    for (var i=0; i<table.tBodies[0].rows.length; i++) {
+      text = sorttable.getInnerText(table.tBodies[0].rows[i].cells[column]);
+      if (text != '') {
+        if (text.match(/^-?[£$¤]?[\d,.]+%?$/)||text.match(/^\d+((\.|,)\d+)?(E|e)(\+|\-)\d+/)) {
+          return sorttable.sort_numeric;
+        }
+        // check for a date: dd/mm/yyyy or dd/mm/yy 
+        // can have / or . or - as separator
+        // can be mm/dd as well
+        possdate = text.match(sorttable.DATE_RE)
+        if (possdate) {
+          // looks like a date
+          first = parseInt(possdate[1]);
+          second = parseInt(possdate[2]);
+          if (first > 12) {
+            // definitely dd/mm
+            return sorttable.sort_ddmm;
+          } else if (second > 12) {
+            return sorttable.sort_mmdd;
+          } else {
+            // looks like a date, but we can't tell which, so assume
+            // that it's dd/mm (English imperialism!) and keep looking
+            sortfn = sorttable.sort_ddmm;
+          }
+        }
+      }
+    }
+    return sortfn;
+  },
+  
+  getInnerText: function(node) {
+    // gets the text we want to use for sorting for a cell.
+    // strips leading and trailing whitespace.
+    // this is *not* a generic getInnerText function; it's special to sorttable.
+    // for example, you can override the cell text with a customkey attribute.
+    // it also gets .value for <input> fields.
+    
+    hasInputs = (typeof node.getElementsByTagName == 'function') &&
+                 node.getElementsByTagName('input').length;
+    
+    if (node.getAttribute("sorttable_customkey") != null) {
+      return node.getAttribute("sorttable_customkey");
+    }
+    else if (typeof node.textContent != 'undefined' && !hasInputs) {
+      return node.textContent.replace(/^\s+|\s+$/g, '');
+    }
+    else if (typeof node.innerText != 'undefined' && !hasInputs) {
+      return node.innerText.replace(/^\s+|\s+$/g, '');
+    }
+    else if (typeof node.text != 'undefined' && !hasInputs) {
+      return node.text.replace(/^\s+|\s+$/g, '');
+    }
+    else {
+      switch (node.nodeType) {
+        case 3:
+          if (node.nodeName.toLowerCase() == 'input') {
+            return node.value.replace(/^\s+|\s+$/g, '');
+          }
+        case 4:
+          return node.nodeValue.replace(/^\s+|\s+$/g, '');
+          break;
+        case 1:
+        case 11:
+          var innerText = '';
+          for (var i = 0; i < node.childNodes.length; i++) {
+            innerText += sorttable.getInnerText(node.childNodes[i]);
+          }
+          return innerText.replace(/^\s+|\s+$/g, '');
+          break;
+        default:
+          return '';
+      }
+    }
+  },
+  
+  reverse: function(tbody) {
+    // reverse the rows in a tbody
+    newrows = [];
+    for (var i=0; i<tbody.rows.length; i++) {
+      newrows[newrows.length] = tbody.rows[i];
+    }
+    for (var i=newrows.length-1; i>=0; i--) {
+       tbody.appendChild(newrows[i]);
+    }
+    delete newrows;
+  },
+  
+  /* sort functions
+     each sort function takes two parameters, a and b
+     you are comparing a[0] and b[0] */
+  /* Numeric order */
+  sort_numeric: function(a,b) {
+	aa = parseFloat(a[0].replace(/[^0-9.\-eE]/g,''));
+	if (isNaN(aa)) aa = 0;
+	bb = parseFloat(b[0].replace(/[^0-9.\-eE]/g,''));
+	if (isNaN(bb)) bb = 0;
+	return aa-bb;
+    },
+//   sort_numeric: function(a,b) {
+//     aa = parseFloat(a[0].replace(/[^0-9.-eE]/g,''));
+//     if (isNaN(aa)) aa = 0;
+//     bb = parseFloat(b[0].replace(/[^0-9.-eE]/g,'')); 
+//     if (isNaN(bb)) bb = 0;    
+//     return aa-bb;
+//   },
+
+  /* alphabetical order */
+  sort_alpha: function(a,b) {
+    if (a[0]==b[0]) return 0;
+    if (a[0]<b[0]) return -1;
+    return 1;
+  },
+
+  /* sort dates formatted as ddmm (day first, month after) */
+  sort_ddmm: function(a,b) {
+    mtch = a[0].match(sorttable.DATE_RE);
+    y = mtch[3]; m = mtch[2]; d = mtch[1];
+    if (m.length == 1) m = '0'+m;
+    if (d.length == 1) d = '0'+d;
+    dt1 = y+m+d;
+    mtch = b[0].match(sorttable.DATE_RE);
+    y = mtch[3]; m = mtch[2]; d = mtch[1];
+    if (m.length == 1) m = '0'+m;
+    if (d.length == 1) d = '0'+d;
+    dt2 = y+m+d;
+    if (dt1==dt2) return 0;
+    if (dt1<dt2) return -1;
+    return 1;
+  },
+
+  /* sort dates formatted as mmdd (month first, day after) */
+  sort_mmdd: function(a,b) {
+    mtch = a[0].match(sorttable.DATE_RE);
+    y = mtch[3]; d = mtch[2]; m = mtch[1];
+    if (m.length == 1) m = '0'+m;
+    if (d.length == 1) d = '0'+d;
+    dt1 = y+m+d;
+    mtch = b[0].match(sorttable.DATE_RE);
+    y = mtch[3]; d = mtch[2]; m = mtch[1];
+    if (m.length == 1) m = '0'+m;
+    if (d.length == 1) d = '0'+d;
+    dt2 = y+m+d;
+    if (dt1==dt2) return 0;
+    if (dt1<dt2) return -1;
+    return 1;
+  },
+  
+  shaker_sort: function(list, comp_func) {
+    // A stable sort function to allow multi-level sorting of data
+    // see: http://en.wikipedia.org/wiki/Cocktail_sort
+    // thanks to Joseph Nahmias
+    var b = 0;
+    var t = list.length - 1;
+    var swap = true;
+
+    while(swap) {
+        swap = false;
+        for(var i = b; i < t; ++i) {
+            if ( comp_func(list[i], list[i+1]) > 0 ) {
+                var q = list[i]; list[i] = list[i+1]; list[i+1] = q;
+                swap = true;
+            }
+        } // for
+        t--;
+
+        if (!swap) break;
+
+        for(var i = t; i > b; --i) {
+            if ( comp_func(list[i], list[i-1]) < 0 ) {
+                var q = list[i]; list[i] = list[i-1]; list[i-1] = q;
+                swap = true;
+            }
+        } // for
+        b++;
+
+    } // while(swap)
+  }  
+}
+
+/* ******************************************************************
+   Supporting functions: bundled here to avoid depending on a library
+   ****************************************************************** */
+
+// Dean Edwards/Matthias Miller/John Resig
+
+/* for Mozilla/Opera9 */
+if (document.addEventListener) {
+    document.addEventListener("DOMContentLoaded", sorttable.init, false);
+}
+
+/* for Internet Explorer */
+/*@cc_on @*/
+/*@if (@_win32)
+    document.write("<script id=__ie_onload defer src=javascript:void(0)><\/script>");
+    var script = document.getElementById("__ie_onload");
+    script.onreadystatechange = function() {
+        if (this.readyState == "complete") {
+            sorttable.init(); // call the onload handler
+        }
+    };
+/*@end @*/
+
+/* for Safari */
+if (/WebKit/i.test(navigator.userAgent)) { // sniff
+    var _timer = setInterval(function() {
+        if (/loaded|complete/.test(document.readyState)) {
+            sorttable.init(); // call the onload handler
+        }
+    }, 10);
+}
+
+/* for other browsers */
+window.onload = sorttable.init;
+
+// written by Dean Edwards, 2005
+// with input from Tino Zijdel, Matthias Miller, Diego Perini
+
+// http://dean.edwards.name/weblog/2005/10/add-event/
+
+function dean_addEvent(element, type, handler) {
+	if (element.addEventListener) {
+		element.addEventListener(type, handler, false);
+	} else {
+		// assign each event handler a unique ID
+		if (!handler.$$guid) handler.$$guid = dean_addEvent.guid++;
+		// create a hash table of event types for the element
+		if (!element.events) element.events = {};
+		// create a hash table of event handlers for each element/event pair
+		var handlers = element.events[type];
+		if (!handlers) {
+			handlers = element.events[type] = {};
+			// store the existing event handler (if there is one)
+			if (element["on" + type]) {
+				handlers[0] = element["on" + type];
+			}
+		}
+		// store the event handler in the hash table
+		handlers[handler.$$guid] = handler;
+		// assign a global event handler to do all the work
+		element["on" + type] = handleEvent;
+	}
+};
+// a counter used to create unique IDs
+dean_addEvent.guid = 1;
+
+function removeEvent(element, type, handler) {
+	if (element.removeEventListener) {
+		element.removeEventListener(type, handler, false);
+	} else {
+		// delete the event handler from the hash table
+		if (element.events && element.events[type]) {
+			delete element.events[type][handler.$$guid];
+		}
+	}
+};
+
+function handleEvent(event) {
+	var returnValue = true;
+	// grab the event object (IE uses a global event object)
+	event = event || fixEvent(((this.ownerDocument || this.document || this).parentWindow || window).event);
+	// get a reference to the hash table of event handlers
+	var handlers = this.events[event.type];
+	// execute each event handler
+	for (var i in handlers) {
+		this.$$handleEvent = handlers[i];
+		if (this.$$handleEvent(event) === false) {
+			returnValue = false;
+		}
+	}
+	return returnValue;
+};
+
+function fixEvent(event) {
+	// add W3C standard event methods
+	event.preventDefault = fixEvent.preventDefault;
+	event.stopPropagation = fixEvent.stopPropagation;
+	return event;
+};
+fixEvent.preventDefault = function() {
+	this.returnValue = false;
+};
+fixEvent.stopPropagation = function() {
+  this.cancelBubble = true;
+}
+
+// Dean's forEach: http://dean.edwards.name/base/forEach.js
+/*
+	forEach, version 1.0
+	Copyright 2006, Dean Edwards
+	License: http://www.opensource.org/licenses/mit-license.php
+*/
+
+// array-like enumeration
+if (!Array.forEach) { // mozilla already supports this
+	Array.forEach = function(array, block, context) {
+		for (var i = 0; i < array.length; i++) {
+			block.call(context, array[i], i, array);
+		}
+	};
+}
+
+// generic enumeration
+Function.prototype.forEach = function(object, block, context) {
+	for (var key in object) {
+		if (typeof this.prototype[key] == "undefined") {
+			block.call(context, object[key], key, object);
+		}
+	}
+};
+
+// character enumeration
+String.forEach = function(string, block, context) {
+	Array.forEach(string.split(""), function(chr, index) {
+		block.call(context, chr, index, string);
+	});
+};
+
+// globally resolve forEach enumeration
+var forEach = function(object, block, context) {
+	if (object) {
+		var resolve = Object; // default
+		if (object instanceof Function) {
+			// functions have a "length" property
+			resolve = Function;
+		} else if (object.forEach instanceof Function) {
+			// the object implements a custom forEach method so use that
+			object.forEach(block, context);
+			return;
+		} else if (typeof object == "string") {
+			// the object is a string
+			resolve = String;
+		} else if (typeof object.length == "number") {
+			// the object is array-like
+			resolve = Array;
+		}
+		resolve.forEach(object, block, context);
+	}
+}
+
+// --> 
+</script>
+<style type='text/css'>
+/* Style sheet for the HTML formatting of RSAT results */
+
+/* BODY  */
+body {
+       font-family: Verdana, Helvetica, Arial, sans-serif;
+       font-size: 70%;
+       margin-top: 2px;
+       margin-left: 20px;
+       text-align: justify;
+       background: #ffffff;
+       margin-right: 20px;
+/*       background: #0D73A7 url(images/bullet2-normal.gif) no-repeat 7px 7px;*/
+}
+
+
+/* div for menu */
+
+#Menu_space {
+	margin-top:120px;
+	margin-bottom:300px;
+}
+#Menu_wait {
+	position:absolute;
+	top:120px;
+	left:50%;
+	width:400px;
+	margin-left: -200px;
+	padding:10px;
+	text-align:center;
+	}
+
+#Menu {
+	position:absolute;
+	top:120px;
+	left:50%;
+	width:800px;
+	margin-left: -400px;
+	padding:10px;
+	background-color:#eee;
+	border:1px dashed #999;
+	line-height:17px;
+	font-size: 110%;
+	voice-family: "\"}\"";
+	voice-family:inherit;
+	text-align:left;
+	}
+
+#Menu h3 {
+	margin:0;
+	text-align:center;
+	padding-bottom:5px;
+}
+
+#Menu ul {
+	list-style-type:none;
+}
+
+/* TABLE */
+#Menu table {
+	margin: 10px 10px 10px;
+}
+
+#Menu  td, th {
+	font-size: 70%;
+	padding: 2px 10px;
+	vertical-align:top;
+}
+
+.menulink a:link,a:visited {
+	color:#cc6600;
+	background: transparent;
+	text-decoration: none;
+	}
+
+.menulink a:visited {
+	color:#cc6600;
+	background: transparent;
+	text-decoration: none;
+	}
+
+.menulink A:active {
+	color: #cc6600;
+	background: transparent;
+	text-decoration: none
+}
+
+.menulink A:hover {
+	text-decoration: underline;
+	color: #cc6600;
+}
+
+
+/* Links  */
+
+A:link,A:visited {
+	color: #0D73A7;
+	background: transparent;
+	text-decoration: none;
+}
+
+A:active {
+	color: #ff0000;
+	background: transparent;
+	text-decoration: none
+}
+
+A:hover {
+	text-decoration: underline;
+	color: #cc6600;
+}
+
+/* Headers  */
+
+h1 {
+	margin-top: 10px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	margin-bottom: 0px;
+	padding-left: 10px;
+	border: 1px solid #2D282E;
+	background-color: #0D73A7;
+	font-size: 16px;
+	color: #D6EEFA;
+}
+h1 a:link, h1 a:visited {
+	color: #D6EEFA;
+}
+
+h1 a:hover {
+	color: #ffffff;
+}
+
+h2 {
+	margin-top: 10px;
+	padding-top: 15px;
+	margin-bottom: 0px;
+	color: #002266;
+	font-size: 15px;
+}
+
+h3 {
+	margin-top: 6px;
+	padding-top: 6px;
+	margin-bottom: 0px;
+	color: #002266;
+	font-size: 11px;
+}
+
+h4 {
+	margin-top: 4px;
+	padding-top: 4px;
+	margin-bottom: 0px;
+	color : #2D282E;
+	font-size: 11px;
+}
+
+h2.motif {
+	margin-top: 3px;
+	padding-top: 0px;
+	margin-bottom: 4px;
+	color : #2D282E;
+	font-size: 12px;
+}
+
+/* Other tag formatting  */
+hr {
+	border: 1px dotted #2D282E;
+	height: 1px;
+}
+
+hr.solid {
+	border: 1px solid #2D282E;
+	height: 1px;
+}
+
+pre,tt {
+         font-size: 12px;
+}
+
+pre { 
+      background:#EEEEEE;
+ }
+
+
+center {
+	margin-top: 5px;
+	margin-bottom: 20px;
+	font-weight: bold;
+}
+
+blockquote {
+	color : #cc6600;
+	font-size: 12px;
+}
+
+body blockquote.information {
+	color : #009900;
+	font-size: 12px;
+}
+
+body blockquote.warning {
+	color : #aa0000;
+	font-size: 12px;
+}
+
+blockquote.demo {
+	color : #000000;
+	font-size: 12px;
+	font-style:italic;
+}
+
+
+
+/* TABLE */
+table.simple {
+	margin: 10px 20px 20px;
+	color: #000000;
+}
+
+table.simple td,table.list th {
+	font-size: 70%;
+	padding: 2px 10px;
+	background-color: #FFFFFF;
+}
+
+table.simple th {
+	font-size: 70%;
+	background-color: #F6E6CA;
+}
+
+/* TABLE */
+
+/* table with white bg and small fonts */
+table.whitebg {
+	margin: 10px 20px 20px;
+	color: #000000;
+	border-left: 1px solid #cbcbb4;
+	border-top: 1px solid #cbcbb4;
+	border-spacing: 0px;
+}
+
+table.whitebg td,table.whitebg th {
+	font-size: 70%;
+	border-right: 1px solid #cbcbb4;
+	border-bottom: 1px solid #cbcbb4;
+	padding: 2px 10px;
+	background-color: #FFFFFF;
+}
+
+
+/* table with blue bg and small font */
+table.whitebg th {
+	font-size: 70%;
+	background-color: #F6E6CA;
+}
+
+table.bluebg {
+	color: #333333;
+	border-left: 1px solid #cbcbb4;
+	border-top: 1px solid #cbcbb4;
+	}
+
+table.bluebg td,table.bluebg th {
+	font-size: 70%;
+	border-right: 1px solid #cbcbb4;
+	border-bottom: 1px solid #cbcbb4;
+	background-color: #D6EEFA;
+}
+
+table.bluebg th {
+	background-color: #0D73A7;
+	color: #D6EEFA;
+}
+	
+/* Table on result pages - compatible with the sorttable type defined by javascript */
+
+table.sortable {
+	margin: 10px 20px 20px;
+	color: #000000;
+	border-left: 1px solid #cbcbb4;
+	border-right: 1px solid #cbcbb4;
+	border-top: 1px solid #cbcbb4;
+	border-bottom: 1px solid #cbcbb4;
+	border-spacing: 0px;
+}
+
+table.sortable td,table.sortable th {
+	padding: 2px 10px;
+	font-size: 70%;
+	border-right: 1px solid #cbcbb4;
+	border-bottom: 1px solid #cbcbb4;
+	padding: 2px 10px;
+	background-color: #FFFFFF;
+}
+
+table.sortable th {
+	font-size: 70%;
+	background-color: #0D73A7;
+	color: #D6EEFA;
+}
+
+
+/* LINK TABLE ON RESULTS PAGES */
+table.resultlink {
+	margin-left:5px;
+	width : 90%;
+	color: #2D282E;
+	background-color: #D6EEFA;
+}
+
+
+table.resultlink td, table.resultlink th {
+	font-size: 70%;
+	padding-left:5px;
+	padding-right:3px;
+	text-align :left;
+}
+
+/* COLLAPSIBLE MENUS */
+
+.menu_heading_open {
+	background: url(images_html/arrow_box_down.gif) no-repeat 5px 7px;
+	text-decoration: none;
+	padding: 0px 6px 4px 21px;
+	margin: 0;
+	cursor: pointer;
+	font-weight: bold;
+	display: block;
+}
+
+.menu_heading_closed {
+	background: url(images_html/arrow_box.gif) no-repeat 5px 7px;
+	text-decoration: underline; 
+	display: block;
+	padding:0px 6px 4px 21px;
+	margin: 0;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.menu_collapsible {
+	display: none;
+	margin-bottom: 10px;
+	margin-left: 30px;
+}
+
+.menu_collapsible_display {
+   display: block;
+   margin-bottom: 10px;
+   margin-left: 30px;
+}
+</style>
+<header>
+<body bgcolor='#ffffff'>
+<PRE> compare-scores -v 1 -i $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_6nt_mkv4/peak-motifs_oligos-2str-noov_6nt_mkv4.tab -sc1 8 -suppress $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_6nt_mkv4/ -i $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/positions_6nt/peak-motifs_positions-2str-noov_6nt_ci50.tab -sc2 9 -suppress $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/positions_6nt/ -i $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5/peak-motifs_oligos-2str-noov_7nt_mkv5.tab -sc3 8 -suppress $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5/ -i $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/positions_7nt/peak-motifs_positions-2str-noov_7nt_ci50.tab -sc4 9 -suppress $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/positions_7nt/ -i $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/dyads/peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads.tab -sc5 8 -suppress $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/dyads/ -ic 1 -lc -null . -suppress peak-motifs_ -suppress .tab
+Input files :
+	nb	id_col	sc_col	file_name
+	1	1	8	$RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_6nt_mkv4/peak-motifs_oligos-2str-noov_6nt_mkv4.tab
+	2	1	9	$RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/positions_6nt/peak-motifs_positions-2str-noov_6nt_ci50.tab
+	3	1	8	$RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5/peak-motifs_oligos-2str-noov_7nt_mkv5.tab
+	4	1	9	$RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/positions_7nt/peak-motifs_positions-2str-noov_7nt_ci50.tab
+	5	1	8	$RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/dyads/peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads.tab
+ Host name	biow
+ Job started	2014-10-07.093519
+ Job done	2014-10-07.093519
+ Seconds	0.24
+	user	0.24
+	system	0.01
+	cuser	0
+	csystem	0
+</pre>
+
+<table  class="sortable"  cellspacing=1 cellpadding=3 border=1>
+<tr valign='top'>
+<th align='left' >#key</th>
+<th align='left'>min</th>
+<th align='left'>max</th>
+<th align='left'>sum</th>
+<th align='left'>avg</th>
+<th align='left'>oligos-2str-noov_6nt_mkv4</th>
+<th align='left'>positions-2str-noov_6nt_ci50</th>
+<th align='left'>oligos-2str-noov_7nt_mkv5</th>
+<th align='left'>positions-2str-noov_7nt_ci50</th>
+<th align='left'>dyads-2str-noov_3nt_sp0-20_bg_monads</th>
+</tr>
+
+<tr valign='top'>
+<td>aggtca</td>
+<td>7.27</td>
+<td>300</td>
+<td>551.22</td>
+<td>183.74</td>
+<td>7.27</td>
+<td>300</td>
+<td>.</td>
+<td>.</td>
+<td> 243.95</td>
+</tr>
+
+<tr valign=top>
+<TD>taaata</td>
+<td>1.4</td>
+<td>350</td>
+<td>351.4</td>
+<td>175.7</td>
+<td>1.40</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 350.00</TD>
+</TR>
+
+<tr valign=top>
+<TD>caaata</td>
+<td>0.47</td>
+<td>288.17</td>
+<td>289.72</td>
+<td>96.5733</td>
+<td>1.08</td>
+<td>0.47</td>
+<td>.</td>
+<td>.</td>
+<td> 288.17</TD>
+</TR>
+
+<tr valign=top>
+<TD>cccagg</td>
+<td>276.3</td>
+<td>276.3</td>
+<td>276.3</td>
+<td>276.3</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 276.30</TD>
+</TR>
+
+<tr valign=top>
+<TD>cccn{1}gcc</td>
+<td>238.8</td>
+<td>238.8</td>
+<td>238.8</td>
+<td>238.8</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 238.80</TD>
+</TR>
+
+<tr valign=top>
+<TD>cccagc</td>
+<td>220.35</td>
+<td>220.35</td>
+<td>220.35</td>
+<td>220.35</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 220.35</TD>
+</TR>
+
+<tr valign=top>
+<TD>cccn{2}ccc</td>
+<td>217.54</td>
+<td>217.54</td>
+<td>217.54</td>
+<td>217.54</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 217.54</TD>
+</TR>
+
+<tr valign=top>
+<TD>cctgcc</td>
+<td>213.97</td>
+<td>213.97</td>
+<td>213.97</td>
+<td>213.97</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 213.97</TD>
+</TR>
+
+<tr valign=top>
+<TD>aacaaa</td>
+<td>202.51</td>
+<td>202.51</td>
+<td>202.51</td>
+<td>202.51</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 202.51</TD>
+</TR>
+
+<tr valign=top>
+<TD>ggtcac</td>
+<td>42.24</td>
+<td>153.89</td>
+<td>196.13</td>
+<td>98.065</td>
+<td>.</td>
+<td>42.24</td>
+<td>.</td>
+<td>.</td>
+<td> 153.89</TD>
+</TR>
+
+<tr valign=top>
+<TD>caaaca</td>
+<td>8.47</td>
+<td>186.54</td>
+<td>195.01</td>
+<td>97.505</td>
+<td>.</td>
+<td>8.47</td>
+<td>.</td>
+<td>.</td>
+<td> 186.54</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccaggg</td>
+<td>186.36</td>
+<td>186.36</td>
+<td>186.36</td>
+<td>186.36</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 186.36</TD>
+</TR>
+
+<tr valign=top>
+<TD>atttac</td>
+<td>2.58</td>
+<td>175.32</td>
+<td>177.9</td>
+<td>88.95</td>
+<td>2.58</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 175.32</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccaggc</td>
+<td>3.02</td>
+<td>173.65</td>
+<td>176.67</td>
+<td>88.335</td>
+<td>3.02</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 173.65</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaan{1}aaa</td>
+<td>173.92</td>
+<td>173.92</td>
+<td>173.92</td>
+<td>173.92</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 173.92</TD>
+</TR>
+
+<tr valign=top>
+<TD>cccn{3}ccc</td>
+<td>173.38</td>
+<td>173.38</td>
+<td>173.38</td>
+<td>173.38</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 173.38</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccctgc</td>
+<td>167.23</td>
+<td>167.23</td>
+<td>167.23</td>
+<td>167.23</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 167.23</TD>
+</TR>
+
+<tr valign=top>
+<TD>taaaca</td>
+<td>0.6</td>
+<td>162.7</td>
+<td>166.95</td>
+<td>55.65</td>
+<td>3.65</td>
+<td>0.60</td>
+<td>.</td>
+<td>.</td>
+<td> 162.70</TD>
+</TR>
+
+<tr valign=top>
+<TD>agggca</td>
+<td>5.44</td>
+<td>143.38</td>
+<td>166.72</td>
+<td>55.5733</td>
+<td>5.44</td>
+<td>17.90</td>
+<td>.</td>
+<td>.</td>
+<td> 143.38</TD>
+</TR>
+
+<tr valign=top>
+<TD>ggtgac</td>
+<td>11.57</td>
+<td>150.03</td>
+<td>161.6</td>
+<td>80.8</td>
+<td>.</td>
+<td>11.57</td>
+<td>.</td>
+<td>.</td>
+<td> 150.03</TD>
+</TR>
+
+<tr valign=top>
+<TD>agtgac</td>
+<td>3.04</td>
+<td>149.92</td>
+<td>152.96</td>
+<td>76.48</td>
+<td>.</td>
+<td>3.04</td>
+<td>.</td>
+<td>.</td>
+<td> 149.92</TD>
+</TR>
+
+<tr valign=top>
+<TD>cacagc</td>
+<td>0.34</td>
+<td>150.5</td>
+<td>150.84</td>
+<td>75.42</td>
+<td>0.34</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 150.50</TD>
+</TR>
+
+<tr valign=top>
+<TD>cctn{1}ccc</td>
+<td>150.66</td>
+<td>150.66</td>
+<td>150.66</td>
+<td>150.66</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 150.66</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccagcc</td>
+<td>150.14</td>
+<td>150.14</td>
+<td>150.14</td>
+<td>150.14</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 150.14</TD>
+</TR>
+
+<tr valign=top>
+<TD>ctctgc</td>
+<td>6.69</td>
+<td>140.9</td>
+<td>147.59</td>
+<td>73.795</td>
+<td>6.69</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 140.90</TD>
+</TR>
+
+<tr valign=top>
+<TD>ataaat</td>
+<td>147.19</td>
+<td>147.19</td>
+<td>147.19</td>
+<td>147.19</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 147.19</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaaata</td>
+<td>13.82</td>
+<td>132.91</td>
+<td>146.73</td>
+<td>73.365</td>
+<td>.</td>
+<td>13.82</td>
+<td>.</td>
+<td>.</td>
+<td> 132.91</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaatat</td>
+<td>146.19</td>
+<td>146.19</td>
+<td>146.19</td>
+<td>146.19</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 146.19</TD>
+</TR>
+
+<tr valign=top>
+<TD>atgtca</td>
+<td>22.9</td>
+<td>97.67</td>
+<td>145.58</td>
+<td>48.5267</td>
+<td>25.01</td>
+<td>22.90</td>
+<td>.</td>
+<td>.</td>
+<td>  97.67</TD>
+</TR>
+
+<tr valign=top>
+<TD>cagggc</td>
+<td>3.8</td>
+<td>134.97</td>
+<td>144.05</td>
+<td>48.0167</td>
+<td>3.80</td>
+<td>5.28</td>
+<td>.</td>
+<td>.</td>
+<td> 134.97</TD>
+</TR>
+
+<tr valign=top>
+<TD>gtan{1}ata</td>
+<td>143.17</td>
+<td>143.17</td>
+<td>143.17</td>
+<td>143.17</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 143.17</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaataa</td>
+<td>141.95</td>
+<td>141.95</td>
+<td>141.95</td>
+<td>141.95</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 141.95</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaan{2}aaa</td>
+<td>137.94</td>
+<td>137.94</td>
+<td>137.94</td>
+<td>137.94</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 137.94</TD>
+</TR>
+
+<tr valign=top>
+<TD>atttta</td>
+<td>4.68</td>
+<td>125.42</td>
+<td>136.43</td>
+<td>45.4767</td>
+<td>6.33</td>
+<td>4.68</td>
+<td>.</td>
+<td>.</td>
+<td> 125.42</TD>
+</TR>
+
+<tr valign=top>
+<TD>aagn{1}aaa</td>
+<td>132.04</td>
+<td>132.04</td>
+<td>132.04</td>
+<td>132.04</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 132.04</TD>
+</TR>
+
+<tr valign=top>
+<TD>gtaaac</td>
+<td>6.14</td>
+<td>122.92</td>
+<td>129.06</td>
+<td>64.53</td>
+<td>6.14</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 122.92</TD>
+</TR>
+
+<tr valign=top>
+<TD>cccn{4}ccc</td>
+<td>128.89</td>
+<td>128.89</td>
+<td>128.89</td>
+<td>128.89</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 128.89</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccagga</td>
+<td>128.43</td>
+<td>128.43</td>
+<td>128.43</td>
+<td>128.43</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 128.43</TD>
+</TR>
+
+<tr valign=top>
+<TD>aggn{1}cag</td>
+<td>128.12</td>
+<td>128.12</td>
+<td>128.12</td>
+<td>128.12</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 128.12</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccgccc</td>
+<td>126.98</td>
+<td>126.98</td>
+<td>126.98</td>
+<td>126.98</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 126.98</TD>
+</TR>
+
+<tr valign=top>
+<TD>cgcccg</td>
+<td>8.1</td>
+<td>116.39</td>
+<td>124.49</td>
+<td>62.245</td>
+<td>8.10</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 116.39</TD>
+</TR>
+
+<tr valign=top>
+<TD>cggggc</td>
+<td>2.43</td>
+<td>119.61</td>
+<td>122.04</td>
+<td>61.02</td>
+<td>2.43</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 119.61</TD>
+</TR>
+
+<tr valign=top>
+<TD>aatatt</td>
+<td>4.36</td>
+<td>116.58</td>
+<td>120.94</td>
+<td>60.47</td>
+<td>4.36</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 116.58</TD>
+</TR>
+
+<tr valign=top>
+<TD>cctggc</td>
+<td>0.86</td>
+<td>118.76</td>
+<td>119.62</td>
+<td>59.81</td>
+<td>0.86</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 118.76</TD>
+</TR>
+
+<tr valign=top>
+<TD>ctgccc</td>
+<td>2.14</td>
+<td>112.37</td>
+<td>118.95</td>
+<td>39.65</td>
+<td>2.14</td>
+<td>4.44</td>
+<td>.</td>
+<td>.</td>
+<td> 112.37</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaacaa</td>
+<td>118.49</td>
+<td>118.49</td>
+<td>118.49</td>
+<td>118.49</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 118.49</TD>
+</TR>
+
+<tr valign=top>
+<TD>gcagga</td>
+<td>115.18</td>
+<td>115.18</td>
+<td>115.18</td>
+<td>115.18</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 115.18</TD>
+</TR>
+
+<tr valign=top>
+<TD>cctn{2}ccc</td>
+<td>115.17</td>
+<td>115.17</td>
+<td>115.17</td>
+<td>115.17</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 115.17</TD>
+</TR>
+
+<tr valign=top>
+<TD>acctgg</td>
+<td>2.32</td>
+<td>112.47</td>
+<td>114.79</td>
+<td>57.395</td>
+<td>.</td>
+<td>2.32</td>
+<td>.</td>
+<td>.</td>
+<td> 112.47</TD>
+</TR>
+
+<tr valign=top>
+<TD>acctgc</td>
+<td>113.84</td>
+<td>113.84</td>
+<td>113.84</td>
+<td>113.84</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 113.84</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccccgc</td>
+<td>113.13</td>
+<td>113.13</td>
+<td>113.13</td>
+<td>113.13</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 113.13</TD>
+</TR>
+
+<tr valign=top>
+<TD>gatgac</td>
+<td>6.96</td>
+<td>103.91</td>
+<td>110.87</td>
+<td>55.435</td>
+<td>.</td>
+<td>6.96</td>
+<td>.</td>
+<td>.</td>
+<td> 103.91</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaan{3}aaa</td>
+<td>110.69</td>
+<td>110.69</td>
+<td>110.69</td>
+<td>110.69</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 110.69</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaggtc</td>
+<td>22.47</td>
+<td>87.45</td>
+<td>109.92</td>
+<td>54.96</td>
+<td>.</td>
+<td>22.47</td>
+<td>.</td>
+<td>.</td>
+<td>  87.45</TD>
+</TR>
+
+<tr valign=top>
+<TD>cccn{1}ggc</td>
+<td>108.54</td>
+<td>108.54</td>
+<td>108.54</td>
+<td>108.54</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 108.54</TD>
+</TR>
+
+<tr valign=top>
+<TD>cccn{2}ggc</td>
+<td>106.89</td>
+<td>106.89</td>
+<td>106.89</td>
+<td>106.89</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 106.89</TD>
+</TR>
+
+<tr valign=top>
+<TD>taan{2}aaa</td>
+<td>105.81</td>
+<td>105.81</td>
+<td>105.81</td>
+<td>105.81</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 105.81</TD>
+</TR>
+
+<tr valign=top>
+<TD>atan{1}ata</td>
+<td>104.35</td>
+<td>104.35</td>
+<td>104.35</td>
+<td>104.35</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 104.35</TD>
+</TR>
+
+<tr valign=top>
+<TD>cgccgc</td>
+<td>104.15</td>
+<td>104.15</td>
+<td>104.15</td>
+<td>104.15</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 104.15</TD>
+</TR>
+
+<tr valign=top>
+<TD>cacaga</td>
+<td>103.46</td>
+<td>103.46</td>
+<td>103.46</td>
+<td>103.46</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 103.46</TD>
+</TR>
+
+<tr valign=top>
+<TD>ggagga</td>
+<td>102.79</td>
+<td>102.79</td>
+<td>102.79</td>
+<td>102.79</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 102.79</TD>
+</TR>
+
+<tr valign=top>
+<TD>gccn{3}ccc</td>
+<td>101.56</td>
+<td>101.56</td>
+<td>101.56</td>
+<td>101.56</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 101.56</TD>
+</TR>
+
+<tr valign=top>
+<TD>cccn{1}ggg</td>
+<td>100.86</td>
+<td>100.86</td>
+<td>100.86</td>
+<td>100.86</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 100.86</TD>
+</TR>
+
+<tr valign=top>
+<TD>gctgcc</td>
+<td>100.32</td>
+<td>100.32</td>
+<td>100.32</td>
+<td>100.32</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td> 100.32</TD>
+</TR>
+
+<tr valign=top>
+<TD>cacaca</td>
+<td>99.8</td>
+<td>99.8</td>
+<td>99.8</td>
+<td>99.8</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  99.80</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccgcgc</td>
+<td>99.75</td>
+<td>99.75</td>
+<td>99.75</td>
+<td>99.75</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  99.75</TD>
+</TR>
+
+<tr valign=top>
+<TD>agcagg</td>
+<td>99.46</td>
+<td>99.46</td>
+<td>99.46</td>
+<td>99.46</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  99.46</TD>
+</TR>
+
+<tr valign=top>
+<TD>cgcn{2}ccg</td>
+<td>99.28</td>
+<td>99.28</td>
+<td>99.28</td>
+<td>99.28</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  99.28</TD>
+</TR>
+
+<tr valign=top>
+<TD>aacatt</td>
+<td>99.24</td>
+<td>99.24</td>
+<td>99.24</td>
+<td>99.24</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  99.24</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccgn{4}cgc</td>
+<td>97.78</td>
+<td>97.78</td>
+<td>97.78</td>
+<td>97.78</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  97.78</TD>
+</TR>
+
+<tr valign=top>
+<TD>cctccc</td>
+<td>0.98</td>
+<td>96.61</td>
+<td>97.59</td>
+<td>48.795</td>
+<td>0.98</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  96.61</TD>
+</TR>
+
+<tr valign=top>
+<TD>ataaac</td>
+<td>97.04</td>
+<td>97.04</td>
+<td>97.04</td>
+<td>97.04</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  97.04</TD>
+</TR>
+
+<tr valign=top>
+<TD>gtcaca</td>
+<td>11.65</td>
+<td>85.13</td>
+<td>96.78</td>
+<td>48.39</td>
+<td>.</td>
+<td>11.65</td>
+<td>.</td>
+<td>.</td>
+<td>  85.13</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaan{1}att</td>
+<td>96.09</td>
+<td>96.09</td>
+<td>96.09</td>
+<td>96.09</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  96.09</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaggaa</td>
+<td>0.73</td>
+<td>94.24</td>
+<td>94.97</td>
+<td>47.485</td>
+<td>0.73</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  94.24</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccctcc</td>
+<td>94.43</td>
+<td>94.43</td>
+<td>94.43</td>
+<td>94.43</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  94.43</TD>
+</TR>
+
+<tr valign=top>
+<TD>aatgtc</td>
+<td>3.6</td>
+<td>90.56</td>
+<td>94.16</td>
+<td>47.08</td>
+<td>.</td>
+<td>3.60</td>
+<td>.</td>
+<td>.</td>
+<td>  90.56</TD>
+</TR>
+
+<tr valign=top>
+<TD>cgcn{1}ccg</td>
+<td>91.73</td>
+<td>91.73</td>
+<td>91.73</td>
+<td>91.73</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  91.73</TD>
+</TR>
+
+<tr valign=top>
+<TD>cgcn{5}ccg</td>
+<td>91.61</td>
+<td>91.61</td>
+<td>91.61</td>
+<td>91.61</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  91.61</TD>
+</TR>
+
+<tr valign=top>
+<TD>cgcn{6}ccg</td>
+<td>91.54</td>
+<td>91.54</td>
+<td>91.54</td>
+<td>91.54</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  91.54</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccgn{1}ccc</td>
+<td>91.5</td>
+<td>91.5</td>
+<td>91.5</td>
+<td>91.5</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  91.50</TD>
+</TR>
+
+<tr valign=top>
+<TD>aggn{3}ggg</td>
+<td>90.46</td>
+<td>90.46</td>
+<td>90.46</td>
+<td>90.46</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  90.46</TD>
+</TR>
+
+<tr valign=top>
+<TD>ataaaa</td>
+<td>2.77</td>
+<td>87.64</td>
+<td>90.41</td>
+<td>45.205</td>
+<td>.</td>
+<td>2.77</td>
+<td>.</td>
+<td>.</td>
+<td>  87.64</TD>
+</TR>
+
+<tr valign=top>
+<TD>tgan{1}tca</td>
+<td>89.96</td>
+<td>89.96</td>
+<td>89.96</td>
+<td>89.96</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  89.96</TD>
+</TR>
+
+<tr valign=top>
+<TD>gtan{1}aca</td>
+<td>89.96</td>
+<td>89.96</td>
+<td>89.96</td>
+<td>89.96</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  89.96</TD>
+</TR>
+
+<tr valign=top>
+<TD>atan{1}tta</td>
+<td>89.51</td>
+<td>89.51</td>
+<td>89.51</td>
+<td>89.51</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  89.51</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccgn{3}ccg</td>
+<td>89.06</td>
+<td>89.06</td>
+<td>89.06</td>
+<td>89.06</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  89.06</TD>
+</TR>
+
+<tr valign=top>
+<TD>aacaca</td>
+<td>88.49</td>
+<td>88.49</td>
+<td>88.49</td>
+<td>88.49</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  88.49</TD>
+</TR>
+
+<tr valign=top>
+<TD>cacagg</td>
+<td>88.08</td>
+<td>88.08</td>
+<td>88.08</td>
+<td>88.08</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  88.08</TD>
+</TR>
+
+<tr valign=top>
+<TD>gccn{1}cgc</td>
+<td>87.72</td>
+<td>87.72</td>
+<td>87.72</td>
+<td>87.72</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  87.72</TD>
+</TR>
+
+<tr valign=top>
+<TD>gggn{3}gga</td>
+<td>87.48</td>
+<td>87.48</td>
+<td>87.48</td>
+<td>87.48</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  87.48</TD>
+</TR>
+
+<tr valign=top>
+<TD>gcagcc</td>
+<td>87.27</td>
+<td>87.27</td>
+<td>87.27</td>
+<td>87.27</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  87.27</TD>
+</TR>
+
+<tr valign=top>
+<TD>cgcccc</td>
+<td>86.19</td>
+<td>86.19</td>
+<td>86.19</td>
+<td>86.19</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  86.19</TD>
+</TR>
+
+<tr valign=top>
+<TD>actgtg</td>
+<td>85.9</td>
+<td>85.9</td>
+<td>85.9</td>
+<td>85.9</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  85.90</TD>
+</TR>
+
+<tr valign=top>
+<TD>acan{1}aca</td>
+<td>83.52</td>
+<td>83.52</td>
+<td>83.52</td>
+<td>83.52</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  83.52</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccgggc</td>
+<td>83.29</td>
+<td>83.29</td>
+<td>83.29</td>
+<td>83.29</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  83.29</TD>
+</TR>
+
+<tr valign=top>
+<TD>cccn{4}ccg</td>
+<td>82.62</td>
+<td>82.62</td>
+<td>82.62</td>
+<td>82.62</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  82.62</TD>
+</TR>
+
+<tr valign=top>
+<TD>cccn{3}gcc</td>
+<td>81.95</td>
+<td>81.95</td>
+<td>81.95</td>
+<td>81.95</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  81.95</TD>
+</TR>
+
+<tr valign=top>
+<TD>cgcn{2}cgc</td>
+<td>81.71</td>
+<td>81.71</td>
+<td>81.71</td>
+<td>81.71</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  81.71</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccgn{1}ggc</td>
+<td>81.58</td>
+<td>81.58</td>
+<td>81.58</td>
+<td>81.58</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>  81.58</TD>
+</TR>
+
+<tr valign=top>
+<TD>caggtca</td>
+<td>38.95</td>
+<td>38.95</td>
+<td>38.95</td>
+<td>38.95</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>38.95</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>atgacc</td>
+<td>35.93</td>
+<td>35.93</td>
+<td>35.93</td>
+<td>35.93</td>
+<td>.</td>
+<td>35.93</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaaaaa</td>
+<td>31.33</td>
+<td>31.33</td>
+<td>31.33</td>
+<td>31.33</td>
+<td>.</td>
+<td>31.33</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>caggtc</td>
+<td>28.35</td>
+<td>28.35</td>
+<td>28.35</td>
+<td>28.35</td>
+<td>.</td>
+<td>28.35</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aggtcac</td>
+<td>28.07</td>
+<td>28.07</td>
+<td>28.07</td>
+<td>28.07</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>28.07</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaggtca</td>
+<td>27.39</td>
+<td>27.39</td>
+<td>27.39</td>
+<td>27.39</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>27.39</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aggtcat</td>
+<td>25.93</td>
+<td>25.93</td>
+<td>25.93</td>
+<td>25.93</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>25.93</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ctgacc</td>
+<td>1.74</td>
+<td>23.09</td>
+<td>24.83</td>
+<td>12.415</td>
+<td>1.74</td>
+<td>23.09</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ttaaaa</td>
+<td>21.41</td>
+<td>21.41</td>
+<td>21.41</td>
+<td>21.41</td>
+<td>.</td>
+<td>21.41</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaaaat</td>
+<td>20.74</td>
+<td>20.74</td>
+<td>20.74</td>
+<td>20.74</td>
+<td>.</td>
+<td>20.74</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>catgac</td>
+<td>19.75</td>
+<td>19.75</td>
+<td>19.75</td>
+<td>19.75</td>
+<td>.</td>
+<td>19.75</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aggtcag</td>
+<td>18.48</td>
+<td>18.48</td>
+<td>18.48</td>
+<td>18.48</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>18.48</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gtgtca</td>
+<td>18.29</td>
+<td>18.29</td>
+<td>18.29</td>
+<td>18.29</td>
+<td>.</td>
+<td>18.29</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>taaaaa</td>
+<td>17.64</td>
+<td>17.64</td>
+<td>17.64</td>
+<td>17.64</td>
+<td>.</td>
+<td>17.64</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gggtca</td>
+<td>17.56</td>
+<td>17.56</td>
+<td>17.56</td>
+<td>17.56</td>
+<td>.</td>
+<td>17.56</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ggtcaa</td>
+<td>17.16</td>
+<td>17.16</td>
+<td>17.16</td>
+<td>17.16</td>
+<td>.</td>
+<td>17.16</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaaatt</td>
+<td>16.07</td>
+<td>16.07</td>
+<td>16.07</td>
+<td>16.07</td>
+<td>.</td>
+<td>16.07</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aggtcaa</td>
+<td>14.95</td>
+<td>14.95</td>
+<td>14.95</td>
+<td>14.95</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>14.95</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>tgactca</td>
+<td>7.27</td>
+<td>7.34</td>
+<td>14.61</td>
+<td>7.305</td>
+<td>.</td>
+<td>.</td>
+<td>7.27</td>
+<td>7.34</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gaaaaa</td>
+<td>14.59</td>
+<td>14.59</td>
+<td>14.59</td>
+<td>14.59</td>
+<td>.</td>
+<td>14.59</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>catgacc</td>
+<td>14.42</td>
+<td>14.42</td>
+<td>14.42</td>
+<td>14.42</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>14.42</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gaggtca</td>
+<td>13.73</td>
+<td>13.73</td>
+<td>13.73</td>
+<td>13.73</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>13.73</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaaaaaa</td>
+<td>13.32</td>
+<td>13.32</td>
+<td>13.32</td>
+<td>13.32</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>13.32</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>attttta</td>
+<td>6.03</td>
+<td>6.76</td>
+<td>12.79</td>
+<td>6.395</td>
+<td>.</td>
+<td>.</td>
+<td>6.76</td>
+<td>6.03</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gacctc</td>
+<td>12.38</td>
+<td>12.38</td>
+<td>12.38</td>
+<td>12.38</td>
+<td>.</td>
+<td>12.38</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gagtca</td>
+<td>4.18</td>
+<td>7.8</td>
+<td>11.98</td>
+<td>5.99</td>
+<td>4.18</td>
+<td>7.80</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaaaag</td>
+<td>11.83</td>
+<td>11.83</td>
+<td>11.83</td>
+<td>11.83</td>
+<td>.</td>
+<td>11.83</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cctgac</td>
+<td>11.32</td>
+<td>11.32</td>
+<td>11.32</td>
+<td>11.32</td>
+<td>.</td>
+<td>11.32</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ggtcacc</td>
+<td>10.78</td>
+<td>10.78</td>
+<td>10.78</td>
+<td>10.78</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>10.78</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aatgtca</td>
+<td>0.86</td>
+<td>8.61</td>
+<td>9.47</td>
+<td>4.735</td>
+<td>.</td>
+<td>.</td>
+<td>0.86</td>
+<td>8.61</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>caaggtc</td>
+<td>9.45</td>
+<td>9.45</td>
+<td>9.45</td>
+<td>9.45</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>9.45</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ggtcaca</td>
+<td>9.32</td>
+<td>9.32</td>
+<td>9.32</td>
+<td>9.32</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>9.32</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccacacc</td>
+<td>9.28</td>
+<td>9.28</td>
+<td>9.28</td>
+<td>9.28</td>
+<td>.</td>
+<td>.</td>
+<td>9.28</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aatata</td>
+<td>9.16</td>
+<td>9.16</td>
+<td>9.16</td>
+<td>9.16</td>
+<td>.</td>
+<td>9.16</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaaaaat</td>
+<td>9.16</td>
+<td>9.16</td>
+<td>9.16</td>
+<td>9.16</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>9.16</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaaattt</td>
+<td>9.1</td>
+<td>9.1</td>
+<td>9.1</td>
+<td>9.1</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>9.10</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaaaga</td>
+<td>8.96</td>
+<td>8.96</td>
+<td>8.96</td>
+<td>8.96</td>
+<td>.</td>
+<td>8.96</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>accttg</td>
+<td>1.88</td>
+<td>7.01</td>
+<td>8.89</td>
+<td>4.445</td>
+<td>1.88</td>
+<td>7.01</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>taggtca</td>
+<td>8.86</td>
+<td>8.86</td>
+<td>8.86</td>
+<td>8.86</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>8.86</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>tttaaaa</td>
+<td>8.78</td>
+<td>8.78</td>
+<td>8.78</td>
+<td>8.78</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>8.78</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaaagaa</td>
+<td>8.69</td>
+<td>8.69</td>
+<td>8.69</td>
+<td>8.69</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>8.69</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gactca</td>
+<td>2.17</td>
+<td>6.44</td>
+<td>8.61</td>
+<td>4.305</td>
+<td>6.44</td>
+<td>2.17</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>agaaaa</td>
+<td>8.43</td>
+<td>8.43</td>
+<td>8.43</td>
+<td>8.43</td>
+<td>.</td>
+<td>8.43</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>tttaaa</td>
+<td>8.41</td>
+<td>8.41</td>
+<td>8.41</td>
+<td>8.41</td>
+<td>.</td>
+<td>8.41</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cagggca</td>
+<td>8.4</td>
+<td>8.4</td>
+<td>8.4</td>
+<td>8.4</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>8.40</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaaaatt</td>
+<td>8.12</td>
+<td>8.12</td>
+<td>8.12</td>
+<td>8.12</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>8.12</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaagaa</td>
+<td>0.44</td>
+<td>7.62</td>
+<td>8.06</td>
+<td>4.03</td>
+<td>0.44</td>
+<td>7.62</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ttaaaaa</td>
+<td>7.95</td>
+<td>7.95</td>
+<td>7.95</td>
+<td>7.95</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>7.95</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>agacca</td>
+<td>7.84</td>
+<td>7.84</td>
+<td>7.84</td>
+<td>7.84</td>
+<td>7.84</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cttgac</td>
+<td>7.65</td>
+<td>7.65</td>
+<td>7.65</td>
+<td>7.65</td>
+<td>.</td>
+<td>7.65</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gaaaaaa</td>
+<td>7.62</td>
+<td>7.62</td>
+<td>7.62</td>
+<td>7.62</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>7.62</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gtcaac</td>
+<td>7.35</td>
+<td>7.35</td>
+<td>7.35</td>
+<td>7.35</td>
+<td>.</td>
+<td>7.35</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ataata</td>
+<td>7.25</td>
+<td>7.25</td>
+<td>7.25</td>
+<td>7.25</td>
+<td>.</td>
+<td>7.25</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>tgacaca</td>
+<td>7.19</td>
+<td>7.19</td>
+<td>7.19</td>
+<td>7.19</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>7.19</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>tgaccca</td>
+<td>6.54</td>
+<td>6.54</td>
+<td>6.54</td>
+<td>6.54</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>6.54</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>atgaca</td>
+<td>6.49</td>
+<td>6.49</td>
+<td>6.49</td>
+<td>6.49</td>
+<td>.</td>
+<td>6.49</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>atttaa</td>
+<td>6.46</td>
+<td>6.46</td>
+<td>6.46</td>
+<td>6.46</td>
+<td>.</td>
+<td>6.46</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccaggtc</td>
+<td>6.39</td>
+<td>6.39</td>
+<td>6.39</td>
+<td>6.39</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>6.39</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aattta</td>
+<td>6.35</td>
+<td>6.35</td>
+<td>6.35</td>
+<td>6.35</td>
+<td>.</td>
+<td>6.35</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaattt</td>
+<td>6.32</td>
+<td>6.32</td>
+<td>6.32</td>
+<td>6.32</td>
+<td>.</td>
+<td>6.32</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gcaaac</td>
+<td>1.98</td>
+<td>4.1</td>
+<td>6.08</td>
+<td>3.04</td>
+<td>4.10</td>
+<td>1.98</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaaaaga</td>
+<td>6.06</td>
+<td>6.06</td>
+<td>6.06</td>
+<td>6.06</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>6.06</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaatta</td>
+<td>6.06</td>
+<td>6.06</td>
+<td>6.06</td>
+<td>6.06</td>
+<td>.</td>
+<td>6.06</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>agaata</td>
+<td>6.06</td>
+<td>6.06</td>
+<td>6.06</td>
+<td>6.06</td>
+<td>.</td>
+<td>6.06</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cctcagg</td>
+<td>6.03</td>
+<td>6.03</td>
+<td>6.03</td>
+<td>6.03</td>
+<td>.</td>
+<td>.</td>
+<td>6.03</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aataat</td>
+<td>6</td>
+<td>6</td>
+<td>6</td>
+<td>6</td>
+<td>.</td>
+<td>6.00</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ctgaca</td>
+<td>5.97</td>
+<td>5.97</td>
+<td>5.97</td>
+<td>5.97</td>
+<td>.</td>
+<td>5.97</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>atttaaa</td>
+<td>5.79</td>
+<td>5.79</td>
+<td>5.79</td>
+<td>5.79</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>5.79</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aagaaa</td>
+<td>5.77</td>
+<td>5.77</td>
+<td>5.77</td>
+<td>5.77</td>
+<td>.</td>
+<td>5.77</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gcaaaca</td>
+<td>1.61</td>
+<td>4.08</td>
+<td>5.69</td>
+<td>2.845</td>
+<td>.</td>
+<td>.</td>
+<td>1.61</td>
+<td>4.08</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>taataa</td>
+<td>5.53</td>
+<td>5.53</td>
+<td>5.53</td>
+<td>5.53</td>
+<td>.</td>
+<td>5.53</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>atgtcag</td>
+<td>5.52</td>
+<td>5.52</td>
+<td>5.52</td>
+<td>5.52</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>5.52</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aggtta</td>
+<td>2.43</td>
+<td>2.97</td>
+<td>5.4</td>
+<td>2.7</td>
+<td>2.97</td>
+<td>2.43</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cttgacc</td>
+<td>1.38</td>
+<td>3.84</td>
+<td>5.22</td>
+<td>2.61</td>
+<td>.</td>
+<td>.</td>
+<td>1.38</td>
+<td>3.84</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>catgtca</td>
+<td>5.19</td>
+<td>5.19</td>
+<td>5.19</td>
+<td>5.19</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>5.19</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cttccc</td>
+<td>5.15</td>
+<td>5.15</td>
+<td>5.15</td>
+<td>5.15</td>
+<td>5.15</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cccctcc</td>
+<td>5.13</td>
+<td>5.13</td>
+<td>5.13</td>
+<td>5.13</td>
+<td>.</td>
+<td>.</td>
+<td>5.13</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaaaaag</td>
+<td>5.04</td>
+<td>5.04</td>
+<td>5.04</td>
+<td>5.04</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>5.04</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cctgacc</td>
+<td>4.94</td>
+<td>4.94</td>
+<td>4.94</td>
+<td>4.94</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>4.94</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gtcaaa</td>
+<td>4.5</td>
+<td>4.5</td>
+<td>4.5</td>
+<td>4.5</td>
+<td>.</td>
+<td>4.50</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ctgtcc</td>
+<td>4.48</td>
+<td>4.48</td>
+<td>4.48</td>
+<td>4.48</td>
+<td>4.48</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cttatc</td>
+<td>4.42</td>
+<td>4.42</td>
+<td>4.42</td>
+<td>4.42</td>
+<td>4.42</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>accctg</td>
+<td>4.36</td>
+<td>4.36</td>
+<td>4.36</td>
+<td>4.36</td>
+<td>.</td>
+<td>4.36</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>atataa</td>
+<td>4.33</td>
+<td>4.33</td>
+<td>4.33</td>
+<td>4.33</td>
+<td>.</td>
+<td>4.33</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>tgacca</td>
+<td>4.26</td>
+<td>4.26</td>
+<td>4.26</td>
+<td>4.26</td>
+<td>.</td>
+<td>4.26</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaattta</td>
+<td>4.25</td>
+<td>4.25</td>
+<td>4.25</td>
+<td>4.25</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>4.25</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>attcca</td>
+<td>4.17</td>
+<td>4.17</td>
+<td>4.17</td>
+<td>4.17</td>
+<td>4.17</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>tacata</td>
+<td>4.13</td>
+<td>4.13</td>
+<td>4.13</td>
+<td>4.13</td>
+<td>4.13</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gatgacc</td>
+<td>4.09</td>
+<td>4.09</td>
+<td>4.09</td>
+<td>4.09</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>4.09</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>agtgacc</td>
+<td>4.06</td>
+<td>4.06</td>
+<td>4.06</td>
+<td>4.06</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>4.06</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccccacc</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>.</td>
+<td>.</td>
+<td>4.00</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ctgggc</td>
+<td>3.99</td>
+<td>3.99</td>
+<td>3.99</td>
+<td>3.99</td>
+<td>3.99</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>atattc</td>
+<td>3.95</td>
+<td>3.95</td>
+<td>3.95</td>
+<td>3.95</td>
+<td>.</td>
+<td>3.95</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aattaa</td>
+<td>3.94</td>
+<td>3.94</td>
+<td>3.94</td>
+<td>3.94</td>
+<td>.</td>
+<td>3.94</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gtgacac</td>
+<td>3.9</td>
+<td>3.9</td>
+<td>3.9</td>
+<td>3.9</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>3.90</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>agggcag</td>
+<td>3.86</td>
+<td>3.86</td>
+<td>3.86</td>
+<td>3.86</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>3.86</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gctgac</td>
+<td>3.85</td>
+<td>3.85</td>
+<td>3.85</td>
+<td>3.85</td>
+<td>.</td>
+<td>3.85</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gacctga</td>
+<td>3.73</td>
+<td>3.73</td>
+<td>3.73</td>
+<td>3.73</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>3.73</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>acagca</td>
+<td>3.7</td>
+<td>3.7</td>
+<td>3.7</td>
+<td>3.7</td>
+<td>3.70</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aggtcg</td>
+<td>3.7</td>
+<td>3.7</td>
+<td>3.7</td>
+<td>3.7</td>
+<td>.</td>
+<td>3.70</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>agggtca</td>
+<td>3.68</td>
+<td>3.68</td>
+<td>3.68</td>
+<td>3.68</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>3.68</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gaccta</td>
+<td>3.61</td>
+<td>3.61</td>
+<td>3.61</td>
+<td>3.61</td>
+<td>.</td>
+<td>3.61</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>tagaaa</td>
+<td>3.61</td>
+<td>3.61</td>
+<td>3.61</td>
+<td>3.61</td>
+<td>.</td>
+<td>3.61</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gtcata</td>
+<td>3.59</td>
+<td>3.59</td>
+<td>3.59</td>
+<td>3.59</td>
+<td>.</td>
+<td>3.59</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccccac</td>
+<td>3.57</td>
+<td>3.57</td>
+<td>3.57</td>
+<td>3.57</td>
+<td>3.57</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaattaa</td>
+<td>3.57</td>
+<td>3.57</td>
+<td>3.57</td>
+<td>3.57</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>3.57</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>tgaaaa</td>
+<td>3.55</td>
+<td>3.55</td>
+<td>3.55</td>
+<td>3.55</td>
+<td>.</td>
+<td>3.55</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aagcaa</td>
+<td>3.42</td>
+<td>3.42</td>
+<td>3.42</td>
+<td>3.42</td>
+<td>3.42</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gaaaaac</td>
+<td>3.32</td>
+<td>3.32</td>
+<td>3.32</td>
+<td>3.32</td>
+<td>.</td>
+<td>.</td>
+<td>3.32</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>tgtcaa</td>
+<td>3.27</td>
+<td>3.27</td>
+<td>3.27</td>
+<td>3.27</td>
+<td>.</td>
+<td>3.27</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cagagc</td>
+<td>3.25</td>
+<td>3.25</td>
+<td>3.25</td>
+<td>3.25</td>
+<td>3.25</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aatttaa</td>
+<td>3.22</td>
+<td>3.22</td>
+<td>3.22</td>
+<td>3.22</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>3.22</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>agaaat</td>
+<td>3.12</td>
+<td>3.12</td>
+<td>3.12</td>
+<td>3.12</td>
+<td>.</td>
+<td>3.12</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ctgcag</td>
+<td>3.11</td>
+<td>3.11</td>
+<td>3.11</td>
+<td>3.11</td>
+<td>3.11</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ggtcaga</td>
+<td>3.08</td>
+<td>3.08</td>
+<td>3.08</td>
+<td>3.08</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>3.08</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cggagc</td>
+<td>3.07</td>
+<td>3.07</td>
+<td>3.07</td>
+<td>3.07</td>
+<td>3.07</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccaaacc</td>
+<td>3.03</td>
+<td>3.03</td>
+<td>3.03</td>
+<td>3.03</td>
+<td>.</td>
+<td>.</td>
+<td>3.03</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaaataa</td>
+<td>3.03</td>
+<td>3.03</td>
+<td>3.03</td>
+<td>3.03</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>3.03</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>agacaa</td>
+<td>2.98</td>
+<td>2.98</td>
+<td>2.98</td>
+<td>2.98</td>
+<td>2.98</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gtgaca</td>
+<td>2.96</td>
+<td>2.96</td>
+<td>2.96</td>
+<td>2.96</td>
+<td>.</td>
+<td>2.96</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ttagaa</td>
+<td>2.94</td>
+<td>2.94</td>
+<td>2.94</td>
+<td>2.94</td>
+<td>.</td>
+<td>2.94</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aataata</td>
+<td>2.86</td>
+<td>2.86</td>
+<td>2.86</td>
+<td>2.86</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>2.86</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>accaca</td>
+<td>2.86</td>
+<td>2.86</td>
+<td>2.86</td>
+<td>2.86</td>
+<td>2.86</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aagcca</td>
+<td>2.84</td>
+<td>2.84</td>
+<td>2.84</td>
+<td>2.84</td>
+<td>2.84</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aactcaa</td>
+<td>2.84</td>
+<td>2.84</td>
+<td>2.84</td>
+<td>2.84</td>
+<td>.</td>
+<td>.</td>
+<td>2.84</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ctaaag</td>
+<td>2.83</td>
+<td>2.83</td>
+<td>2.83</td>
+<td>2.83</td>
+<td>2.83</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>agaaaaa</td>
+<td>2.83</td>
+<td>2.83</td>
+<td>2.83</td>
+<td>2.83</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>2.83</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>taaaaaa</td>
+<td>2.82</td>
+<td>2.82</td>
+<td>2.82</td>
+<td>2.82</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>2.82</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>catatc</td>
+<td>2.8</td>
+<td>2.8</td>
+<td>2.8</td>
+<td>2.8</td>
+<td>2.80</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>tgaatca</td>
+<td>2.8</td>
+<td>2.8</td>
+<td>2.8</td>
+<td>2.8</td>
+<td>.</td>
+<td>.</td>
+<td>2.80</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ctgtgtc</td>
+<td>2.77</td>
+<td>2.77</td>
+<td>2.77</td>
+<td>2.77</td>
+<td>.</td>
+<td>.</td>
+<td>2.77</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>actgaa</td>
+<td>2.71</td>
+<td>2.71</td>
+<td>2.71</td>
+<td>2.71</td>
+<td>2.71</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaagaaa</td>
+<td>2.68</td>
+<td>2.68</td>
+<td>2.68</td>
+<td>2.68</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>2.68</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cccttc</td>
+<td>2.56</td>
+<td>2.56</td>
+<td>2.56</td>
+<td>2.56</td>
+<td>2.56</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cccctc</td>
+<td>0.68</td>
+<td>1.84</td>
+<td>2.52</td>
+<td>1.26</td>
+<td>0.68</td>
+<td>1.84</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ctcaaaa</td>
+<td>2.49</td>
+<td>2.49</td>
+<td>2.49</td>
+<td>2.49</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>2.49</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aggcca</td>
+<td>2.49</td>
+<td>2.49</td>
+<td>2.49</td>
+<td>2.49</td>
+<td>2.49</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ggtcaaa</td>
+<td>2.44</td>
+<td>2.44</td>
+<td>2.44</td>
+<td>2.44</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>2.44</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gggtcac</td>
+<td>2.42</td>
+<td>2.42</td>
+<td>2.42</td>
+<td>2.42</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>2.42</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gacctca</td>
+<td>2.41</td>
+<td>2.41</td>
+<td>2.41</td>
+<td>2.41</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>2.41</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aagacaa</td>
+<td>2.34</td>
+<td>2.34</td>
+<td>2.34</td>
+<td>2.34</td>
+<td>.</td>
+<td>.</td>
+<td>2.34</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>catttc</td>
+<td>2.33</td>
+<td>2.33</td>
+<td>2.33</td>
+<td>2.33</td>
+<td>2.33</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ctcttc</td>
+<td>2.29</td>
+<td>2.29</td>
+<td>2.29</td>
+<td>2.29</td>
+<td>2.29</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aagtcaa</td>
+<td>2.29</td>
+<td>2.29</td>
+<td>2.29</td>
+<td>2.29</td>
+<td>.</td>
+<td>.</td>
+<td>2.29</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>catgtc</td>
+<td>2.27</td>
+<td>2.27</td>
+<td>2.27</td>
+<td>2.27</td>
+<td>.</td>
+<td>2.27</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gtaaaca</td>
+<td>0.04</td>
+<td>2.22</td>
+<td>2.26</td>
+<td>1.13</td>
+<td>.</td>
+<td>.</td>
+<td>0.04</td>
+<td>2.22</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cactgc</td>
+<td>2.26</td>
+<td>2.26</td>
+<td>2.26</td>
+<td>2.26</td>
+<td>2.26</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccctgac</td>
+<td>2.25</td>
+<td>2.25</td>
+<td>2.25</td>
+<td>2.25</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>2.25</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>atgaaa</td>
+<td>2.22</td>
+<td>2.22</td>
+<td>2.22</td>
+<td>2.22</td>
+<td>.</td>
+<td>2.22</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>atgcta</td>
+<td>2.22</td>
+<td>2.22</td>
+<td>2.22</td>
+<td>2.22</td>
+<td>2.22</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ctcacc</td>
+<td>2.18</td>
+<td>2.18</td>
+<td>2.18</td>
+<td>2.18</td>
+<td>2.18</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ctgtgac</td>
+<td>2.13</td>
+<td>2.13</td>
+<td>2.13</td>
+<td>2.13</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>2.13</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>caaaac</td>
+<td>2.12</td>
+<td>2.12</td>
+<td>2.12</td>
+<td>2.12</td>
+<td>2.12</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ctgctc</td>
+<td>2.12</td>
+<td>2.12</td>
+<td>2.12</td>
+<td>2.12</td>
+<td>2.12</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccaaag</td>
+<td>2.11</td>
+<td>2.11</td>
+<td>2.11</td>
+<td>2.11</td>
+<td>2.11</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccccagg</td>
+<td>2.09</td>
+<td>2.09</td>
+<td>2.09</td>
+<td>2.09</td>
+<td>.</td>
+<td>.</td>
+<td>2.09</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>caaaag</td>
+<td>2.08</td>
+<td>2.08</td>
+<td>2.08</td>
+<td>2.08</td>
+<td>2.08</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>agaatat</td>
+<td>2.01</td>
+<td>2.01</td>
+<td>2.01</td>
+<td>2.01</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>2.01</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>atgcaa</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2.00</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aatatgg</td>
+<td>1.96</td>
+<td>1.96</td>
+<td>1.96</td>
+<td>1.96</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>1.96</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cttgcc</td>
+<td>1.94</td>
+<td>1.94</td>
+<td>1.94</td>
+<td>1.94</td>
+<td>1.94</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>acaggtc</td>
+<td>1.93</td>
+<td>1.93</td>
+<td>1.93</td>
+<td>1.93</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>1.93</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aagaat</td>
+<td>1.91</td>
+<td>1.91</td>
+<td>1.91</td>
+<td>1.91</td>
+<td>.</td>
+<td>1.91</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>attttc</td>
+<td>1.88</td>
+<td>1.88</td>
+<td>1.88</td>
+<td>1.88</td>
+<td>.</td>
+<td>1.88</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ctgtgc</td>
+<td>1.85</td>
+<td>1.85</td>
+<td>1.85</td>
+<td>1.85</td>
+<td>1.85</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ggtcata</td>
+<td>1.84</td>
+<td>1.84</td>
+<td>1.84</td>
+<td>1.84</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>1.84</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccaagg</td>
+<td>1.82</td>
+<td>1.82</td>
+<td>1.82</td>
+<td>1.82</td>
+<td>.</td>
+<td>1.82</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaagta</td>
+<td>1.81</td>
+<td>1.81</td>
+<td>1.81</td>
+<td>1.81</td>
+<td>.</td>
+<td>1.81</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>caaaaaa</td>
+<td>1.81</td>
+<td>1.81</td>
+<td>1.81</td>
+<td>1.81</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>1.81</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gcatgac</td>
+<td>1.8</td>
+<td>1.8</td>
+<td>1.8</td>
+<td>1.8</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>1.80</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccacctc</td>
+<td>1.79</td>
+<td>1.79</td>
+<td>1.79</td>
+<td>1.79</td>
+<td>.</td>
+<td>.</td>
+<td>1.79</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gtcatca</td>
+<td>1.79</td>
+<td>1.79</td>
+<td>1.79</td>
+<td>1.79</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>1.79</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>agactg</td>
+<td>1.73</td>
+<td>1.73</td>
+<td>1.73</td>
+<td>1.73</td>
+<td>1.73</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>atccta</td>
+<td>1.73</td>
+<td>1.73</td>
+<td>1.73</td>
+<td>1.73</td>
+<td>1.73</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cctgccc</td>
+<td>0.48</td>
+<td>1.2</td>
+<td>1.68</td>
+<td>0.84</td>
+<td>.</td>
+<td>.</td>
+<td>0.48</td>
+<td>1.20</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>atgcca</td>
+<td>1.67</td>
+<td>1.67</td>
+<td>1.67</td>
+<td>1.67</td>
+<td>1.67</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>atccca</td>
+<td>1.67</td>
+<td>1.67</td>
+<td>1.67</td>
+<td>1.67</td>
+<td>1.67</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ggaaaaa</td>
+<td>1.66</td>
+<td>1.66</td>
+<td>1.66</td>
+<td>1.66</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>1.66</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>agccccc</td>
+<td>1.66</td>
+<td>1.66</td>
+<td>1.66</td>
+<td>1.66</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>1.66</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gtcatga</td>
+<td>1.66</td>
+<td>1.66</td>
+<td>1.66</td>
+<td>1.66</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>1.66</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cttttc</td>
+<td>1.64</td>
+<td>1.64</td>
+<td>1.64</td>
+<td>1.64</td>
+<td>1.64</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccagac</td>
+<td>1.63</td>
+<td>1.63</td>
+<td>1.63</td>
+<td>1.63</td>
+<td>1.63</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ataataa</td>
+<td>1.62</td>
+<td>1.62</td>
+<td>1.62</td>
+<td>1.62</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>1.62</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>attttaa</td>
+<td>1.59</td>
+<td>1.59</td>
+<td>1.59</td>
+<td>1.59</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>1.59</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gtcaga</td>
+<td>1.55</td>
+<td>1.55</td>
+<td>1.55</td>
+<td>1.55</td>
+<td>.</td>
+<td>1.55</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ctctcc</td>
+<td>1.54</td>
+<td>1.54</td>
+<td>1.54</td>
+<td>1.54</td>
+<td>1.54</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>atgtga</td>
+<td>1.52</td>
+<td>1.52</td>
+<td>1.52</td>
+<td>1.52</td>
+<td>1.52</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>acctga</td>
+<td>1.51</td>
+<td>1.51</td>
+<td>1.51</td>
+<td>1.51</td>
+<td>.</td>
+<td>1.51</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ggggca</td>
+<td>1.51</td>
+<td>1.51</td>
+<td>1.51</td>
+<td>1.51</td>
+<td>.</td>
+<td>1.51</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>atggca</td>
+<td>1.5</td>
+<td>1.5</td>
+<td>1.5</td>
+<td>1.5</td>
+<td>1.50</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaaaatg</td>
+<td>1.5</td>
+<td>1.5</td>
+<td>1.5</td>
+<td>1.5</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>1.50</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ctccacc</td>
+<td>1.5</td>
+<td>1.5</td>
+<td>1.5</td>
+<td>1.5</td>
+<td>.</td>
+<td>.</td>
+<td>1.50</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>caggtcc</td>
+<td>1.5</td>
+<td>1.5</td>
+<td>1.5</td>
+<td>1.5</td>
+<td>.</td>
+<td>.</td>
+<td>1.50</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ggacccc</td>
+<td>1.5</td>
+<td>1.5</td>
+<td>1.5</td>
+<td>1.5</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>1.50</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaaatg</td>
+<td>1.5</td>
+<td>1.5</td>
+<td>1.5</td>
+<td>1.5</td>
+<td>.</td>
+<td>1.50</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aacctg</td>
+<td>1.49</td>
+<td>1.49</td>
+<td>1.49</td>
+<td>1.49</td>
+<td>.</td>
+<td>1.49</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gagaata</td>
+<td>1.48</td>
+<td>1.48</td>
+<td>1.48</td>
+<td>1.48</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>1.48</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>acaggt</td>
+<td>1.48</td>
+<td>1.48</td>
+<td>1.48</td>
+<td>1.48</td>
+<td>.</td>
+<td>1.48</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cgccccc</td>
+<td>1.48</td>
+<td>1.48</td>
+<td>1.48</td>
+<td>1.48</td>
+<td>.</td>
+<td>.</td>
+<td>1.48</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>agtccc</td>
+<td>1.47</td>
+<td>1.47</td>
+<td>1.47</td>
+<td>1.47</td>
+<td>.</td>
+<td>1.47</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cacccac</td>
+<td>1.47</td>
+<td>1.47</td>
+<td>1.47</td>
+<td>1.47</td>
+<td>.</td>
+<td>.</td>
+<td>1.47</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cgctgc</td>
+<td>1.45</td>
+<td>1.45</td>
+<td>1.45</td>
+<td>1.45</td>
+<td>1.45</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ggacca</td>
+<td>1.44</td>
+<td>1.44</td>
+<td>1.44</td>
+<td>1.44</td>
+<td>1.44</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gacctta</td>
+<td>1.42</td>
+<td>1.42</td>
+<td>1.42</td>
+<td>1.42</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>1.42</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cgcccac</td>
+<td>1.41</td>
+<td>1.41</td>
+<td>1.41</td>
+<td>1.41</td>
+<td>.</td>
+<td>.</td>
+<td>1.41</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccctga</td>
+<td>1.4</td>
+<td>1.4</td>
+<td>1.4</td>
+<td>1.4</td>
+<td>.</td>
+<td>1.40</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaaaata</td>
+<td>1.4</td>
+<td>1.4</td>
+<td>1.4</td>
+<td>1.4</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>1.40</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cccctgc</td>
+<td>1.35</td>
+<td>1.35</td>
+<td>1.35</td>
+<td>1.35</td>
+<td>.</td>
+<td>.</td>
+<td>1.35</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>tataaa</td>
+<td>1.33</td>
+<td>1.33</td>
+<td>1.33</td>
+<td>1.33</td>
+<td>.</td>
+<td>1.33</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>agtcaa</td>
+<td>1.32</td>
+<td>1.32</td>
+<td>1.32</td>
+<td>1.32</td>
+<td>.</td>
+<td>1.32</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cacctcc</td>
+<td>1.31</td>
+<td>1.31</td>
+<td>1.31</td>
+<td>1.31</td>
+<td>.</td>
+<td>.</td>
+<td>1.31</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gaggaa</td>
+<td>1.3</td>
+<td>1.3</td>
+<td>1.3</td>
+<td>1.3</td>
+<td>.</td>
+<td>1.30</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>attaaa</td>
+<td>1.26</td>
+<td>1.26</td>
+<td>1.26</td>
+<td>1.26</td>
+<td>.</td>
+<td>1.26</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>caaaaa</td>
+<td>1.25</td>
+<td>1.25</td>
+<td>1.25</td>
+<td>1.25</td>
+<td>.</td>
+<td>1.25</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>atctga</td>
+<td>1.24</td>
+<td>1.24</td>
+<td>1.24</td>
+<td>1.24</td>
+<td>1.24</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gccccc</td>
+<td>1.23</td>
+<td>1.23</td>
+<td>1.23</td>
+<td>1.23</td>
+<td>.</td>
+<td>1.23</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>attttca</td>
+<td>1.23</td>
+<td>1.23</td>
+<td>1.23</td>
+<td>1.23</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>1.23</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>acctgac</td>
+<td>1.21</td>
+<td>1.21</td>
+<td>1.21</td>
+<td>1.21</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>1.21</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aattat</td>
+<td>1.2</td>
+<td>1.2</td>
+<td>1.2</td>
+<td>1.2</td>
+<td>.</td>
+<td>1.20</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>agataa</td>
+<td>1.2</td>
+<td>1.2</td>
+<td>1.2</td>
+<td>1.2</td>
+<td>1.20</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cagacac</td>
+<td>1.19</td>
+<td>1.19</td>
+<td>1.19</td>
+<td>1.19</td>
+<td>.</td>
+<td>.</td>
+<td>1.19</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gacctgc</td>
+<td>1.18</td>
+<td>1.18</td>
+<td>1.18</td>
+<td>1.18</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>1.18</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gaaacc</td>
+<td>1.18</td>
+<td>1.18</td>
+<td>1.18</td>
+<td>1.18</td>
+<td>1.18</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>taccta</td>
+<td>1.18</td>
+<td>1.18</td>
+<td>1.18</td>
+<td>1.18</td>
+<td>1.18</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aagaata</td>
+<td>1.16</td>
+<td>1.16</td>
+<td>1.16</td>
+<td>1.16</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>1.16</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaggaga</td>
+<td>1.14</td>
+<td>1.14</td>
+<td>1.14</td>
+<td>1.14</td>
+<td>.</td>
+<td>.</td>
+<td>1.14</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ttgaaa</td>
+<td>1.12</td>
+<td>1.12</td>
+<td>1.12</td>
+<td>1.12</td>
+<td>.</td>
+<td>1.12</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>taagta</td>
+<td>1.09</td>
+<td>1.09</td>
+<td>1.09</td>
+<td>1.09</td>
+<td>1.09</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ctggggc</td>
+<td>1.08</td>
+<td>1.08</td>
+<td>1.08</td>
+<td>1.08</td>
+<td>.</td>
+<td>.</td>
+<td>1.08</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaaatat</td>
+<td>1.07</td>
+<td>1.07</td>
+<td>1.07</td>
+<td>1.07</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>1.07</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>atgtcac</td>
+<td>1.07</td>
+<td>1.07</td>
+<td>1.07</td>
+<td>1.07</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>1.07</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gcagggc</td>
+<td>1.05</td>
+<td>1.05</td>
+<td>1.05</td>
+<td>1.05</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>1.05</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aatataa</td>
+<td>1.02</td>
+<td>1.02</td>
+<td>1.02</td>
+<td>1.02</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>1.02</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>acatgac</td>
+<td>1.02</td>
+<td>1.02</td>
+<td>1.02</td>
+<td>1.02</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>1.02</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>caaaata</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>1.00</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cggctgc</td>
+<td>0.97</td>
+<td>0.97</td>
+<td>0.97</td>
+<td>0.97</td>
+<td>.</td>
+<td>.</td>
+<td>0.97</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccagtc</td>
+<td>0.95</td>
+<td>0.95</td>
+<td>0.95</td>
+<td>0.95</td>
+<td>0.95</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>agtgga</td>
+<td>0.92</td>
+<td>0.92</td>
+<td>0.92</td>
+<td>0.92</td>
+<td>0.92</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>atctca</td>
+<td>0.92</td>
+<td>0.92</td>
+<td>0.92</td>
+<td>0.92</td>
+<td>0.92</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gggaga</td>
+<td>0.92</td>
+<td>0.92</td>
+<td>0.92</td>
+<td>0.92</td>
+<td>.</td>
+<td>0.92</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>tataaaa</td>
+<td>0.91</td>
+<td>0.91</td>
+<td>0.91</td>
+<td>0.91</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>0.91</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaaatta</td>
+<td>0.9</td>
+<td>0.9</td>
+<td>0.9</td>
+<td>0.9</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>0.90</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>actcca</td>
+<td>0.89</td>
+<td>0.89</td>
+<td>0.89</td>
+<td>0.89</td>
+<td>0.89</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>agaggtc</td>
+<td>0.89</td>
+<td>0.89</td>
+<td>0.89</td>
+<td>0.89</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>0.89</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aggtgac</td>
+<td>0.86</td>
+<td>0.86</td>
+<td>0.86</td>
+<td>0.86</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>0.86</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ggaaaa</td>
+<td>0.86</td>
+<td>0.86</td>
+<td>0.86</td>
+<td>0.86</td>
+<td>.</td>
+<td>0.86</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>agggga</td>
+<td>0.83</td>
+<td>0.83</td>
+<td>0.83</td>
+<td>0.83</td>
+<td>0.83</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>taggca</td>
+<td>0.83</td>
+<td>0.83</td>
+<td>0.83</td>
+<td>0.83</td>
+<td>0.83</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>attatta</td>
+<td>0.83</td>
+<td>0.83</td>
+<td>0.83</td>
+<td>0.83</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>0.83</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cttaaaa</td>
+<td>0.81</td>
+<td>0.81</td>
+<td>0.81</td>
+<td>0.81</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>0.81</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>agtttc</td>
+<td>0.81</td>
+<td>0.81</td>
+<td>0.81</td>
+<td>0.81</td>
+<td>0.81</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaaaac</td>
+<td>0.78</td>
+<td>0.78</td>
+<td>0.78</td>
+<td>0.78</td>
+<td>.</td>
+<td>0.78</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gtaaata</td>
+<td>0.76</td>
+<td>0.76</td>
+<td>0.76</td>
+<td>0.76</td>
+<td>.</td>
+<td>.</td>
+<td>0.76</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ctgtctc</td>
+<td>0.75</td>
+<td>0.75</td>
+<td>0.75</td>
+<td>0.75</td>
+<td>.</td>
+<td>.</td>
+<td>0.75</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>caccctc</td>
+<td>0.71</td>
+<td>0.71</td>
+<td>0.71</td>
+<td>0.71</td>
+<td>.</td>
+<td>.</td>
+<td>0.71</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ctgcacc</td>
+<td>0.7</td>
+<td>0.7</td>
+<td>0.7</td>
+<td>0.7</td>
+<td>.</td>
+<td>.</td>
+<td>0.70</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cacaaag</td>
+<td>0.69</td>
+<td>0.69</td>
+<td>0.69</td>
+<td>0.69</td>
+<td>.</td>
+<td>.</td>
+<td>0.69</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>caaaaac</td>
+<td>0.68</td>
+<td>0.68</td>
+<td>0.68</td>
+<td>0.68</td>
+<td>.</td>
+<td>.</td>
+<td>0.68</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>atcagat</td>
+<td>0.67</td>
+<td>0.67</td>
+<td>0.67</td>
+<td>0.67</td>
+<td>.</td>
+<td>.</td>
+<td>0.67</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gtcacac</td>
+<td>0.65</td>
+<td>0.65</td>
+<td>0.65</td>
+<td>0.65</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>0.65</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gaggaaa</td>
+<td>0.65</td>
+<td>0.65</td>
+<td>0.65</td>
+<td>0.65</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>0.65</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>acagaa</td>
+<td>0.63</td>
+<td>0.63</td>
+<td>0.63</td>
+<td>0.63</td>
+<td>0.63</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aatgaa</td>
+<td>0.62</td>
+<td>0.62</td>
+<td>0.62</td>
+<td>0.62</td>
+<td>0.62</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaacca</td>
+<td>0.62</td>
+<td>0.62</td>
+<td>0.62</td>
+<td>0.62</td>
+<td>0.62</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaaagta</td>
+<td>0.6</td>
+<td>0.6</td>
+<td>0.6</td>
+<td>0.6</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>0.60</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cgtttc</td>
+<td>0.6</td>
+<td>0.6</td>
+<td>0.6</td>
+<td>0.6</td>
+<td>0.60</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>atgacat</td>
+<td>0.59</td>
+<td>0.59</td>
+<td>0.59</td>
+<td>0.59</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>0.59</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ctgaccc</td>
+<td>0.58</td>
+<td>0.58</td>
+<td>0.58</td>
+<td>0.58</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>0.58</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>atggaa</td>
+<td>0.57</td>
+<td>0.57</td>
+<td>0.57</td>
+<td>0.57</td>
+<td>0.57</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ttaagaa</td>
+<td>0.57</td>
+<td>0.57</td>
+<td>0.57</td>
+<td>0.57</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>0.57</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaaaagg</td>
+<td>0.56</td>
+<td>0.56</td>
+<td>0.56</td>
+<td>0.56</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>0.56</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cactcc</td>
+<td>0.55</td>
+<td>0.55</td>
+<td>0.55</td>
+<td>0.55</td>
+<td>0.55</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccagccc</td>
+<td>0.55</td>
+<td>0.55</td>
+<td>0.55</td>
+<td>0.55</td>
+<td>.</td>
+<td>.</td>
+<td>0.55</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>agcaaac</td>
+<td>0.54</td>
+<td>0.54</td>
+<td>0.54</td>
+<td>0.54</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>0.54</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gattaca</td>
+<td>0.54</td>
+<td>0.54</td>
+<td>0.54</td>
+<td>0.54</td>
+<td>.</td>
+<td>.</td>
+<td>0.54</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccttcc</td>
+<td>0.51</td>
+<td>0.51</td>
+<td>0.51</td>
+<td>0.51</td>
+<td>0.51</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>atgaccc</td>
+<td>0.51</td>
+<td>0.51</td>
+<td>0.51</td>
+<td>0.51</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>0.51</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aagtta</td>
+<td>0.51</td>
+<td>0.51</td>
+<td>0.51</td>
+<td>0.51</td>
+<td>0.51</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>catgcac</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>.</td>
+<td>.</td>
+<td>0.50</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>agttca</td>
+<td>0.49</td>
+<td>0.49</td>
+<td>0.49</td>
+<td>0.49</td>
+<td>0.49</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>acttca</td>
+<td>0.47</td>
+<td>0.47</td>
+<td>0.47</td>
+<td>0.47</td>
+<td>0.47</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>atttca</td>
+<td>0.45</td>
+<td>0.45</td>
+<td>0.45</td>
+<td>0.45</td>
+<td>0.45</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cctctc</td>
+<td>0.41</td>
+<td>0.41</td>
+<td>0.41</td>
+<td>0.41</td>
+<td>0.41</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cttctc</td>
+<td>0.4</td>
+<td>0.4</td>
+<td>0.4</td>
+<td>0.4</td>
+<td>0.40</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aacccaa</td>
+<td>0.39</td>
+<td>0.39</td>
+<td>0.39</td>
+<td>0.39</td>
+<td>.</td>
+<td>.</td>
+<td>0.39</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>tattca</td>
+<td>0.38</td>
+<td>0.38</td>
+<td>0.38</td>
+<td>0.38</td>
+<td>0.38</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aagaaaa</td>
+<td>0.38</td>
+<td>0.38</td>
+<td>0.38</td>
+<td>0.38</td>
+<td>.</td>
+<td>.</td>
+<td>0.38</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>tattga</td>
+<td>0.38</td>
+<td>0.38</td>
+<td>0.38</td>
+<td>0.38</td>
+<td>0.38</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aagggaa</td>
+<td>0.36</td>
+<td>0.36</td>
+<td>0.36</td>
+<td>0.36</td>
+<td>.</td>
+<td>.</td>
+<td>0.36</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccaccc</td>
+<td>0.34</td>
+<td>0.34</td>
+<td>0.34</td>
+<td>0.34</td>
+<td>0.34</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaagcaa</td>
+<td>0.34</td>
+<td>0.34</td>
+<td>0.34</td>
+<td>0.34</td>
+<td>.</td>
+<td>.</td>
+<td>0.34</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cagtgac</td>
+<td>0.33</td>
+<td>0.33</td>
+<td>0.33</td>
+<td>0.33</td>
+<td>.</td>
+<td>.</td>
+<td>0.33</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaggtga</td>
+<td>0.31</td>
+<td>0.31</td>
+<td>0.31</td>
+<td>0.31</td>
+<td>.</td>
+<td>.</td>
+<td>0.31</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>tgcacaa</td>
+<td>0.29</td>
+<td>0.29</td>
+<td>0.29</td>
+<td>0.29</td>
+<td>.</td>
+<td>.</td>
+<td>0.29</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cttgggc</td>
+<td>0.25</td>
+<td>0.25</td>
+<td>0.25</td>
+<td>0.25</td>
+<td>.</td>
+<td>.</td>
+<td>0.25</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aaatcaa</td>
+<td>0.25</td>
+<td>0.25</td>
+<td>0.25</td>
+<td>0.25</td>
+<td>.</td>
+<td>.</td>
+<td>0.25</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ctccctc</td>
+<td>0.21</td>
+<td>0.21</td>
+<td>0.21</td>
+<td>0.21</td>
+<td>.</td>
+<td>.</td>
+<td>0.21</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>agtttga</td>
+<td>0.18</td>
+<td>0.18</td>
+<td>0.18</td>
+<td>0.18</td>
+<td>.</td>
+<td>.</td>
+<td>0.18</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gaccaca</td>
+<td>0.14</td>
+<td>0.14</td>
+<td>0.14</td>
+<td>0.14</td>
+<td>.</td>
+<td>.</td>
+<td>0.14</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cccttcc</td>
+<td>0.13</td>
+<td>0.13</td>
+<td>0.13</td>
+<td>0.13</td>
+<td>.</td>
+<td>.</td>
+<td>0.13</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>aatctga</td>
+<td>0.12</td>
+<td>0.12</td>
+<td>0.12</td>
+<td>0.12</td>
+<td>.</td>
+<td>.</td>
+<td>0.12</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cagcccc</td>
+<td>0.11</td>
+<td>0.11</td>
+<td>0.11</td>
+<td>0.11</td>
+<td>.</td>
+<td>.</td>
+<td>0.11</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>acaagga</td>
+<td>0.11</td>
+<td>0.11</td>
+<td>0.11</td>
+<td>0.11</td>
+<td>.</td>
+<td>.</td>
+<td>0.11</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>gcaaata</td>
+<td>0.07</td>
+<td>0.07</td>
+<td>0.07</td>
+<td>0.07</td>
+<td>.</td>
+<td>.</td>
+<td>0.07</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccagctc</td>
+<td>0.05</td>
+<td>0.05</td>
+<td>0.05</td>
+<td>0.05</td>
+<td>.</td>
+<td>.</td>
+<td>0.05</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>atgtgta</td>
+<td>0.04</td>
+<td>0.04</td>
+<td>0.04</td>
+<td>0.04</td>
+<td>.</td>
+<td>.</td>
+<td>0.04</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cacattc</td>
+<td>0.01</td>
+<td>0.01</td>
+<td>0.01</td>
+<td>0.01</td>
+<td>.</td>
+<td>.</td>
+<td>0.01</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>cacttcc</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>.</td>
+<td>.</td>
+<td>0.00</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>atgacta</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>.</td>
+<td>.</td>
+<td>0.00</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+<tr valign=top>
+<TD>ccagggc</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>.</td>
+<td>.</td>
+<td>0.00</td>
+<td>.</td>
+<td>.</TD>
+</TR>
+
+</table>
+
+<pre>
+</PRE>
+</BODY></HTML>

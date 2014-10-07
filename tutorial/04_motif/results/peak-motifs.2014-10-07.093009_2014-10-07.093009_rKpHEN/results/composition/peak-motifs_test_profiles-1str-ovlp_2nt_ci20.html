@@ -1,0 +1,2022 @@
+<html>
+<header>
+<title>/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/composition/peak-motifs_test_profiles-1str-ovlp_2nt_ci20.tab</title>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+
+<script type="text/javascript">
+ <!-- 
+var stIsIE = /*@cc_on!@*/false;
+
+sorttable = {
+  init: function() {
+    // quit if this function has already been called
+    if (arguments.callee.done) return;
+    // flag this function so we don't do the same thing twice
+    arguments.callee.done = true;
+    // kill the timer
+    if (_timer) clearInterval(_timer);
+    
+    if (!document.createElement || !document.getElementsByTagName) return;
+    
+    sorttable.DATE_RE = /^(\d\d?)[\/\.-](\d\d?)[\/\.-]((\d\d)?\d\d)$/;
+    
+    forEach(document.getElementsByTagName('table'), function(table) {
+      if (table.className.search(/\bsortable\b/) != -1) {
+        sorttable.makeSortable(table);
+      }
+    });
+    
+  },
+  
+  makeSortable: function(table) {
+    if (table.getElementsByTagName('thead').length == 0) {
+      // table doesn't have a tHead. Since it should have, create one and
+      // put the first table row in it.
+      the = document.createElement('thead');
+      the.appendChild(table.rows[0]);
+      table.insertBefore(the,table.firstChild);
+    }
+    // Safari doesn't support table.tHead, sigh
+    if (table.tHead == null) table.tHead = table.getElementsByTagName('thead')[0];
+    
+    if (table.tHead.rows.length != 1) return; // can't cope with two header rows
+    
+    // Sorttable v1 put rows with a class of "sortbottom" at the bottom (as
+    // "total" rows, for example). This is B&R, since what you're supposed
+    // to do is put them in a tfoot. So, if there are sortbottom rows,
+    // for backwards compatibility, move them to tfoot (creating it if needed).
+    sortbottomrows = [];
+    for (var i=0; i<table.rows.length; i++) {
+      if (table.rows[i].className.search(/\bsortbottom\b/) != -1) {
+        sortbottomrows[sortbottomrows.length] = table.rows[i];
+      }
+    }
+    if (sortbottomrows) {
+      if (table.tFoot == null) {
+        // table doesn't have a tfoot. Create one.
+        tfo = document.createElement('tfoot');
+        table.appendChild(tfo);
+      }
+      for (var i=0; i<sortbottomrows.length; i++) {
+        tfo.appendChild(sortbottomrows[i]);
+      }
+      delete sortbottomrows;
+    }
+    
+    // work through each column and calculate its type
+    headrow = table.tHead.rows[0].cells;
+    for (var i=0; i<headrow.length; i++) {
+      // manually override the type with a sorttable_type attribute
+      if (!headrow[i].className.match(/\bsorttable_nosort\b/)) { // skip this col
+        mtch = headrow[i].className.match(/\bsorttable_([a-z0-9]+)\b/);
+        if (mtch) { override = mtch[1]; }
+	      if (mtch && typeof sorttable["sort_"+override] == 'function') {
+	        headrow[i].sorttable_sortfunction = sorttable["sort_"+override];
+	      } else {
+	        headrow[i].sorttable_sortfunction = sorttable.guessType(table,i);
+	      }
+	      // make it clickable to sort
+	      headrow[i].sorttable_columnindex = i;
+	      headrow[i].sorttable_tbody = table.tBodies[0];
+	      dean_addEvent(headrow[i],"click", function(e) {
+
+          if (this.className.search(/\bsorttable_sorted\b/) != -1) {
+            // if we're already sorted by this column, just 
+            // reverse the table, which is quicker
+            sorttable.reverse(this.sorttable_tbody);
+            this.className = this.className.replace('sorttable_sorted',
+                                                    'sorttable_sorted_reverse');
+            this.removeChild(document.getElementById('sorttable_sortfwdind'));
+            sortrevind = document.createElement('span');
+            sortrevind.id = "sorttable_sortrevind";
+            sortrevind.innerHTML = stIsIE ? '&nbsp<font face="webdings">5</font>' : '&nbsp;&#x25B4;';
+            this.appendChild(sortrevind);
+            return;
+          }
+          if (this.className.search(/\bsorttable_sorted_reverse\b/) != -1) {
+            // if we're already sorted by this column in reverse, just 
+            // re-reverse the table, which is quicker
+            sorttable.reverse(this.sorttable_tbody);
+            this.className = this.className.replace('sorttable_sorted_reverse',
+                                                    'sorttable_sorted');
+            this.removeChild(document.getElementById('sorttable_sortrevind'));
+            sortfwdind = document.createElement('span');
+            sortfwdind.id = "sorttable_sortfwdind";
+            sortfwdind.innerHTML = stIsIE ? '&nbsp<font face="webdings">6</font>' : '&nbsp;&#x25BE;';
+            this.appendChild(sortfwdind);
+            return;
+          }
+          
+          // remove sorttable_sorted classes
+          theadrow = this.parentNode;
+          forEach(theadrow.childNodes, function(cell) {
+            if (cell.nodeType == 1) { // an element
+              cell.className = cell.className.replace('sorttable_sorted_reverse','');
+              cell.className = cell.className.replace('sorttable_sorted','');
+            }
+          });
+          sortfwdind = document.getElementById('sorttable_sortfwdind');
+          if (sortfwdind) { sortfwdind.parentNode.removeChild(sortfwdind); }
+          sortrevind = document.getElementById('sorttable_sortrevind');
+          if (sortrevind) { sortrevind.parentNode.removeChild(sortrevind); }
+          
+          this.className += ' sorttable_sorted';
+          sortfwdind = document.createElement('span');
+          sortfwdind.id = "sorttable_sortfwdind";
+          sortfwdind.innerHTML = stIsIE ? '&nbsp<font face="webdings">6</font>' : '&nbsp;&#x25BE;';
+          this.appendChild(sortfwdind);
+
+	        // build an array to sort. This is a Schwartzian transform thing,
+	        // i.e., we "decorate" each row with the actual sort key,
+	        // sort based on the sort keys, and then put the rows back in order
+	        // which is a lot faster because you only do getInnerText once per row
+	        row_array = [];
+	        col = this.sorttable_columnindex;
+	        rows = this.sorttable_tbody.rows;
+	        for (var j=0; j<rows.length; j++) {
+	          row_array[row_array.length] = [sorttable.getInnerText(rows[j].cells[col]), rows[j]];
+	        }
+	        /* If you want a stable sort, uncomment the following line */
+	        //sorttable.shaker_sort(row_array, this.sorttable_sortfunction);
+	        /* and comment out this one */
+	        row_array.sort(this.sorttable_sortfunction);
+	        
+	        tb = this.sorttable_tbody;
+	        for (var j=0; j<row_array.length; j++) {
+	          tb.appendChild(row_array[j][1]);
+	        }
+	        
+	        delete row_array;
+	      });
+	    }
+    }
+  },
+  
+  guessType: function(table, column) {
+    // guess the type of a column based on its first non-blank row
+    sortfn = sorttable.sort_alpha;
+    for (var i=0; i<table.tBodies[0].rows.length; i++) {
+      text = sorttable.getInnerText(table.tBodies[0].rows[i].cells[column]);
+      if (text != '') {
+        if (text.match(/^-?[£$¤]?[\d,.]+%?$/)||text.match(/^\d+((\.|,)\d+)?(E|e)(\+|\-)\d+/)) {
+          return sorttable.sort_numeric;
+        }
+        // check for a date: dd/mm/yyyy or dd/mm/yy 
+        // can have / or . or - as separator
+        // can be mm/dd as well
+        possdate = text.match(sorttable.DATE_RE)
+        if (possdate) {
+          // looks like a date
+          first = parseInt(possdate[1]);
+          second = parseInt(possdate[2]);
+          if (first > 12) {
+            // definitely dd/mm
+            return sorttable.sort_ddmm;
+          } else if (second > 12) {
+            return sorttable.sort_mmdd;
+          } else {
+            // looks like a date, but we can't tell which, so assume
+            // that it's dd/mm (English imperialism!) and keep looking
+            sortfn = sorttable.sort_ddmm;
+          }
+        }
+      }
+    }
+    return sortfn;
+  },
+  
+  getInnerText: function(node) {
+    // gets the text we want to use for sorting for a cell.
+    // strips leading and trailing whitespace.
+    // this is *not* a generic getInnerText function; it's special to sorttable.
+    // for example, you can override the cell text with a customkey attribute.
+    // it also gets .value for <input> fields.
+    
+    hasInputs = (typeof node.getElementsByTagName == 'function') &&
+                 node.getElementsByTagName('input').length;
+    
+    if (node.getAttribute("sorttable_customkey") != null) {
+      return node.getAttribute("sorttable_customkey");
+    }
+    else if (typeof node.textContent != 'undefined' && !hasInputs) {
+      return node.textContent.replace(/^\s+|\s+$/g, '');
+    }
+    else if (typeof node.innerText != 'undefined' && !hasInputs) {
+      return node.innerText.replace(/^\s+|\s+$/g, '');
+    }
+    else if (typeof node.text != 'undefined' && !hasInputs) {
+      return node.text.replace(/^\s+|\s+$/g, '');
+    }
+    else {
+      switch (node.nodeType) {
+        case 3:
+          if (node.nodeName.toLowerCase() == 'input') {
+            return node.value.replace(/^\s+|\s+$/g, '');
+          }
+        case 4:
+          return node.nodeValue.replace(/^\s+|\s+$/g, '');
+          break;
+        case 1:
+        case 11:
+          var innerText = '';
+          for (var i = 0; i < node.childNodes.length; i++) {
+            innerText += sorttable.getInnerText(node.childNodes[i]);
+          }
+          return innerText.replace(/^\s+|\s+$/g, '');
+          break;
+        default:
+          return '';
+      }
+    }
+  },
+  
+  reverse: function(tbody) {
+    // reverse the rows in a tbody
+    newrows = [];
+    for (var i=0; i<tbody.rows.length; i++) {
+      newrows[newrows.length] = tbody.rows[i];
+    }
+    for (var i=newrows.length-1; i>=0; i--) {
+       tbody.appendChild(newrows[i]);
+    }
+    delete newrows;
+  },
+  
+  /* sort functions
+     each sort function takes two parameters, a and b
+     you are comparing a[0] and b[0] */
+  /* Numeric order */
+  sort_numeric: function(a,b) {
+	aa = parseFloat(a[0].replace(/[^0-9.\-eE]/g,''));
+	if (isNaN(aa)) aa = 0;
+	bb = parseFloat(b[0].replace(/[^0-9.\-eE]/g,''));
+	if (isNaN(bb)) bb = 0;
+	return aa-bb;
+    },
+//   sort_numeric: function(a,b) {
+//     aa = parseFloat(a[0].replace(/[^0-9.-eE]/g,''));
+//     if (isNaN(aa)) aa = 0;
+//     bb = parseFloat(b[0].replace(/[^0-9.-eE]/g,'')); 
+//     if (isNaN(bb)) bb = 0;    
+//     return aa-bb;
+//   },
+
+  /* alphabetical order */
+  sort_alpha: function(a,b) {
+    if (a[0]==b[0]) return 0;
+    if (a[0]<b[0]) return -1;
+    return 1;
+  },
+
+  /* sort dates formatted as ddmm (day first, month after) */
+  sort_ddmm: function(a,b) {
+    mtch = a[0].match(sorttable.DATE_RE);
+    y = mtch[3]; m = mtch[2]; d = mtch[1];
+    if (m.length == 1) m = '0'+m;
+    if (d.length == 1) d = '0'+d;
+    dt1 = y+m+d;
+    mtch = b[0].match(sorttable.DATE_RE);
+    y = mtch[3]; m = mtch[2]; d = mtch[1];
+    if (m.length == 1) m = '0'+m;
+    if (d.length == 1) d = '0'+d;
+    dt2 = y+m+d;
+    if (dt1==dt2) return 0;
+    if (dt1<dt2) return -1;
+    return 1;
+  },
+
+  /* sort dates formatted as mmdd (month first, day after) */
+  sort_mmdd: function(a,b) {
+    mtch = a[0].match(sorttable.DATE_RE);
+    y = mtch[3]; d = mtch[2]; m = mtch[1];
+    if (m.length == 1) m = '0'+m;
+    if (d.length == 1) d = '0'+d;
+    dt1 = y+m+d;
+    mtch = b[0].match(sorttable.DATE_RE);
+    y = mtch[3]; d = mtch[2]; m = mtch[1];
+    if (m.length == 1) m = '0'+m;
+    if (d.length == 1) d = '0'+d;
+    dt2 = y+m+d;
+    if (dt1==dt2) return 0;
+    if (dt1<dt2) return -1;
+    return 1;
+  },
+  
+  shaker_sort: function(list, comp_func) {
+    // A stable sort function to allow multi-level sorting of data
+    // see: http://en.wikipedia.org/wiki/Cocktail_sort
+    // thanks to Joseph Nahmias
+    var b = 0;
+    var t = list.length - 1;
+    var swap = true;
+
+    while(swap) {
+        swap = false;
+        for(var i = b; i < t; ++i) {
+            if ( comp_func(list[i], list[i+1]) > 0 ) {
+                var q = list[i]; list[i] = list[i+1]; list[i+1] = q;
+                swap = true;
+            }
+        } // for
+        t--;
+
+        if (!swap) break;
+
+        for(var i = t; i > b; --i) {
+            if ( comp_func(list[i], list[i-1]) < 0 ) {
+                var q = list[i]; list[i] = list[i-1]; list[i-1] = q;
+                swap = true;
+            }
+        } // for
+        b++;
+
+    } // while(swap)
+  }  
+}
+
+/* ******************************************************************
+   Supporting functions: bundled here to avoid depending on a library
+   ****************************************************************** */
+
+// Dean Edwards/Matthias Miller/John Resig
+
+/* for Mozilla/Opera9 */
+if (document.addEventListener) {
+    document.addEventListener("DOMContentLoaded", sorttable.init, false);
+}
+
+/* for Internet Explorer */
+/*@cc_on @*/
+/*@if (@_win32)
+    document.write("<script id=__ie_onload defer src=javascript:void(0)><\/script>");
+    var script = document.getElementById("__ie_onload");
+    script.onreadystatechange = function() {
+        if (this.readyState == "complete") {
+            sorttable.init(); // call the onload handler
+        }
+    };
+/*@end @*/
+
+/* for Safari */
+if (/WebKit/i.test(navigator.userAgent)) { // sniff
+    var _timer = setInterval(function() {
+        if (/loaded|complete/.test(document.readyState)) {
+            sorttable.init(); // call the onload handler
+        }
+    }, 10);
+}
+
+/* for other browsers */
+window.onload = sorttable.init;
+
+// written by Dean Edwards, 2005
+// with input from Tino Zijdel, Matthias Miller, Diego Perini
+
+// http://dean.edwards.name/weblog/2005/10/add-event/
+
+function dean_addEvent(element, type, handler) {
+	if (element.addEventListener) {
+		element.addEventListener(type, handler, false);
+	} else {
+		// assign each event handler a unique ID
+		if (!handler.$$guid) handler.$$guid = dean_addEvent.guid++;
+		// create a hash table of event types for the element
+		if (!element.events) element.events = {};
+		// create a hash table of event handlers for each element/event pair
+		var handlers = element.events[type];
+		if (!handlers) {
+			handlers = element.events[type] = {};
+			// store the existing event handler (if there is one)
+			if (element["on" + type]) {
+				handlers[0] = element["on" + type];
+			}
+		}
+		// store the event handler in the hash table
+		handlers[handler.$$guid] = handler;
+		// assign a global event handler to do all the work
+		element["on" + type] = handleEvent;
+	}
+};
+// a counter used to create unique IDs
+dean_addEvent.guid = 1;
+
+function removeEvent(element, type, handler) {
+	if (element.removeEventListener) {
+		element.removeEventListener(type, handler, false);
+	} else {
+		// delete the event handler from the hash table
+		if (element.events && element.events[type]) {
+			delete element.events[type][handler.$$guid];
+		}
+	}
+};
+
+function handleEvent(event) {
+	var returnValue = true;
+	// grab the event object (IE uses a global event object)
+	event = event || fixEvent(((this.ownerDocument || this.document || this).parentWindow || window).event);
+	// get a reference to the hash table of event handlers
+	var handlers = this.events[event.type];
+	// execute each event handler
+	for (var i in handlers) {
+		this.$$handleEvent = handlers[i];
+		if (this.$$handleEvent(event) === false) {
+			returnValue = false;
+		}
+	}
+	return returnValue;
+};
+
+function fixEvent(event) {
+	// add W3C standard event methods
+	event.preventDefault = fixEvent.preventDefault;
+	event.stopPropagation = fixEvent.stopPropagation;
+	return event;
+};
+fixEvent.preventDefault = function() {
+	this.returnValue = false;
+};
+fixEvent.stopPropagation = function() {
+  this.cancelBubble = true;
+}
+
+// Dean's forEach: http://dean.edwards.name/base/forEach.js
+/*
+	forEach, version 1.0
+	Copyright 2006, Dean Edwards
+	License: http://www.opensource.org/licenses/mit-license.php
+*/
+
+// array-like enumeration
+if (!Array.forEach) { // mozilla already supports this
+	Array.forEach = function(array, block, context) {
+		for (var i = 0; i < array.length; i++) {
+			block.call(context, array[i], i, array);
+		}
+	};
+}
+
+// generic enumeration
+Function.prototype.forEach = function(object, block, context) {
+	for (var key in object) {
+		if (typeof this.prototype[key] == "undefined") {
+			block.call(context, object[key], key, object);
+		}
+	}
+};
+
+// character enumeration
+String.forEach = function(string, block, context) {
+	Array.forEach(string.split(""), function(chr, index) {
+		block.call(context, chr, index, string);
+	});
+};
+
+// globally resolve forEach enumeration
+var forEach = function(object, block, context) {
+	if (object) {
+		var resolve = Object; // default
+		if (object instanceof Function) {
+			// functions have a "length" property
+			resolve = Function;
+		} else if (object.forEach instanceof Function) {
+			// the object implements a custom forEach method so use that
+			object.forEach(block, context);
+			return;
+		} else if (typeof object == "string") {
+			// the object is a string
+			resolve = String;
+		} else if (typeof object.length == "number") {
+			// the object is array-like
+			resolve = Array;
+		}
+		resolve.forEach(object, block, context);
+	}
+}
+
+// --> 
+</script>
+<style type='text/css'>
+/* Style sheet for the HTML formatting of RSAT results */
+
+/* BODY  */
+body {
+       font-family: Verdana, Helvetica, Arial, sans-serif;
+       font-size: 70%;
+       margin-top: 2px;
+       margin-left: 20px;
+       text-align: justify;
+       background: #ffffff;
+       margin-right: 20px;
+/*       background: #0D73A7 url(images/bullet2-normal.gif) no-repeat 7px 7px;*/
+}
+
+
+/* div for menu */
+
+#Menu_space {
+	margin-top:120px;
+	margin-bottom:300px;
+}
+#Menu_wait {
+	position:absolute;
+	top:120px;
+	left:50%;
+	width:400px;
+	margin-left: -200px;
+	padding:10px;
+	text-align:center;
+	}
+
+#Menu {
+	position:absolute;
+	top:120px;
+	left:50%;
+	width:800px;
+	margin-left: -400px;
+	padding:10px;
+	background-color:#eee;
+	border:1px dashed #999;
+	line-height:17px;
+	font-size: 110%;
+	voice-family: "\"}\"";
+	voice-family:inherit;
+	text-align:left;
+	}
+
+#Menu h3 {
+	margin:0;
+	text-align:center;
+	padding-bottom:5px;
+}
+
+#Menu ul {
+	list-style-type:none;
+}
+
+/* TABLE */
+#Menu table {
+	margin: 10px 10px 10px;
+}
+
+#Menu  td, th {
+	font-size: 70%;
+	padding: 2px 10px;
+	vertical-align:top;
+}
+
+.menulink a:link,a:visited {
+	color:#cc6600;
+	background: transparent;
+	text-decoration: none;
+	}
+
+.menulink a:visited {
+	color:#cc6600;
+	background: transparent;
+	text-decoration: none;
+	}
+
+.menulink A:active {
+	color: #cc6600;
+	background: transparent;
+	text-decoration: none
+}
+
+.menulink A:hover {
+	text-decoration: underline;
+	color: #cc6600;
+}
+
+
+/* Links  */
+
+A:link,A:visited {
+	color: #0D73A7;
+	background: transparent;
+	text-decoration: none;
+}
+
+A:active {
+	color: #ff0000;
+	background: transparent;
+	text-decoration: none
+}
+
+A:hover {
+	text-decoration: underline;
+	color: #cc6600;
+}
+
+/* Headers  */
+
+h1 {
+	margin-top: 10px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	margin-bottom: 0px;
+	padding-left: 10px;
+	border: 1px solid #2D282E;
+	background-color: #0D73A7;
+	font-size: 16px;
+	color: #D6EEFA;
+}
+h1 a:link, h1 a:visited {
+	color: #D6EEFA;
+}
+
+h1 a:hover {
+	color: #ffffff;
+}
+
+h2 {
+	margin-top: 10px;
+	padding-top: 15px;
+	margin-bottom: 0px;
+	color: #002266;
+	font-size: 15px;
+}
+
+h3 {
+	margin-top: 6px;
+	padding-top: 6px;
+	margin-bottom: 0px;
+	color: #002266;
+	font-size: 11px;
+}
+
+h4 {
+	margin-top: 4px;
+	padding-top: 4px;
+	margin-bottom: 0px;
+	color : #2D282E;
+	font-size: 11px;
+}
+
+h2.motif {
+	margin-top: 3px;
+	padding-top: 0px;
+	margin-bottom: 4px;
+	color : #2D282E;
+	font-size: 12px;
+}
+
+/* Other tag formatting  */
+hr {
+	border: 1px dotted #2D282E;
+	height: 1px;
+}
+
+hr.solid {
+	border: 1px solid #2D282E;
+	height: 1px;
+}
+
+pre,tt {
+         font-size: 12px;
+}
+
+pre { 
+      background:#EEEEEE;
+ }
+
+
+center {
+	margin-top: 5px;
+	margin-bottom: 20px;
+	font-weight: bold;
+}
+
+blockquote {
+	color : #cc6600;
+	font-size: 12px;
+}
+
+body blockquote.information {
+	color : #009900;
+	font-size: 12px;
+}
+
+body blockquote.warning {
+	color : #aa0000;
+	font-size: 12px;
+}
+
+blockquote.demo {
+	color : #000000;
+	font-size: 12px;
+	font-style:italic;
+}
+
+
+
+/* TABLE */
+table.simple {
+	margin: 10px 20px 20px;
+	color: #000000;
+}
+
+table.simple td,table.list th {
+	font-size: 70%;
+	padding: 2px 10px;
+	background-color: #FFFFFF;
+}
+
+table.simple th {
+	font-size: 70%;
+	background-color: #F6E6CA;
+}
+
+/* TABLE */
+
+/* table with white bg and small fonts */
+table.whitebg {
+	margin: 10px 20px 20px;
+	color: #000000;
+	border-left: 1px solid #cbcbb4;
+	border-top: 1px solid #cbcbb4;
+	border-spacing: 0px;
+}
+
+table.whitebg td,table.whitebg th {
+	font-size: 70%;
+	border-right: 1px solid #cbcbb4;
+	border-bottom: 1px solid #cbcbb4;
+	padding: 2px 10px;
+	background-color: #FFFFFF;
+}
+
+
+/* table with blue bg and small font */
+table.whitebg th {
+	font-size: 70%;
+	background-color: #F6E6CA;
+}
+
+table.bluebg {
+	color: #333333;
+	border-left: 1px solid #cbcbb4;
+	border-top: 1px solid #cbcbb4;
+	}
+
+table.bluebg td,table.bluebg th {
+	font-size: 70%;
+	border-right: 1px solid #cbcbb4;
+	border-bottom: 1px solid #cbcbb4;
+	background-color: #D6EEFA;
+}
+
+table.bluebg th {
+	background-color: #0D73A7;
+	color: #D6EEFA;
+}
+	
+/* Table on result pages - compatible with the sorttable type defined by javascript */
+
+table.sortable {
+	margin: 10px 20px 20px;
+	color: #000000;
+	border-left: 1px solid #cbcbb4;
+	border-right: 1px solid #cbcbb4;
+	border-top: 1px solid #cbcbb4;
+	border-bottom: 1px solid #cbcbb4;
+	border-spacing: 0px;
+}
+
+table.sortable td,table.sortable th {
+	padding: 2px 10px;
+	font-size: 70%;
+	border-right: 1px solid #cbcbb4;
+	border-bottom: 1px solid #cbcbb4;
+	padding: 2px 10px;
+	background-color: #FFFFFF;
+}
+
+table.sortable th {
+	font-size: 70%;
+	background-color: #0D73A7;
+	color: #D6EEFA;
+}
+
+
+/* LINK TABLE ON RESULTS PAGES */
+table.resultlink {
+	margin-left:5px;
+	width : 90%;
+	color: #2D282E;
+	background-color: #D6EEFA;
+}
+
+
+table.resultlink td, table.resultlink th {
+	font-size: 70%;
+	padding-left:5px;
+	padding-right:3px;
+	text-align :left;
+}
+
+/* COLLAPSIBLE MENUS */
+
+.menu_heading_open {
+	background: url(images_html/arrow_box_down.gif) no-repeat 5px 7px;
+	text-decoration: none;
+	padding: 0px 6px 4px 21px;
+	margin: 0;
+	cursor: pointer;
+	font-weight: bold;
+	display: block;
+}
+
+.menu_heading_closed {
+	background: url(images_html/arrow_box.gif) no-repeat 5px 7px;
+	text-decoration: underline; 
+	display: block;
+	padding:0px 6px 4px 21px;
+	margin: 0;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.menu_collapsible {
+	display: none;
+	margin-bottom: 10px;
+	margin-left: 30px;
+}
+
+.menu_collapsible_display {
+   display: block;
+   margin-bottom: 10px;
+   margin-left: 30px;
+}
+</style>
+<header>
+<body bgcolor='#ffffff'>
+<PRE> position-analysis -v 1 -i $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/data/sequences/peak-motifs_test_purged_ml30_mis0.fasta -format fasta -sort -return html,chi,sig,distrib,graphs,rank,index -max_graphs 20 -1str -ovlp -seqtype dna -l 2 -ci 20 -img_format png -title siGATA_ER_E2_r3 -origin center -o $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/composition/peak-motifs_test_profiles-1str-ovlp_2nt_ci20.tab
+ Citation: van Helden, et al. (2000).  Nucleic Acids Res 28, 1000-1010.
+ Sequence file                	$RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/data/sequences/peak-motifs_test_purged_ml30_mis0.fasta
+ Sequence format              	fasta
+ Sequence type                	dna
+ Output file                  	$RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/composition/peak-motifs_test_profiles-1str-ovlp_2nt_ci20.tab
+ Oligo length                 	2
+ Occurrences counted  on a single  strands
+ Background model estimation: homogeneous repartition
+ Sequence statistics:
+	Nb of sequences              	7041
+	Sum of sequence lengths      	1476646
+	Min sequence length          	0
+	Max sequence length          	940
+	Average sequence length      	209
+	Possible positions           	1469605
+ Oligonucleotide statistics:
+	Total occurrences    	1467702
+ Position interval parameters:
+	Position interval    	20
+	Number of windows    	48
+	Total positions      	1469605
+	Degrees of freedom   	47
+ K-mer clustering parameters:
+	Number of clusters   	0
+	Clustering method    	complete
+ Position intervals:
+	window	[min,max]	mid	seq	occ
+	1	-24	[-479,-460]	-469.5	1	10
+	2	-23	[-459,-440]	-449.5	2	36
+	3	-22	[-439,-420]	-429.5	4	60
+	4	-21	[-419,-400]	-409.5	4	80
+	5	-20	[-399,-380]	-389.5	8	125
+	6	-19	[-379,-360]	-369.5	14	251
+	7	-18	[-359,-340]	-349.5	22	375
+	8	-17	[-339,-320]	-329.5	33	590
+	9	-16	[-319,-300]	-309.5	47	834
+	10	-15	[-299,-280]	-289.5	74	1267
+	11	-14	[-279,-260]	-269.5	126	2040
+	12	-13	[-259,-240]	-249.5	202	3320
+	13	-12	[-239,-220]	-229.5	330	5709
+	14	-11	[-219,-200]	-209.5	500	8618
+	15	-10	[-199,-180]	-189.5	763	13270
+	16	-9	[-179,-160]	-169.5	1115	19648
+	17	-8	[-159,-140]	-149.5	1608	28601
+	18	-7	[-139,-120]	-129.5	2228	39767
+	19	-6	[-119,-100]	-109.5	3060	54761
+	20	-5	[-99,-80]	-89.5	3987	72973
+	21	-4	[-79,-60]	-69.5	5133	94143
+	22	-3	[-59,-40]	-49.5	6293	117457
+	23	-2	[-39,-20]	-29.5	7035	137112
+	24	-1	[-19,0]	-9.5	7041	140810
+	25	0	[1,20]	10.5	7041	140803
+	26	1	[21,40]	30.5	7035	135706
+	27	2	[41,60]	50.5	6293	115110
+	28	3	[61,80]	70.5	5133	91790
+	29	4	[81,100]	90.5	3987	71118
+	30	5	[101,120]	110.5	3060	53080
+	31	6	[121,140]	130.5	2228	38533
+	32	7	[141,160]	150.5	1608	27621
+	33	8	[161,180]	170.5	1115	18955
+	34	9	[181,200]	190.5	763	12740
+	35	10	[201,220]	210.5	500	8279
+	36	11	[221,240]	230.5	330	5439
+	37	12	[241,260]	250.5	202	3160
+	38	13	[261,280]	270.5	126	1925
+	39	14	[281,300]	290.5	74	1217
+	40	15	[301,320]	310.5	47	804
+	41	16	[321,340]	330.5	33	569
+	42	17	[341,360]	350.5	22	362
+	43	18	[361,380]	370.5	14	239
+	44	19	[381,400]	390.5	8	119
+	45	20	[401,420]	410.5	4	80
+	46	21	[421,440]	430.5	4	57
+	47	22	[441,460]	450.5	2	33
+	48	23	[461,480]	470.5	1	9
+
+ Column headers
+	1	seq            	pattern sequence
+	2	id             	pattern identifier
+	3	occ            	pattern occurrences
+	4	chi2           	observed chi-square
+	5	df             	degrees of freedom
+	6	Pval           	P-value (probability for one word to be a false positive)
+	7	Eval           	E-value; expected number of false positives (Eval = Pval * nb_tests)
+	8	sig            	Significance (sig = -log10(Eval))
+	9	rank           	rank of the pattern according to sorting criterion
+	10	-469.5         	occurrences in window	1	[-479,-460]
+	11	-449.5         	occurrences in window	2	[-459,-440]
+	12	-429.5         	occurrences in window	3	[-439,-420]
+	13	-409.5         	occurrences in window	4	[-419,-400]
+	14	-389.5         	occurrences in window	5	[-399,-380]
+	15	-369.5         	occurrences in window	6	[-379,-360]
+	16	-349.5         	occurrences in window	7	[-359,-340]
+	17	-329.5         	occurrences in window	8	[-339,-320]
+	18	-309.5         	occurrences in window	9	[-319,-300]
+	19	-289.5         	occurrences in window	10	[-299,-280]
+	20	-269.5         	occurrences in window	11	[-279,-260]
+	21	-249.5         	occurrences in window	12	[-259,-240]
+	22	-229.5         	occurrences in window	13	[-239,-220]
+	23	-209.5         	occurrences in window	14	[-219,-200]
+	24	-189.5         	occurrences in window	15	[-199,-180]
+	25	-169.5         	occurrences in window	16	[-179,-160]
+	26	-149.5         	occurrences in window	17	[-159,-140]
+	27	-129.5         	occurrences in window	18	[-139,-120]
+	28	-109.5         	occurrences in window	19	[-119,-100]
+	29	-89.5          	occurrences in window	20	[-99,-80]
+	30	-69.5          	occurrences in window	21	[-79,-60]
+	31	-49.5          	occurrences in window	22	[-59,-40]
+	32	-29.5          	occurrences in window	23	[-39,-20]
+	33	-9.5           	occurrences in window	24	[-19,0]
+	34	10.5           	occurrences in window	25	[1,20]
+	35	30.5           	occurrences in window	26	[21,40]
+	36	50.5           	occurrences in window	27	[41,60]
+	37	70.5           	occurrences in window	28	[61,80]
+	38	90.5           	occurrences in window	29	[81,100]
+	39	110.5          	occurrences in window	30	[101,120]
+	40	130.5          	occurrences in window	31	[121,140]
+	41	150.5          	occurrences in window	32	[141,160]
+	42	170.5          	occurrences in window	33	[161,180]
+	43	190.5          	occurrences in window	34	[181,200]
+	44	210.5          	occurrences in window	35	[201,220]
+	45	230.5          	occurrences in window	36	[221,240]
+	46	250.5          	occurrences in window	37	[241,260]
+	47	270.5          	occurrences in window	38	[261,280]
+	48	290.5          	occurrences in window	39	[281,300]
+	49	310.5          	occurrences in window	40	[301,320]
+	50	330.5          	occurrences in window	41	[321,340]
+	51	350.5          	occurrences in window	42	[341,360]
+	52	370.5          	occurrences in window	43	[361,380]
+	53	390.5          	occurrences in window	44	[381,400]
+	54	410.5          	occurrences in window	45	[401,420]
+	55	430.5          	occurrences in window	46	[421,440]
+	56	450.5          	occurrences in window	47	[441,460]
+	57	470.5          	occurrences in window	48	[461,480]
+</pre>
+
+<table  class="sortable"  cellspacing=1 cellpadding=3 border=1>
+<tr valign='top'>
+<th align='left' >seq</th>
+<th align='left'>id</th>
+<th align='left'>occ</th>
+<th align='left'>chi2</th>
+<th align='left'>df</th>
+<th align='left'>Pval</th>
+<th align='left'>Eval</th>
+<th align='left'>sig</th>
+<th align='left'>rank</th>
+<th align='left'>-469.5</th>
+<th align='left'>-449.5</th>
+<th align='left'>-429.5</th>
+<th align='left'>-409.5</th>
+<th align='left'>-389.5</th>
+<th align='left'>-369.5</th>
+<th align='left'>-349.5</th>
+<th align='left'>-329.5</th>
+<th align='left'>-309.5</th>
+<th align='left'>-289.5</th>
+<th align='left'>-269.5</th>
+<th align='left'>-249.5</th>
+<th align='left'>-229.5</th>
+<th align='left'>-209.5</th>
+<th align='left'>-189.5</th>
+<th align='left'>-169.5</th>
+<th align='left'>-149.5</th>
+<th align='left'>-129.5</th>
+<th align='left'>-109.5</th>
+<th align='left'>-89.5</th>
+<th align='left'>-69.5</th>
+<th align='left'>-49.5</th>
+<th align='left'>-29.5</th>
+<th align='left'>-9.5</th>
+<th align='left'>10.5</th>
+<th align='left'>30.5</th>
+<th align='left'>50.5</th>
+<th align='left'>70.5</th>
+<th align='left'>90.5</th>
+<th align='left'>110.5</th>
+<th align='left'>130.5</th>
+<th align='left'>150.5</th>
+<th align='left'>170.5</th>
+<th align='left'>190.5</th>
+<th align='left'>210.5</th>
+<th align='left'>230.5</th>
+<th align='left'>250.5</th>
+<th align='left'>270.5</th>
+<th align='left'>290.5</th>
+<th align='left'>310.5</th>
+<th align='left'>330.5</th>
+<th align='left'>350.5</th>
+<th align='left'>370.5</th>
+<th align='left'>390.5</th>
+<th align='left'>410.5</th>
+<th align='left'>430.5</th>
+<th align='left'>450.5</th>
+<th align='left'>470.5</th>
+</tr>
+
+<tr valign='top'>
+<td>aa</td>
+<td>aa</td>
+<td>115101</td>
+<td>611.7</td>
+<td>44</td>
+<td>0.0e+00</td>
+<td>0</td>
+<td>300</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>7</td>
+<td>6</td>
+<td>11</td>
+<td>14</td>
+<td>34</td>
+<td>69</td>
+<td>77</td>
+<td>120</td>
+<td>195</td>
+<td>318</td>
+<td>541</td>
+<td>814</td>
+<td>1251</td>
+<td>1716</td>
+<td>2393</td>
+<td>3334</td>
+<td>4656</td>
+<td>5606</td>
+<td>7453</td>
+<td>8828</td>
+<td>10188</td>
+<td>10037</td>
+<td>10304</td>
+<td>10083</td>
+<td>8937</td>
+<td>7293</td>
+<td>5923</td>
+<td>4556</td>
+<td>3236</td>
+<td>2429</td>
+<td>1661</td>
+<td>1121</td>
+<td>639</td>
+<td>480</td>
+<td>313</td>
+<td>153</td>
+<td>127</td>
+<td>62</td>
+<td>40</td>
+<td>31</td>
+<td>19</td>
+<td>5</td>
+<td>6</td>
+<td>9</td>
+<td>3</td>
+<td>0</td>
+</tr>
+
+<tr valign=top>
+<TD>tt</td>
+<td>tt</td>
+<td>116482</td>
+<td>372.3</td>
+<td>44</td>
+<td>1.5e-53</td>
+<td>2.4e-52</td>
+<td>51.62</td>
+<td>2</td>
+<td>1</td>
+<td>4</td>
+<td>2</td>
+<td>9</td>
+<td>7</td>
+<td>22</td>
+<td>44</td>
+<td>38</td>
+<td>76</td>
+<td>116</td>
+<td>181</td>
+<td>317</td>
+<td>450</td>
+<td>670</td>
+<td>1114</td>
+<td>1640</td>
+<td>2379</td>
+<td>3253</td>
+<td>4377</td>
+<td>5782</td>
+<td>7374</td>
+<td>8919</td>
+<td>10138</td>
+<td>10191</td>
+<td>10649</td>
+<td>10874</td>
+<td>9649</td>
+<td>7552</td>
+<td>5975</td>
+<td>4477</td>
+<td>3247</td>
+<td>2308</td>
+<td>1563</td>
+<td>1074</td>
+<td>765</td>
+<td>483</td>
+<td>272</td>
+<td>189</td>
+<td>111</td>
+<td>78</td>
+<td>36</td>
+<td>30</td>
+<td>18</td>
+<td>8</td>
+<td>7</td>
+<td>8</td>
+<td>5</td>
+<td>0</TD>
+</TR>
+
+<tr valign=top>
+<TD>ca</td>
+<td>ca</td>
+<td>115212</td>
+<td>225.3</td>
+<td>44</td>
+<td>3.5e-26</td>
+<td>5.6e-25</td>
+<td>24.25</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+<td>4</td>
+<td>6</td>
+<td>11</td>
+<td>21</td>
+<td>25</td>
+<td>54</td>
+<td>52</td>
+<td>112</td>
+<td>148</td>
+<td>254</td>
+<td>430</td>
+<td>657</td>
+<td>939</td>
+<td>1441</td>
+<td>2174</td>
+<td>3047</td>
+<td>4176</td>
+<td>5707</td>
+<td>7406</td>
+<td>9507</td>
+<td>11337</td>
+<td>11724</td>
+<td>11372</td>
+<td>10765</td>
+<td>8835</td>
+<td>7015</td>
+<td>5350</td>
+<td>3881</td>
+<td>2827</td>
+<td>2007</td>
+<td>1417</td>
+<td>948</td>
+<td>547</td>
+<td>412</td>
+<td>204</td>
+<td>135</td>
+<td>91</td>
+<td>61</td>
+<td>43</td>
+<td>19</td>
+<td>21</td>
+<td>12</td>
+<td>5</td>
+<td>5</td>
+<td>4</td>
+<td>1</TD>
+</TR>
+
+<tr valign=top>
+<TD>ta</td>
+<td>ta</td>
+<td>72041</td>
+<td>212.3</td>
+<td>43</td>
+<td>3.0e-24</td>
+<td>4.8e-23</td>
+<td>22.32</td>
+<td>4</td>
+<td>0</td>
+<td>3</td>
+<td>2</td>
+<td>3</td>
+<td>7</td>
+<td>12</td>
+<td>18</td>
+<td>36</td>
+<td>44</td>
+<td>71</td>
+<td>104</td>
+<td>190</td>
+<td>311</td>
+<td>433</td>
+<td>717</td>
+<td>1043</td>
+<td>1488</td>
+<td>1999</td>
+<td>2666</td>
+<td>3653</td>
+<td>4623</td>
+<td>5697</td>
+<td>6356</td>
+<td>6388</td>
+<td>6494</td>
+<td>6529</td>
+<td>5758</td>
+<td>4649</td>
+<td>3614</td>
+<td>2717</td>
+<td>1966</td>
+<td>1431</td>
+<td>1017</td>
+<td>723</td>
+<td>476</td>
+<td>303</td>
+<td>203</td>
+<td>111</td>
+<td>63</td>
+<td>45</td>
+<td>37</td>
+<td>22</td>
+<td>9</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>0</td>
+<td>3</TD>
+</TR>
+
+<tr valign=top>
+<TD>gt</td>
+<td>gt</td>
+<td>77624</td>
+<td>210.9</td>
+<td>43</td>
+<td>5.3e-24</td>
+<td>8.5e-23</td>
+<td>22.07</td>
+<td>5</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>8</td>
+<td>3</td>
+<td>12</td>
+<td>12</td>
+<td>24</td>
+<td>40</td>
+<td>51</td>
+<td>86</td>
+<td>167</td>
+<td>253</td>
+<td>446</td>
+<td>626</td>
+<td>955</td>
+<td>1399</td>
+<td>2004</td>
+<td>2693</td>
+<td>3790</td>
+<td>4969</td>
+<td>6380</td>
+<td>7530</td>
+<td>7942</td>
+<td>7843</td>
+<td>7387</td>
+<td>6043</td>
+<td>4826</td>
+<td>3578</td>
+<td>2576</td>
+<td>1916</td>
+<td>1322</td>
+<td>944</td>
+<td>650</td>
+<td>401</td>
+<td>284</td>
+<td>165</td>
+<td>95</td>
+<td>71</td>
+<td>43</td>
+<td>33</td>
+<td>28</td>
+<td>13</td>
+<td>4</td>
+<td>5</td>
+<td>3</td>
+<td>0</td>
+<td>1</TD>
+</TR>
+
+<tr valign=top>
+<TD>tg</td>
+<td>tg</td>
+<td>114283</td>
+<td>150.3</td>
+<td>44</td>
+<td>1.5e-13</td>
+<td>2.5e-12</td>
+<td>11.61</td>
+<td>6</td>
+<td>1</td>
+<td>1</td>
+<td>5</td>
+<td>7</td>
+<td>11</td>
+<td>21</td>
+<td>30</td>
+<td>40</td>
+<td>64</td>
+<td>90</td>
+<td>153</td>
+<td>234</td>
+<td>413</td>
+<td>662</td>
+<td>952</td>
+<td>1483</td>
+<td>2103</td>
+<td>3008</td>
+<td>4218</td>
+<td>5534</td>
+<td>7370</td>
+<td>9279</td>
+<td>10939</td>
+<td>11452</td>
+<td>11398</td>
+<td>10863</td>
+<td>8910</td>
+<td>6979</td>
+<td>5357</td>
+<td>3874</td>
+<td>2867</td>
+<td>2043</td>
+<td>1373</td>
+<td>920</td>
+<td>586</td>
+<td>399</td>
+<td>225</td>
+<td>145</td>
+<td>104</td>
+<td>60</td>
+<td>43</td>
+<td>28</td>
+<td>18</td>
+<td>10</td>
+<td>9</td>
+<td>2</td>
+<td>0</td>
+<td>0</TD>
+</TR>
+
+<tr valign=top>
+<TD>at</td>
+<td>at</td>
+<td>87662</td>
+<td>144.3</td>
+<td>44</td>
+<td>1.3e-12</td>
+<td>2.1e-11</td>
+<td>10.67</td>
+<td>7</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>4</td>
+<td>12</td>
+<td>19</td>
+<td>35</td>
+<td>36</td>
+<td>52</td>
+<td>83</td>
+<td>141</td>
+<td>238</td>
+<td>386</td>
+<td>532</td>
+<td>897</td>
+<td>1237</td>
+<td>1777</td>
+<td>2433</td>
+<td>3274</td>
+<td>4280</td>
+<td>5562</td>
+<td>7052</td>
+<td>7852</td>
+<td>8071</td>
+<td>7992</td>
+<td>8020</td>
+<td>6910</td>
+<td>5570</td>
+<td>4383</td>
+<td>3270</td>
+<td>2347</td>
+<td>1711</td>
+<td>1222</td>
+<td>827</td>
+<td>500</td>
+<td>346</td>
+<td>212</td>
+<td>137</td>
+<td>86</td>
+<td>55</td>
+<td>41</td>
+<td>26</td>
+<td>14</td>
+<td>7</td>
+<td>3</td>
+<td>3</td>
+<td>1</td>
+<td>1</TD>
+</TR>
+
+<tr valign=top>
+<TD>cc</td>
+<td>cc</td>
+<td>95677</td>
+<td>144.1</td>
+<td>44</td>
+<td>1.4e-12</td>
+<td>2.3e-11</td>
+<td>10.64</td>
+<td>8</td>
+<td>0</td>
+<td>5</td>
+<td>4</td>
+<td>2</td>
+<td>8</td>
+<td>13</td>
+<td>22</td>
+<td>35</td>
+<td>60</td>
+<td>85</td>
+<td>137</td>
+<td>209</td>
+<td>360</td>
+<td>556</td>
+<td>832</td>
+<td>1257</td>
+<td>1937</td>
+<td>2655</td>
+<td>3736</td>
+<td>4895</td>
+<td>6297</td>
+<td>7968</td>
+<td>9063</td>
+<td>9605</td>
+<td>8955</td>
+<td>8447</td>
+<td>7311</td>
+<td>5795</td>
+<td>4478</td>
+<td>3329</td>
+<td>2461</td>
+<td>1816</td>
+<td>1191</td>
+<td>772</td>
+<td>504</td>
+<td>385</td>
+<td>164</td>
+<td>139</td>
+<td>63</td>
+<td>34</td>
+<td>33</td>
+<td>25</td>
+<td>15</td>
+<td>10</td>
+<td>5</td>
+<td>0</td>
+<td>4</td>
+<td>0</TD>
+</TR>
+
+<tr valign=top>
+<TD>gg</td>
+<td>gg</td>
+<td>95793</td>
+<td>133.4</td>
+<td>44</td>
+<td>6.1e-11</td>
+<td>9.7e-10</td>
+<td>9.01</td>
+<td>9</td>
+<td>0</td>
+<td>1</td>
+<td>8</td>
+<td>8</td>
+<td>7</td>
+<td>11</td>
+<td>18</td>
+<td>40</td>
+<td>50</td>
+<td>65</td>
+<td>129</td>
+<td>169</td>
+<td>336</td>
+<td>511</td>
+<td>814</td>
+<td>1238</td>
+<td>1746</td>
+<td>2454</td>
+<td>3480</td>
+<td>4732</td>
+<td>6110</td>
+<td>7443</td>
+<td>8753</td>
+<td>9199</td>
+<td>9495</td>
+<td>9082</td>
+<td>7772</td>
+<td>6027</td>
+<td>4661</td>
+<td>3596</td>
+<td>2519</td>
+<td>1829</td>
+<td>1248</td>
+<td>878</td>
+<td>550</td>
+<td>262</td>
+<td>201</td>
+<td>110</td>
+<td>75</td>
+<td>56</td>
+<td>39</td>
+<td>27</td>
+<td>20</td>
+<td>7</td>
+<td>10</td>
+<td>4</td>
+<td>2</td>
+<td>1</TD>
+</TR>
+
+<tr valign=top>
+<TD>ac</td>
+<td>ac</td>
+<td>78484</td>
+<td>126.3</td>
+<td>43</td>
+<td>4.0e-10</td>
+<td>6.4e-09</td>
+<td>8.19</td>
+<td>10</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+<td>10</td>
+<td>13</td>
+<td>37</td>
+<td>46</td>
+<td>73</td>
+<td>99</td>
+<td>169</td>
+<td>264</td>
+<td>443</td>
+<td>660</td>
+<td>1028</td>
+<td>1517</td>
+<td>2050</td>
+<td>2897</td>
+<td>3853</td>
+<td>5109</td>
+<td>6466</td>
+<td>7618</td>
+<td>7773</td>
+<td>7865</td>
+<td>7302</td>
+<td>6023</td>
+<td>4772</td>
+<td>3729</td>
+<td>2662</td>
+<td>1985</td>
+<td>1348</td>
+<td>918</td>
+<td>649</td>
+<td>398</td>
+<td>280</td>
+<td>171</td>
+<td>93</td>
+<td>53</td>
+<td>41</td>
+<td>24</td>
+<td>10</td>
+<td>8</td>
+<td>9</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+<td>1</TD>
+</TR>
+
+<tr valign=top>
+<TD>gc</td>
+<td>gc</td>
+<td>80905</td>
+<td>112.4</td>
+<td>43</td>
+<td>4.0e-08</td>
+<td>6.4e-07</td>
+<td>6.19</td>
+<td>11</td>
+<td>1</td>
+<td>2</td>
+<td>7</td>
+<td>5</td>
+<td>14</td>
+<td>15</td>
+<td>15</td>
+<td>40</td>
+<td>43</td>
+<td>67</td>
+<td>105</td>
+<td>158</td>
+<td>284</td>
+<td>463</td>
+<td>670</td>
+<td>1020</td>
+<td>1523</td>
+<td>2221</td>
+<td>3013</td>
+<td>4169</td>
+<td>5166</td>
+<td>6595</td>
+<td>7762</td>
+<td>7955</td>
+<td>7874</td>
+<td>7506</td>
+<td>6383</td>
+<td>4987</td>
+<td>3811</td>
+<td>2844</td>
+<td>2028</td>
+<td>1469</td>
+<td>998</td>
+<td>617</td>
+<td>451</td>
+<td>251</td>
+<td>128</td>
+<td>80</td>
+<td>57</td>
+<td>34</td>
+<td>32</td>
+<td>13</td>
+<td>14</td>
+<td>8</td>
+<td>4</td>
+<td>2</td>
+<td>1</td>
+<td>0</TD>
+</TR>
+
+<tr valign=top>
+<TD>cg</td>
+<td>cg</td>
+<td>23185</td>
+<td>65.9</td>
+<td>40</td>
+<td>6.1e-03</td>
+<td>0.097</td>
+<td>1.01</td>
+<td>12</td>
+<td>0</td>
+<td>1</td>
+<td>3</td>
+<td>3</td>
+<td>1</td>
+<td>4</td>
+<td>4</td>
+<td>11</td>
+<td>13</td>
+<td>16</td>
+<td>22</td>
+<td>38</td>
+<td>74</td>
+<td>110</td>
+<td>212</td>
+<td>292</td>
+<td>483</td>
+<td>608</td>
+<td>872</td>
+<td>1178</td>
+<td>1497</td>
+<td>1874</td>
+<td>2203</td>
+<td>2244</td>
+<td>2245</td>
+<td>2115</td>
+<td>1816</td>
+<td>1531</td>
+<td>1143</td>
+<td>869</td>
+<td>591</td>
+<td>399</td>
+<td>269</td>
+<td>173</td>
+<td>107</td>
+<td>67</td>
+<td>30</td>
+<td>28</td>
+<td>14</td>
+<td>8</td>
+<td>7</td>
+<td>3</td>
+<td>5</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</TD>
+</TR>
+
+<tr valign=top>
+<TD>ga</td>
+<td>ga</td>
+<td>88427</td>
+<td>56.7</td>
+<td>44</td>
+<td>9.5e-02</td>
+<td>1.5</td>
+<td>-0.18</td>
+<td>13</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td>3</td>
+<td>7</td>
+<td>13</td>
+<td>31</td>
+<td>28</td>
+<td>54</td>
+<td>64</td>
+<td>132</td>
+<td>174</td>
+<td>381</td>
+<td>507</td>
+<td>825</td>
+<td>1205</td>
+<td>1720</td>
+<td>2356</td>
+<td>3272</td>
+<td>4324</td>
+<td>5635</td>
+<td>6849</td>
+<td>8121</td>
+<td>8423</td>
+<td>8600</td>
+<td>8158</td>
+<td>6894</td>
+<td>5535</td>
+<td>4370</td>
+<td>3335</td>
+<td>2448</td>
+<td>1690</td>
+<td>1146</td>
+<td>775</td>
+<td>491</td>
+<td>307</td>
+<td>211</td>
+<td>111</td>
+<td>74</td>
+<td>59</td>
+<td>32</td>
+<td>27</td>
+<td>18</td>
+<td>7</td>
+<td>6</td>
+<td>3</td>
+<td>1</td>
+<td>0</TD>
+</TR>
+
+<tr valign=top>
+<TD>ag</td>
+<td>ag</td>
+<td>109545</td>
+<td>52.9</td>
+<td>44</td>
+<td>1.7e-01</td>
+<td>2.7</td>
+<td>-0.43</td>
+<td>14</td>
+<td>1</td>
+<td>2</td>
+<td>6</td>
+<td>6</td>
+<td>9</td>
+<td>16</td>
+<td>25</td>
+<td>41</td>
+<td>60</td>
+<td>83</td>
+<td>149</td>
+<td>217</td>
+<td>454</td>
+<td>632</td>
+<td>951</td>
+<td>1410</td>
+<td>2075</td>
+<td>2956</td>
+<td>3912</td>
+<td>5593</td>
+<td>6946</td>
+<td>8620</td>
+<td>10376</td>
+<td>10607</td>
+<td>10675</td>
+<td>10064</td>
+<td>8561</td>
+<td>6834</td>
+<td>5219</td>
+<td>4051</td>
+<td>2884</td>
+<td>2066</td>
+<td>1420</td>
+<td>963</td>
+<td>643</td>
+<td>379</td>
+<td>243</td>
+<td>122</td>
+<td>79</td>
+<td>66</td>
+<td>52</td>
+<td>33</td>
+<td>23</td>
+<td>8</td>
+<td>7</td>
+<td>4</td>
+<td>1</td>
+<td>1</TD>
+</TR>
+
+<tr valign=top>
+<TD>tc</td>
+<td>tc</td>
+<td>88100</td>
+<td>52.6</td>
+<td>44</td>
+<td>1.8e-01</td>
+<td>2.8</td>
+<td>-0.45</td>
+<td>15</td>
+<td>0</td>
+<td>4</td>
+<td>1</td>
+<td>4</td>
+<td>6</td>
+<td>24</td>
+<td>25</td>
+<td>23</td>
+<td>43</td>
+<td>77</td>
+<td>112</td>
+<td>217</td>
+<td>356</td>
+<td>532</td>
+<td>816</td>
+<td>1187</td>
+<td>1742</td>
+<td>2374</td>
+<td>3317</td>
+<td>4351</td>
+<td>5580</td>
+<td>7107</td>
+<td>8387</td>
+<td>8599</td>
+<td>8371</td>
+<td>8137</td>
+<td>6699</td>
+<td>5556</td>
+<td>4214</td>
+<td>3097</td>
+<td>2265</td>
+<td>1620</td>
+<td>1157</td>
+<td>712</td>
+<td>504</td>
+<td>369</td>
+<td>177</td>
+<td>130</td>
+<td>72</td>
+<td>47</td>
+<td>38</td>
+<td>19</td>
+<td>13</td>
+<td>9</td>
+<td>3</td>
+<td>4</td>
+<td>3</td>
+<td>0</TD>
+</TR>
+
+<tr valign=top>
+<TD>ct</td>
+<td>ct</td>
+<td>109181</td>
+<td>36.4</td>
+<td>44</td>
+<td>7.9e-01</td>
+<td>13</td>
+<td>-1.10</td>
+<td>16</td>
+<td>0</td>
+<td>5</td>
+<td>3</td>
+<td>3</td>
+<td>9</td>
+<td>24</td>
+<td>24</td>
+<td>38</td>
+<td>60</td>
+<td>94</td>
+<td>147</td>
+<td>251</td>
+<td>416</td>
+<td>650</td>
+<td>994</td>
+<td>1493</td>
+<td>2125</td>
+<td>3004</td>
+<td>4180</td>
+<td>5484</td>
+<td>6983</td>
+<td>8702</td>
+<td>10216</td>
+<td>10425</td>
+<td>10487</td>
+<td>10108</td>
+<td>8458</td>
+<td>6804</td>
+<td>5242</td>
+<td>3849</td>
+<td>2841</td>
+<td>2058</td>
+<td>1404</td>
+<td>881</td>
+<td>672</td>
+<td>432</td>
+<td>241</td>
+<td>147</td>
+<td>77</td>
+<td>55</td>
+<td>39</td>
+<td>21</td>
+<td>11</td>
+<td>13</td>
+<td>5</td>
+<td>3</td>
+<td>3</td>
+<td>0</TD>
+</TR>
+
+</TABLE><PRE>
+ Host name	biow
+ Job started	2014-10-07.093036
+ Job done	2014-10-07.093054
+ Seconds	18.78
+	user	18.78
+	system	0.03
+	cuser	0
+;	csystem	0
+</PRE>
+</BODY></HTML>

@@ -1,0 +1,54 @@
+; classfreq  -v 1 -ci 20 -o $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/oligos_7nt_mkv5_m2/peak-motifs_oligos_7nt_mkv5_m2_site_distrib.tab
+;	min                 	minimum of class interval (inclusive)
+;	max                 	maximum of class interval (exclusive)
+;	center              	center of class interval
+;	n                   	occurrences
+;	n_cum               	cumulative occurrences (inclusive)
+;	n_dcum              	decreasing cumulative occurrences (inclusive)
+;	f                   	frequencies
+;	f_cum               	cumulative frequencies (inclusive)
+;	f_dcum              	decreasing cumulative frequencies (inclusive)
+#[min	max[	center	n	n_cum	n_dcum	f	f_cum	f_dcum
+-220	-200	-210	1	1	776	0.00129	0.00129	1.00000
+-200	-180	-190	2	3	775	0.00258	0.00387	0.99871
+-180	-160	-170	3	6	773	0.00387	0.00773	0.99613
+-160	-140	-150	7	13	770	0.00902	0.01675	0.99227
+-140	-120	-130	18	31	763	0.02320	0.03995	0.98325
+-120	-100	-110	22	53	745	0.02835	0.06830	0.96005
+-100	-80	-90	34	87	723	0.04381	0.11211	0.93170
+-80	-60	-70	54	141	689	0.06959	0.18170	0.88789
+-60	-40	-50	78	219	635	0.10052	0.28222	0.81830
+-40	-20	-30	86	305	557	0.11082	0.39304	0.71778
+-20	0	-10	87	392	471	0.11211	0.50515	0.60696
+0	20	10	98	490	384	0.12629	0.63144	0.49485
+20	40	30	100	590	286	0.12887	0.76031	0.36856
+40	60	50	78	668	186	0.10052	0.86082	0.23969
+60	80	70	45	713	108	0.05799	0.91881	0.13918
+80	100	90	23	736	63	0.02964	0.94845	0.08119
+100	120	110	18	754	40	0.02320	0.97165	0.05155
+120	140	130	13	767	22	0.01675	0.98840	0.02835
+140	160	150	4	771	9	0.00515	0.99356	0.01160
+160	180	170	2	773	5	0.00258	0.99613	0.00644
+180	200	190	1	774	3	0.00129	0.99742	0.00387
+200	220	210	2	776	2	0.00258	1.00000	0.00258
+; Statistics:
+; -----------
+; class interval     	20
+; classes            	22
+; count              	776
+; sum                	-3360
+; mean               	-4.3299
+; median class       	[-40..-20[
+; var                	4.03e+03
+; std                	63.5065
+; min                	-216
+; max                	210
+; range              	426
+; Host name	biow
+; Job started	2014-10-07.094125
+; Job done	2014-10-07.094125
+; Seconds	0.22
+;	user	0.22
+;	system	0.01
+;	cuser	0
+;	csystem	0

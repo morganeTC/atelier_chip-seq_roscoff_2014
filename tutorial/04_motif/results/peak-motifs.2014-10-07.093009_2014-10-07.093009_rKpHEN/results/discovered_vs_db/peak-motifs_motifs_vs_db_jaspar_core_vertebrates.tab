@@ -1,0 +1,231 @@
+; compare-matrices  -v 1 -mode matches -format1 transfac -file1 $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/peak-motifs_motifs_discovered.tf -format2 tf -file2 $RSAT/public_html/data/motif_databases/JASPAR/jaspar_core_vertebrates_2013-11.tf -mode matches -DR -uth offset_rank 1 -lth w 5 -lth Wr 0.3 -lth cor 0.75 -lth Ncor 0.4 -return matrix_name,matrix_id,cor,Ncor,logoDP,NIcor,NsEucl,SSD,NSW,match_rank,width,strand,offset,consensus,alignments_1ton -sort Ncor -o $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_vs_db/peak-motifs_motifs_vs_db_jaspar_core_vertebrates.tab
+; Program version       	1.118
+; Input files
+;	file2 	/vh/rsat/rsat/public_html/data/motif_databases/JASPAR/jaspar_core_vertebrates_2013-11.tf
+;	file1 	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/peak-motifs_motifs_discovered.tf
+; Output files
+;	alignments_1ton	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_vs_db/peak-motifs_motifs_vs_db_jaspar_core_vertebrates_alignments_1ton.tab
+;	match_table_txt	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_vs_db/peak-motifs_motifs_vs_db_jaspar_core_vertebrates.tab
+;	html_index   	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_vs_db/peak-motifs_motifs_vs_db_jaspar_core_vertebrates_index.html
+;	alignments_1ton_html	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_vs_db/peak-motifs_motifs_vs_db_jaspar_core_vertebrates_alignments_1ton.html
+;	match_table_html	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_vs_db/peak-motifs_motifs_vs_db_jaspar_core_vertebrates.html
+;	prefix       	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_vs_db/peak-motifs_motifs_vs_db_jaspar_core_vertebrates
+; Matrices
+;	file1	25 matrices	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/peak-motifs_motifs_discovered.tf
+;		file1	1	10	1681	waATGTCAkw
+;		file1	2	10	748	ssCGCCCGss
+;		file1	3	10	527	wsAGACCAgm
+;		file1	4	11	977	cvAGGTCAGsg
+;		file1	5	11	705	ssGCTCTGCss
+;		file1	6	14	256	byCCAGGTCACasw
+;		file1	7	14	205	acCATGACCTGGbc
+;		file1	8	24	21	hwtTaAATTTTTTAAAAAAtTAgw
+;		file1	9	17	160	styaaCCTGACCTGgsy
+;		file1	10	13	417	wwAATGTCATGwy
+;		file1	11	11	495	cvCCACACCcg
+;		...	15 more matrices
+;	file2	263 matrices	/vh/rsat/rsat/public_html/data/motif_databases/JASPAR/jaspar_core_vertebrates_2013-11.tf
+;		file2		1		11		26		wwyTGyGGTww
+;		file2		2		9		185		GCCcbrrGs
+;		file2		3		6		20		CACGTG
+;		file2		4		6		24		yGCGTG
+;		file2		5		22		24		hwwrGmACryyvtGTwCchrms
+;		file2		6		11		40		CTAGGTGTGAA
+;		file2		7		20		12		drvkcasygrwGcRkrrCsr
+;		file2		8		14		13		TGAmCTTTGmmCyt
+;		file2		9		12		16		bbkGrTGACGym
+;		file2		10		12		39		rrrTGCAATmcc
+;		file2		11		8		10		TTTsGCGC
+;		...	253 more matrices
+; Column content
+;	1	id1          	Identifier of the first matrix
+;	2	id2          	Identifier of the second matrix
+;	3	name1        	Name of the first matrix
+;	4	name2        	Name of the second matrix
+;	5	cor          	Pearson coefficient of correlation between frequency matrices
+;	6	Ncor         	Normalized correlation. Ncor = cor * Wr
+;	7	logoDP       	Dot product between the logo matrices.
+;	8	NIcor        	Normalized Pearson correlation between the information content matrices. NIcor = Icor * Wr
+;	9	NSW          	Normalized Sandelin-Wasserman similarity. NSW = SW/w
+;	10	SSD          	sum of squared distance.
+;	11	NsEucl       	relative Euclidian similarity. NsEucl = (max(dEucl) - dEucl)/max(dEucl)
+;	12	w1           	Width of the first matrix
+;	13	w2           	Width of the second matrix
+;	14	w            	Alignment length (number of overlapping columns between matrix 1 and matrix 2, as a function of the offset)
+;	15	W            	Total alignment length (overlapping + non-overlapping columns). W = w1 + w2 - w
+;	16	Wr           	Relative alignment length (overlap divided by the total alignemnt length). Wr = w/W
+;	17	wr1          	Alignment length relative to the width of the first matrix. wr1 = w/w1
+;	18	wr2          	Alignment length relative to the width of the second matrix. wr2 = w/w2
+;	19	strand       	"strand", i.e. orientation of matrix 2 relative to matrix 1 (D=direct;  R=reverse)
+;	20	offset       	shift of the second matrix relative to the first matrix (negative:left; positive: right)
+;	21	consensus1   	IUPAC consensus of matrix 1 (dots represent non-aligned columns)
+;	22	consensus2   	IUPAC consensus of matrix 2 (dots represent non-aligned columns)
+;	23	rcor         	Matching rank for cor
+;	24	rNcor        	Matching rank for Ncor
+;	25	rlogoDP      	Matching rank for logoDP
+;	26	rNIcor       	Matching rank for NIcor
+;	27	rNsEucl      	Matching rank for NsEucl
+;	28	rSSD         	Matching rank for SSD
+;	29	rNSW         	Matching rank for NSW
+;	30	rank_mean    	Mean of the matching ranks on all selected metrics
+;	31	match_rank   	Rank of the match (sorting by rank_mean)
+#id1	id2	name1	name2	cor	Ncor	logoDP	NIcor	NSW	SSD	NsEucl	w1	w2	w	W	Wr	wr1	wr2	strand	offset	consensus1	consensus2	rcor	rNcor	rlogoDP	rNIcor	rNsEucl	rSSD	rNSW	rank_mean	match_rank
+oligos_7nt_mkv5_m2	MA0478.1	oligos_7nt_mkv5_m2	FOSL2	0.954	0.795	11.120	0.795	0.976	0.4780	0.95111	11	11	10	12	0.8333	0.9091	0.9091	D	-1	             rrTGACTCAb.	.rrTGAsTCAb                   	9	5	6	5	7	11	6	7.0000	1
+oligos_7nt_mkv5_m2	MA0477.1	oligos_7nt_mkv5_m2	FOSL1	0.943	0.943	11.500	0.945	0.973	0.5925	0.95052	11	11	11	11	1.0000	1.0000	1.0000	D	0	             rrTGACTCAbm	rrTGAsTCAks                   	15	1	2	1	8	18	9	7.7143	2
+oligos_7nt_mkv5_m2	MA0490.1	oligos_7nt_mkv5_m2	JUNB	0.949	0.791	11.221	0.790	0.974	0.5219	0.94892	11	11	10	12	0.8333	0.9091	0.9091	D	-1	             rrTGACTCAb.	.rrTGAsTCAk                   	10	6	4	6	9	14	7	8.0000	3
+oligos_7nt_mkv5_m2	MA0491.1	oligos_7nt_mkv5_m2	JUND	0.926	0.926	11.425	0.920	0.964	0.7829	0.94312	11	11	11	11	1.0000	1.0000	1.0000	D	0	             rrTGACTCAbm	drTGAsTCATs                   	17	2	3	2	11	21	17	10.4286	4
+oligos_6nt_mkv4_m4	MA0071.1	oligos_6nt_mkv4_m4	RORA_1	0.977	0.601	10.345	0.606	0.987	0.2059	0.95989	11	10	8	13	0.6154	0.7273	0.8000	D	-2	cvAGGTCA...	..cwAGGTCA                    	3	36	12	26	3	3	3	12.2857	5
+oligos_7nt_mkv5_m2	MA0476.1	oligos_7nt_mkv5_m2	FOS	0.921	0.921	10.973	0.913	0.963	0.8090	0.94218	11	11	11	11	1.0000	1.0000	1.0000	D	0	             rrTGACTCAbm	dvTGAsTCATb                   	21	3	7	3	12	22	18	12.2857	6
+positions_7nt_m2	MA0592.1	positions_7nt_m2	ESRRA	0.949	0.696	8.828	0.687	0.974	0.5777	0.95114	15	11	11	15	0.7333	0.7333	1.0000	D	1	         .yCAAGGTCACC...	yCAAGGTCAcm                   	11	14	26	12	6	17	8	13.4286	7
+oligos_7nt_mkv5_m2	MA0489.1	oligos_7nt_mkv5_m2	JUN_(var.2)	0.947	0.631	10.826	0.626	0.973	0.5470	0.94770	11	14	10	15	0.6667	0.9091	0.7143	D	-4	             rrTGACTCAb.	....rrTGAsTCAt                	14	24	8	19	10	15	10	14.2857	8
+positions_7nt_m2	MA0141.1	positions_7nt_m2	Esrrb	0.987	0.581	8.051	0.580	0.994	0.1268	0.97482	15	12	10	17	0.5882	0.6667	0.8333	D	-2	         byCAAGGTCA.....	..syCAAGGTCA                  	1	44	42	32	1	1	1	17.4286	9
+positions_7nt_m2	MA0141.2	positions_7nt_m2	Esrrb	0.987	0.580	8.159	0.580	0.993	0.1311	0.97440	15	12	10	17	0.5882	0.6667	0.8333	D	-2	         byCAAGGTCA.....	..syCAAGGTCA                  	2	45	39	33	2	2	2	17.8571	10
+dyads_m4	MA0071.1	dyads_m4	RORA_1	0.936	0.601	10.432	0.608	0.966	0.6184	0.93821	13	10	9	14	0.6429	0.6923	0.9000	D	-1	           cyAAGGTCA....	.wcwAGGTCA                    	16	35	10	24	14	19	16	19.1429	11
+dyads_m4	MA0141.2	dyads_m4	Esrrb	0.968	0.545	9.638	0.544	0.983	0.3124	0.95608	13	12	9	16	0.5625	0.6923	0.7500	D	-3	           cyAAGGTCA....	...yCAAGGTCA                  	5	57	19	46	5	5	5	20.2857	12
+dyads_m4	MA0141.1	dyads_m4	Esrrb	0.968	0.545	9.506	0.544	0.983	0.3121	0.95611	13	12	9	16	0.5625	0.6923	0.7500	D	-3	           cyAAGGTCA....	...yCAAGGTCA                  	6	58	20	47	4	4	4	20.4286	13
+oligos_7nt_mkv5_m1	MA0493.1	oligos_7nt_mkv5_m1	Klf1	0.898	0.898	8.244	0.890	0.954	1.0046	0.93557	11	11	11	11	1.0000	1.0000	1.0000	D	0	             cvCCACACCcg	rrCCACACCCw                   	32	4	38	4	18	33	24	21.8571	14
+oligos_7nt_mkv5_m2	MA0099.2	oligos_7nt_mkv5_m2	JUN::FOS	0.974	0.620	7.313	0.622	0.970	0.4219	0.93438	11	7	7	11	0.6364	0.6364	1.0000	D	2	             ..TGACTCA..	TGAmTCA                       	4	28	66	20	22	8	13	23.0000	15
+dyads_m4	MA0160.1	dyads_m4	NR4A2	0.964	0.593	8.026	0.586	0.968	0.5162	0.93649	13	8	8	13	0.6154	0.6154	1.0000	D	2	           ..AAGGTCAC...	aAGGTCAc                      	7	37	44	30	17	13	15	23.2857	16
+oligos_7nt_mkv5_m4	MA0524.1	oligos_7nt_mkv5_m4	TFAP2C	0.902	0.661	8.344	0.658	0.957	0.9553	0.93717	11	15	11	15	0.7333	1.0000	0.7333	D	-3	             rsCCTCAGGsm	...dsCCyCAGGsc.               	30	19	35	16	16	30	23	24.1429	17
+oligos_7nt_mkv5_m2	MA0462.1	oligos_7nt_mkv5_m2	BATF::JUN	0.909	0.630	10.268	0.620	0.949	0.9160	0.92480	11	11	9	13	0.6923	0.8182	0.8182	D	-2	             rrTGACTCA..	..wATGAsTCA                   	25	26	13	21	38	28	31	26.0000	18
+oligos_6nt_mkv4_m4	MA0512.1	oligos_6nt_mkv4_m4	Rxra	0.887	0.739	8.345	0.734	0.947	1.0601	0.92720	11	11	10	12	0.8333	0.9091	0.9091	D	-1	cvAGGTCAGs.	.ArAGKTCAgd                   	38	10	34	8	33	35	34	27.4286	19
+oligos_7nt_mkv5_m5	MA0079.3	oligos_7nt_mkv5_m5	SP1	0.883	0.735	8.087	0.718	0.945	1.0973	0.92593	11	11	10	12	0.8333	0.9091	0.9091	D	1	             .kCCCCTCCcs	gCCCCkCCCC.                   	42	11	41	10	35	37	37	30.4286	20
+dyads_m4	MA0592.1	dyads_m4	ESRRA	0.883	0.747	10.206	0.719	0.936	1.4062	0.92377	13	11	11	13	0.8462	0.8462	1.0000	D	0	           cyAAGGTCACC..	yCAAGGTCAcm                   	41	9	14	9	41	61	47	31.7143	21
+oligos_7nt_mkv5_m5	MA0079.2	oligos_7nt_mkv5_m5	SP1	0.905	0.679	6.201	0.665	0.953	0.8499	0.92757	11	10	9	12	0.7500	0.8182	0.9000	D	2	             ..CCCCTCCcs	CCCCkCCCC.                    	27	17	86	14	31	26	26	32.4286	22
+positions_6nt_m1	MA0071.1	positions_6nt_m1	RORA_1	0.877	0.627	10.635	0.649	0.939	1.2212	0.92186	14	10	10	14	0.7143	0.7143	1.0000	D	0	byCCAGGTCA....	wwcwAGGTCA                    	43	27	9	17	44	46	43	32.7143	23
+positions_7nt_m2	MA0071.1	positions_7nt_m2	RORA_1	0.887	0.591	8.312	0.590	0.945	1.1030	0.92574	15	10	10	15	0.6667	0.6667	1.0000	D	0	         byCAAGGTCA.....	wwcwAGGTCA                    	36	39	37	28	36	38	38	36.0000	24
+positions_7nt_m2	MA0160.1	positions_7nt_m2	NR4A2	0.959	0.511	6.265	0.505	0.973	0.4382	0.94149	15	8	8	15	0.5333	0.5333	1.0000	D	3	         ...AAGGTCAC....	aAGGTCAc                      	8	76	82	63	13	9	11	37.4286	25
+positions_6nt_m1	MA0141.1	positions_6nt_m1	Esrrb	0.889	0.555	9.310	0.553	0.944	1.1228	0.92507	14	12	10	16	0.6250	0.7143	0.8333	D	-2	byCCAGGTCA....	..syCAAGGTCA                  	34	51	22	43	37	40	39	38.0000	26
+positions_6nt_m1	MA0141.2	positions_6nt_m1	Esrrb	0.888	0.555	9.423	0.552	0.943	1.1337	0.92471	14	12	10	16	0.6250	0.7143	0.8333	D	-2	byCCAGGTCA....	..syCAAGGTCA                  	35	52	21	45	39	41	40	39.0000	27
+positions_6nt_m1	MA0592.1	positions_6nt_m1	ESRRA	0.864	0.679	9.939	0.661	0.930	1.5418	0.92018	14	11	11	14	0.7857	0.7857	1.0000	D	1	.yCCAGGTCACa..	yCAAGGTCAcm                   	47	16	16	15	50	73	56	39.0000	28
+oligos_7nt_mkv5_m4	MA0003.2	oligos_7nt_mkv5_m4	TFAP2A	0.864	0.634	7.633	0.617	0.940	1.3142	0.92631	11	15	11	15	0.7333	1.0000	0.7333	D	-3	             rsCCTCAGGsm	...wGCCysAGGsC.               	49	21	55	23	34	52	42	39.4286	29
+oligos_7nt_mkv5_m5	MA0599.1	oligos_7nt_mkv5_m5	KLF5	0.857	0.779	7.904	0.765	0.933	1.3366	0.91825	11	10	10	11	0.9091	0.9091	1.0000	D	1	             .kCCCCTCCcs	gCCMCrCCCh                    	58	7	49	7	54	54	48	39.5714	30
+oligos_6nt_mkv4_m4	MA0258.1	oligos_6nt_mkv4_m4	ESR2	0.885	0.541	6.407	0.539	0.950	1.1049	0.93243	11	18	11	18	0.6111	1.0000	0.6111	D	0	cvAGGTCAGsg	cwrGGTCAsgk.......            	39	60	76	48	24	39	29	45.0000	31
+oligos_6nt_mkv4_m4	MA0258.2	oligos_6nt_mkv4_m4	ESR2	0.923	0.489	7.461	0.484	0.958	0.7585	0.93157	11	15	9	17	0.5294	0.8182	0.6000	D	2	..AGGTCAGsg	rGGTCAsms......               	19	92	65	75	25	20	21	45.2857	32
+positions_7nt_m2	MA0258.2	positions_7nt_m2	ESR2	0.898	0.520	6.101	0.511	0.958	0.9275	0.93809	15	15	11	19	0.5789	0.7333	0.7333	D	4	         ....AGGTCACCttg	rGGTCAsmstG....               	33	72	90	60	15	29	22	45.8571	33
+oligos_7nt_mkv5_m1	MA0130.1	oligos_7nt_mkv5_m1	ZNF354C	0.923	0.504	6.306	0.515	0.960	0.4830	0.91810	11	6	6	11	0.5455	0.5455	1.0000	D	0	             cvCCAC.....	mTCCAC                        	18	82	79	57	55	12	20	46.1429	34
+oligos_7nt_mkv5_m2	MA0591.1	oligos_7nt_mkv5_m2	Bach1::Mafk	0.859	0.630	10.367	0.606	0.925	1.6561	0.91727	11	15	11	15	0.7333	1.0000	0.7333	D	-2	             rrTGACTCAbm	..srTGACTCAGC..               	55	25	11	25	58	83	68	46.4286	35
+oligos_6nt_mkv4_m4	MA0141.1	oligos_6nt_mkv4_m4	Esrrb	0.910	0.485	8.828	0.476	0.948	0.8391	0.91904	11	12	8	15	0.5333	0.7273	0.6667	D	-4	cvAGGTCA...	....CAAGGTCA                  	23	94	27	78	52	24	32	47.1429	36
+positions_6nt_m1	MA0112.1	positions_6nt_m1	ESR1	0.883	0.530	7.478	0.533	0.945	1.3113	0.93252	14	18	12	20	0.6000	0.8571	0.6667	D	2	..CCAGGTCACasw	ccAGGTCaCcrt......            	40	67	64	51	23	51	35	47.2857	37
+positions_7nt_m2	MA0505.1	positions_7nt_m2	Nr5a2	0.864	0.576	7.995	0.561	0.937	1.5227	0.92729	15	15	12	18	0.6667	0.8000	0.8000	D	-3	         byCAAGGTCACC...	...tTCAAGGyCAgs               	50	46	46	40	32	72	45	47.2857	38
+oligos_6nt_mkv4_m4	MA0141.2	oligos_6nt_mkv4_m4	Esrrb	0.910	0.485	8.936	0.475	0.947	0.8455	0.91873	11	12	8	15	0.5333	0.7273	0.6667	D	-4	cvAGGTCA...	....CAAGGTCA                  	24	95	25	80	53	25	33	47.8571	39
+positions_7nt_m1	MA0112.1	positions_7nt_m1	ESR1	0.869	0.565	6.130	0.554	0.945	1.4242	0.93509	15	18	13	20	0.6500	0.8667	0.7222	D	2	         ..CCAGGTCACCtkg	ccAGGTCaCcrtG.....            	45	49	87	42	19	64	36	48.8571	40
+positions_6nt_m1	MA0258.2	positions_6nt_m1	ESR2	0.907	0.477	7.708	0.476	0.952	0.9634	0.93060	14	15	10	19	0.5263	0.7143	0.6667	D	4	....AGGTCACasw	rGGTCAsmst.....               	26	101	52	79	26	31	28	49.0000	41
+positions_7nt_m1	MA0258.2	positions_7nt_m1	ESR2	0.887	0.513	6.109	0.504	0.953	1.0356	0.93458	15	15	11	19	0.5789	0.7333	0.7333	D	4	         ....AGGTCACCtkg	rGGTCAsmstG....               	37	75	89	64	21	34	25	49.2857	42
+positions_7nt_m5	MA0071.1	positions_7nt_m5	RORA_1	0.848	0.606	8.439	0.618	0.927	1.4663	0.91438	14	10	10	14	0.7143	0.7143	1.0000	D	0	          kbCCAGGTCA....	wwcwAGGTCA                    	63	34	32	22	68	66	61	49.4286	43
+oligos_7nt_mkv5_m2	MA0089.1	oligos_7nt_mkv5_m2	NFE2L1::MafG	0.922	0.503	5.953	0.490	0.961	0.4706	0.91915	11	6	6	11	0.5455	0.5455	1.0000	D	0	             rrTGAC.....	sATGAC                        	20	85	94	70	51	10	19	49.8571	44
+positions_6nt_m1	MA0160.1	positions_6nt_m1	NR4A2	0.904	0.517	7.972	0.518	0.938	0.9979	0.91171	14	8	8	14	0.5714	0.5714	1.0000	D	3	...CAGGTCAC...	aAGGTCAc                      	28	74	47	55	80	32	44	51.4286	45
+oligos_6nt_mkv4_m4	MA0160.1	oligos_6nt_mkv4_m4	NR4A2	0.870	0.633	7.532	0.627	0.925	1.1940	0.90342	11	8	8	11	0.7273	0.7273	1.0000	D	1	.vAGGTCAG..	aAGGTCAc                      	44	23	61	18	111	45	65	52.4286	46
+dyads_m4	MA0258.2	dyads_m4	ESR2	0.899	0.500	7.603	0.485	0.941	1.1826	0.92310	13	15	10	18	0.5556	0.7692	0.6667	D	3	           ...AGGTCACCst	rGGTCAsmst.....               	31	86	57	73	43	44	41	53.5714	47
+positions_7nt_m3	MA0071.1	positions_7nt_m3	RORA_1	0.845	0.564	9.031	0.577	0.924	1.5134	0.91301	15	10	10	15	0.6667	0.6667	1.0000	D	0	         smCCAGGTCA.....	wwcwAGGTCA                    	67	50	24	36	73	70	69	55.5714	48
+oligos_6nt_mkv4_m4	MA0592.1	oligos_6nt_mkv4_m4	ESRRA	0.833	0.695	9.293	0.672	0.915	1.6962	0.90791	11	11	10	12	0.8333	0.9091	0.9091	D	-1	cvAGGTCAGs.	.CAAGGTCAcm                   	76	15	23	13	94	90	89	57.1429	49
+oligos_7nt_mkv5_m2	MA0150.2	oligos_7nt_mkv5_m2	Nfe2l2	0.839	0.615	8.330	0.579	0.922	1.7158	0.91580	11	15	11	15	0.7333	1.0000	0.7333	D	-3	             rrTGACTCAbm	...mrTGACTCAGC.               	71	31	36	34	65	92	75	57.7143	50
+positions_6nt_m2	MA0089.1	positions_6nt_m2	NFE2L1::MafG	0.948	0.406	6.304	0.400	0.969	0.3711	0.92821	14	6	6	14	0.4286	0.4286	1.0000	D	2	..CATGAC......	sATGAC                        	13	147	80	114	30	7	14	57.8571	51
+oligos_7nt_mkv5_m2	MA0501.1	oligos_7nt_mkv5_m2	NFE2::MAF	0.863	0.539	9.764	0.513	0.923	1.5446	0.91212	11	15	10	16	0.6250	0.9091	0.6667	D	1	             .rTGACTCAbm	rTGACTCAGC.....               	51	61	18	59	77	74	73	59.0000	52
+dyads_m4	MA0112.1	dyads_m4	ESR1	0.851	0.538	7.739	0.537	0.927	1.7605	0.92182	13	18	12	19	0.6316	0.9231	0.6667	D	1	           .yAAGGTCACCst	ccAGGTCaCcrt......            	62	64	51	49	45	98	62	61.5714	53
+oligos_7nt_mkv5_m2	MA0099.1	oligos_7nt_mkv5_m2	JUN::FOS	0.920	0.669	0.532	-0.216	0.949	0.8133	0.92029	11	8	8	11	0.7273	0.7273	1.0000	R	2	             ..TGACTCAb.	TKASTCAY                      	22	18	141	149	49	23	30	61.7143	54
+positions_7nt_m1	MA0071.1	positions_7nt_m1	RORA_1	0.832	0.555	8.394	0.568	0.918	1.6340	0.90961	15	10	10	15	0.6667	0.6667	1.0000	D	0	         byCCAGGTCA.....	wwcwAGGTCA                    	77	53	33	37	86	78	79	63.2857	55
+positions_7nt_m1	MA0112.2	positions_7nt_m1	ESR1	0.819	0.614	3.822	0.578	0.936	1.9090	0.93487	15	20	15	20	0.7500	1.0000	0.7500	D	-1	         byCCAGGTCACCtkg	.kscmaGGtCAcccTG....          	88	32	112	35	20	112	46	63.5714	56
+positions_7nt_m5	MA0141.1	positions_7nt_m5	Esrrb	0.847	0.529	7.537	0.531	0.925	1.5022	0.91333	14	12	10	16	0.6250	0.7143	0.8333	D	-2	          kbCCAGGTCA....	..syCAAGGTCA                  	65	68	60	52	71	68	67	64.4286	57
+positions_7nt_m5	MA0141.2	positions_7nt_m5	Esrrb	0.846	0.529	7.627	0.530	0.924	1.5151	0.91296	14	12	10	16	0.6250	0.7143	0.8333	D	-2	          kbCCAGGTCA....	..syCAAGGTCA                  	66	69	56	53	75	71	70	65.7143	58
+positions_6nt_m5	MA0089.1	positions_6nt_m5	NFE2L1::MafG	0.948	0.437	0.234	-0.132	0.970	0.3550	0.92978	13	6	6	13	0.4615	0.4615	1.0000	R	5	           .....GTCATG..	GTCATS                        	12	120	148	142	27	6	12	66.7143	59
+positions_6nt_m1	MA0112.2	positions_6nt_m1	ESR1	0.821	0.574	4.608	0.557	0.930	1.9520	0.92943	14	20	14	20	0.7000	1.0000	0.7000	D	-1	byCCAGGTCACasw	.kscmaGGtCAcccT.....          	87	47	108	41	28	115	53	68.4286	60
+positions_7nt_m4	MA0071.1	positions_7nt_m4	RORA_1	0.825	0.550	8.532	0.567	0.915	1.6965	0.90790	15	10	10	15	0.6667	0.6667	1.0000	D	0	         ssCCAGGTCA.....	wwcwAGGTCA                    	80	54	31	38	96	91	90	68.5714	61
+dyads_m4	MA0112.2	dyads_m4	ESR1	0.841	0.547	4.679	0.520	0.926	1.9210	0.92461	13	20	13	20	0.6500	1.0000	0.6500	D	-2	           cyAAGGTCACCst	..scmaGGtCAcccT.....          	68	56	107	54	40	114	63	71.7143	62
+positions_6nt_m2	MA0071.1	positions_6nt_m2	RORA_1	0.867	0.619	1.095	-0.085	0.933	1.3425	0.91807	14	10	10	14	0.7143	0.7143	1.0000	R	4	....TGACCTGGbc	TGACCTWGWW                    	46	29	132	137	56	55	49	72.0000	63
+oligos_6nt_mkv4_m1	MA0089.1	oligos_6nt_mkv4_m1	NFE2L1::MafG	0.904	0.543	0.059	-0.127	0.952	0.5748	0.91065	10	6	6	10	0.6000	0.6000	1.0000	R	4	....GTCAkw	GTCATS                        	29	59	151	140	83	16	27	72.1429	64
+positions_7nt_m3	MA0141.1	positions_7nt_m3	Esrrb	0.837	0.492	7.951	0.497	0.919	1.6210	0.90997	15	12	10	17	0.5882	0.6667	0.8333	D	-2	         smCCAGGTCA.....	..syCAAGGTCA                  	72	87	48	65	85	77	77	73.0000	65
+positions_7nt_m3	MA0141.2	positions_7nt_m3	Esrrb	0.836	0.492	8.042	0.496	0.918	1.6346	0.90959	15	12	10	17	0.5882	0.6667	0.8333	D	-2	         smCCAGGTCA.....	..syCAAGGTCA                  	73	88	43	67	87	79	80	73.8571	66
+dyads_m2	MA0047.2	dyads_m2	Foxa2	0.860	0.430	6.826	0.417	0.932	1.2229	0.91312	15	12	9	18	0.5000	0.6000	0.7500	D	6	         ......TATTTACwt	TRTTTACwy...                  	54	125	69	101	72	47	51	74.1429	67
+oligos_6nt_mkv4_m4	MA0112.2	oligos_6nt_mkv4_m4	ESR1	0.840	0.462	4.366	0.459	0.933	1.4838	0.92170	11	20	11	20	0.5500	1.0000	0.5500	D	-3	cvAGGTCAGsg	...cmaGGtCAccc......          	70	109	109	89	46	67	50	77.1429	68
+oligos_7nt_mkv5_m1	MA0599.1	oligos_7nt_mkv5_m1	KLF5	0.787	0.716	8.022	0.688	0.899	2.0258	0.89936	11	10	10	11	0.9091	0.9091	1.0000	D	1	             .vCCACACCcg	gCCMCrCCCh                    	115	12	45	11	118	119	120	77.1429	69
+positions_7nt_m2	MA0112.2	positions_7nt_m2	ESR1	0.787	0.590	3.745	0.553	0.925	2.2417	0.92942	15	20	15	20	0.7500	1.0000	0.7500	D	-1	         byCAAGGTCACCttg	.kscmaGGtCAcccTG....          	117	40	113	44	29	134	66	77.5714	70
+positions_6nt_m2	MA0141.1	positions_6nt_m2	Esrrb	0.863	0.539	1.344	0.045	0.930	1.4008	0.91631	14	12	10	16	0.6250	0.7143	0.8333	R	4	....TGACCTGGbc	TGACCTTGRS..                  	52	62	128	124	62	60	55	77.5714	71
+positions_7nt_m1	MA0141.1	positions_7nt_m1	Esrrb	0.832	0.489	7.555	0.497	0.917	1.6598	0.90890	15	12	10	17	0.5882	0.6667	0.8333	D	-2	         byCCAGGTCA.....	..syCAAGGTCA                  	78	89	58	66	91	85	83	78.5714	72
+positions_6nt_m2	MA0141.2	positions_6nt_m2	Esrrb	0.862	0.539	1.334	0.042	0.929	1.4123	0.91597	14	12	10	16	0.6250	0.7143	0.8333	R	4	....TGACCTGGbc	TGACCTTGRS..                  	53	63	129	125	63	62	57	78.8571	73
+oligos_7nt_mkv5_m1	MA0039.2	oligos_7nt_mkv5_m1	Klf4	0.848	0.770	0.606	-0.220	0.927	1.4628	0.91448	11	10	10	11	0.9091	0.9091	1.0000	R	1	             .vCCACACCcg	GCCMCRCCCW                    	64	8	140	150	67	65	60	79.1429	74
+positions_7nt_m1	MA0141.2	positions_7nt_m1	Esrrb	0.831	0.489	7.647	0.496	0.916	1.6739	0.90851	15	12	10	17	0.5882	0.6667	0.8333	D	-2	         byCCAGGTCA.....	..syCAAGGTCA                  	79	90	53	68	93	86	87	79.4286	75
+positions_7nt_m2	MA0112.1	positions_7nt_m2	ESR1	0.804	0.523	6.118	0.517	0.919	2.1035	0.92111	15	18	13	20	0.6500	0.8667	0.7222	D	2	         ..CAAGGTCACCttg	ccAGGTCaCcrtG.....            	97	71	88	56	48	124	76	80.0000	76
+positions_7nt_m1	MA0592.1	positions_7nt_m1	ESRRA	0.801	0.587	8.096	0.582	0.899	2.2212	0.90420	15	11	11	15	0.7333	0.7333	1.0000	D	1	         .yCCAGGTCACC...	yCAAGGTCAcm                   	101	42	40	31	110	132	119	82.1429	77
+positions_7nt_m4	MA0258.2	positions_7nt_m4	ESR2	0.816	0.473	6.236	0.465	0.924	1.6812	0.91665	15	15	11	19	0.5789	0.7333	0.7333	D	4	         ....AGGTCAGGgcr	rGGTCAsmstG....               	89	102	84	86	60	87	71	82.7143	78
+oligos_6nt_mkv4_m4	MA0072.1	oligos_6nt_mkv4_m4	RORA_2	0.835	0.469	10.206	0.465	0.909	1.6402	0.89938	11	14	9	16	0.5625	0.8182	0.6429	D	-5	cvAGGTCAG..	.....bTAGGTCAr                	74	103	15	85	117	80	105	82.7143	79
+positions_6nt_m4	MA0071.1	positions_6nt_m4	RORA_1	0.857	0.504	1.382	-0.043	0.929	1.4182	0.91579	17	10	10	17	0.5882	0.5882	1.0000	R	7	       .......TGACCTGgsy	TGACCTWGWW                    	57	81	127	133	66	63	58	83.5714	80
+oligos_7nt_mkv5_m1	MA0103.1	oligos_7nt_mkv5_m1	ZEB1	0.852	0.465	4.866	0.450	0.925	0.8951	0.88850	11	6	6	11	0.5455	0.5455	1.0000	D	5	             .....CACCcg	CACCTk                        	61	107	106	91	130	27	64	83.7143	81
+positions_6nt_m2	MA0258.2	positions_6nt_m2	ESR2	0.853	0.449	2.624	0.342	0.930	1.3920	0.91657	14	15	10	19	0.5263	0.7143	0.6667	R	-5	acCATGACCT....	.....ASKSTGACCY               	60	116	123	117	61	59	52	84.0000	82
+positions_7nt_m4	MA0141.1	positions_7nt_m4	Esrrb	0.824	0.485	7.555	0.491	0.914	1.7245	0.90714	15	12	10	17	0.5882	0.6667	0.8333	D	-2	         ssCCAGGTCA.....	..syCAAGGTCA                  	81	96	59	69	99	93	93	84.2857	83
+dyads_m2	MA0047.1	dyads_m2	Foxa2	0.791	0.633	6.095	0.599	0.901	2.3727	0.90923	15	12	12	15	0.8000	0.8000	1.0000	D	3	         ...AAATATTTACwt	mawTrTTkryTY                  	109	22	91	27	88	140	114	84.4286	84
+positions_7nt_m4	MA0141.2	positions_7nt_m4	Esrrb	0.824	0.484	7.643	0.490	0.913	1.7383	0.90677	15	12	10	17	0.5882	0.6667	0.8333	D	-2	         ssCCAGGTCA.....	..syCAAGGTCA                  	82	99	54	71	101	96	97	85.7143	85
+oligos_7nt_mkv5_m5	MA0516.1	oligos_7nt_mkv5_m5	SP2	0.812	0.507	7.501	0.488	0.912	1.7553	0.90632	11	15	10	16	0.6250	0.9091	0.6667	D	1	             .kCCCCTCCcs	gyCCCGCCyC.....               	90	79	63	72	102	97	98	85.8571	86
+positions_7nt_m1	MA0160.1	positions_7nt_m1	NR4A2	0.855	0.456	6.404	0.458	0.916	1.3469	0.89742	15	8	8	15	0.5333	0.5333	1.0000	D	3	         ...CAGGTCAC....	aAGGTCAc                      	59	113	77	90	120	56	88	86.1429	87
+positions_7nt_m3	MA0258.2	positions_7nt_m3	ESR2	0.805	0.466	6.496	0.469	0.919	1.7892	0.91402	15	15	11	19	0.5789	0.7333	0.7333	D	4	         ....AGGTCATGcyg	rGGTCAsmstG....               	95	105	73	83	69	100	78	86.1429	88
+oligos_6nt_mkv4_m2	MA0024.2	oligos_6nt_mkv4_m2	E2F1	0.840	0.517	1.305	-0.042	0.929	1.1431	0.90550	10	11	8	13	0.6154	0.8000	0.7273	R	-3	ssCGCCCG..	...SSCGCSCS                   	69	73	130	132	105	42	59	87.1429	89
+oligos_7nt_mkv5_m5	MA0162.2	oligos_7nt_mkv5_m5	EGR1	0.801	0.534	5.883	0.509	0.913	1.7329	0.90692	11	14	10	15	0.6667	0.9091	0.7143	D	1	             .kCCCCTCCcs	sccCCgCCCM....                	102	66	96	61	100	95	96	88.0000	90
+positions_6nt_m4	MA0258.2	positions_6nt_m4	ESR2	0.803	0.550	2.699	0.311	0.923	1.9977	0.92312	17	15	13	19	0.6842	0.7647	0.8667	R	-2	       styaaCCTGACCT....	..GTCASKSTGACCY               	98	55	122	118	42	117	72	89.1429	91
+oligos_6nt_mkv4_m4	MA0112.1	oligos_6nt_mkv4_m4	ESR1	0.793	0.485	6.878	0.482	0.915	1.8699	0.91210	11	18	11	18	0.6111	1.0000	0.6111	D	0	cvAGGTCAGsg	ccAGGTCaCcr.......            	107	97	68	77	78	109	91	89.5714	92
+oligos_7nt_mkv5_m2	MA0150.1	oligos_7nt_mkv5_m2	NFE2L2	0.783	0.653	7.508	0.588	0.889	2.2268	0.89448	11	11	10	12	0.8333	0.9091	0.9091	D	1	             .rTGACTCAbm	rTGACwmAGC.                   	124	20	62	29	124	133	137	89.8571	93
+dyads_m1	MA0047.1	dyads_m1	Foxa2	0.791	0.593	6.324	0.564	0.898	2.4558	0.90766	16	12	12	16	0.7500	0.7500	1.0000	D	4	        ....AAATATTTACwv	mawTrTTkryTY                  	111	38	78	39	98	145	122	90.1429	94
+oligos_6nt_mkv4_m4	MA0505.1	oligos_6nt_mkv4_m4	Nr5a2	0.805	0.503	7.773	0.467	0.904	1.9155	0.90214	11	15	10	16	0.6250	0.9091	0.6667	D	-5	cvAGGTCAGs.	.....CAAGGyCAgs               	96	84	50	84	113	113	110	92.8571	95
+dyads_m1	MA0047.2	dyads_m1	Foxa2	0.858	0.406	1.015	-0.082	0.930	1.2553	0.91197	16	12	9	19	0.4737	0.5625	0.7500	R	-3	        bwGTAAATA.......	...RWGTAAAYA                  	56	146	133	136	79	49	54	93.2857	96
+positions_7nt_m5	MA0258.2	positions_7nt_m5	ESR2	0.811	0.427	6.029	0.437	0.917	1.6592	0.90892	14	15	10	19	0.5263	0.7143	0.6667	D	4	          ....AGGTCAAGgt	rGGTCAsmst.....               	93	128	92	93	90	84	82	94.5714	97
+oligos_6nt_mkv4_m1	MA0067.1	oligos_6nt_mkv4_m1	Pax2	0.798	0.508	3.634	0.506	0.902	1.3680	0.88185	10	8	7	11	0.6364	0.7000	0.8750	D	3	...TGTCAkw	wgTCAyk.              	103	78	114	62	139	58	113	95.2857	98
+oligos_6nt_mkv4_m4	MA0504.1	oligos_6nt_mkv4_m4	NR2C2	0.771	0.565	5.902	0.534	0.903	2.1349	0.90608	11	15	11	15	0.7333	1.0000	0.7333	D	0	cvAGGTCAGsg	mgrGGTCArAG....               	135	48	95	50	103	126	112	95.5714	99
+positions_7nt_m2	MA0258.1	positions_7nt_m2	ESR2	0.776	0.504	5.179	0.484	0.910	2.3311	0.91695	15	18	13	20	0.6500	0.8667	0.7222	D	2	         ..CAAGGTCACCttg	cwrGGTCAsgkTG.....            	131	80	104	74	59	139	103	98.5714	100
+oligos_7nt_mkv5_m3	MA0465.1	oligos_7nt_mkv5_m3	CDX2	0.864	0.403	0.857	-0.052	0.923	1.0829	0.89488	11	11	7	15	0.4667	0.6364	0.6364	R	4	             ....TTTTAww	TTTTATK....                   	48	150	136	134	123	36	74	100.1429	101
+positions_7nt_m4	MA0159.1	positions_7nt_m4	RXR::RAR_DR5	0.794	0.416	5.433	0.412	0.917	1.8171	0.91335	15	17	11	21	0.5238	0.7333	0.6471	D	4	         ....AGGTCAGGgcr	rGkTCAysgrs......             	105	138	99	106	70	103	81	100.2857	102
+dyads_m4	MA0505.1	dyads_m4	Nr5a2	0.788	0.510	8.750	0.473	0.887	2.4828	0.89871	13	15	11	17	0.6471	0.8462	0.7333	D	-4	           cyAAGGTCACC..	....TCAAGGyCAgs               	113	77	30	81	119	146	138	100.5714	103
+positions_7nt_m3	MA0159.1	positions_7nt_m3	RXR::RAR_DR5	0.793	0.416	5.868	0.419	0.917	1.8321	0.91299	15	17	11	21	0.5238	0.7333	0.6471	D	4	         ....AGGTCATGcyg	rGkTCAysgrs......             	106	139	97	99	74	104	85	100.5714	104
+oligos_7nt_mkv5_m5	MA0057.1	oligos_7nt_mkv5_m5	MZF1_5-13	0.811	0.609	0.422	-0.223	0.911	1.5939	0.90081	11	10	9	12	0.7500	0.8182	0.9000	R	-1	             ckCCCCTCC..	.YMCCCMTMV                    	91	33	142	151	114	76	101	101.1429	105
+positions_7nt_m5	MA0160.1	positions_7nt_m5	NR4A2	0.811	0.464	6.218	0.462	0.897	1.6486	0.88651	14	8	8	14	0.5714	0.5714	1.0000	D	3	          ...CAGGTCAA...	aAGGTCAc                      	92	108	85	88	132	82	125	101.7143	106
+positions_6nt_m1	MA0258.1	positions_6nt_m1	ESR2	0.781	0.469	6.610	0.464	0.904	2.2972	0.91069	14	18	12	20	0.6000	0.8571	0.6667	D	2	..CCAGGTCACasw	cwrGGTCAsgkT......            	125	104	72	87	82	135	109	102.0000	107
+positions_6nt_m5	MA0067.1	positions_6nt_m5	Pax2	0.789	0.486	3.014	0.484	0.901	1.5857	0.88870	13	8	8	13	0.6154	0.6154	1.0000	D	4	           ....TGTCATGw.	wgTCAykb                      	112	93	119	76	129	75	115	102.7143	108
+positions_6nt_m2	MA0258.1	positions_6nt_m2	ESR2	0.807	0.484	1.124	-0.035	0.915	2.0402	0.91583	14	18	12	20	0.6000	0.8571	0.6667	R	-6	acCATGACCTGG..	......AMCSTGACCYWG            	94	98	131	131	64	120	92	104.2857	109
+positions_6nt_m2	MA0112.2	positions_6nt_m2	ESR1	0.766	0.536	2.155	0.105	0.914	2.4217	0.92140	14	20	14	20	0.7000	1.0000	0.7000	R	-5	acCATGACCTGGbc	.....AGGGTGACCTKGSM.          	138	65	125	122	47	142	95	104.8571	110
+dyads_m4	MA0065.1	dyads_m4	PPARG::RXRA	0.787	0.450	9.805	0.420	0.890	2.6293	0.90445	13	20	12	21	0.5714	0.9231	0.6000	D	-8	           cyAAGGTCACCs.	........CAAAGGTCAymk          	116	115	17	97	109	148	132	104.8571	111
+positions_7nt_m2	MA0159.1	positions_7nt_m2	RXR::RAR_DR5	0.786	0.412	5.294	0.410	0.917	1.8362	0.91289	15	17	11	21	0.5238	0.7333	0.6471	D	4	         ....AGGTCACCttg	rGkTCAysgrs......             	121	141	102	107	76	105	86	105.4286	112
+oligos_6nt_mkv4_m1	MA0071.1	oligos_6nt_mkv4_m1	RORA_1	0.754	0.503	8.794	0.515	0.863	2.1955	0.86903	10	10	8	12	0.6667	0.8000	0.8000	D	-2	waATGTCA..	..cwAGGTCA                    	148	83	28	58	147	129	148	105.8571	113
+oligos_6nt_mkv4_m4	MA0066.1	oligos_6nt_mkv4_m4	PPARG	0.776	0.427	6.761	0.428	0.907	2.0524	0.90791	11	20	11	20	0.5500	1.0000	0.5500	D	0	cvAGGTCAGsg	sTrGGTCAcsg.........          	129	127	70	94	95	121	108	106.2857	114
+oligos_7nt_mkv5_m3	MA0497.1	oligos_7nt_mkv5_m3	MEF2C	0.803	0.589	0.422	-0.185	0.908	2.0169	0.90871	11	15	11	15	0.7333	1.0000	0.7333	R	-2	             wtATTTTTAww	..CTATTTTTRGM..               	99	41	143	147	92	118	106	106.5714	115
+oligos_6nt_mkv4_m2	MA0470.1	oligos_6nt_mkv4_m2	E2F4	0.833	0.417	0.340	-0.096	0.917	1.1651	0.89097	10	11	7	14	0.5000	0.7000	0.6364	R	-4	ssCGCCC...	....CCCGCSC                   	75	134	146	138	128	43	84	106.8571	116
+oligos_7nt_mkv5_m2	MA0067.1	oligos_7nt_mkv5_m2	Pax2	0.821	0.479	0.313	-0.162	0.912	1.2326	0.88785	11	8	7	12	0.5833	0.6364	0.8750	R	-1	             rrTGACT....	.MRTGACW                      	84	100	147	145	131	48	99	107.7143	117
+oligos_7nt_mkv5_m3	MA0052.2	oligos_7nt_mkv5_m3	MEF2A	0.792	0.581	2.732	0.021	0.900	2.2064	0.90452	11	15	11	15	0.7333	1.0000	0.7333	R	-3	             wtATTTTTAww	...CTATTTTTRGM.               	108	43	121	126	108	131	118	107.8571	118
+dyads_m4	MA0258.1	dyads_m4	ESR2	0.774	0.489	6.472	0.471	0.894	2.5419	0.90605	13	18	12	19	0.6316	0.9231	0.6667	D	1	           .yAAGGTCACCst	cwrGGTCAsgkT......            	133	91	74	82	104	147	130	108.7143	119
+oligos_6nt_mkv4_m4	MA0065.1	oligos_6nt_mkv4_m4	PPARG::RXRA	0.778	0.428	8.775	0.416	0.895	2.3160	0.90217	11	20	11	20	0.5500	1.0000	0.5500	D	-9	cvAGGTCAGsg	.........AAAGGTCAymk          	128	126	29	103	112	138	128	109.1429	120
+oligos_6nt_mkv4_m2	MA0003.1	oligos_6nt_mkv4_m2	TFAP2A	0.769	0.448	3.531	0.410	0.908	1.2946	0.88506	10	9	7	12	0.5833	0.7000	0.7778	D	3	...GCCCGss	GCCcbrr..                     	136	117	115	108	134	50	107	109.5714	121
+positions_7nt_m1	MA0159.1	positions_7nt_m1	RXR::RAR_DR5	0.780	0.409	5.308	0.406	0.914	1.9012	0.91136	15	17	11	21	0.5238	0.7333	0.6471	D	4	         ....AGGTCACCtkg	rGkTCAysgrs......             	126	144	101	111	81	111	94	109.7143	122
+positions_6nt_m4	MA0141.1	positions_6nt_m4	Esrrb	0.822	0.432	0.956	0.009	0.910	1.7916	0.90535	17	12	10	19	0.5263	0.5882	0.8333	R	7	       .......TGACCTGgsy	TGACCTTGRS..                  	83	122	134	128	106	101	102	110.8571	123
+positions_6nt_m4	MA0112.2	positions_6nt_m4	ESR1	0.772	0.418	4.953	0.390	0.912	2.3010	0.91749	17	20	13	24	0.5417	0.7647	0.6500	D	-7	       styaaCCTGACCT....	.......GtCAcccTGaCCy          	134	132	105	115	57	136	100	111.2857	124
+positions_6nt_m4	MA0141.2	positions_6nt_m4	Esrrb	0.821	0.432	0.945	0.007	0.910	1.8042	0.90502	17	12	10	19	0.5263	0.5882	0.8333	R	7	       .......TGACCTGgsy	TGACCTTGRS..                  	85	123	135	129	107	102	104	112.1429	125
+positions_7nt_m5	MA0258.1	positions_7nt_m5	ESR2	0.762	0.457	5.240	0.449	0.901	2.3796	0.90910	14	18	12	20	0.6000	0.8571	0.6667	D	2	          ..CCAGGTCAAGgt	cwrGGTCAsgkT......            	143	112	103	92	89	141	116	113.7143	126
+dyads_m4	MA0115.1	dyads_m4	NR1H2::RXRA	0.760	0.440	12.314	0.422	0.851	3.2879	0.88344	13	17	11	19	0.5789	0.8462	0.6471	D	-6	           cyAAGGTCACC..	......CAAAGGTCAAc             	145	119	1	96	137	151	151	114.2857	127
+dyads_m4	MA0595.1	dyads_m4	SREBF1	0.786	0.419	7.218	0.408	0.889	1.7805	0.88206	13	10	8	15	0.5333	0.6154	0.8000	D	5	           .....GTCACCst	rTCACcCC..                    	120	130	67	110	138	99	136	114.2857	128
+dyads_m2	MA0148.1	dyads_m2	FOXA1	0.787	0.416	6.254	0.400	0.897	1.8469	0.89323	15	11	9	17	0.5294	0.6000	0.8182	D	6	         ......TATTTACwt	TGTTTrCwy..                   	118	135	83	112	125	106	123	114.5714	129
+dyads_m2	MA0148.2	dyads_m2	FOXA1	0.787	0.416	6.296	0.400	0.897	1.8510	0.89311	15	11	9	17	0.5294	0.6000	0.8182	D	6	         ......TATTTACwt	TGTTTrCwy..                   	119	136	81	113	126	108	124	115.2857	130
+positions_6nt_m4	MA0103.2	positions_6nt_m4	ZEB1	0.788	0.417	5.458	0.416	0.895	1.8918	0.89194	17	9	9	17	0.5294	0.5294	1.0000	D	0	       styaaCCTG........	cCwCACCTG                     	114	133	98	104	127	110	127	116.1429	131
+oligos_6nt_mkv4_m4	MA0115.1	oligos_6nt_mkv4_m4	NR1H2::RXRA	0.762	0.424	11.168	0.418	0.860	2.8044	0.88158	11	17	10	18	0.5556	0.9091	0.5882	D	-7	cvAGGTCAGs.	.......AAAGGTCAAc             	142	129	5	100	140	150	150	116.5714	132
+oligos_7nt_mkv5_m5	MA0039.2	oligos_7nt_mkv5_m5	Klf4	0.766	0.696	0.728	-0.213	0.890	2.2034	0.89504	11	10	10	11	0.9091	0.9091	1.0000	R	1	             .kCCCCTCCcs	GCCMCRCCCW                    	137	13	138	148	122	130	134	117.4286	133
+oligos_6nt_mkv4_m1	MA0258.1	oligos_6nt_mkv4_m1	ESR2	0.754	0.419	5.998	0.417	0.900	1.9920	0.90020	10	18	10	18	0.5556	1.0000	0.5556	D	0	waATGTCAkw	cwrGGTCAsg........            	149	131	93	102	115	116	117	117.5714	134
+oligos_6nt_mkv4_m3	MA0095.1	oligos_6nt_mkv4_m3	YY1	0.751	0.451	5.399	0.419	0.874	1.5092	0.85522	10	6	6	10	0.6000	0.6000	1.0000	D	4	....ACCAgm	rCCATc                        	151	114	100	98	150	69	142	117.7143	135
+dyads_m4	MA0017.1	dyads_m4	NR2F1	0.821	0.410	0.698	-0.117	0.904	1.7252	0.89680	13	14	9	18	0.5000	0.6923	0.6429	R	-5	           cyAAGGTCA....	.....CAAAGKTCA                	86	143	139	139	121	94	111	119.0000	136
+positions_6nt_m2	MA0592.1	positions_6nt_m2	ESRRA	0.784	0.616	0.359	-0.172	0.889	2.4323	0.89975	14	11	11	14	0.7857	0.7857	1.0000	R	2	..CATGACCTGGb.	KGTGACCTTGR                   	122	30	145	146	116	143	135	119.5714	137
+positions_6nt_m2	MA0160.1	positions_6nt_m2	NR4A2	0.802	0.458	3.369	0.101	0.884	1.8502	0.87977	14	8	8	14	0.5714	0.5714	1.0000	R	3	...ATGACCTG...	GTGACCTT                      	100	111	117	123	142	107	140	120.0000	138
+dyads_m4	MA0494.1	dyads_m4	Nr1h3::Rxra	0.764	0.523	0.784	-0.068	0.895	2.7213	0.91027	13	19	13	19	0.6842	1.0000	0.6842	R	0	           cyAAGGTCACCst	CMRRGGTYACYYB......           	141	70	137	135	84	149	126	120.2857	139
+positions_7nt_m3	MA0067.1	positions_7nt_m3	Pax2	0.776	0.414	3.256	0.415	0.894	1.6954	0.88491	15	8	8	15	0.5333	0.5333	1.0000	D	5	         .....GGTCATGc..	wgTCAykb                      	132	140	118	105	136	89	131	121.5714	140
+oligos_7nt_mkv5_m5	MA0056.1	oligos_7nt_mkv5_m5	MZF1_1-4	0.795	0.433	0.230	-0.153	0.890	1.3177	0.86472	11	6	6	11	0.5455	0.5455	1.0000	R	1	             .kCCCCT....	TCCCCR                        	104	121	149	144	148	53	133	121.7143	141
+positions_6nt_m2	MA0112.1	positions_6nt_m2	ESR1	0.765	0.459	1.844	0.000	0.898	2.4515	0.90774	14	18	12	20	0.6000	0.8571	0.6667	R	-6	acCATGACCTGG..	......AYGGTGACCTGG            	139	110	126	130	97	144	121	123.8571	142
+oligos_6nt_mkv4_m4	MA0089.1	oligos_6nt_mkv4_m4	NFE2L1::MafG	0.791	0.431	0.095	-0.131	0.887	1.3618	0.86247	11	6	6	11	0.5455	0.5455	1.0000	R	4	....GTCAGs.	GTCATS                        	110	124	150	141	149	57	139	124.2857	143
+positions_6nt_m2	MA0067.1	positions_6nt_m2	Pax2	0.784	0.448	0.410	-0.148	0.894	1.6922	0.88502	14	8	8	14	0.5714	0.5714	1.0000	R	1	.cCATGACC.....	VMRTGACW                      	123	118	144	143	135	88	129	125.7143	144
+positions_7nt_m3	MA0160.1	positions_7nt_m3	NR4A2	0.759	0.405	6.620	0.425	0.863	2.1865	0.86930	15	8	8	15	0.5333	0.5333	1.0000	D	3	         ...CAGGTCAT....	aAGGTCAc                      	146	149	71	95	146	128	147	126.0000	145
+positions_7nt_m4	MA0160.1	positions_7nt_m4	NR4A2	0.765	0.408	6.432	0.409	0.866	2.1387	0.87074	15	8	8	15	0.5333	0.5333	1.0000	D	3	         ...CAGGTCAG....	aAGGTCAc                      	140	145	75	109	145	127	146	126.7143	146
+oligos_7nt_mkv5_m3	MA0151.1	oligos_7nt_mkv5_m3	ARID3A	0.754	0.411	4.276	0.275	0.863	1.6471	0.84875	11	6	6	11	0.5455	0.5455	1.0000	R	5	             .....TTTAww	TTTRAT                        	150	142	111	119	151	81	149	129.0000	147
+dyads_m2	MA0031.1	dyads_m2	FOXD1	0.780	0.416	4.283	0.132	0.868	2.1163	0.87142	15	8	8	15	0.5333	0.5333	1.0000	R	5	         .....ATATTTAC..	WTGTTTAC                      	127	137	110	120	144	125	145	129.7143	148
+positions_7nt_m4	MA0103.2	positions_7nt_m4	ZEB1	0.776	0.466	2.348	0.018	0.872	2.3050	0.88072	15	9	9	15	0.6000	0.6000	1.0000	R	3	         ...CAGGTCAGG...	CAGGTGWGG                     	130	106	124	127	141	137	143	129.7143	149
+dyads_m4	MA0114.1	dyads_m4	HNF4A	0.758	0.401	3.463	0.369	0.884	2.0965	0.88624	13	13	9	17	0.5294	0.6923	0.6923	D	-4	           cyAAGGTCA....	....CAAAGkyCa                 	147	151	116	116	133	123	141	132.4286	150
+dyads_m2	MA0157.1	dyads_m2	FOXO3	0.761	0.406	2.783	0.129	0.871	2.0632	0.87304	15	8	8	15	0.5333	0.5333	1.0000	R	6	         ......TATTTACw.	TGTTTACM                      	144	148	120	121	143	122	144	134.5714	151
+; Host name	biow
+; Job started	2014-10-07.093745
+; Job done	2014-10-07.093923
+; Seconds	44.44
+;	user	44.44
+;	system	2.42
+;	cuser	44.34
+;	csystem	5.97

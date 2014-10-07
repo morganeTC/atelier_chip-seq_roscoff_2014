@@ -1,0 +1,26 @@
+#Motif	Logo	3 Top hits in databases
+oligos_6nt_mkv4_m1	<img border='1' height='50' src='results/discovered_motifs/oligos_6nt_mkv4_m1/peak-motifs_oligos_6nt_mkv4_m1_logo.png'>	<u>versus jaspar_core_vertebrates:</u>  NFE2L1::MafG, Pax2, RORA_1, </br>
+oligos_6nt_mkv4_m2	<img border='1' height='50' src='results/discovered_motifs/oligos_6nt_mkv4_m2/peak-motifs_oligos_6nt_mkv4_m2_logo.png'>	<u>versus jaspar_core_vertebrates:</u>  E2F1, TFAP2A, E2F4, </br>
+oligos_6nt_mkv4_m3	<img border='1' height='50' src='results/discovered_motifs/oligos_6nt_mkv4_m3/peak-motifs_oligos_6nt_mkv4_m3_logo.png'>	<u>versus jaspar_core_vertebrates:</u>  YY1, </br>
+oligos_6nt_mkv4_m4	<img border='1' height='50' src='results/discovered_motifs/oligos_6nt_mkv4_m4/peak-motifs_oligos_6nt_mkv4_m4_logo.png'>	<u>versus jaspar_core_vertebrates:</u>  RORA_1, Rxra, ESR2, </br>
+oligos_6nt_mkv4_m5	<img border='1' height='50' src='results/discovered_motifs/oligos_6nt_mkv4_m5/peak-motifs_oligos_6nt_mkv4_m5_logo.png'>	<u>versus jaspar_core_vertebrates:</u>  no match</br>
+positions_6nt_m1	<img border='1' height='50' src='results/discovered_motifs/positions_6nt_m1/peak-motifs_positions_6nt_m1_logo.png'>	<u>versus jaspar_core_vertebrates:</u>  Esrrb, ESR2, RORA_1, </br>
+positions_6nt_m2	<img border='1' height='50' src='results/discovered_motifs/positions_6nt_m2/peak-motifs_positions_6nt_m2_logo.png'>	<u>versus jaspar_core_vertebrates:</u>  NFE2L1::MafG, RORA_1, ESR2, </br>
+positions_6nt_m3	<img border='1' height='50' src='results/discovered_motifs/positions_6nt_m3/peak-motifs_positions_6nt_m3_logo.png'>	<u>versus jaspar_core_vertebrates:</u>  no match</br>
+positions_6nt_m4	<img border='1' height='50' src='results/discovered_motifs/positions_6nt_m4/peak-motifs_positions_6nt_m4_logo.png'>	<u>versus jaspar_core_vertebrates:</u>  RORA_1, ESR2, Esrrb, </br>
+positions_6nt_m5	<img border='1' height='50' src='results/discovered_motifs/positions_6nt_m5/peak-motifs_positions_6nt_m5_logo.png'>	<u>versus jaspar_core_vertebrates:</u>  NFE2L1::MafG, Pax2, </br>
+oligos_7nt_mkv5_m1	<img border='1' height='50' src='results/discovered_motifs/oligos_7nt_mkv5_m1/peak-motifs_oligos_7nt_mkv5_m1_logo.png'>	<u>versus jaspar_core_vertebrates:</u>  Klf1, ZNF354C, Klf4, </br>
+oligos_7nt_mkv5_m2	<img border='1' height='50' src='results/discovered_motifs/oligos_7nt_mkv5_m2/peak-motifs_oligos_7nt_mkv5_m2_logo.png'>	<u>versus jaspar_core_vertebrates:</u>  FOSL2, FOSL1, JUNB, </br>
+oligos_7nt_mkv5_m3	<img border='1' height='50' src='results/discovered_motifs/oligos_7nt_mkv5_m3/peak-motifs_oligos_7nt_mkv5_m3_logo.png'>	<u>versus jaspar_core_vertebrates:</u>  CDX2, MEF2C, MEF2A, </br>
+oligos_7nt_mkv5_m4	<img border='1' height='50' src='results/discovered_motifs/oligos_7nt_mkv5_m4/peak-motifs_oligos_7nt_mkv5_m4_logo.png'>	<u>versus jaspar_core_vertebrates:</u>  TFAP2C, TFAP2A, </br>
+oligos_7nt_mkv5_m5	<img border='1' height='50' src='results/discovered_motifs/oligos_7nt_mkv5_m5/peak-motifs_oligos_7nt_mkv5_m5_logo.png'>	<u>versus jaspar_core_vertebrates:</u>  SP1, SP1, KLF5, </br>
+positions_7nt_m1	<img border='1' height='50' src='results/discovered_motifs/positions_7nt_m1/peak-motifs_positions_7nt_m1_logo.png'>	<u>versus jaspar_core_vertebrates:</u>  ESR1, ESR2, RORA_1, </br>
+positions_7nt_m2	<img border='1' height='50' src='results/discovered_motifs/positions_7nt_m2/peak-motifs_positions_7nt_m2_logo.png'>	<u>versus jaspar_core_vertebrates:</u>  Esrrb, ESRRA, Esrrb, </br>
+positions_7nt_m3	<img border='1' height='50' src='results/discovered_motifs/positions_7nt_m3/peak-motifs_positions_7nt_m3_logo.png'>	<u>versus jaspar_core_vertebrates:</u>  RORA_1, Esrrb, Esrrb, </br>
+positions_7nt_m4	<img border='1' height='50' src='results/discovered_motifs/positions_7nt_m4/peak-motifs_positions_7nt_m4_logo.png'>	<u>versus jaspar_core_vertebrates:</u>  RORA_1, ESR2, Esrrb, </br>
+positions_7nt_m5	<img border='1' height='50' src='results/discovered_motifs/positions_7nt_m5/peak-motifs_positions_7nt_m5_logo.png'>	<u>versus jaspar_core_vertebrates:</u>  RORA_1, Esrrb, Esrrb, </br>
+dyads_m1	<img border='1' height='50' src='results/discovered_motifs/dyads_m1/peak-motifs_dyads_m1_logo.png'>	<u>versus jaspar_core_vertebrates:</u>  Foxa2, Foxa2, </br>
+dyads_m2	<img border='1' height='50' src='results/discovered_motifs/dyads_m2/peak-motifs_dyads_m2_logo.png'>	<u>versus jaspar_core_vertebrates:</u>  Foxa2, Foxa2, FOXA1, </br>
+dyads_m3	<img border='1' height='50' src='results/discovered_motifs/dyads_m3/peak-motifs_dyads_m3_logo.png'>	<u>versus jaspar_core_vertebrates:</u>  no match</br>
+dyads_m4	<img border='1' height='50' src='results/discovered_motifs/dyads_m4/peak-motifs_dyads_m4_logo.png'>	<u>versus jaspar_core_vertebrates:</u>  RORA_1, Esrrb, Esrrb, </br>
+dyads_m5	<img border='1' height='50' src='results/discovered_motifs/dyads_m5/peak-motifs_dyads_m5_logo.png'>	<u>versus jaspar_core_vertebrates:</u>  no match</br>

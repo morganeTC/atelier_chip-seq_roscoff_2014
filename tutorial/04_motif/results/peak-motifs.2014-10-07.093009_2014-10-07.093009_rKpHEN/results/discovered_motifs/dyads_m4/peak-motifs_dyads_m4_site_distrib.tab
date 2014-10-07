@@ -1,0 +1,56 @@
+; classfreq  -v 1 -ci 20 -o $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/dyads_m4/peak-motifs_dyads_m4_site_distrib.tab
+;	min                 	minimum of class interval (inclusive)
+;	max                 	maximum of class interval (exclusive)
+;	center              	center of class interval
+;	n                   	occurrences
+;	n_cum               	cumulative occurrences (inclusive)
+;	n_dcum              	decreasing cumulative occurrences (inclusive)
+;	f                   	frequencies
+;	f_cum               	cumulative frequencies (inclusive)
+;	f_dcum              	decreasing cumulative frequencies (inclusive)
+#[min	max[	center	n	n_cum	n_dcum	f	f_cum	f_dcum
+-320	-300	-310	1	1	310	0.00323	0.00323	1.00000
+-300	-280	-290	0	1	309	0.00000	0.00323	0.99677
+-280	-260	-270	0	1	309	0.00000	0.00323	0.99677
+-260	-240	-250	0	1	309	0.00000	0.00323	0.99677
+-240	-220	-230	0	1	309	0.00000	0.00323	0.99677
+-220	-200	-210	1	2	309	0.00323	0.00645	0.99677
+-200	-180	-190	0	2	308	0.00000	0.00645	0.99355
+-180	-160	-170	3	5	308	0.00968	0.01613	0.99355
+-160	-140	-150	2	7	305	0.00645	0.02258	0.98387
+-140	-120	-130	2	9	303	0.00645	0.02903	0.97742
+-120	-100	-110	8	17	301	0.02581	0.05484	0.97097
+-100	-80	-90	8	25	293	0.02581	0.08065	0.94516
+-80	-60	-70	18	43	285	0.05806	0.13871	0.91935
+-60	-40	-50	28	71	267	0.09032	0.22903	0.86129
+-40	-20	-30	49	120	239	0.15806	0.38710	0.77097
+-20	0	-10	64	184	190	0.20645	0.59355	0.61290
+0	20	10	41	225	126	0.13226	0.72581	0.40645
+20	40	30	39	264	85	0.12581	0.85161	0.27419
+40	60	50	25	289	46	0.08065	0.93226	0.14839
+60	80	70	10	299	21	0.03226	0.96452	0.06774
+80	100	90	3	302	11	0.00968	0.97419	0.03548
+100	120	110	5	307	8	0.01613	0.99032	0.02581
+120	140	130	2	309	3	0.00645	0.99677	0.00968
+140	160	150	1	310	1	0.00323	1.00000	0.00323
+; Statistics:
+; -----------
+; class interval     	20
+; classes            	24
+; count              	310
+; sum                	-3228
+; mean               	-10.4129
+; median class       	[-40..-20[
+; var                	2.98e+03
+; std                	54.5812
+; min                	-312
+; max                	159
+; range              	471
+; Host name	biow
+; Job started	2014-10-07.094334
+; Job done	2014-10-07.094334
+; Seconds	0.22
+;	user	0.22
+;	system	0.02
+;	cuser	0
+;	csystem	0

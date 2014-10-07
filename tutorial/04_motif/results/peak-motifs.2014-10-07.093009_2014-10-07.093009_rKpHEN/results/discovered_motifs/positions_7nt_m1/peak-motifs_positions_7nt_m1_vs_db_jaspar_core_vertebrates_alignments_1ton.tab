@@ -1,0 +1,72 @@
+; One-to-n matrix alignment; reference matrix: positions_7nt_m1_shift2	; 10 matrices	; sort_field=rank_mean
+; positions_7nt_m1; m=0 (reference); ncol1=15; shift=2; ncol=21; --byCCAGGTCACCtkg----
+; Alignment reference
+a	0	0	63	54	14	13	282	3	3	6	6	273	5	32	53	54	67	0	0	0	0
+c	0	0	79	94	235	262	2	5	5	5	275	4	254	210	68	66	72	0	0	0	0
+g	0	0	74	64	18	6	4	279	281	10	6	10	15	17	57	80	109	0	0	0	0
+t	0	0	75	79	24	10	3	4	2	270	4	4	17	32	113	91	43	0	0	0	0
+//
+; positions_7nt_m1 versus MA0112.1 (ESR1); m=1/9; ncol2=18; w=13; offset=2; strand=D; shift=4; score=      3; ----ccAGGTCaCcrtGrCCy
+; cor=0.869; Ncor=0.565; logoDP=6.130; NIcor=0.554; NsEucl=0.935; SSD=1.424; NSW=0.945; rcor=2; rNcor=3; rlogoDP=6; rNIcor=4; rNsEucl=1; rSSD=3; rNSW=2; rank_mean=3.000; match_rank=1
+a	0	0	0	0	1	1	7	2	0	0	0	6	1	2	3	1	1	5	0	0	2
+c	0	0	0	0	5	5	1	0	0	0	7	0	7	5	2	1	0	1	8	9	4
+g	0	0	0	0	1	1	1	7	9	0	2	2	1	1	4	1	8	3	0	0	0
+t	0	0	0	0	2	2	0	0	0	9	0	1	0	1	0	6	0	0	1	0	3
+//
+; positions_7nt_m1 versus MA0258.2 (ESR2); m=2/9; ncol2=15; w=11; offset=4; strand=D; shift=6; score= 3.2857; ------rGGTCAsmstGaCCy
+; cor=0.887; Ncor=0.513; logoDP=6.109; NIcor=0.504; NsEucl=0.935; SSD=1.036; NSW=0.953; rcor=1; rNcor=5; rlogoDP=7; rNIcor=5; rNsEucl=3; rSSD=1; rNSW=1; rank_mean=3.286; match_rank=2
+a	0	0	0	0	0	0	5410	429	59	74	0	8098	502	2092	1808	1602	1121	3278	434	1111	834
+c	0	0	0	0	0	0	96	0	0	147	7621	1	4202	3235	2510	975	398	2056	6469	5854	2708
+g	0	0	0	0	0	0	2563	7170	8143	989	533	57	2738	1688	2173	533	6658	1391	363	0	606
+t	0	0	0	0	0	0	174	644	41	7033	89	87	801	1228	1752	5133	66	1518	977	1278	4095
+//
+; positions_7nt_m1 versus MA0071.1 (RORA_1); m=3/9; ncol2=10; w=10; offset=0; strand=D; shift=2; score= 3.5714; --wwcwAGGTCA---------
+; cor=0.832; Ncor=0.555; logoDP=8.394; NIcor=0.568; NsEucl=0.910; SSD=1.634; NSW=0.918; rcor=4; rNcor=4; rlogoDP=1; rNIcor=3; rNsEucl=5; rSSD=4; rNSW=4; rank_mean=3.571; match_rank=3
+a	0	0	15	9	6	11	21	0	0	0	0	25	0	0	0	0	0	0	0	0	0
+c	0	0	1	1	12	2	0	0	0	0	25	0	0	0	0	0	0	0	0	0	0
+g	0	0	2	0	4	5	4	25	25	0	0	0	0	0	0	0	0	0	0	0	0
+t	0	0	7	15	3	7	0	0	0	25	0	0	0	0	0	0	0	0	0	0	0
+//
+; positions_7nt_m1 versus MA0112.2 (ESR1); m=4/9; ncol2=20; w=15; offset=-1; strand=D; shift=1; score= 4.5714; -vkscmaGGtCAcccTGaCCy
+; cor=0.819; Ncor=0.614; logoDP=3.822; NIcor=0.578; NsEucl=0.935; SSD=1.909; NSW=0.936; rcor=7; rNcor=1; rlogoDP=9; rNIcor=2; rNsEucl=2; rSSD=8; rNSW=3; rank_mean=4.571; match_rank=4
+a	0	122	107	64	83	134	308	36	19	33	4	398	58	63	64	32	21	305	10	59	26
+c	0	120	80	173	229	232	28	8	18	41	394	13	250	276	258	19	22	106	436	353	165
+g	0	154	164	149	65	47	89	387	420	91	53	27	107	53	97	8	426	31	12	2	22
+t	0	71	117	82	93	57	48	43	18	310	24	37	60	83	56	416	6	33	17	61	262
+//
+; positions_7nt_m1 versus MA0141.1 (Esrrb); m=5/9; ncol2=12; w=10; offset=-2; strand=D; shift=0; score= 5.2857; rgsyCAAGGTCA---------
+; cor=0.832; Ncor=0.489; logoDP=7.555; NIcor=0.497; NsEucl=0.909; SSD=1.660; NSW=0.917; rcor=5; rNcor=6; rlogoDP=4; rNIcor=6; rNsEucl=6; rSSD=5; rNSW=5; rank_mean=5.286; match_rank=5
+a	1054	673	420	259	310	3326	3567	32	21	182	9	3458	0	0	0	0	0	0	0	0	0
+c	800	829	1211	1250	2664	32	2	5	12	46	3376	20	0	0	0	0	0	0	0	0	0
+g	985	1370	1209	448	627	248	60	3586	3602	244	170	129	0	0	0	0	0	0	0	0	0
+t	793	767	805	1693	52	50	27	31	17	3175	85	27	0	0	0	0	0	0	0	0	0
+//
+; positions_7nt_m1 versus MA0592.1 (ESRRA); m=6/9; ncol2=11; w=11; offset=1; strand=D; shift=3; score= 5.5714; ---yCAAGGTCAcm-------
+; cor=0.801; Ncor=0.587; logoDP=8.096; NIcor=0.582; NsEucl=0.904; SSD=2.221; NSW=0.899; rcor=8; rNcor=2; rlogoDP=2; rNIcor=1; rNsEucl=8; rSSD=9; rNSW=9; rank_mean=5.571; match_rank=6
+a	0	0	0	17	18	200	198	0	0	6	0	197	23	70	0	0	0	0	0	0	0
+c	0	0	0	118	174	2	0	0	0	0	205	1	108	54	0	0	0	0	0	0	0
+g	0	0	0	11	15	6	10	203	207	22	3	10	44	40	0	0	0	0	0	0	0
+t	0	0	0	62	1	0	0	5	1	180	0	0	33	44	0	0	0	0	0	0	0
+//
+; positions_7nt_m1 versus MA0141.2 (Esrrb); m=7/9; ncol2=12; w=10; offset=-2; strand=D; shift=0; score=      6; rgsyCAAGGTCA---------
+; cor=0.831; Ncor=0.489; logoDP=7.647; NIcor=0.496; NsEucl=0.909; SSD=1.674; NSW=0.916; rcor=6; rNcor=7; rlogoDP=3; rNIcor=7; rNsEucl=7; rSSD=6; rNSW=6; rank_mean=6.000; match_rank=7
+a	1055	673	403	260	312	3347	3590	33	12	180	9	3478	0	0	0	0	0	0	0	0	0
+c	801	832	1212	1230	2653	32	2	2	11	43	3394	21	0	0	0	0	0	0	0	0	0
+g	984	1352	1212	449	630	248	60	3597	3622	243	167	128	0	0	0	0	0	0	0	0	0
+t	773	767	807	1702	51	27	6	29	16	3192	85	26	0	0	0	0	0	0	0	0	0
+//
+; positions_7nt_m1 versus MA0160.1 (NR4A2); m=8/9; ncol2=8; w=8; offset=3; strand=D; shift=5; score=      6; -----aAGGTCAc--------
+; cor=0.855; Ncor=0.456; logoDP=6.404; NIcor=0.458; NsEucl=0.897; SSD=1.347; NSW=0.916; rcor=3; rNcor=8; rlogoDP=5; rNIcor=8; rNsEucl=9; rSSD=2; rNSW=7; rank_mean=6.000; match_rank=8
+a	0	0	0	0	0	8	13	0	3	2	0	14	3	0	0	0	0	0	0	0	0
+c	0	0	0	0	0	1	0	0	0	2	13	0	8	0	0	0	0	0	0	0	0
+g	0	0	0	0	0	3	1	13	11	0	0	0	2	0	0	0	0	0	0	0	0
+t	0	0	0	0	0	1	0	1	0	10	1	0	0	0	0	0	0	0	0	0	0
+//
+; positions_7nt_m1 versus MA0159.1 (RXR::RAR_DR5); m=9/9; ncol2=17; w=11; offset=4; strand=D; shift=6; score= 7.7143; ------rGkTCAysgrsAGKT
+; cor=0.780; Ncor=0.409; logoDP=5.308; NIcor=0.406; NsEucl=0.911; SSD=1.901; NSW=0.914; rcor=9; rNcor=9; rlogoDP=8; rNIcor=9; rNsEucl=4; rSSD=7; rNSW=8; rank_mean=7.714; match_rank=9
+a	0	0	0	0	0	0	12	0	1	0	0	22	4	5	5	13	5	17	1	0	2
+c	0	0	0	0	0	0	0	0	0	0	18	0	7	8	4	1	6	3	1	1	1
+g	0	0	0	0	0	0	11	23	13	1	3	1	5	9	11	7	12	3	20	16	3
+t	0	0	0	0	0	0	0	0	9	22	2	0	7	1	3	2	0	0	1	6	17
+//
+;

@@ -1,0 +1,35 @@
+; classfreq  -v 1 -ci 1 -o $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/positions_7nt_m3/peak-motifs_positions_7nt_m3_sites_per_peak.tab
+;	min                 	minimum of class interval (inclusive)
+;	max                 	maximum of class interval (exclusive)
+;	center              	center of class interval
+;	n                   	occurrences
+;	n_cum               	cumulative occurrences (inclusive)
+;	n_dcum              	decreasing cumulative occurrences (inclusive)
+;	f                   	frequencies
+;	f_cum               	cumulative frequencies (inclusive)
+;	f_dcum              	decreasing cumulative frequencies (inclusive)
+#[min	max[	center	n	n_cum	n_dcum	f	f_cum	f_dcum
+1	2	1.5	442	442	463	0.95464	0.95464	1.00000
+2	3	2.5	20	462	21	0.04320	0.99784	0.04536
+3	4	3.5	1	463	1	0.00216	1.00000	0.00216
+; Statistics:
+; -----------
+; class interval     	1
+; classes            	3
+; count              	463
+; sum                	485
+; mean               	1.04752
+; median class       	[2..3[
+; var                	0.0496
+; std                	0.222661
+; min                	1
+; max                	3
+; range              	2
+; Host name	biow
+; Job started	2014-10-07.094225
+; Job done	2014-10-07.094225
+; Seconds	0.21
+;	user	0.21
+;	system	0.03
+;	cuser	0
+;	csystem	0

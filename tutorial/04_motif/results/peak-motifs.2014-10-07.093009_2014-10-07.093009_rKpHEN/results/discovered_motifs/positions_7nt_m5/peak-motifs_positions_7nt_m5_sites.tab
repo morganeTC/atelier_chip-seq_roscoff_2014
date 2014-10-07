@@ -1,0 +1,488 @@
+; matrix-scan  -quick -v 1 -seq_format fasta -i $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/data/sequences/peak-motifs_test.fasta -matrix_format transfac -m $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/positions_7nt_m5/peak-motifs_positions_7nt_m5.tf -bg_format inclusive -bgfile $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/composition/peak-motifs_test_inclusive-1str-ovlp_2nt.txt -pseudo 1 -2str -decimals 1 -bg_pseudo 0.01 -n score -lth score 7.5 -origin center -return sites -o $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/positions_7nt_m5/peak-motifs_positions_7nt_m5_sites.tab
+; Quick counting mode          
+; Input files
+;	input	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/data/sequences/peak-motifs_test.fasta
+;	bg	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/composition/peak-motifs_test_inclusive-1str-ovlp_2nt.txt
+; Matrix files
+;	matrix 1	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/positions_7nt_m5/peak-motifs_positions_7nt_m5.tf
+; Sequence format      	fasta
+; Output files
+;	output	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/discovered_motifs/positions_7nt_m5/peak-motifs_positions_7nt_m5_sites.tab
+; Pseudo counts        	1
+; Background model
+;	Method        	file
+;	Markov order  	1
+;	Strand        	undef
+;	Background pseudo-frequency	0.01
+;	Residue probabilities
+;		a	0.26595
+;		c	0.23415
+;		g	0.23386
+;		t	0.26605
+; Thresholds	lower	upper
+;	score 	7.5  	NA
+; Output columns
+;	1	seq_id
+;	2	ft_type
+;	3	ft_name
+;	4	strand
+;	5	start
+;	6	end
+;	7	sequence
+;	8	weight
+#seq_id	ft_type	ft_name	strand	start	end	sequence	weight
+hg19_chr7_82292_82630_+	site	positions_7nt_m5	R	-17	-4	CCCCAGGTCCGGGT	8.7
+hg19_chr7_214562_214721_+	site	positions_7nt_m5	R	61	74	GGCCAGGTCAAAAG	8.6
+hg19_chr7_331572_332060_+	site	positions_7nt_m5	R	-147	-134	CAACAGGTCAAGTC	8.9
+hg19_chr7_564172_564521_+	site	positions_7nt_m5	D	-59	-46	GCCCAGGTCAGGAA	9.9
+hg19_chr7_661962_662430_+	site	positions_7nt_m5	R	-108	-95	TCCCAGGTCAATGT	9.5
+hg19_chr7_690302_690520_+	site	positions_7nt_m5	D	15	28	GCCAAGGTCACGTG	8.9
+hg19_chr7_771622_771831_+	site	positions_7nt_m5	D	49	62	AGCAAGGTCAGGAC	7.9
+hg19_chr7_920072_920350_+	site	positions_7nt_m5	D	-101	-88	TCCCTGGTCAAGGG	7.9
+hg19_chr7_1135802_1135921_+	site	positions_7nt_m5	R	44	57	TCACAGGTCAAGAG	9.2
+hg19_chr7_1164482_1164631_+	site	positions_7nt_m5	D	17	30	GCCCAGGACAAGCT	7.8
+hg19_chr7_1216062_1216280_+	site	positions_7nt_m5	D	12	25	GCTCAGGTCAGGAA	7.6
+hg19_chr7_1291222_1291621_+	site	positions_7nt_m5	D	-1	12	ACGAAGGTCAGGGT	7.6
+hg19_chr7_1291222_1291621_+	site	positions_7nt_m5	D	28	41	TCCCAGGTCAAGCA	11.5
+hg19_chr7_1310062_1310380_+	site	positions_7nt_m5	D	-51	-38	ACCCAGGTCACAGT	7.6
+hg19_chr7_1399782_1400160_+	site	positions_7nt_m5	D	-148	-135	CCCCAGGTCCAGAT	8.6
+hg19_chr7_1400792_1401050_+	site	positions_7nt_m5	R	12	25	CCCCAGGTCACCGT	8.3
+hg19_chr7_1475052_1475190_+	site	positions_7nt_m5	R	-7	6	TCCCAGGTCACCGG	8.1
+hg19_chr7_1477992_1478081_+	site	positions_7nt_m5	R	0	13	GTCCTGGTCACGTT	7.8
+hg19_chr7_1500492_1500780_+	site	positions_7nt_m5	R	-65	-52	CCGCAGGTCAGGGA	8.7
+hg19_chr7_1576502_1576851_+	site	positions_7nt_m5	R	-163	-150	GGGCAGGTCACGAC	8.6
+hg19_chr7_1599452_1599701_+	site	positions_7nt_m5	D	7	20	CGGCAGGTCAGGGA	8.6
+hg19_chr7_1796612_1796891_+	site	positions_7nt_m5	R	85	98	GACCTGGTCAAGGA	8.1
+hg19_chr7_1796612_1796891_+	site	positions_7nt_m5	D	90	103	GACCAGGTCACAGT	7.6
+hg19_chr7_1826392_1826590_+	site	positions_7nt_m5	R	-60	-47	TCCAAGGTCAAGTT	10.1
+hg19_chr7_1857492_1857640_+	site	positions_7nt_m5	R	1	14	GAACAGGTCAGGTC	7.8
+hg19_chr7_1925882_1926191_+	site	positions_7nt_m5	D	-46	-33	ACCAAGGTCATGTC	7.7
+hg19_chr7_1928602_1928821_+	site	positions_7nt_m5	D	96	109	GTCCAGGTCCCGGG	8.1
+hg19_chr7_1935342_1935580_+	site	positions_7nt_m5	D	28	41	GGTCAGGTCAGGCC	7.7
+hg19_chr7_1961852_1961921_+	site	positions_7nt_m5	R	-33	-20	GGCCAGGTCCAGCT	8.7
+hg19_chr7_1979642_1979761_+	site	positions_7nt_m5	R	14	27	GTCCAGGTCAGCAT	7.6
+hg19_chr7_2005702_2005841_+	site	positions_7nt_m5	D	-23	-10	TCCCAGGCCAAGGC	8.0
+hg19_chr7_2203822_2203990_+	site	positions_7nt_m5	D	59	72	AGCCAGGTGAAGGG	7.8
+hg19_chr7_2244732_2245050_+	site	positions_7nt_m5	R	6	19	TGACAGGTCATGGT	8.0
+hg19_chr7_2349422_2349781_+	site	positions_7nt_m5	D	-8	5	CGCCAGGTCAACGC	11.7
+hg19_chr7_2464892_2465361_+	site	positions_7nt_m5	D	-111	-98	GACCAGGTCATAGC	7.7
+hg19_chr7_2478242_2478581_+	site	positions_7nt_m5	R	86	99	GTCCAGGTCAGGAA	10.1
+hg19_chr7_2480632_2480871_+	site	positions_7nt_m5	R	-40	-27	ACCCAGGTCAAGGC	12.0
+hg19_chr7_2528292_2528521_+	site	positions_7nt_m5	R	-4	9	TCCCAGGGCACGGT	7.7
+hg19_chr7_2563292_2564201_+	site	positions_7nt_m5	R	-323	-310	CCCCAGGTCAGGGG	9.5
+hg19_chr7_2579092_2579550_+	site	positions_7nt_m5	D	-31	-18	GGACAGGTCAGGGT	8.6
+hg19_chr7_2674712_2675081_+	site	positions_7nt_m5	R	79	92	CCCAAGGTCACGCA	8.3
+hg19_chr7_2683352_2683670_+	site	positions_7nt_m5	R	-147	-134	TTCCAGGTCCAGAT	9.1
+hg19_chr7_2689052_2689350_+	site	positions_7nt_m5	R	103	116	GCCCAGGTCCAGCA	8.4
+hg19_chr7_2727492_2727681_+	site	positions_7nt_m5	R	-56	-43	CGCCAGGTGAAGAG	8.8
+hg19_chr7_2728722_2729281_+	site	positions_7nt_m5	R	-69	-56	TCCAAGGTCAGGCT	8.1
+hg19_chr7_3184922_3185131_+	site	positions_7nt_m5	D	58	71	GACAAGGTCATGCT	7.5
+hg19_chr7_3300862_3300971_+	site	positions_7nt_m5	D	38	51	GCCCAGGTTAAGGA	8.7
+hg19_chr7_3471822_3472120_+	site	positions_7nt_m5	D	-129	-116	TTCCAGGTTAAGAA	8.1
+hg19_chr7_4660902_4661100_+	site	positions_7nt_m5	R	-44	-31	GTCCAGGTCAGCAT	7.6
+hg19_chr7_4722872_4723501_+	site	positions_7nt_m5	R	60	73	AACCAGGTCAGGCT	9.6
+hg19_chr7_4845072_4845350_+	site	positions_7nt_m5	R	-17	-4	CTTCAGGTCAGGTA	7.5
+hg19_chr7_5002582_5002700_+	site	positions_7nt_m5	R	-39	-26	GTCAAGGTCAGGGC	8.6
+hg19_chr7_5222892_5223150_+	site	positions_7nt_m5	D	-37	-24	ACGCAGGTCACGTC	10.2
+hg19_chr7_5270382_5270690_+	site	positions_7nt_m5	R	42	55	TCACAGGTCAAGTT	9.9
+hg19_chr7_5276892_5277061_+	site	positions_7nt_m5	D	18	31	GGCCAGGACACGGT	7.7
+hg19_chr7_5470262_5470630_+	site	positions_7nt_m5	R	-54	-41	TGCCAGGTCAGGGA	10.1
+hg19_chr7_5526632_5526930_+	site	positions_7nt_m5	R	68	81	GCCCCGGTCACGGC	9.2
+hg19_chr7_5573932_5574010_+	site	positions_7nt_m5	D	-7	6	TGGAAGGTCAAGGT	7.8
+hg19_chr7_5613922_5614151_+	site	positions_7nt_m5	D	33	46	TCCCAGGTCACCGG	8.1
+hg19_chr7_5707202_5707550_+	site	positions_7nt_m5	R	-63	-50	TGCCAGGCCAAGAT	7.9
+hg19_chr7_5904642_5904720_+	site	positions_7nt_m5	R	12	25	TCCCAGGTCATATC	7.7
+hg19_chr7_6372252_6372321_+	site	positions_7nt_m5	R	9	22	GCCCAGGTCAGAGG	7.5
+hg19_chr7_6516632_6516911_+	site	positions_7nt_m5	D	-56	-43	GTCCAGGTCATACT	7.9
+hg19_chr7_6522952_6523181_+	site	positions_7nt_m5	D	72	85	TGCCACGTCAGGCG	8.2
+hg19_chr7_6669992_6670310_+	site	positions_7nt_m5	R	-75	-62	TCAAAGGTCAAGGC	7.8
+hg19_chr7_7361102_7361880_+	site	positions_7nt_m5	D	-377	-364	GTGCAGGTCAACGT	8.7
+hg19_chr7_7606482_7606651_+	site	positions_7nt_m5	D	19	32	GTCCAGGTCACGGG	11.3
+hg19_chr7_7900902_7901350_+	site	positions_7nt_m5	D	-41	-28	GCCAAGGTCAAGTG	9.5
+hg19_chr7_7959722_7960101_+	site	positions_7nt_m5	R	7	20	TTCCAGGTCAGGTT	10.2
+hg19_chr7_8010802_8010960_+	site	positions_7nt_m5	D	-57	-44	CCCCAGGTCAAGCC	11.1
+hg19_chr7_8302182_8302360_+	site	positions_7nt_m5	R	-32	-19	CGCCAGGTCATTGT	7.9
+hg19_chr7_8321782_8322060_+	site	positions_7nt_m5	R	-8	5	TGGCAGGTCAAGGC	9.3
+hg19_chr7_8322622_8322900_+	site	positions_7nt_m5	R	-105	-92	TTCCAGGTCAAGTA	12.1
+hg19_chr7_11857992_11858270_+	site	positions_7nt_m5	D	17	30	TTCCAGGTCAACTT	8.9
+hg19_chr7_12634742_12634881_+	site	positions_7nt_m5	D	-44	-31	CCCAAGGTCAGGCG	8.5
+hg19_chr7_12967062_12967290_+	site	positions_7nt_m5	R	16	29	CTCAAGGTCACGAA	8.5
+hg19_chr7_12982122_12982361_+	site	positions_7nt_m5	R	-12	1	TGCAAGGTCAAGTT	9.9
+hg19_chr7_13764432_13764981_+	site	positions_7nt_m5	D	-73	-60	TACCAGGGCAAGCT	7.9
+hg19_chr7_16526862_16526970_+	site	positions_7nt_m5	D	-48	-35	TGCCACGTCAAGGA	9.2
+hg19_chr7_16739602_16739720_+	site	positions_7nt_m5	R	-7	6	GGCCAGGTCATACT	7.5
+hg19_chr7_16826822_16827050_+	site	positions_7nt_m5	R	-5	8	GTCCAAGTCAAGTC	8.1
+hg19_chr7_16920192_16920620_+	site	positions_7nt_m5	R	114	127	ATCCAGGTTAAGAT	8.7
+hg19_chr7_17033212_17033421_+	site	positions_7nt_m5	R	54	67	CGTCAGGTCAAAAT	8.2
+hg19_chr7_17595912_17596230_+	site	positions_7nt_m5	R	-11	2	TGCAAGGTCAAGTT	9.9
+hg19_chr7_17658882_17659241_+	site	positions_7nt_m5	R	11	24	TGCCAGGTCAGATT	7.7
+hg19_chr7_17668552_17668651_+	site	positions_7nt_m5	D	-31	-18	CTCCAGGTCATGCT	9.1
+hg19_chr7_17846092_17846260_+	site	positions_7nt_m5	R	-11	2	ACCAAGGTCATGTT	7.7
+hg19_chr7_18217092_18217420_+	site	positions_7nt_m5	D	-128	-115	CCCCAGGTCCAGTT	8.5
+hg19_chr7_19409482_19409990_+	site	positions_7nt_m5	R	213	226	TTCAAGGTCATGTT	7.7
+hg19_chr7_19984492_19984730_+	site	positions_7nt_m5	R	-42	-29	TGCCAGGTCAGGTC	10.1
+hg19_chr7_20369262_20369411_+	site	positions_7nt_m5	R	-26	-13	AGCCAGGTCAAGGT	12.1
+hg19_chr7_20837532_20837640_+	site	positions_7nt_m5	D	-11	2	TCCCAGGTCCAGCC	8.6
+hg19_chr7_20838182_20838321_+	site	positions_7nt_m5	D	54	67	GGACAGGTCAGGCG	8.8
+hg19_chr7_21050742_21051201_+	site	positions_7nt_m5	R	63	76	TGCAAGGTCAGGGC	8.2
+hg19_chr7_21104632_21104951_+	site	positions_7nt_m5	R	16	29	GACCAGGTCATGGC	9.8
+hg19_chr7_22295622_22295900_+	site	positions_7nt_m5	R	-20	-7	AGACAGGTCAAGTC	9.5
+hg19_chr7_22429192_22429621_+	site	positions_7nt_m5	D	-45	-32	TAACAGGTCACGTA	9.4
+hg19_chr7_22474862_22475040_+	site	positions_7nt_m5	D	-22	-9	GGCAAGGTCAAGCA	9.3
+hg19_chr7_22712772_22713530_+	site	positions_7nt_m5	D	20	33	GCCCAGGGCAAGAA	7.5
+hg19_chr7_23374102_23374711_+	site	positions_7nt_m5	R	249	262	GTTCAGGTCATGGA	7.6
+hg19_chr7_24773662_24773720_+	site	positions_7nt_m5	D	-15	-2	CCCCAGGTCCAGAC	8.4
+hg19_chr7_26122912_26123320_+	site	positions_7nt_m5	R	89	102	CGCCAGGTCAGCAT	8.3
+hg19_chr7_26167142_26167451_+	site	positions_7nt_m5	R	13	26	GTTCAGGTCACGCT	8.9
+hg19_chr7_26403392_26403801_+	site	positions_7nt_m5	D	95	108	GGCCATGTCAAGGA	8.2
+hg19_chr7_26506722_26506970_+	site	positions_7nt_m5	D	-27	-14	TCACAGGTCAGGGG	7.8
+hg19_chr7_26548262_26548400_+	site	positions_7nt_m5	D	-12	1	AGCCAGGTCCAGAT	8.7
+hg19_chr7_27558052_27558180_+	site	positions_7nt_m5	D	-4	9	CCTCAGGTCAGGGT	7.9
+hg19_chr7_27777232_27777601_+	site	positions_7nt_m5	R	-36	-23	GTTCAGGTCAAGTT	9.8
+hg19_chr7_27777232_27777601_+	site	positions_7nt_m5	R	-4	9	TTTCAGGTCAGGTT	7.8
+hg19_chr7_27780482_27780641_+	site	positions_7nt_m5	R	-80	-67	TTCCAGGTGAAGCA	7.8
+hg19_chr7_28142392_28142880_+	site	positions_7nt_m5	R	-70	-57	CTCAAGGTCAAGTT	9.6
+hg19_chr7_28144052_28144311_+	site	positions_7nt_m5	R	61	74	TCACAGGTCAAGCA	9.3
+hg19_chr7_28398182_28398491_+	site	positions_7nt_m5	R	-23	-10	GACCAGGTCAAATG	8.8
+hg19_chr7_28906092_28906330_+	site	positions_7nt_m5	D	-47	-34	TCTCAGGTCAGGTC	8.0
+hg19_chr7_28906092_28906330_+	site	positions_7nt_m5	D	79	92	GTAAAGGTCAAGAC	8.2
+hg19_chr7_29152762_29152890_+	site	positions_7nt_m5	R	-19	-6	TTTCAGGTCAGGTT	7.8
+hg19_chr7_29287052_29287121_+	site	positions_7nt_m5	R	17	30	AAGCAGGTCAAGGA	8.7
+hg19_chr7_29495632_29496070_+	site	positions_7nt_m5	R	-60	-47	TCCAAGGTCAAGGT	10.5
+hg19_chr7_29645822_29646470_+	site	positions_7nt_m5	D	158	171	TGTCAGGTCAAGTC	9.7
+hg19_chr7_29805192_29805401_+	site	positions_7nt_m5	R	6	19	GGTCAGGTCAAGCA	9.2
+hg19_chr7_30188812_30189300_+	site	positions_7nt_m5	R	-93	-80	TGCCACGTCAAGGC	9.3
+hg19_chr7_30388862_30389041_+	site	positions_7nt_m5	D	6	19	AGACAGGTCAAGCA	8.9
+hg19_chr7_31008692_31009151_+	site	positions_7nt_m5	R	94	107	ATCCAGGTCCAGCA	8.3
+hg19_chr7_31010252_31010550_+	site	positions_7nt_m5	D	132	145	CCGCAGGTCAGGTG	8.2
+hg19_chr7_31076452_31076710_+	site	positions_7nt_m5	R	-63	-50	TGCCAGGTCAGGCT	9.9
+hg19_chr7_31076452_31076710_+	site	positions_7nt_m5	R	-8	5	GCCCAGGGCAAGAC	7.9
+hg19_chr7_33003582_33003760_+	site	positions_7nt_m5	D	-13	0	GGCCAGGTCAGGAC	10.2
+hg19_chr7_33885822_33886220_+	site	positions_7nt_m5	R	79	92	TCACAGGTCAGGCT	7.9
+hg19_chr7_33917252_33917380_+	site	positions_7nt_m5	D	-33	-20	ACCCAGGTCACACG	8.0
+hg19_chr7_34027022_34027271_+	site	positions_7nt_m5	R	38	51	ACCCAGATCAAGGA	8.1
+hg19_chr7_34133032_34133261_+	site	positions_7nt_m5	D	83	96	TCCTAGGTCAAGGT	9.2
+hg19_chr7_34360582_34360830_+	site	positions_7nt_m5	R	86	99	AACCGGGTCAAGGA	8.7
+hg19_chr7_35652592_35652761_+	site	positions_7nt_m5	D	7	20	AAACAGGTCAAGAT	9.3
+hg19_chr7_35789222_35789441_+	site	positions_7nt_m5	D	28	41	GCCAAGGTCATGCT	7.6
+hg19_chr7_36327222_36327321_+	site	positions_7nt_m5	R	4	17	TGCCAGGTGAAGGT	8.8
+hg19_chr7_36916692_36916850_+	site	positions_7nt_m5	D	19	32	TGCAAGGTCAAGGT	10.3
+hg19_chr7_37287532_37287780_+	site	positions_7nt_m5	R	-27	-14	TCCAAGGTCAGGGA	8.3
+hg19_chr7_38294622_38294770_+	site	positions_7nt_m5	D	46	59	TGTAAGGTCAAGCT	7.9
+hg19_chr7_38310742_38310870_+	site	positions_7nt_m5	D	35	48	TGTAAGGTCAAGCT	7.9
+hg19_chr7_38313222_38313550_+	site	positions_7nt_m5	R	41	54	GCCCAGGGCAAGGT	8.4
+hg19_chr7_38345752_38345960_+	site	positions_7nt_m5	R	-12	1	AGCTAGGTCAAGAC	8.3
+hg19_chr7_38709722_38710030_+	site	positions_7nt_m5	D	-92	-79	GATCAGGTCAAGGG	9.3
+hg19_chr7_38812662_38812860_+	site	positions_7nt_m5	D	-31	-18	ATCAAGGTCAAGGC	10.0
+hg19_chr7_39757412_39757810_+	site	positions_7nt_m5	R	-182	-169	ACCCAGGTCATAGA	7.5
+hg19_chr7_40283992_40284081_+	site	positions_7nt_m5	D	28	41	TTCAAGGTCAAGTA	10.1
+hg19_chr7_41418002_41418240_+	site	positions_7nt_m5	D	-61	-48	GATAAGGTCAAGTT	8.1
+hg19_chr7_42201342_42201711_+	site	positions_7nt_m5	D	46	59	ATCCATGTCAAGGG	7.9
+hg19_chr7_42908992_42909481_+	site	positions_7nt_m5	R	51	64	CCCCAGTTCAAGAC	7.9
+hg19_chr7_43768742_43769010_+	site	positions_7nt_m5	D	-99	-86	GACAAGGTCAAGGT	10.4
+hg19_chr7_43904932_43905110_+	site	positions_7nt_m5	D	66	79	GTCAAGGTCAGGGT	9.0
+hg19_chr7_44679572_44679880_+	site	positions_7nt_m5	R	-17	-4	CACAAGGTCAGGGT	8.0
+hg19_chr7_45276382_45276620_+	site	positions_7nt_m5	D	-30	-17	TCCAAGGTCAAGGT	10.5
+hg19_chr7_45283652_45284000_+	site	positions_7nt_m5	R	-29	-16	GGTCAGGTCATGAT	7.7
+hg19_chr7_46094072_46094340_+	site	positions_7nt_m5	D	86	99	CTCCAGGTCAAATC	8.9
+hg19_chr7_46189832_46190131_+	site	positions_7nt_m5	R	-44	-31	TGTCAGGTCAAAGT	7.5
+hg19_chr7_46387722_46387891_+	site	positions_7nt_m5	R	30	43	TTCAAGGTCATGGT	8.2
+hg19_chr7_47510172_47510261_+	site	positions_7nt_m5	R	-44	-31	GGCCAGGTCAGGGC	10.3
+hg19_chr7_47581622_47582041_+	site	positions_7nt_m5	R	-1	12	TCCAAGGTCATGGT	8.3
+hg19_chr7_47623032_47623460_+	site	positions_7nt_m5	D	-137	-124	CACCAGGTCAAGAG	10.7
+hg19_chr7_47650492_47650660_+	site	positions_7nt_m5	D	-50	-37	TGCCAGGTCAGGTC	10.1
+hg19_chr7_47783832_47784190_+	site	positions_7nt_m5	R	-21	-8	TCCCAGTTCAAGCT	8.2
+hg19_chr7_48019142_48019401_+	site	positions_7nt_m5	D	56	69	TCACAGGTCACGCC	8.8
+hg19_chr7_48128332_48128521_+	site	positions_7nt_m5	R	23	36	CCCAAGGTCACGCC	8.5
+hg19_chr7_48557082_48557201_+	site	positions_7nt_m5	D	-11	2	GTCTAGGTCAAGGT	9.4
+hg19_chr7_50794952_50795111_+	site	positions_7nt_m5	D	-31	-18	TCCCAGGTCATGGT	10.3
+hg19_chr7_50801222_50801700_+	site	positions_7nt_m5	R	-164	-151	AGCCAGGTCATGGA	9.4
+hg19_chr7_50987882_50988211_+	site	positions_7nt_m5	R	38	51	TCCCAGGTCAGGCT	10.1
+hg19_chr7_51444042_51444191_+	site	positions_7nt_m5	D	-20	-7	GGCCAGGTGACGTT	7.8
+hg19_chr7_51444042_51444191_+	site	positions_7nt_m5	D	31	44	TCACAGGTCAGGAA	7.7
+hg19_chr7_55035332_55035450_+	site	positions_7nt_m5	D	1	14	CCTCAGGTCACGTG	8.1
+hg19_chr7_55253762_55253950_+	site	positions_7nt_m5	D	-46	-33	TGCCAGGTCACGAA	10.8
+hg19_chr7_56032452_56032951_+	site	positions_7nt_m5	D	-122	-109	CTCAAGGTCACGGA	8.9
+hg19_chr7_56144442_56144661_+	site	positions_7nt_m5	D	-31	-18	TCGCAGGTCAAGTT	11.0
+hg19_chr7_56224882_56225091_+	site	positions_7nt_m5	R	16	29	ATCAAGGTCAAGGC	10.0
+hg19_chr7_57575302_57575490_+	site	positions_7nt_m5	D	-43	-30	GTCAAGGTCAAAAT	7.6
+hg19_chr7_57852662_57852720_+	site	positions_7nt_m5	R	-29	-16	CCCAAGGTCAAGCT	9.3
+hg19_chr7_63387442_63387531_+	site	positions_7nt_m5	R	-8	5	GGACAGGTCAGGCG	8.8
+hg19_chr7_67131602_67131770_+	site	positions_7nt_m5	D	-75	-62	GGCCTGGTCAAGGC	8.2
+hg19_chr7_68599942_68600141_+	site	positions_7nt_m5	D	30	43	ACTAAGGTCAAGGA	7.9
+hg19_chr7_68732062_68732330_+	site	positions_7nt_m5	R	2	15	GTCAAGGTCAGGTT	8.5
+hg19_chr7_68830842_68831041_+	site	positions_7nt_m5	R	-6	7	GTACAGGTCAAGAC	10.4
+hg19_chr7_68885012_68885291_+	site	positions_7nt_m5	D	24	37	TTCCAGGTCACAGT	7.6
+hg19_chr7_69111442_69111621_+	site	positions_7nt_m5	D	23	36	GCACAGGTCAGGAT	8.3
+hg19_chr7_69111632_69111830_+	site	positions_7nt_m5	R	55	68	CACCCGGTCAAGGT	9.4
+hg19_chr7_69237062_69237181_+	site	positions_7nt_m5	R	-53	-40	AGTCAGGTCACGGG	8.5
+hg19_chr7_70178022_70178290_+	site	positions_7nt_m5	R	-79	-66	CCCAAGGTCATGGT	7.8
+hg19_chr7_71678152_71678380_+	site	positions_7nt_m5	R	50	63	ACCCAGGTTAAGAC	8.5
+hg19_chr7_73007892_73008081_+	site	positions_7nt_m5	D	-20	-7	CCCAAGGTCACGGT	9.3
+hg19_chr7_73037292_73037520_+	site	positions_7nt_m5	R	-13	0	GCCCAGGTCATGTT	9.9
+hg19_chr7_73132592_73132941_+	site	positions_7nt_m5	D	-105	-92	GCCCAGGTCCCGGC	8.3
+hg19_chr7_73149272_73149461_+	site	positions_7nt_m5	R	-84	-71	TGCCAGGCCAAGGA	7.7
+hg19_chr7_73294612_73294781_+	site	positions_7nt_m5	R	-2	11	GCTAAGGTCAAGAC	8.1
+hg19_chr7_73305572_73305871_+	site	positions_7nt_m5	R	-18	-5	GACCAGGTCAGGCT	10.0
+hg19_chr7_73305882_73306221_+	site	positions_7nt_m5	R	-41	-28	GACAAGGTCATGGT	8.2
+hg19_chr7_73427242_73427381_+	site	positions_7nt_m5	R	-5	8	AGCCAGGCCAAGGT	8.0
+hg19_chr7_73880812_73881270_+	site	positions_7nt_m5	D	-36	-23	CTCCAGGTCACGTT	10.9
+hg19_chr7_73965692_73965891_+	site	positions_7nt_m5	D	-43	-30	TGCCAGGTCCCGGG	7.6
+hg19_chr7_74047852_74048330_+	site	positions_7nt_m5	D	-48	-35	GCAAAGGTCAAGGT	8.1
+hg19_chr7_75629832_75630170_+	site	positions_7nt_m5	R	-28	-15	GGCCAGGTCAGGCT	10.0
+hg19_chr7_75934112_75934181_+	site	positions_7nt_m5	D	-24	-11	TGCAAGGTCACGAT	9.4
+hg19_chr7_75934192_75934501_+	site	positions_7nt_m5	D	-126	-113	TCCCAGGTGAAGGG	8.2
+hg19_chr7_76591132_76591220_+	site	positions_7nt_m5	R	-23	-10	AGCAAGGTCAAGTC	9.6
+hg19_chr7_77083692_77083960_+	site	positions_7nt_m5	R	13	26	TGCTAGGTCACGGT	8.4
+hg19_chr7_77091272_77091421_+	site	positions_7nt_m5	R	-13	0	GTCCAGTTCAAGGT	9.1
+hg19_chr7_80512572_80512781_+	site	positions_7nt_m5	R	48	61	TCCCAGATCAAGCA	7.7
+hg19_chr7_80549192_80549281_+	site	positions_7nt_m5	D	-42	-29	AAACAGGTCAAGAT	9.3
+hg19_chr7_80557352_80557510_+	site	positions_7nt_m5	R	-70	-57	ATCAAGGTCATGAC	7.7
+hg19_chr7_80572032_80572410_+	site	positions_7nt_m5	R	137	150	CGCCCGGTCAACTT	7.6
+hg19_chr7_80788702_80789210_+	site	positions_7nt_m5	R	-129	-116	TCGCAGGTCAGGCT	9.0
+hg19_chr7_81101742_81101941_+	site	positions_7nt_m5	D	-69	-56	ATCCAAGTCAAGTT	7.8
+hg19_chr7_82164212_82164450_+	site	positions_7nt_m5	D	-91	-78	TTCCATGTCAAGCC	7.9
+hg19_chr7_83577512_83577651_+	site	positions_7nt_m5	R	-24	-11	CTCCAGGTCAAAGC	9.0
+hg19_chr7_83807362_83807721_+	site	positions_7nt_m5	R	56	69	TACCAGGTCAAGCG	12.9
+hg19_chr7_83932442_83932640_+	site	positions_7nt_m5	R	39	52	GACCCGGTCAAGTA	9.8
+hg19_chr7_84158622_84159390_+	site	positions_7nt_m5	R	-246	-233	TCTCAGGTCAAGGG	9.4
+hg19_chr7_84291942_84292131_+	site	positions_7nt_m5	D	-40	-27	GTACAGGTCAAGGG	10.1
+hg19_chr7_84636092_84636380_+	site	positions_7nt_m5	R	51	64	AATCAGGTCAAGGT	9.7
+hg19_chr7_86977092_86977310_+	site	positions_7nt_m5	R	-14	-1	TTCCAGGTCATGCT	9.5
+hg19_chr7_87239272_87239630_+	site	positions_7nt_m5	R	15	28	TACAAGGTCAGGGC	8.6
+hg19_chr7_87671942_87672160_+	site	positions_7nt_m5	D	-14	-1	GTTCAGGTCAGGCT	7.8
+hg19_chr7_87845822_87845911_+	site	positions_7nt_m5	D	14	27	CACCAGGTCAGGGC	9.7
+hg19_chr7_87928662_87928801_+	site	positions_7nt_m5	D	-47	-34	AACAAGGTCAGGGA	7.8
+hg19_chr7_87968642_87968871_+	site	positions_7nt_m5	R	31	44	ATCTAGGTCAAGTG	8.1
+hg19_chr7_88375392_88375860_+	site	positions_7nt_m5	D	-26	-13	TACCAGATCAAGAC	8.4
+hg19_chr7_88655752_88655961_+	site	positions_7nt_m5	R	19	32	ACCCAGGTCAAGTC	11.9
+hg19_chr7_90878852_90879140_+	site	positions_7nt_m5	D	16	29	GGCCGGGTCAGGAT	7.6
+hg19_chr7_90950632_90950731_+	site	positions_7nt_m5	R	30	43	TACAAGGTCAAGGG	9.9
+hg19_chr7_91090332_91090531_+	site	positions_7nt_m5	D	8	21	AGCCAGGTCATAGT	7.7
+hg19_chr7_91388642_91388790_+	site	positions_7nt_m5	R	-34	-21	TCCCAGGTCAATCT	8.9
+hg19_chr7_91686702_91686981_+	site	positions_7nt_m5	R	-100	-87	TTCCACGTCAGGGC	7.6
+hg19_chr7_92392932_92393211_+	site	positions_7nt_m5	R	-93	-80	GCCCAGGTGAAGTC	8.5
+hg19_chr7_92462132_92462331_+	site	positions_7nt_m5	D	-60	-47	GCTCAGGTCATGTT	7.6
+hg19_chr7_92533082_92533420_+	site	positions_7nt_m5	R	-64	-51	GGCAAGGTCAAGTT	10.0
+hg19_chr7_92545912_92546381_+	site	positions_7nt_m5	R	30	43	TCTCAGGTCAAGAC	9.7
+hg19_chr7_92622192_92622351_+	site	positions_7nt_m5	D	-16	-3	CCGCAGGTCAAACT	7.7
+hg19_chr7_92748312_92748570_+	site	positions_7nt_m5	R	4	17	GGCCCGGTCAAGTT	9.7
+hg19_chr7_94138992_94139131_+	site	positions_7nt_m5	R	-39	-26	CACCGGGTCACGCG	8.6
+hg19_chr7_94536612_94536811_+	site	positions_7nt_m5	D	-90	-77	CTTAAGGTCAAGGT	7.9
+hg19_chr7_94699672_94699890_+	site	positions_7nt_m5	R	-68	-55	TACAAGGTCATGGT	8.5
+hg19_chr7_95179412_95179861_+	site	positions_7nt_m5	R	-148	-135	CCCCAGGTCCAGTC	8.5
+hg19_chr7_95225122_95225380_+	site	positions_7nt_m5	R	24	37	CTCCAGGTCAAGGC	11.7
+hg19_chr7_95228632_95228761_+	site	positions_7nt_m5	D	-10	3	GGTCAGGTCAAGTT	9.8
+hg19_chr7_97881412_97881771_+	site	positions_7nt_m5	D	75	88	CGCCAGGTCAGGAG	10.6
+hg19_chr7_97888512_97888700_+	site	positions_7nt_m5	R	7	20	ACCAAGGTCAAGCA	9.3
+hg19_chr7_98307192_98307591_+	site	positions_7nt_m5	D	-59	-46	TGCCAGGTCAGGAA	9.7
+hg19_chr7_98788362_98788651_+	site	positions_7nt_m5	D	-42	-29	AGCCAGGTCATGTT	9.4
+hg19_chr7_98858872_98858990_+	site	positions_7nt_m5	D	-31	-18	GACAAGGTCATGGA	7.7
+hg19_chr7_98960662_98960821_+	site	positions_7nt_m5	D	10	23	CCCCAGGTCACGCT	10.7
+hg19_chr7_98989632_98990170_+	site	positions_7nt_m5	D	76	89	GGCCAGGTCAGGCT	10.0
+hg19_chr7_99552862_99553141_+	site	positions_7nt_m5	R	108	121	GAGAAGGTCAAGGT	7.7
+hg19_chr7_99553322_99553900_+	site	positions_7nt_m5	D	-12	1	GAGCAGGTCAGGGC	7.5
+hg19_chr7_99564112_99564301_+	site	positions_7nt_m5	D	3	16	GCCCAGGTCAAGGT	12.5
+hg19_chr7_99854742_99854930_+	site	positions_7nt_m5	D	55	68	AAGCAGGTCAAGTG	8.2
+hg19_chr7_99933742_99933801_+	site	positions_7nt_m5	R	-13	0	CGCCAGGCCACGAC	8.1
+hg19_chr7_100163552_100163880_+	site	positions_7nt_m5	R	-34	-21	AGCCAGGTCAAGGA	11.6
+hg19_chr7_100203222_100203451_+	site	positions_7nt_m5	D	-44	-31	CGCCAGGTCATCGC	9.4
+hg19_chr7_100203222_100203451_+	site	positions_7nt_m5	R	-16	-3	CTCCAGGTCAAACT	8.9
+hg19_chr7_100321402_100321640_+	site	positions_7nt_m5	D	-119	-106	GTCCAGGTCCGGGA	9.0
+hg19_chr7_100321402_100321640_+	site	positions_7nt_m5	D	50	63	GCCCAGGGCAAGGC	8.0
+hg19_chr7_100399422_100399571_+	site	positions_7nt_m5	D	-49	-36	GACCAGGTTAAGCC	8.2
+hg19_chr7_100411652_100411930_+	site	positions_7nt_m5	D	-8	5	GGCAAGGTCAGGGA	8.2
+hg19_chr7_101161542_101161751_+	site	positions_7nt_m5	R	43	56	CCCAAGGTCAAGGT	10.0
+hg19_chr7_101178862_101179030_+	site	positions_7nt_m5	D	19	32	GCCCAGGCCAAGAT	8.1
+hg19_chr7_101194512_101194761_+	site	positions_7nt_m5	R	90	103	TCCCAGGTCACACG	8.2
+hg19_chr7_101208852_101209240_+	site	positions_7nt_m5	D	-13	0	GCCCAGGTCAATTC	8.8
+hg19_chr7_101331392_101331741_+	site	positions_7nt_m5	D	-51	-38	GTCAAGGTCAGGTC	8.5
+hg19_chr7_101331392_101331741_+	site	positions_7nt_m5	D	-39	-26	TCCAAGGTCAGGGC	8.4
+hg19_chr7_101343642_101344030_+	site	positions_7nt_m5	D	112	125	AGCCAGGCCAAGAT	7.7
+hg19_chr7_101365852_101366061_+	site	positions_7nt_m5	D	5	18	CACCAGGTCAGGGC	9.7
+hg19_chr7_101554712_101554860_+	site	positions_7nt_m5	R	35	48	GCCAAGGTCAAGGC	10.2
+hg19_chr7_101608552_101608721_+	site	positions_7nt_m5	D	1	14	TCCCAGGTCGAGCT	8.2
+hg19_chr7_101647332_101647841_+	site	positions_7nt_m5	R	34	47	CACCAGGTCAGGGC	9.7
+hg19_chr7_101917122_101917381_+	site	positions_7nt_m5	D	-55	-42	TCCCAGGTCACGTG	10.9
+hg19_chr7_101917122_101917381_+	site	positions_7nt_m5	D	106	119	GTCCAGGTCCGGGC	9.1
+hg19_chr7_101957582_101958110_+	site	positions_7nt_m5	D	-112	-99	TCCCGGGTCAAGGC	9.4
+hg19_chr7_101957582_101958110_+	site	positions_7nt_m5	D	-1	12	TTCCAGGGCAAGGC	7.9
+hg19_chr7_103123252_103123561_+	site	positions_7nt_m5	R	-55	-42	GAACAGGTCATGAT	7.5
+hg19_chr7_104154252_104154530_+	site	positions_7nt_m5	D	1	14	GTCAAGGTCAAGGT	10.7
+hg19_chr7_104210092_104210451_+	site	positions_7nt_m5	D	-18	-5	CCCCAGGTCACGTA	11.1
+hg19_chr7_104665182_104665531_+	site	positions_7nt_m5	D	-15	-2	TTCCAGTTCAAGAT	8.5
+hg19_chr7_105129962_105130210_+	site	positions_7nt_m5	D	11	24	CTCAAGGTCAAGGA	9.5
+hg19_chr7_105221852_105222270_+	site	positions_7nt_m5	R	-40	-27	TTCCAGGTCCGGGT	9.1
+hg19_chr7_105314882_105315101_+	site	positions_7nt_m5	D	-12	1	ACCAAGGTCACGCA	8.7
+hg19_chr7_105321062_105321171_+	site	positions_7nt_m5	D	-4	9	TAGCAGGTCAAGGG	9.1
+hg19_chr7_105435872_105436130_+	site	positions_7nt_m5	D	86	99	TTCCAGGTGAAGCA	7.8
+hg19_chr7_105577952_105578221_+	site	positions_7nt_m5	R	2	15	AGCCAGGTCAGGGA	9.9
+hg19_chr7_105628752_105629001_+	site	positions_7nt_m5	R	6	19	CACCAGGTTAAGAT	8.1
+hg19_chr7_105705342_105705641_+	site	positions_7nt_m5	R	-7	6	CGCCAGGTCATCGC	9.4
+hg19_chr7_105705652_105706051_+	site	positions_7nt_m5	R	-52	-39	GGGCAGGTCAGGGC	7.7
+hg19_chr7_105792732_105793110_+	site	positions_7nt_m5	R	122	135	TGCAAGGTCAAGTA	10.0
+hg19_chr7_105857032_105857211_+	site	positions_7nt_m5	R	28	41	GGCCAGTTCAAGTG	7.8
+hg19_chr7_106005702_106006230_+	site	positions_7nt_m5	D	-245	-232	TTCCAGGGCAAGTC	7.8
+hg19_chr7_106005702_106006230_+	site	positions_7nt_m5	D	55	68	GTTCAGGTCAAGGA	9.8
+hg19_chr7_106047682_106047840_+	site	positions_7nt_m5	D	13	26	TTCAAGGTCAAGTT	10.0
+hg19_chr7_106688912_106689201_+	site	positions_7nt_m5	R	-37	-24	TATAAGGTCAAGGT	8.8
+hg19_chr7_106730712_106731291_+	site	positions_7nt_m5	R	-139	-126	TTCCAGGTCAATCC	8.6
+hg19_chr7_106873722_106874000_+	site	positions_7nt_m5	R	-29	-16	ATCCAGGTCATGGG	9.4
+hg19_chr7_107591052_107591240_+	site	positions_7nt_m5	R	-79	-66	TCCAAGGTCAGGGG	8.0
+hg19_chr7_107682812_107683010_+	site	positions_7nt_m5	R	52	65	ACCCAGGTCTAGGA	8.1
+hg19_chr7_108539812_108539980_+	site	positions_7nt_m5	R	-10	3	GTCAAGGTCATGTC	8.0
+hg19_chr7_108539812_108539980_+	site	positions_7nt_m5	R	-4	9	GATAAGGTCAAGGT	8.5
+hg19_chr7_108649832_108649911_+	site	positions_7nt_m5	R	13	26	GGACAGGTCATGCG	8.3
+hg19_chr7_109209302_109209461_+	site	positions_7nt_m5	R	21	34	GACCAGGTCATGCA	9.1
+hg19_chr7_111227232_111227510_+	site	positions_7nt_m5	R	-28	-15	CGTCAGGTCAGGCC	8.7
+hg19_chr7_111513372_111513740_+	site	positions_7nt_m5	R	-55	-42	TACCAGGTCCCGCT	8.1
+hg19_chr7_111777572_111778051_+	site	positions_7nt_m5	R	49	62	AGTCAGGTCAAGGT	9.9
+hg19_chr7_114687942_114688471_+	site	positions_7nt_m5	R	-110	-97	TTCAAGGTCAAAGT	7.7
+hg19_chr7_114786432_114786601_+	site	positions_7nt_m5	R	-70	-57	AATCAGGTCAAGAG	8.6
+hg19_chr7_115850222_115850601_+	site	positions_7nt_m5	D	-9	4	GACCAGGTCAGGGT	10.7
+hg19_chr7_115911012_115911310_+	site	positions_7nt_m5	D	-16	-3	TGTCAGGTCACGAT	9.2
+hg19_chr7_116612182_116612340_+	site	positions_7nt_m5	D	-33	-20	ATTCAGGTCAAGCA	8.9
+hg19_chr7_116683362_116683880_+	site	positions_7nt_m5	D	-97	-84	TTTCAGGTCAAGAA	9.0
+hg19_chr7_117325602_117325811_+	site	positions_7nt_m5	D	19	32	GACCAGGTCAACAT	9.2
+hg19_chr7_117566772_117566940_+	site	positions_7nt_m5	R	-13	0	CACCAGGTCAACCT	8.3
+hg19_chr7_117599692_117600130_+	site	positions_7nt_m5	R	-1	12	TTCCAGGACAAGCT	7.6
+hg19_chr7_117622482_117622961_+	site	positions_7nt_m5	D	-29	-16	GCTCAGGTCAAGCT	9.5
+hg19_chr7_118774792_118774971_+	site	positions_7nt_m5	R	9	22	ATCCAGGTCAGGTT	10.2
+hg19_chr7_119185562_119185630_+	site	positions_7nt_m5	R	-10	3	ACCAAGGTCAAGGC	10.0
+hg19_chr7_122319492_122319621_+	site	positions_7nt_m5	R	-3	10	CACAAGGTCAGGGT	8.0
+hg19_chr7_122465712_122466030_+	site	positions_7nt_m5	D	60	73	GCCAAGGTCAAGTG	9.5
+hg19_chr7_122830262_122830410_+	site	positions_7nt_m5	R	53	66	CCCCAGGCCAAGGT	7.9
+hg19_chr7_122962262_122962490_+	site	positions_7nt_m5	R	23	36	TACAAGGTCAGGCT	8.3
+hg19_chr7_123409402_123409861_+	site	positions_7nt_m5	R	-33	-20	GTCAAGGTCATGCC	7.6
+hg19_chr7_123541022_123541531_+	site	positions_7nt_m5	R	85	98	GCACAGGTCAAGAA	9.4
+hg19_chr7_124122362_124122651_+	site	positions_7nt_m5	D	-22	-9	TACCAGGTCAAGCC	11.8
+hg19_chr7_127899882_127899941_+	site	positions_7nt_m5	D	-12	1	CACCCGGTCAAGTT	9.0
+hg19_chr7_127997442_127997840_+	site	positions_7nt_m5	D	49	62	AACCAGGTCATGGG	9.0
+hg19_chr7_128070912_128071181_+	site	positions_7nt_m5	D	-53	-40	GCACAGGTCATGAT	7.8
+hg19_chr7_128480072_128480360_+	site	positions_7nt_m5	D	-26	-13	CTCAAGGTCACGGT	9.4
+hg19_chr7_128480072_128480360_+	site	positions_7nt_m5	D	-20	-7	GTCACGGTCAAGGG	7.8
+hg19_chr7_128503802_128504071_+	site	positions_7nt_m5	R	-24	-11	TCCCAGGTCAGGGA	10.3
+hg19_chr7_128507142_128507360_+	site	positions_7nt_m5	R	-34	-21	ATACAGGTCAGGGT	8.8
+hg19_chr7_128528762_128529111_+	site	positions_7nt_m5	D	54	67	CCGCAGGTCACGAA	9.3
+hg19_chr7_128867782_128868050_+	site	positions_7nt_m5	R	15	28	GTCAAGGTCAAAGT	8.1
+hg19_chr7_129607132_129607301_+	site	positions_7nt_m5	R	-47	-34	TTACAGGTCAAGCA	9.5
+hg19_chr7_129650142_129650550_+	site	positions_7nt_m5	R	-186	-173	CACCAGGTCAGGAG	9.0
+hg19_chr7_130126532_130126841_+	site	positions_7nt_m5	D	62	75	GTCCAGGTCCAGGC	9.3
+hg19_chr7_130572042_130572531_+	site	positions_7nt_m5	D	100	113	TTCCTGGTCAAGAC	8.0
+hg19_chr7_130578942_130579420_+	site	positions_7nt_m5	D	-1	12	GAGCAGGTCAAGGG	8.8
+hg19_chr7_130582822_130583240_+	site	positions_7nt_m5	D	-52	-39	AGACAGGTCAGGGC	7.9
+hg19_chr7_130584512_130584631_+	site	positions_7nt_m5	R	-37	-24	TTCAAGGTCACGAG	8.7
+hg19_chr7_130584642_130585030_+	site	positions_7nt_m5	D	3	16	CTCCATGTCAAGTC	7.9
+hg19_chr7_130600962_130601080_+	site	positions_7nt_m5	R	-12	1	GTCAAGGTCAGGCT	8.3
+hg19_chr7_130670462_130670780_+	site	positions_7nt_m5	R	-39	-26	GAGAAGGTCAAGGT	7.7
+hg19_chr7_130673352_130673650_+	site	positions_7nt_m5	R	-57	-44	GACCAGGCCAAGTC	7.8
+hg19_chr7_130875722_130875990_+	site	positions_7nt_m5	D	-87	-74	TCCCAGGTGACGCT	7.7
+hg19_chr7_131291442_131291511_+	site	positions_7nt_m5	R	2	15	GGCCAGGTCAAAAG	8.6
+hg19_chr7_131311342_131311850_+	site	positions_7nt_m5	R	25	38	TTCCATGTCAAGAT	8.4
+hg19_chr7_131639842_131640161_+	site	positions_7nt_m5	R	12	25	ATACAGGTCATGAT	8.1
+hg19_chr7_131776762_131777151_+	site	positions_7nt_m5	D	-82	-69	ATCAAGGTCAAGGT	10.4
+hg19_chr7_131899272_131899700_+	site	positions_7nt_m5	R	-152	-139	GGGCAGGTCAGGAT	7.7
+hg19_chr7_131901652_131901981_+	site	positions_7nt_m5	D	52	65	CTCCAGGTCAACTG	8.0
+hg19_chr7_132072332_132072800_+	site	positions_7nt_m5	D	-107	-94	CCCAAGGTCAGGGT	8.2
+hg19_chr7_132201902_132202241_+	site	positions_7nt_m5	D	-23	-10	AGCAAGGTCATGGT	7.9
+hg19_chr7_132329582_132329960_+	site	positions_7nt_m5	D	-90	-77	GTACAGGTCAAGAG	9.8
+hg19_chr7_132514382_132514481_+	site	positions_7nt_m5	D	-25	-12	CTCCAGGTCATGGA	9.3
+hg19_chr7_133332502_133332880_+	site	positions_7nt_m5	D	-20	-7	GGCCAGGTCAAGAT	12.1
+hg19_chr7_133514892_133515101_+	site	positions_7nt_m5	D	-5	8	TTCAAGGTCAAGGC	10.0
+hg19_chr7_133583872_133584061_+	site	positions_7nt_m5	D	12	25	GATAAGGTCAAGTT	8.1
+hg19_chr7_134044852_134045100_+	site	positions_7nt_m5	R	-7	6	TGCCAGGTCACGAC	11.2
+hg19_chr7_134129512_134129721_+	site	positions_7nt_m5	D	-64	-51	TACCAGGTCAGAGC	8.1
+hg19_chr7_134395342_134395531_+	site	positions_7nt_m5	D	71	84	GCCAAGGTCACGCT	9.2
+hg19_chr7_135413852_135414031_+	site	positions_7nt_m5	R	-81	-68	TCCCAGATCAAGGT	8.7
+hg19_chr7_135425322_135425580_+	site	positions_7nt_m5	D	76	89	TCCTAGGTCAAGGT	9.2
+hg19_chr7_135711902_135712331_+	site	positions_7nt_m5	R	116	129	CGAAAGGTCAAGGA	8.6
+hg19_chr7_135729922_135730300_+	site	positions_7nt_m5	R	35	48	TAACCGGTCAAGTT	7.5
+hg19_chr7_137016582_137016710_+	site	positions_7nt_m5	R	-61	-48	TTAAAGGTCAAGCT	7.7
+hg19_chr7_137774422_137774750_+	site	positions_7nt_m5	D	49	62	GCCCAGGTCAGAGG	7.5
+hg19_chr7_137878632_137879030_+	site	positions_7nt_m5	D	-13	0	GCCAAGGTCAAGAA	9.6
+hg19_chr7_138249142_138249570_+	site	positions_7nt_m5	D	-8	5	ATGCAGGTCAAGTT	9.3
+hg19_chr7_138461432_138461650_+	site	positions_7nt_m5	R	-20	-7	CCCAAGGTCACGCA	8.3
+hg19_chr7_138636682_138637150_+	site	positions_7nt_m5	D	48	61	CACAAGGTCAAGAG	8.7
+hg19_chr7_138794142_138794380_+	site	positions_7nt_m5	D	-6	7	TCTCAGGTCAAGAG	9.1
+hg19_chr7_139328962_139329141_+	site	positions_7nt_m5	D	-36	-23	AGCCAGGTGAAGAA	7.6
+hg19_chr7_139933752_139934020_+	site	positions_7nt_m5	R	-24	-11	ATCCAGATCAAGAA	7.7
+hg19_chr7_140103642_140103971_+	site	positions_7nt_m5	R	-23	-10	CGCCAGGTGAGGGC	7.8
+hg19_chr7_140529522_140529741_+	site	positions_7nt_m5	D	-66	-53	ATCCAGGTCAATCT	8.8
+hg19_chr7_140675322_140675631_+	site	positions_7nt_m5	D	-136	-123	ACCCAAGTCACGGT	7.6
+hg19_chr7_140773012_140773221_+	site	positions_7nt_m5	R	-32	-19	GGACAGGTCACGCC	8.8
+hg19_chr7_140889312_140889630_+	site	positions_7nt_m5	D	-25	-12	TACAAGGTCAGGGC	8.6
+hg19_chr7_142255672_142255751_+	site	positions_7nt_m5	R	25	38	GCCCAGGGCAAGGT	8.4
+hg19_chr7_142701242_142701610_+	site	positions_7nt_m5	D	-5	8	GGTCAGGTCATGAT	7.7
+hg19_chr7_143065082_143065441_+	site	positions_7nt_m5	D	122	135	TTAAAGGTCAAGCC	7.5
+hg19_chr7_143079012_143079270_+	site	positions_7nt_m5	R	33	46	TACCAGGTCAGGAA	10.1
+hg19_chr7_143095292_143095500_+	site	positions_7nt_m5	R	10	23	AACCAGGTCAGGAT	9.9
+hg19_chr7_143105812_143105971_+	site	positions_7nt_m5	R	15	28	TCCCAGGTCCCGGC	8.3
+hg19_chr7_143709432_143709590_+	site	positions_7nt_m5	R	-6	7	GACAAGGTCAGGAC	8.2
+hg19_chr7_143740852_143741000_+	site	positions_7nt_m5	R	-17	-4	TTCTAGGTCACGTT	8.0
+hg19_chr7_144168582_144168731_+	site	positions_7nt_m5	D	20	33	TCCCTGGTCAAGGG	7.9
+hg19_chr7_147605162_147605281_+	site	positions_7nt_m5	R	21	34	CAGCAGGTCAAGAG	7.9
+hg19_chr7_147815492_147815911_+	site	positions_7nt_m5	D	62	75	GTCAAGGTCAAGGA	10.2
+hg19_chr7_148903142_148903471_+	site	positions_7nt_m5	R	80	93	TTTCAGGTCAGGTC	7.7
+hg19_chr7_149431742_149432071_+	site	positions_7nt_m5	R	73	86	CTACAGGTCAAGGG	9.4
+hg19_chr7_150066472_150066591_+	site	positions_7nt_m5	R	-12	1	GGTAAGGTCACGGA	7.5
+hg19_chr7_151083382_151083491_+	site	positions_7nt_m5	D	-27	-14	GCCCAGGTCAAAGG	9.1
+hg19_chr7_151418992_151419120_+	site	positions_7nt_m5	D	-39	-26	GCCCAGTTCAAGGC	8.6
+hg19_chr7_151516192_151516911_+	site	positions_7nt_m5	R	-318	-305	GTCCAGGTCACCGG	8.3
+hg19_chr7_151567422_151567790_+	site	positions_7nt_m5	D	-17	-4	GCCAAGGTCAAAGC	7.5
+hg19_chr7_151632762_151632930_+	site	positions_7nt_m5	R	20	33	GCTCAGGTCAGGCT	7.8
+hg19_chr7_152161072_152161370_+	site	positions_7nt_m5	D	-36	-23	AACTAGGTCACGCG	8.3
+hg19_chr7_152219062_152219370_+	site	positions_7nt_m5	R	78	91	TCACAGGTCAGGCC	7.7
+hg19_chr7_152994452_152994621_+	site	positions_7nt_m5	R	-45	-32	TCTCAGGTCAAGCC	9.4
+hg19_chr7_153392792_153393190_+	site	positions_7nt_m5	R	87	100	GGCCAGTTCAAGCT	8.1
+hg19_chr7_154585712_154586001_+	site	positions_7nt_m5	R	-22	-9	AGCCAGGTCACGGC	11.1
+hg19_chr7_155006152_155006521_+	site	positions_7nt_m5	D	29	42	GCCCAGGTCAGGTG	9.8
+hg19_chr7_155373662_155374161_+	site	positions_7nt_m5	D	-9	4	TTCAAGGTCAGGAT	8.4
+hg19_chr7_155451362_155451601_+	site	positions_7nt_m5	R	4	17	TGCCAGGTCAATAG	8.6
+hg19_chr7_155658772_155659111_+	site	positions_7nt_m5	R	23	36	ATCCACGTCAGGTC	7.5
+hg19_chr7_155659982_155660371_+	site	positions_7nt_m5	D	-46	-33	ATCAAGGTCAAGTA	10.1
+hg19_chr7_155721342_155721551_+	site	positions_7nt_m5	R	-44	-31	AGCCAGGTCATGAA	9.0
+hg19_chr7_155895322_155895800_+	site	positions_7nt_m5	D	77	90	GGCCAGGTCATGGA	9.7
+hg19_chr7_155896492_155896631_+	site	positions_7nt_m5	D	-16	-3	GCCCAGGTCAGACT	7.8
+hg19_chr7_156028842_156029110_+	site	positions_7nt_m5	D	-30	-17	ATCCAGGTCACGGC	11.4
+hg19_chr7_156136832_156137140_+	site	positions_7nt_m5	D	-36	-23	TTCCAGGTCATATA	7.8
+hg19_chr7_156172422_156172601_+	site	positions_7nt_m5	R	54	67	TACAAGGTCAAAGT	8.0
+hg19_chr7_156379522_156379700_+	site	positions_7nt_m5	D	7	20	TACCAGGTCAGGAC	10.5
+hg19_chr7_156699932_156700121_+	site	positions_7nt_m5	D	47	60	AACCAGGTCCCGGC	7.7
+hg19_chr7_157082502_157082691_+	site	positions_7nt_m5	D	57	70	GCCCAGGACAAGCG	8.7
+hg19_chr7_157083012_157083241_+	site	positions_7nt_m5	D	-88	-75	CTCCAGGTGAAGGA	8.0
+hg19_chr7_157315692_157315820_+	site	positions_7nt_m5	D	-23	-10	GTCCAGGTCAGGCC	10.1
+hg19_chr7_157692902_157693201_+	site	positions_7nt_m5	R	-13	0	CTGCAGGTCAAGTC	8.8
+hg19_chr7_157786802_157786990_+	site	positions_7nt_m5	D	-5	8	ATGCAGGTCAGGGC	7.6
+hg19_chr7_158170592_158171120_+	site	positions_7nt_m5	R	-103	-90	AGCCAGGTCCAGGA	8.6
+hg19_chr7_158170592_158171120_+	site	positions_7nt_m5	R	48	61	GTCAAGGTCAAGGG	9.9
+hg19_chr7_158349412_158349551_+	site	positions_7nt_m5	D	-53	-40	GGGCAGGTCAGGCG	8.3
+hg19_chr7_158349412_158349551_+	site	positions_7nt_m5	D	-3	10	ACGCAGGTCAGGCG	9.8
+hg19_chr7_158349412_158349551_+	site	positions_7nt_m5	D	32	45	ACGCAGGTCAGGCA	8.5
+hg19_chr7_158349632_158349720_+	site	positions_7nt_m5	D	-32	-19	ACGCAGGTCAGGTG	8.5
+hg19_chr7_158349632_158349720_+	site	positions_7nt_m5	D	-12	1	GCACAGGTCAGGCG	8.8
+hg19_chr7_158378342_158378761_+	site	positions_7nt_m5	D	24	37	GGCCAGGTCAAGCC	11.6
+hg19_chr7_158378342_158378761_+	site	positions_7nt_m5	R	194	207	GCCCAGGTGAAGCC	8.1
+hg19_chr7_158614242_158614461_+	site	positions_7nt_m5	D	-22	-9	TCCCAGGTCATGGG	9.5
+hg19_chr7_158658262_158658700_+	site	positions_7nt_m5	D	-20	-7	GGGCAGGTCAAGTT	9.3
+hg19_chr7_158804092_158804351_+	site	positions_7nt_m5	D	-11	2	AGCCAGGTCAGGGC	10.0
+hg19_chr7_158805802_158806121_+	site	positions_7nt_m5	D	111	124	GTCAAGGTCAGGAT	8.7
+hg19_chr7_158816732_158817230_+	site	positions_7nt_m5	R	-139	-126	GCCCAGGTCAGGGG	10.0
+;
+; Matrices
+;	matrix	name            	ncol	nrow	pseudo	Wmin	Wmax	Wrange
+;	1	positions_7nt_m5	14	4	0	-32.200	13.600	45.800	a:0.266 c:0.234 g:0.234 t:0.266 
+; Number of sequences scanned	7041
+; Sum of sequence lengths	1476646
+; N residues           	0
+; Matches per matrix
+;	matrix	name            	matches	scored
+;	1	positions_7nt_m5	436	0
+;		TOTAL          	436	0
+; Host name	biow
+; Job started	2014-10-07.094243
+; Job done	2014-10-07.094246
+; Seconds	0.8
+;	user	0.8
+;	system	0.02
+;	cuser	0.23
+;	csystem	0.02

@@ -1,0 +1,23 @@
+; One-to-n matrix alignment; reference matrix: dyads_m1_shift3	; 3 matrices	; sort_field=rank_mean
+; dyads_m1; m=0 (reference); ncol1=16; shift=3; ncol=19; ---bwGTAAATATTTACwv
+; Alignment reference
+a	0	0	0	22	58	13	6	99	104	105	1	102	0	0	4	90	6	30	27
+c	0	0	0	30	2	1	9	3	2	0	3	0	1	0	0	1	86	16	27
+g	0	0	0	27	16	86	1	0	0	1	0	3	0	2	3	9	1	2	30
+t	0	0	0	27	30	6	90	4	0	0	102	1	105	104	99	6	13	58	22
+//
+; dyads_m1 versus MA0047.2_rc (Foxa2_rc); m=1/2; ncol2=12; w=9; offset=-3; strand=R; shift=0; score= 1.4286; ccwrwGTAAAYA-------
+; cor=0.858; Ncor=0.406; logoDP=1.015; NIcor=-0.082; NsEucl=0.912; SSD=1.255; NSW=0.930; rcor=1; rNcor=2; rlogoDP=2; rNIcor=2; rNsEucl=1; rSSD=1; rNSW=1; rank_mean=1.429; match_rank=1
+a	189	140	360	436	391	81	3	634	769	806	3	805	0	0	0	0	0	0	0
+c	290	482	24	58	3	2	67	175	36	1	582	1	0	0	0	0	0	0	0
+g	195	53	6	265	77	725	4	1	3	1	3	1	0	0	0	0	0	0	0
+t	129	131	417	50	338	2	736	1	1	1	221	1	0	0	0	0	0	0	0
+//
+; dyads_m1 versus MA0047.1 (Foxa2); m=2/2; ncol2=12; w=12; offset=4; strand=D; shift=7; score= 1.5714; -------mawTrTTkryTY
+; cor=0.791; Ncor=0.593; logoDP=6.324; NIcor=0.564; NsEucl=0.908; SSD=2.456; NSW=0.898; rcor=2; rNcor=1; rlogoDP=1; rNIcor=1; rNsEucl=2; rSSD=2; rNSW=2; rank_mean=1.571; match_rank=2
+a	0	0	0	0	0	0	0	6	11	8	0	11	0	0	0	9	0	1	0
+c	0	0	0	0	0	0	0	7	3	3	1	0	1	1	0	0	9	1	5
+g	0	0	0	0	0	0	0	3	1	1	0	6	0	0	6	8	0	1	0
+t	0	0	0	0	0	0	0	1	2	5	16	0	16	16	11	0	8	14	12
+//
+;

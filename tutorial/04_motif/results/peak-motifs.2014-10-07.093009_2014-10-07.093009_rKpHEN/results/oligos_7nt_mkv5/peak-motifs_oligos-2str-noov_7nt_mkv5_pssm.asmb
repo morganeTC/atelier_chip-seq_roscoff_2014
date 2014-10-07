@@ -1,0 +1,49 @@
+; pattern-assembly  -v 1 -i $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5/peak-motifs_oligos-2str-noov_7nt_mkv5.tab -2str -maxfl 1 -subst 1 -max_asmb_width 20 -toppat 100 -max_asmb_size 50 -max_asmb_width 20 -max_asmb_nb 5 -o $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5/peak-motifs_oligos-2str-noov_7nt_mkv5_pssm.asmb
+; Input file	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5/peak-motifs_oligos-2str-noov_7nt_mkv5.tab
+; Output file	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5/peak-motifs_oligos-2str-noov_7nt_mkv5_pssm.asmb
+; Input score column           	8
+; Output score column          	0
+; Strand-insensitive assembly
+; Max flanking bases           	1
+; Max substitutions            	1
+; Min matches                  	0
+; Min weight                   	0
+; Max assembly size            	50
+; Max assembly width           	20
+; Top number of patterns       	100
+; Number of input patterns     	64
+;
+
+; assembly # 1	seed: ccacacc	1 assembled patterns	length 7
+;alignt	rev_cpl	score
+ccacacc	ggtgtgg	9.28
+ccacacc	ggtgtgg	9.28	best consensus
+
+; assembly # 2	seed: tgactca	1 assembled patterns	length 7
+;alignt	rev_cpl	score
+tgactca	tgagtca	7.27
+tgactca	tgagtca	7.27	best consensus
+
+; assembly # 3	seed: attttta	1 assembled patterns	length 7
+;alignt	rev_cpl	score
+attttta	taaaaat	6.76
+attttta	taaaaat	6.76	best consensus
+
+; assembly # 4	seed: cctcagg	1 assembled patterns	length 7
+;alignt	rev_cpl	score
+cctcagg	cctgagg	6.03
+cctcagg	cctgagg	6.03	best consensus
+
+; assembly # 5	seed: cccctcc	1 assembled patterns	length 7
+;alignt	rev_cpl	score
+cccctcc	ggagggg	5.13
+cccctcc	ggagggg	5.13	best consensus
+; Maximal number of assemblies is reached (5). Remaining patterns: 58.
+; Host name	biow
+; Job started	2014-10-07.093132
+; Job done	2014-10-07.093134
+; Seconds	2.44
+;	user	2.44
+;	system	0.01
+;	cuser	0
+;	csystem	0

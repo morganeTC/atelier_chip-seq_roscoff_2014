@@ -1,0 +1,115 @@
+; oligo-analysis  -v 1 -quick -i $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/data/sequences/peak-motifs_test_purged_ml30_mis0.fasta -format fasta -sort -lth ratio 1 -lth occ_sig 0 -uth rank 100 -return occ,proba,rank -2str -noov -seqtype dna -l 7 -markov 5 -pseudo 0.01 -o $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5/peak-motifs_oligos-2str-noov_7nt_mkv5.tab
+; Citation: van Helden et al. (1998). J Mol Biol 281(5), 827-42. 
+; Program version              	1.169
+; Quick counting mode          
+; Detection of over-represented words (right-tail test)
+; Oligomer length              	7
+; Input file                   	$RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/data/sequences/peak-motifs_test_purged_ml30_mis0.fasta
+; Input format                 	fasta
+; Output file                  	$RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/results/oligos_7nt_mkv5/peak-motifs_oligos-2str-noov_7nt_mkv5.tab
+; Discard overlapping matches
+; Counted on both strands
+; 	grouped by pairs of reverse complements
+; Background model             	Markov
+; Background estimation method 	Markov model estimated from input sequences
+; Markov chain order           	5
+; Pseudo-frequency             	0.01
+; Pseudo-frequency per oligo   	1.220703125e-06
+; Sequence type                	DNA
+; Nb of sequences              	7041
+; Sum of sequence lengths      	1476646
+; discarded residues           	NA (quick mode)	 (other letters than ACGT)
+; discarded occurrences        	NA (quick mode)	 (contain discarded residues)
+; nb possible positions        	NA (quick mode)
+; total oligo occurrences      	1432340
+; total overlapping occurrences	12106
+; total non overlapping occ    	1420234
+; alphabet size                	4
+; nb possible oligomers        	8192
+; oligomers tested for significance	8192
+;
+; column headers
+;	1	seq            	oligomer sequence
+;	2	identifier     	oligomer identifier
+;	3	exp_freq       	expected relative frequency
+;	4	occ            	observed occurrences
+;	5	exp_occ        	expected occurrences
+;	6	occ_P          	occurrence probability (binomial)
+;	7	occ_E          	E-value for occurrences (binomial)
+;	8	occ_sig        	occurrence significance (binomial)
+;	9	rank           	rank
+;	10	ovl_occ        	number of overlapping occurrences (discarded from the count)
+;	11	forbocc        	forbidden positions (to avoid self-overlap)
+#seq	identifier	exp_freq	occ	exp_occ	occ_P	occ_E	occ_sig	rank	ovl_occ	forbocc
+ccacacc	ccacacc|ggtgtgg	0.0001772061640	381	253.82	6.4e-14	5.2e-10	9.28	1	3	2286
+tgactca	tgactca|tgagtca	0.0004302438723	792	616.26	6.6e-12	5.4e-08	7.27	2	0	4752
+attttta	attttta|taaaaat	0.0002839153041	547	406.66	2.1e-11	1.8e-07	6.76	3	6	3282
+cctcagg	cctcagg|cctgagg	0.0003640003399	673	521.37	1.1e-10	9.4e-07	6.03	4	0	4038
+cccctcc	cccctcc|ggagggg	0.0002674589286	507	383.09	9e-10	7.4e-06	5.13	5	2	3042
+ccccacc	ccccacc|ggtgggg	0.0002805420694	519	401.83	1.2e-08	1.0e-04	4.00	6	12	3114
+gaaaaac	gaaaaac|gtttttc	0.0001981700318	378	283.85	5.8e-08	4.8e-04	3.32	7	0	2268
+ccaaacc	ccaaacc|ggtttgg	0.0001145304947	235	164.05	1.1e-07	9.2e-04	3.03	8	1	1410
+aactcaa	aactcaa|ttgagtt	0.0001251843722	252	179.31	1.8e-07	1.5e-03	2.84	9	0	1512
+tgaatca	tgaatca|tgattca	0.0001777017565	340	254.53	1.9e-07	1.6e-03	2.80	10	0	2040
+ctgtgtc	ctgtgtc|gacacag	0.0002713487711	493	388.66	2.1e-07	1.7e-03	2.77	11	0	2958
+aagacaa	aagacaa|ttgtctt	0.0002398349504	438	343.53	5.5e-07	4.5e-03	2.34	12	1	2628
+aagtcaa	aagtcaa|ttgactt	0.0002087852543	387	299.05	6.3e-07	5.2e-03	2.29	13	1	2322
+ccccagg	ccccagg|cctgggg	0.0004811043975	818	689.11	9.8e-07	8.0e-03	2.09	14	0	4908
+ccacctc	ccacctc|gaggtgg	0.0002145911022	392	307.37	2e-06	1.6e-02	1.79	15	2	2352
+gcaaaca	gcaaaca|tgtttgc	0.0004396440753	747	629.72	3e-06	2.4e-02	1.61	16	1	4482
+ctccacc	ctccacc|ggtggag	0.0002180845151	395	312.37	3.9e-06	3.2e-02	1.50	17	3	2370
+caggtcc	caggtcc|ggacctg	0.0001579019504	297	226.17	3.9e-06	3.2e-02	1.50	18	0	1782
+cgccccc	cgccccc|gggggcg	0.0000864490111	177	123.82	4.1e-06	3.3e-02	1.48	19	0	1062
+cacccac	cacccac|gtgggtg	0.0001953979973	358	279.88	4.2e-06	3.4e-02	1.47	20	9	2148
+cgcccac	cgcccac|gtgggcg	0.0000608600793	132	87.17	4.7e-06	3.9e-02	1.41	21	1	792
+cttgacc	cttgacc|ggtcaag	0.0002132131673	386	305.39	5.1e-06	4.2e-02	1.38	22	1	2316
+cccctgc	cccctgc|gcagggg	0.0002463679062	439	352.88	5.4e-06	4.5e-02	1.35	23	2	2634
+cacctcc	cacctcc|ggaggtg	0.0002329017801	417	333.59	6e-06	4.9e-02	1.31	24	3	2502
+cagacac	cagacac|gtgtctg	0.0001920067631	350	275.02	7.9e-06	6.4e-02	1.19	25	1	2100
+aaggaga	aaggaga|tctcctt	0.0002508295693	444	359.27	8.8e-06	7.2e-02	1.14	26	0	2664
+ctggggc	ctggggc|gccccag	0.0004069306847	689	582.86	1e-05	8.4e-02	1.08	27	6	4134
+cggctgc	cggctgc|gcagccg	0.0000859823677	173	123.16	1.3e-05	1.1e-01	0.97	28	0	1038
+aatgtca	aatgtca|tgacatt	0.0004235548185	712	606.67	1.7e-05	1.4e-01	0.86	29	0	4272
+gtaaata	gtaaata|tatttac	0.0003320912892	568	475.67	2.1e-05	1.7e-01	0.76	30	3	3408
+ctgtctc	ctgtctc|gagacag	0.0002421423117	426	346.83	2.2e-05	1.8e-01	0.75	31	1	2556
+caccctc	caccctc|gagggtg	0.0002267125824	401	324.73	2.4e-05	2.0e-01	0.71	32	0	2406
+ctgcacc	ctgcacc|ggtgcag	0.0001936528440	348	277.38	2.5e-05	2.0e-01	0.70	33	0	2088
+cacaaag	cacaaag|ctttgtg	0.0002406194080	423	344.65	2.5e-05	2.0e-01	0.69	34	0	2538
+caaaaac	caaaaac|gtttttg	0.0001584861517	291	227.01	2.6e-05	2.1e-01	0.68	35	2	1746
+atcagat	atcagat|atctgat	0.0001505071433	278	215.58	2.6e-05	2.1e-01	0.67	36	0	1668
+ccagccc	ccagccc|gggctgg	0.0003709965042	626	531.39	3.5e-05	2.8e-01	0.55	37	6	3756
+gattaca	gattaca|tgtaatc	0.0001352921458	252	193.78	3.5e-05	2.9e-01	0.54	38	0	1512
+catgcac	catgcac|gtgcatg	0.0001123731515	214	160.96	3.8e-05	3.1e-01	0.50	39	3	1284
+cctgccc	cctgccc|gggcagg	0.0005713635128	934	818.39	4e-05	3.3e-01	0.48	40	19	5604
+aacccaa	aacccaa|ttgggtt	0.0001171394118	221	167.78	4.9e-05	4.1e-01	0.39	41	0	1326
+aagaaaa	aagaaaa|ttttctt	0.0005032578923	828	720.84	5.1e-05	4.1e-01	0.38	42	12	4968
+aagggaa	aagggaa|ttccctt	0.0002334538762	408	334.39	5.4e-05	4.4e-01	0.36	43	1	2448
+aaagcaa	aaagcaa|ttgcttt	0.0003399795364	575	486.97	5.6e-05	4.6e-01	0.34	44	3	3450
+cagtgac	cagtgac|gtcactg	0.0003163438715	538	453.11	5.7e-05	4.7e-01	0.33	45	0	3228
+aaggtga	aaggtga|tcacctt	0.0002135986690	376	305.95	6e-05	4.9e-01	0.31	46	0	2256
+tgcacaa	tgcacaa|ttgtgca	0.0001513718019	276	216.82	6.3e-05	5.2e-01	0.29	47	4	1656
+cttgggc	cttgggc|gcccaag	0.0001801445596	322	258.03	6.8e-05	5.6e-01	0.25	48	0	1932
+aaatcaa	aaatcaa|ttgattt	0.0002373566563	413	339.98	6.8e-05	5.6e-01	0.25	49	1	2478
+ctccctc	ctccctc|gagggag	0.0003417256013	576	489.47	7.5e-05	6.2e-01	0.21	50	18	3456
+agtttga	agtttga|tcaaact	0.0001525840378	277	218.55	8e-05	6.6e-01	0.18	51	0	1662
+gaccaca	gaccaca|tgtggtc	0.0001534599324	278	219.81	8.9e-05	7.3e-01	0.14	52	0	1668
+cccttcc	cccttcc|ggaaggg	0.0002943214580	501	421.57	9.2e-05	7.5e-01	0.13	53	2	3006
+aatctga	aatctga|tcagatt	0.0001979116663	349	283.48	9.3e-05	7.6e-01	0.12	54	1	2094
+cagcccc	cagcccc|ggggctg	0.0003110819197	527	445.58	9.4e-05	7.7e-01	0.11	55	1	3162
+acaagga	acaagga|tccttgt	0.0001873133142	332	268.30	9.6e-05	7.8e-01	0.11	56	0	1992
+gcaaata	gcaaata|tatttgc	0.0003210271339	542	459.82	0.00010	8.4e-01	0.07	57	4	3252
+ccagctc	ccagctc|gagctgg	0.0002885311536	491	413.27	0.00011	8.9e-01	0.05	58	1	2946
+gtaaaca	gtaaaca|tgtttac	0.0003483240589	584	498.92	0.00011	9.0e-01	0.04	59	0	3504
+atgtgta	atgtgta|tacacat	0.0001367096626	250	195.81	0.00011	9.2e-01	0.04	60	2	1500
+cacattc	cacattc|gaatgtg	0.0001942249142	342	278.20	0.00012	9.8e-01	0.01	61	0	2052
+atgacta	atgacta|tagtcat	0.0001117391999	209	160.05	0.00012	9.9e-01	0.00	62	0	1254
+cacttcc	cacttcc|ggaagtg	0.0001974098377	347	282.76	0.00012	9.9e-01	0.00	63	0	2082
+ccagggc	ccagggc|gccctgg	0.0004844015029	793	693.83	0.00012	1.0e+00	0.00	64	2	4758
+; Host name	biow
+; Job started	2014-10-07.093127
+; Job done	2014-10-07.093131
+; Seconds	3.48
+;	user	3.48
+;	system	0.05
+;	cuser	0.79
+;	csystem	0.02
