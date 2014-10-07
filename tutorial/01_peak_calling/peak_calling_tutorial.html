@@ -239,7 +239,7 @@ In order to investigate the composition of enhancers involved in estrogen-induce
        <li>What is the read length ?</li>
        <li>How many runs (<i>i.e.</i> lanes) are associated to this sample ? </li>
        <li>How many reads were produced (# of Spots) ?</li>
-       <li>Select SRR540192 hyperlink. What is the sequence of the first read ?</li>         
+       <li>Select SRR540188 hyperlink. What is the sequence of the first read ?</li>         
      </ul>
                 </div>
             	
@@ -256,7 +256,7 @@ In order to investigate the composition of enhancers involved in estrogen-induce
     
     
     
-    <!-- PEAK-MOTIFS-->	     
+    <!-- MAPPED reads-->	     
     
     
     <div class="demo">
@@ -306,7 +306,7 @@ In this tutorial, we will focus on <b>quality control</b> of the aligned dataset
    				<div class="success"> <b>Question:</b> How many reads does the  BAM files contain ?<br/>
                 </div>
                 <div class="collapse"> 
-                The table below sumarizes the results for all datasets (all flagstat files are accessible in the Galaxy shared history <b>Chip_Seq_Result_Chr21</b>).
+                The table below sumarizes the results for all datasets (all flagstat files are accessible in the Galaxy shared history <b>Herrmann_Flagstats</b>).
 <table>
 <tr>
 <th>BAM file</th><th>Nb reads</th>
@@ -352,12 +352,14 @@ In this tutorial, we will focus on <b>quality control</b> of the aligned dataset
 
 <b>Procedure</b>:
 <ol>
-<li> find the tool <b>bamCoverage</b> in the <b>deepTools</b> section</li>
-<li> select the BAM file for the signal file <b>siNT_ER_E2_r3</b>, and run the tool <b>on chromosome 21 to reduce computational time !</b></li>
-<li>for <i>Average size of fragment length</i>, choose 150 bp. We will check later on whether this estimation is corrrect !</li>
-<li>keep other parameters by default</li>
-<li> download the resulting file and open it in the IGV browser</li>
-<li> repeat the same operation for the BAM file corresponding to the <b>input</b>, and open the resulting bigwig file along the previous one in IGV.</li>
+<li> Find the tool <b>bamCoverage</b> in the <b>deepTools</b> section</li>
+<li> Select the BAM file for the signal file <b>siNT_ER_E2_r3</b>, and run the tool <b>on chromosome 1 to reduce computational time !</b></li>
+<li>For <i>Average size of fragment length</i>, choose 150 bp. We will check later on whether this estimation is corrrect !</li>
+<li>Keep other parameters by default</li>
+<li> Download the resulting file and open it in the IGV browser</li>
+<li> In IGV, right click on the left panel : use <b>set data range</b>, and set Max Value to <b>100</b>
+<li> Repeat the same operation for the BAM file corresponding to the <b>H3K4me1</b>, and open the resulting bigwig file under the previous one in IGV.</li>
+<li> Repeat the same operation for the BAM file corresponding to the <b>input</b>, and open the resulting bigwig file under the previous one in IGV.</li>
 </ol>
 
 
@@ -365,16 +367,11 @@ In this tutorial, we will focus on <b>quality control</b> of the aligned dataset
    				<div class="success"> <b>Questions:</b>
 <ol>
 <li>Do you see regions that seem to be enriched in signal compared to background ?</li>
-<li><span style="background-color: #FFFF00">Do you recognize any region where both tracks show enrichment ? Could these correspond to copy-number alterations in the MCF7 cell line ?</span></li>
+<li>Do you recognize any region where both tracks show enrichment ? Could these correspond to copy-number alterations in the MCF7 cell line ?</li>
 <li>If you compare ER ChIP-seq with H3K4me1 ChIP-seq, do you see a difference in the shape of the data (sharper peaks or broader domains of enrichment) ?</li>
 </ol>
 
                 </div>
-                <div class="collapse"> 
-               All bigwig files for chr21 are accessible in the Galaxy shared history <b>Chip_Seq_Result_Chr21</b>.
-
-
-    </div>
 	
 	   </div> 	
 	   </div>
