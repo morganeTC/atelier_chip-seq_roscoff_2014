@@ -360,6 +360,8 @@ In this tutorial, we will focus on <b>quality control</b> of the aligned dataset
 <li> In IGV, right click on the left panel : use <b>set data range</b>, and set Max Value to <b>100</b>
 <li> Repeat the same operation for the BAM file corresponding to the <b>H3K4me1</b>, and open the resulting bigwig file under the previous one in IGV.</li>
 <li> Repeat the same operation for the BAM file corresponding to the <b>input</b>, and open the resulting bigwig file under the previous one in IGV.</li>
+<li> Download the <b>BAM files and corresponding indexes (bai)</b> for: <b>siNT_ER_E2_r3</b>, <b>H3K4me1</b> and <b>input</b>. Load them using IGV. Go to TFF1 gene.</li>
+<li>Unzoom and and select regions displaying high signal based on the coverage tracks (<i>i.e</i> bigWig).</li>.
 </ol>
 
 
@@ -367,6 +369,7 @@ In this tutorial, we will focus on <b>quality control</b> of the aligned dataset
    				<div class="success"> <b>Questions:</b>
 <ol>
 <li>Do you see regions that seem to be enriched in signal compared to background ?</li>
+<li>In the TFF1 gene, check the signal on plus and minus strands for the BAM track obtained from siNT_ER_E2_r3. Does it correspond to the expected signal ?</li>
 <li>Do you recognize any region where both tracks show enrichment ? Could these correspond to copy-number alterations in the MCF7 cell line ?</li>
 <li>If you compare ER ChIP-seq with H3K4me1 ChIP-seq, do you see a difference in the shape of the data (sharper peaks or broader domains of enrichment) ?</li>
 </ol>
