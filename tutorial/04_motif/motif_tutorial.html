@@ -278,7 +278,7 @@ $(function() {
             	All sequences were retrieved.
                 </div>
    				</div>
-	    <li>The FASTA file contain the sequences. To continue the tutorial, you can download it on your computer to keep a copy of them (you will not need it, but it is always safe to keep a trace).</li>
+	    <li>The FASTA file contain the sequences. Download it (right click, save as...) on your computer to keep a copy of them.</li>
 	  </ol>
 	  
 	  <div class="error">At this point, you should have retrieved the sequences corresponding to your coordinate (BED) file. 
@@ -351,49 +351,61 @@ to your data set.
 	The <i>peak-motifs</i> output is formed by the following parts:
 	<ol>
 	  <li><b>Sequence Composition:</b>The distribution of sequence lengths provides a useful way to detect outlier peaks (i.e., exceptionally long peaks that may ‘dilute’ the motif signal) or irregular length distributions resulting from problems during the peak-calling procedure. Nucleotide and dinucleotide compositions are computed and displayed in the form of heat maps and positional profiles</li>
-	  <img class="bordered" src="./figures/peak-motifs_archive_cebpa_liver_dog_SC1.png" alt="PMSC3" width="550"/> 
+	  <img class="bordered" src="images/6_peak-motifs.png" alt="PMSC3" width="550"/> 
 	  
-	  <li><b>Motif Discovery:</b>The workflow combines four word-based pattern-discovery algorithms that rely on two complementary criteria (overrepresentation and positional bias) to detect exceptional words (oligonucleotides) and spaced pairs of words (dyads). Significant words are used as seeds to build probabilistic description of motifs (position-specific scoring matrices), indicating residue variability at each position of the motif. Motif discovery will be done only using oligonucleotides detection by default.</li>
-	  <img class="bordered" src="./figures/peak-motifs_archive_cebpa_liver_dog_SC2.png" alt="PMSC3" width="550"/> 
+	  <li><b>Motif Discovery:</b>The workflow combines four word-based pattern-discovery algorithms that rely on two complementary criteria (overrepresentation and positional bias) to detect exceptional words (oligonucleotides) and spaced pairs of words (dyads). Significant words are used as seeds to build probabilistic description of motifs (position-specific scoring matrices), indicating residue variability at each position of the motif, represented as logos.</li>
+	  <img class="bordered" src="images/7_peak-motifs.png" alt="PMSC3" width="550"/> 
 	  
-	  <li><b>Motif comparisons:</b> Discovered motifs are compared with one or several public databases of annotated motifs to predict associated transcription factors. Comparison results are displayed as multiple motif alignments to highlight matches with several annotated motifs (e.g., factors belonging to the same family, composite motifs bound by protein complexes). Motif comparison is perfomred against vertebrate transcription factors binding motifs in <a href="http://jaspar.genereg.net/" target='_blank'>JASPAR database</a>. </li>
+	  <li><b>Motif comparisons:</b> Discovered motifs are compared with one or several public databases of annotated motifs to predict associated transcription factors. Results of this comparison are also displayed as multiple motif alignments (click on the link indicated in the red box) to highlight matches with several annotated motifs (e.g., factors belonging to the same family, composite motifs bound by protein complexes). Motif comparison is performed against vertebrate transcription factors binding motifs from <a href="http://jaspar.genereg.net/" target='_blank'>JASPAR database</a>. </li>
+	  <img class="bordered" src="images/8_peak-motifs.png" alt="PMSC3" width="550"/> 
+	  <img class="bordered" src="images/9_peak-motifs.png" alt="PMSC3" width="550"/> 
 	  <li><b>Binding site predictions:</b>Sequences are scanned with the discovered motifs to locate binding sites, and their positioning within peaks is analyzed (coverage, positional distribution along peaks).</li>
-	  <img class="bordered" src="./figures/peak-motifs_archive_cebpa_liver_dog_SC3.png" alt="PMSC3" width="550"/> 
+	  <img class="bordered" src="images/10_peak-motifs.png" alt="PMSC3" width="550"/> 
 	  
+	</ol>
+	
+	To obtain an synthetic overview of the discovered motifs : 
+	<ol>
+	  <li>at the top of the report, in the gray box, click on <b>small summary</b></li>
+	  	  <img class="bordered" src="images/11_peak-motifs.png" alt="PMSC3" width="550"/> 
+
 	</ol>
 	</div>
    				</div>
 	<div class="post">
-          <div class="success">Do we discover significant motifs ? Are these motifs biologically relevant? In particular, did the program discover motifs related
-to ER or GATA3 ?</li></b>
-	    <b>Anticipated Results:</b><a href="./results/session1/2_peak-motifs_archive_cebpa_liver_dog/peak-motifs_synthesis.html">peak-motifs results</a>
-
+          <div class="success"><ul><li>Do we discover significant motifs ? </li>
+          <li>Are these motifs biologically relevant? In particular, did the program discover motifs related
+to ER or GATA3 ?</li>
+</ul>
+ </div>
+<div class="collapse"> 
+Pre-calculated esults are available <a href="results/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/peak-motifs_synthesis.html" target="_blank">here</a>. 
+         
           </div>
 
 	</div>
       </div>
       <h3 class="expand">2 - Differential analysis </h3>
       <div class="collapse">
-	Several parameters can be tunned in <i>peak-motifs</i> in order to obtain better results.
-	<ol>
-	  <li><b>Reduce peak sequences:</b>  In our previous results it is possible to observe that most of the discovered motifs lay in the middle parts of the peaks. In order to focus our anaysis to this section of the peaks we can use this option and reduce the sequence length.</li> 
-	  <img class="bordered" src="figures/Screen_peak_motifs_cutseq.png" alt="PMSC4" width="550"/>
-	  <li><b>Motif-discovery parameters:</b> The choice of motif discovery algorithms markedly affects the result. It is recommended to combine the analysis of overrepresentation (oligo-analysis) and positional bias (position-analysis). Other available analysis are based on: spaced pairs (dyad-analysis) and locally overrepresented words (local-word).</li>
-	  <img class="bordered" src="figures/Screen_peak_motifs_motif_dis.png" alt="PMSC5" width="550"/>
-	  <li><b>Motif Comparison:</b> There are several databases that contain binding motifs available. Users can also add their own collections, in this case we will add as well the motif reported by Schmidt,Wilson and Ballester based on a CEBPa ChIP-seq done in mouse [<a href="./data/dataset_cebpa_dog/do560+do843_mmus_cebpa_liver_top_meme.tf" target='_blank'>motif</a>]</li>
-	  <img class="bordered" src="figures/Screen_peak_motifs_motif_comp.png" alt="PMSC6" width="550"/>
-	  <li><b>Locate motifs:</b> Locating discovered motifs in peaks can be useful to detect potitional bias, once an intersting motif is found it becomes important to locate the site in the genomic context, there are options available in <i>peak-motifs</i> that facilitate this task.</li>
-	  <img class="bordered" src="figures/Screen_peak_motifs_motif_locate.png" alt="PMSC7" width="550"/>
-	</ol>
-	<div class="post">
-          <div class="success"><b>Results and parameters</b>
-	    <ol>
-              <li>Try different combinations of parameters. How would you improve these results?</li>
-              <li>How different is the discovered dog CEBPa motif in comparison to the mouse reported motif?</li>
-	    </ol>
-	    <a href="./results/session1/3_peak-motifs_archive_cebpa_liver_dog/peak-motifs_synthesis.html "><b>Anticipated Results</b></a>	    
-          </div>	  
+      <p>As we have two conditions (siGATA, siNT), we would like to find if some motifs are found in one dataset, but not the other. We are thus going to perform differential motif analysis.</p>
+
+<ol>	
+	<li>Use <b>fetch-sequences</b> to obtain the peak sequences for siNT (you should already have the peak sequences for siGATA condition). Save the two sequence files on your computer, since we will need to upload both of them separately for the next step.
+a. Note: alternatively, you can take note of the two URLs of the fasta files.</li>
+<li>Run peak-motifs in differential analysis mode using siNT (not treated) as test and siGATA as
+control.</li>
+</ol>
+<div class="post">
+          <div class="success"><b>Do you obtain different motifs than with the single peak set analysis?</b>
+	             </div>	  
 	</div>
+
+ 
+3. Swap the datasets (siGATA as test, and siNT as control) and redo the analysis. Do you find
+motifs ? How do they compare with the previous ones?
+	
+</ol>	
+	
 	
       </div>
       
