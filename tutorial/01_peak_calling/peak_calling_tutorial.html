@@ -356,6 +356,7 @@ In this tutorial, we will focus on <b>quality control</b> of the aligned dataset
 <li> Select the BAM file for the signal file <b>siNT_ER_E2_r3</b>, and run the tool <b>on chromosome 1 to reduce computational time !</b></li>
 <li>For <i>Average size of fragment length</i>, choose 150 bp. We will check later on whether this estimation is corrrect !</li>
 <li>Keep other parameters by default</li>
+<li> Execute, and rename the output (otherwise, it might be erased by another run)</li>
 <li> Download the resulting file and open it in the IGV browser</li>
 <li> In IGV, right click on the left panel : use <b>set data range</b>, and set Max Value to <b>100</b>
 <li> Repeat the same operation for the BAM file corresponding to the <b>H3K4me1</b>, and open the resulting bigwig file under the previous one in IGV.</li>
@@ -389,6 +390,7 @@ In this tutorial, we will focus on <b>quality control</b> of the aligned dataset
 <li>Select the <b>bamCompare</b> tool</li>
 <li>Select the <b>siNT_ER_E2_r3</b> treatment BAM file and the input BAM file</li>
 <li>Choose the SES normalization method in <i>Method to use for scaling the largest sample to the smallest</i></li>
+<li>Choose compute difference (substract input from treatment) in <i>How to compare the two files:</i></li>
 <li>Choose a particular chromosome (chr1)</li>
 <li>Repeat the same operation on the <b>H3K4me1</b> treatment BAM file and the input BAM file</li>
 </ol>
