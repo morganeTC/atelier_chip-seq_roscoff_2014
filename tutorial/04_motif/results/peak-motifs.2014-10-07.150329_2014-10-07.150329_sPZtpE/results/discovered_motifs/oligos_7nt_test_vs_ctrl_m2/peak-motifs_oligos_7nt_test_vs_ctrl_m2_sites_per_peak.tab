@@ -1,0 +1,40 @@
+; classfreq  -v 1 -ci 1 -o $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/discovered_motifs/oligos_7nt_test_vs_ctrl_m2/peak-motifs_oligos_7nt_test_vs_ctrl_m2_sites_per_peak.tab
+;	min                 	minimum of class interval (inclusive)
+;	max                 	maximum of class interval (exclusive)
+;	center              	center of class interval
+;	n                   	occurrences
+;	n_cum               	cumulative occurrences (inclusive)
+;	n_dcum              	decreasing cumulative occurrences (inclusive)
+;	f                   	frequencies
+;	f_cum               	cumulative frequencies (inclusive)
+;	f_dcum              	decreasing cumulative frequencies (inclusive)
+#[min	max[	center	n	n_cum	n_dcum	f	f_cum	f_dcum
+1	2	1.5	753	753	872	0.86353	0.86353	1.00000
+2	3	2.5	91	844	119	0.10436	0.96789	0.13647
+3	4	3.5	18	862	28	0.02064	0.98853	0.03211
+4	5	4.5	6	868	10	0.00688	0.99541	0.01147
+5	6	5.5	2	870	4	0.00229	0.99771	0.00459
+6	7	6.5	1	871	2	0.00115	0.99885	0.00229
+7	8	7.5	0	871	1	0.00000	0.99885	0.00115
+8	9	8.5	1	872	1	0.00115	1.00000	0.00115
+; Statistics:
+; -----------
+; class interval     	1
+; classes            	8
+; count              	872
+; sum                	1037
+; mean               	1.18922
+; median class       	[2..3[
+; var                	0.335
+; std                	0.578454
+; min                	1
+; max                	8
+; range              	7
+; Host name	biow
+; Job started	2014-10-07.151214
+; Job done	2014-10-07.151214
+; Seconds	0.23
+;	user	0.23
+;	system	0.01
+;	cuser	0
+;	csystem	0

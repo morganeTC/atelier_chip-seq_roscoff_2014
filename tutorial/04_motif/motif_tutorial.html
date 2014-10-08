@@ -150,7 +150,7 @@ $(function() {
 			<ul class="tabbed">
 				<li ><a href="../../index.html">Home</a></li>
 				<li ><a href="../../tutorial/01_peak_calling/peak_calling_tutorial.html">Session1:Peak calling</a></li>
-				<li><a href="session2.html">Session2:Annotation Fonctionelle</a></li>
+				<li><a href="../../tutorial/02_annotation/TP-ChIP-seq-Annotation.pdf">Session2:Annotation Fonctionelle</a></li>
 				<li class="current-tab"><a href="../../tutorial/04_motif/motif_tutorial.html">Session3: Analyse de motifs</a></li>
 			</ul>
 
@@ -175,12 +175,10 @@ $(function() {
 
 <u>In practice :</u>
 <ul>
-<li> Motif discovery with <i>peak-motifs</i>.</li>
+<li> Motif discovery with <i>peak-motifs</i></li>
+<li> Differential analysis</li>
 <li> Random controls</li>
-<li> Motif discovery with <i>MEME-chip</i></li>
 </ul>
-
-
 
 
 <div id="wrapper"> 
@@ -212,8 +210,10 @@ $(function() {
  		  <a href="../../html/datasets.html">List of all datasets published in this work</a>.
 
 		Peak regions were obtained by running the peak calling program MACS on the aligned reads (as in the previous session). The multi-peak regions were further split into individual peaks using the <a href="http://www.ebi.ac.uk/research/bertone/software" target="_blank">PeakSplitter</a> tool.
+	  We then selected only the chromosome 7 for the sake of time during the practical. 
+	  
 	  <br/><br/>
-	  <b>Description of the peaks</b>:
+	  <b>Description of the peaks on chr7</b>:
 	  
 	  <table>
 	   <tr>
@@ -379,7 +379,7 @@ to ER or GATA3 ?</li>
 </ul>
  </div>
 <div class="collapse"> 
-Pre-calculated esults are available <a href="results/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/peak-motifs_synthesis.html" target="_blank">here</a>. 
+Pre-calculated results are available <a href="results/peak-motifs.2014-10-07.093009_2014-10-07.093009_rKpHEN/peak-motifs_synthesis.html" target="_blank">here</a>. 
          
           </div>
 
@@ -391,27 +391,65 @@ Pre-calculated esults are available <a href="results/peak-motifs.2014-10-07.0930
 
 <ol>	
 	<li>Use <b>fetch-sequences</b> to obtain the peak sequences for siNT (you should already have the peak sequences for siGATA condition). Save the two sequence files on your computer, since we will need to upload both of them separately for the next step.
-a. Note: alternatively, you can take note of the two URLs of the fasta files.</li>
-<li>Run peak-motifs in differential analysis mode using siNT (not treated) as test and siGATA as
-control.</li>
-</ol>
+<li>Run peak-motifs in differential analysis mode using siGATA (not treated) as <b>Peak sequences</b> and siNT as
+<b>control sequences</b>. Give as title : <b>siGATA_vs_siNT_r3</b></li>
+
 <div class="post">
-          <div class="success"><b>Do you obtain different motifs than with the single peak set analysis?</b>
+          <div class="success">Do you obtain different motifs than with the single peak set analysis?
 	             </div>	  
+	             <div class="collapse"> 
+	             Pre-calculated results are available <a href="results/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/peak-motifs_synthesis.html" target="_blank">here</a>. 
+			</div>
 	</div>
 
- 
-3. Swap the datasets (siGATA as test, and siNT as control) and redo the analysis. Do you find
-motifs ? How do they compare with the previous ones?
+<li>The swap datasets (siNT as test, and siGATA as control) result is available <a href="results/siNT_vs_siGATA_r3/peak-motifs_synthesis.html" target="_blank">here</a>.</li>
+
+<div class="post">
+          <div class="success">Do you find motifs ? How do they compare with the previous ones ? Compare the swaped dataset (siNT as test, and siGATA as control) : does it make sense ?
+	             </div>	  
+	</div>
+</ol>	 
 	
-</ol>	
+
 	
 	
       </div>
       
+            <h3 class="expand">2 - Negative controls </h3>
+      <div class="collapse">
+      <p>As in experimental biology, we perform negative controls for motif analyses. RSAT has multiple options to create datasets that can serve as controls. Here, we will use "random genome fragments", to select random regions of the same number and size as the siGATA peak set.</p>
+
+<ol>	
+	<li>In the left RSAT menu, click on <b>build control sets</b> and choose <b>random genome fragments</b> </li>
+	<li>Use siGATA_vs_siNT_r3 <u>FASTA sequence file</u> as "template"</li>
+	<li>Choose Local RSAT Organism => <b> Homo Sapiens </b> </li>
+	<li>As output, choose <b>FASTA sequences</b> </li>
+	<li>Click "GO" to run the program. </li>
+	<li> Save the FASTA result on your machine</li>
+    <img class="bordered" src="images/13_UCSC.png" alt="PMSC3" width="550"/> 
+    <li> Run <b>peak-motifs</b> with this file as input, same options as above, title : <b>random-genome fragments-siGATA_template</b>.</li>
+
+<li>
+<div class="post">
+          <div class="success">Do you expect to find significant motifs? Do you obtain significant motifs?
+	             </div>	  
+	             <div class="collapse"> 
+	             Pre-calculated results are available <a href="results//peak-motifs_synthesis.html" target="_blank">here</a>.
+			</div>
+	</div>
+
+</ol>	 
+	
+
+	
+	
+      </div>
+      
+      
     </div>
     
 </div>
+
 
 
 
@@ -425,43 +463,24 @@ motifs ? How do they compare with the previous ones?
       <b>Goal:</b> Visualize the predicted binding sites with the discovered motifs in genomic context.
       <br/>
     </div>
-    <h3 class="expand">1 - UCSC browser </h3>
+    <h3 class="expand">1 - Load predicted binding sites into UCSC browser </h3>
     <div class="collapse">
-      <p>Visualization of ChIP-seq data in the genome context can be very useful; it can be used to empirically assess quality and to identify interesting genomic regions.</p>
-      <p><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=canFam2&position=chrX%3A112423225-112747804&hgsid=198963761_uRsmrbdyiFmQRhnsq1KM2m5zgDBS">USCS browser</a> contains several annotations and data sets (mostly for human and model organisms) that can be visualized together with user specified samples.</p>
-      <p><img class="bordered" src="./figures/ucsc_browser_SC1.png" alt="VSC1" width="550"/> </p>
-      <p>Users can create and share personalized sessions with their data.</p>
-      <p><img class="bordered" src="./figures/ucsc_browser_SC2.png" alt="VSC2" width="550"/>  </p>
-      You can find a session we prepared containing the dog data set <a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?hgS_doOtherUser=submit&hgS_otherUserName=amedina&hgS_otherUserSessionName=canFam2_eccb14">here</a>
-    </div>
-    
-    <h3 class="expand">2 - Load predicted binding sites into UCSC browser </h3>
-    <div class="collapse">
-      To visualize our binding sites predictions we need to:
-      <ol>
-	<li>Dowload the bed file with the coordinates for the predicted sites from the <i>peak-motifs</i> output</li>
-	<p><img class="bordered" src="./figures/ucsc_browser_SC3_color.png" alt="VSC3" width="550"/>  </p>
-	<li>In UCSC browser select: My Data / Custom Tracks / add custom tracks. </li>
-	<li>Select the bed file and click on submit</li>
-	<li>This task can take time, don't close the window!!</li>
-	<li>Once is loaded you will see one track per motif in the table </li>
-	<li>Now go back to genome browser </li>
-      </ol>
+      <p>Peak-motifs can prepare the BED files to be directly visualized in UCSC browser (or IGV !).</p>
       
-    </div>
-    <h3 class="expand">3 - Interpretation</h3>
-    <div class="collapse">
+      <ol>
+      <li>At the bottom of the report, click on the UCSC icon in "Motif locations (sites)".</li>
+      <li>This will open UCSC browser, and load the tracks of the peaks (coordinates only, not the shape) + one track per found motif.</li>
+      <li>Search for the location chr7:75,680,888-75,681,629   (located on chr7).</li>
+      </ol>
       <div class="post">
-        <div class="success"><b>Sites in perspective</b>
-	  <ol>
-            <li>Do all peaks have sites?</li>
-            <li>Did you expect this results?</li>
-	    <li>Do you have any interesting findings?</li>
-	     
-	  </ol>
-	  <b>Anticipated Results:</b> <a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?hgS_doOtherUser=submit&hgS_otherUserName=amedina&hgS_otherUserSessionName=canFam2_eccb14_with_sites">UCSC Session.</a>	    
-        </div>	  
-      </div>
+          <div class="success">You should be able to see the location of the sites matching the discovered motifs within the peaks.
+	             </div>	  
+	             <div class="collapse"> 
+<img class="bordered" src="images/12_UCSC.png" alt="PMSC3" width="550"/>         
+          </div>
+
+	</div>
+     </div>
 
     </div>
     

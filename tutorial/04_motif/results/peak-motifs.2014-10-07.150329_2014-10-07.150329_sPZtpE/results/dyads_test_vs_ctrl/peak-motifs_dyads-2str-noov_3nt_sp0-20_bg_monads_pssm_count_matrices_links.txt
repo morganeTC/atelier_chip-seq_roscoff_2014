@@ -1,0 +1,61 @@
+; convert-matrix  -v 1 -i $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/dyads_test_vs_ctrl/peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads_pssm_count_matrices.tf -from tf -to tab -return counts -return logo -logo_format png,pdf -logo_file $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/dyads_test_vs_ctrl/peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads_pssm_count_matrices_logo -o $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/dyads_test_vs_ctrl/peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads_pssm_count_matrices_links.txt
+; Input files
+;	input	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/dyads_test_vs_ctrl/peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads_pssm_count_matrices.tf
+; Input format        	tf
+; Output files
+;	output	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/dyads_test_vs_ctrl/peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads_pssm_count_matrices_links.txt
+; Output format       	tab
+; pseudo-weight       	1
+a	40	26	6	29	1	5	7	3	16	23	50	7	5	11	11	82	13	19	8	14	8	13	28	34
+c	76	82	141	38	18	173	169	191	43	70	54	26	28	166	167	50	49	32	26	153	145	139	68	50
+g	57	64	46	36	172	20	22	13	28	110	94	169	163	18	16	51	137	138	157	26	35	33	77	91
+t	34	35	14	104	16	9	9	0	120	4	9	5	11	12	13	24	8	18	16	14	19	22	34	32
+//
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/dyads_test_vs_ctrl//peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads_pssm_count_matrices_logo_m1.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/dyads_test_vs_ctrl//peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads_pssm_count_matrices_logo_m1.pdf
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/dyads_test_vs_ctrl//peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads_pssm_count_matrices_logo_m1_rc.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/dyads_test_vs_ctrl//peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads_pssm_count_matrices_logo_m1_rc.pdf
+a	239	229	121	81	76	79	109	103	58	57	71	96	98	88	97	187	179
+c	726	623	262	1223	1188	1203	1191	103	1270	1239	1224	1096	221	1129	1129	679	609
+g	407	484	1065	188	222	230	180	1258	182	216	218	256	1138	270	245	451	559
+t	210	246	134	90	96	70	102	118	72	70	69	134	125	95	111	265	235
+//
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/dyads_test_vs_ctrl//peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads_pssm_count_matrices_logo_m2.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/dyads_test_vs_ctrl//peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads_pssm_count_matrices_logo_m2.pdf
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/dyads_test_vs_ctrl//peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads_pssm_count_matrices_logo_m2_rc.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/dyads_test_vs_ctrl//peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads_pssm_count_matrices_logo_m2_rc.pdf
+a	159	182	24	26	22	9	102	311	14	30	18	36	92	122	179
+c	456	389	50	1006	972	486	521	367	395	48	1028	924	202	428	334
+g	337	330	1014	67	101	308	384	431	700	1010	56	125	258	392	410
+t	166	217	30	19	23	315	111	9	9	30	16	33	566	176	195
+//
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/dyads_test_vs_ctrl//peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads_pssm_count_matrices_logo_m3.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/dyads_test_vs_ctrl//peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads_pssm_count_matrices_logo_m3.pdf
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/dyads_test_vs_ctrl//peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads_pssm_count_matrices_logo_m3_rc.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/dyads_test_vs_ctrl//peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads_pssm_count_matrices_logo_m3_rc.pdf
+a	380	415	136	98	92	249	206	50	520	359	261	57	59	391	91	143	143	134	366	335
+c	1221	1138	533	373	2485	1396	1251	1519	1054	1112	1102	1381	1463	1386	1250	2007	2001	2038	1031	971
+g	939	962	2082	2291	229	927	961	1233	1255	1368	1473	1198	1030	1031	1440	584	582	543	1039	1212
+t	345	370	134	123	79	313	467	83	56	46	49	249	333	77	104	151	159	170	449	367
+//
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/dyads_test_vs_ctrl//peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads_pssm_count_matrices_logo_m4.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/dyads_test_vs_ctrl//peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads_pssm_count_matrices_logo_m4.pdf
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/dyads_test_vs_ctrl//peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads_pssm_count_matrices_logo_m4_rc.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/dyads_test_vs_ctrl//peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads_pssm_count_matrices_logo_m4_rc.pdf
+a	425	389	218	1033	168	134	106	112	128	555	439	391	127	128	172	419	450	185	192	156	160	253	414	448	281	244	263	463	425
+c	1472	1338	2342	1063	691	1843	1779	1573	1688	1387	1288	1304	1731	1704	1773	1580	1385	1517	1492	1538	1700	2180	1356	1306	811	790	2261	1347	1243
+g	1198	1386	792	1050	2510	1465	1256	1293	1570	1491	1711	1728	1563	1566	1465	1405	1582	1720	1709	1692	1516	861	1393	1425	2218	2304	797	1289	1439
+t	452	434	195	401	178	105	406	569	161	114	109	124	126	149	137	143	130	125	154	161	171	253	384	368	237	209	226	448	440
+//
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/dyads_test_vs_ctrl//peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads_pssm_count_matrices_logo_m5.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/dyads_test_vs_ctrl//peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads_pssm_count_matrices_logo_m5.pdf
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/dyads_test_vs_ctrl//peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads_pssm_count_matrices_logo_m5_rc.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/dyads_test_vs_ctrl//peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads_pssm_count_matrices_logo_m5_rc.pdf
+; Host name	biow
+; Job started	2014-10-07.150756
+; Job done	2014-10-07.150803
+; Seconds	0.57
+;	user	0.57
+;	system	0.07
+;	cuser	5.87
+;	csystem	0.59

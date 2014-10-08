@@ -1,0 +1,2445 @@
+<html>
+<head><title>One-to-n alignments</title><style type='text/css'>
+/* Style sheet for the HTML formatting of RSAT results */
+
+/* BODY  */
+body {
+       font-family: Verdana, Helvetica, Arial, sans-serif;
+       font-size: 70%;
+       margin-top: 2px;
+       margin-left: 20px;
+       text-align: justify;
+       background: #ffffff;
+       margin-right: 20px;
+/*       background: #0D73A7 url(images/bullet2-normal.gif) no-repeat 7px 7px;*/
+}
+
+
+/* div for menu */
+
+#Menu_space {
+	margin-top:120px;
+	margin-bottom:300px;
+}
+#Menu_wait {
+	position:absolute;
+	top:120px;
+	left:50%;
+	width:400px;
+	margin-left: -200px;
+	padding:10px;
+	text-align:center;
+	}
+
+#Menu {
+	position:absolute;
+	top:120px;
+	left:50%;
+	width:800px;
+	margin-left: -400px;
+	padding:10px;
+	background-color:#eee;
+	border:1px dashed #999;
+	line-height:17px;
+	font-size: 110%;
+	voice-family: "\"}\"";
+	voice-family:inherit;
+	text-align:left;
+	}
+
+#Menu h3 {
+	margin:0;
+	text-align:center;
+	padding-bottom:5px;
+}
+
+#Menu ul {
+	list-style-type:none;
+}
+
+/* TABLE */
+#Menu table {
+	margin: 10px 10px 10px;
+}
+
+#Menu  td, th {
+	font-size: 70%;
+	padding: 2px 10px;
+	vertical-align:top;
+}
+
+.menulink a:link,a:visited {
+	color:#cc6600;
+	background: transparent;
+	text-decoration: none;
+	}
+
+.menulink a:visited {
+	color:#cc6600;
+	background: transparent;
+	text-decoration: none;
+	}
+
+.menulink A:active {
+	color: #cc6600;
+	background: transparent;
+	text-decoration: none
+}
+
+.menulink A:hover {
+	text-decoration: underline;
+	color: #cc6600;
+}
+
+
+/* Links  */
+
+A:link,A:visited {
+	color: #0D73A7;
+	background: transparent;
+	text-decoration: none;
+}
+
+A:active {
+	color: #ff0000;
+	background: transparent;
+	text-decoration: none
+}
+
+A:hover {
+	text-decoration: underline;
+	color: #cc6600;
+}
+
+/* Headers  */
+
+h1 {
+	margin-top: 10px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	margin-bottom: 0px;
+	padding-left: 10px;
+	border: 1px solid #2D282E;
+	background-color: #0D73A7;
+	font-size: 16px;
+	color: #D6EEFA;
+}
+h1 a:link, h1 a:visited {
+	color: #D6EEFA;
+}
+
+h1 a:hover {
+	color: #ffffff;
+}
+
+h2 {
+	margin-top: 10px;
+	padding-top: 15px;
+	margin-bottom: 0px;
+	color: #002266;
+	font-size: 15px;
+}
+
+h3 {
+	margin-top: 6px;
+	padding-top: 6px;
+	margin-bottom: 0px;
+	color: #002266;
+	font-size: 11px;
+}
+
+h4 {
+	margin-top: 4px;
+	padding-top: 4px;
+	margin-bottom: 0px;
+	color : #2D282E;
+	font-size: 11px;
+}
+
+h2.motif {
+	margin-top: 3px;
+	padding-top: 0px;
+	margin-bottom: 4px;
+	color : #2D282E;
+	font-size: 12px;
+}
+
+/* Other tag formatting  */
+hr {
+	border: 1px dotted #2D282E;
+	height: 1px;
+}
+
+hr.solid {
+	border: 1px solid #2D282E;
+	height: 1px;
+}
+
+pre,tt {
+         font-size: 12px;
+}
+
+pre { 
+      background:#EEEEEE;
+ }
+
+
+center {
+	margin-top: 5px;
+	margin-bottom: 20px;
+	font-weight: bold;
+}
+
+blockquote {
+	color : #cc6600;
+	font-size: 12px;
+}
+
+body blockquote.information {
+	color : #009900;
+	font-size: 12px;
+}
+
+body blockquote.warning {
+	color : #aa0000;
+	font-size: 12px;
+}
+
+blockquote.demo {
+	color : #000000;
+	font-size: 12px;
+	font-style:italic;
+}
+
+
+
+/* TABLE */
+table.simple {
+	margin: 10px 20px 20px;
+	color: #000000;
+}
+
+table.simple td,table.list th {
+	font-size: 70%;
+	padding: 2px 10px;
+	background-color: #FFFFFF;
+}
+
+table.simple th {
+	font-size: 70%;
+	background-color: #F6E6CA;
+}
+
+/* TABLE */
+
+/* table with white bg and small fonts */
+table.whitebg {
+	margin: 10px 20px 20px;
+	color: #000000;
+	border-left: 1px solid #cbcbb4;
+	border-top: 1px solid #cbcbb4;
+	border-spacing: 0px;
+}
+
+table.whitebg td,table.whitebg th {
+	font-size: 70%;
+	border-right: 1px solid #cbcbb4;
+	border-bottom: 1px solid #cbcbb4;
+	padding: 2px 10px;
+	background-color: #FFFFFF;
+}
+
+
+/* table with blue bg and small font */
+table.whitebg th {
+	font-size: 70%;
+	background-color: #F6E6CA;
+}
+
+table.bluebg {
+	color: #333333;
+	border-left: 1px solid #cbcbb4;
+	border-top: 1px solid #cbcbb4;
+	}
+
+table.bluebg td,table.bluebg th {
+	font-size: 70%;
+	border-right: 1px solid #cbcbb4;
+	border-bottom: 1px solid #cbcbb4;
+	background-color: #D6EEFA;
+}
+
+table.bluebg th {
+	background-color: #0D73A7;
+	color: #D6EEFA;
+}
+	
+/* Table on result pages - compatible with the sorttable type defined by javascript */
+
+table.sortable {
+	margin: 10px 20px 20px;
+	color: #000000;
+	border-left: 1px solid #cbcbb4;
+	border-right: 1px solid #cbcbb4;
+	border-top: 1px solid #cbcbb4;
+	border-bottom: 1px solid #cbcbb4;
+	border-spacing: 0px;
+}
+
+table.sortable td,table.sortable th {
+	padding: 2px 10px;
+	font-size: 70%;
+	border-right: 1px solid #cbcbb4;
+	border-bottom: 1px solid #cbcbb4;
+	padding: 2px 10px;
+	background-color: #FFFFFF;
+}
+
+table.sortable th {
+	font-size: 70%;
+	background-color: #0D73A7;
+	color: #D6EEFA;
+}
+
+
+/* LINK TABLE ON RESULTS PAGES */
+table.resultlink {
+	margin-left:5px;
+	width : 90%;
+	color: #2D282E;
+	background-color: #D6EEFA;
+}
+
+
+table.resultlink td, table.resultlink th {
+	font-size: 70%;
+	padding-left:5px;
+	padding-right:3px;
+	text-align :left;
+}
+
+/* COLLAPSIBLE MENUS */
+
+.menu_heading_open {
+	background: url(images_html/arrow_box_down.gif) no-repeat 5px 7px;
+	text-decoration: none;
+	padding: 0px 6px 4px 21px;
+	margin: 0;
+	cursor: pointer;
+	font-weight: bold;
+	display: block;
+}
+
+.menu_heading_closed {
+	background: url(images_html/arrow_box.gif) no-repeat 5px 7px;
+	text-decoration: underline; 
+	display: block;
+	padding:0px 6px 4px 21px;
+	margin: 0;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.menu_collapsible {
+	display: none;
+	margin-bottom: 10px;
+	margin-left: 30px;
+}
+
+.menu_collapsible_display {
+   display: block;
+   margin-bottom: 10px;
+   margin-left: 30px;
+}
+</style>
+</head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+
+<script type="text/javascript">
+ <!-- 
+var stIsIE = /*@cc_on!@*/false;
+
+sorttable = {
+  init: function() {
+    // quit if this function has already been called
+    if (arguments.callee.done) return;
+    // flag this function so we don't do the same thing twice
+    arguments.callee.done = true;
+    // kill the timer
+    if (_timer) clearInterval(_timer);
+    
+    if (!document.createElement || !document.getElementsByTagName) return;
+    
+    sorttable.DATE_RE = /^(\d\d?)[\/\.-](\d\d?)[\/\.-]((\d\d)?\d\d)$/;
+    
+    forEach(document.getElementsByTagName('table'), function(table) {
+      if (table.className.search(/\bsortable\b/) != -1) {
+        sorttable.makeSortable(table);
+      }
+    });
+    
+  },
+  
+  makeSortable: function(table) {
+    if (table.getElementsByTagName('thead').length == 0) {
+      // table doesn't have a tHead. Since it should have, create one and
+      // put the first table row in it.
+      the = document.createElement('thead');
+      the.appendChild(table.rows[0]);
+      table.insertBefore(the,table.firstChild);
+    }
+    // Safari doesn't support table.tHead, sigh
+    if (table.tHead == null) table.tHead = table.getElementsByTagName('thead')[0];
+    
+    if (table.tHead.rows.length != 1) return; // can't cope with two header rows
+    
+    // Sorttable v1 put rows with a class of "sortbottom" at the bottom (as
+    // "total" rows, for example). This is B&R, since what you're supposed
+    // to do is put them in a tfoot. So, if there are sortbottom rows,
+    // for backwards compatibility, move them to tfoot (creating it if needed).
+    sortbottomrows = [];
+    for (var i=0; i<table.rows.length; i++) {
+      if (table.rows[i].className.search(/\bsortbottom\b/) != -1) {
+        sortbottomrows[sortbottomrows.length] = table.rows[i];
+      }
+    }
+    if (sortbottomrows) {
+      if (table.tFoot == null) {
+        // table doesn't have a tfoot. Create one.
+        tfo = document.createElement('tfoot');
+        table.appendChild(tfo);
+      }
+      for (var i=0; i<sortbottomrows.length; i++) {
+        tfo.appendChild(sortbottomrows[i]);
+      }
+      delete sortbottomrows;
+    }
+    
+    // work through each column and calculate its type
+    headrow = table.tHead.rows[0].cells;
+    for (var i=0; i<headrow.length; i++) {
+      // manually override the type with a sorttable_type attribute
+      if (!headrow[i].className.match(/\bsorttable_nosort\b/)) { // skip this col
+        mtch = headrow[i].className.match(/\bsorttable_([a-z0-9]+)\b/);
+        if (mtch) { override = mtch[1]; }
+	      if (mtch && typeof sorttable["sort_"+override] == 'function') {
+	        headrow[i].sorttable_sortfunction = sorttable["sort_"+override];
+	      } else {
+	        headrow[i].sorttable_sortfunction = sorttable.guessType(table,i);
+	      }
+	      // make it clickable to sort
+	      headrow[i].sorttable_columnindex = i;
+	      headrow[i].sorttable_tbody = table.tBodies[0];
+	      dean_addEvent(headrow[i],"click", function(e) {
+
+          if (this.className.search(/\bsorttable_sorted\b/) != -1) {
+            // if we're already sorted by this column, just 
+            // reverse the table, which is quicker
+            sorttable.reverse(this.sorttable_tbody);
+            this.className = this.className.replace('sorttable_sorted',
+                                                    'sorttable_sorted_reverse');
+            this.removeChild(document.getElementById('sorttable_sortfwdind'));
+            sortrevind = document.createElement('span');
+            sortrevind.id = "sorttable_sortrevind";
+            sortrevind.innerHTML = stIsIE ? '&nbsp<font face="webdings">5</font>' : '&nbsp;&#x25B4;';
+            this.appendChild(sortrevind);
+            return;
+          }
+          if (this.className.search(/\bsorttable_sorted_reverse\b/) != -1) {
+            // if we're already sorted by this column in reverse, just 
+            // re-reverse the table, which is quicker
+            sorttable.reverse(this.sorttable_tbody);
+            this.className = this.className.replace('sorttable_sorted_reverse',
+                                                    'sorttable_sorted');
+            this.removeChild(document.getElementById('sorttable_sortrevind'));
+            sortfwdind = document.createElement('span');
+            sortfwdind.id = "sorttable_sortfwdind";
+            sortfwdind.innerHTML = stIsIE ? '&nbsp<font face="webdings">6</font>' : '&nbsp;&#x25BE;';
+            this.appendChild(sortfwdind);
+            return;
+          }
+          
+          // remove sorttable_sorted classes
+          theadrow = this.parentNode;
+          forEach(theadrow.childNodes, function(cell) {
+            if (cell.nodeType == 1) { // an element
+              cell.className = cell.className.replace('sorttable_sorted_reverse','');
+              cell.className = cell.className.replace('sorttable_sorted','');
+            }
+          });
+          sortfwdind = document.getElementById('sorttable_sortfwdind');
+          if (sortfwdind) { sortfwdind.parentNode.removeChild(sortfwdind); }
+          sortrevind = document.getElementById('sorttable_sortrevind');
+          if (sortrevind) { sortrevind.parentNode.removeChild(sortrevind); }
+          
+          this.className += ' sorttable_sorted';
+          sortfwdind = document.createElement('span');
+          sortfwdind.id = "sorttable_sortfwdind";
+          sortfwdind.innerHTML = stIsIE ? '&nbsp<font face="webdings">6</font>' : '&nbsp;&#x25BE;';
+          this.appendChild(sortfwdind);
+
+	        // build an array to sort. This is a Schwartzian transform thing,
+	        // i.e., we "decorate" each row with the actual sort key,
+	        // sort based on the sort keys, and then put the rows back in order
+	        // which is a lot faster because you only do getInnerText once per row
+	        row_array = [];
+	        col = this.sorttable_columnindex;
+	        rows = this.sorttable_tbody.rows;
+	        for (var j=0; j<rows.length; j++) {
+	          row_array[row_array.length] = [sorttable.getInnerText(rows[j].cells[col]), rows[j]];
+	        }
+	        /* If you want a stable sort, uncomment the following line */
+	        //sorttable.shaker_sort(row_array, this.sorttable_sortfunction);
+	        /* and comment out this one */
+	        row_array.sort(this.sorttable_sortfunction);
+	        
+	        tb = this.sorttable_tbody;
+	        for (var j=0; j<row_array.length; j++) {
+	          tb.appendChild(row_array[j][1]);
+	        }
+	        
+	        delete row_array;
+	      });
+	    }
+    }
+  },
+  
+  guessType: function(table, column) {
+    // guess the type of a column based on its first non-blank row
+    sortfn = sorttable.sort_alpha;
+    for (var i=0; i<table.tBodies[0].rows.length; i++) {
+      text = sorttable.getInnerText(table.tBodies[0].rows[i].cells[column]);
+      if (text != '') {
+        if (text.match(/^-?[£$¤]?[\d,.]+%?$/)||text.match(/^\d+((\.|,)\d+)?(E|e)(\+|\-)\d+/)) {
+          return sorttable.sort_numeric;
+        }
+        // check for a date: dd/mm/yyyy or dd/mm/yy 
+        // can have / or . or - as separator
+        // can be mm/dd as well
+        possdate = text.match(sorttable.DATE_RE)
+        if (possdate) {
+          // looks like a date
+          first = parseInt(possdate[1]);
+          second = parseInt(possdate[2]);
+          if (first > 12) {
+            // definitely dd/mm
+            return sorttable.sort_ddmm;
+          } else if (second > 12) {
+            return sorttable.sort_mmdd;
+          } else {
+            // looks like a date, but we can't tell which, so assume
+            // that it's dd/mm (English imperialism!) and keep looking
+            sortfn = sorttable.sort_ddmm;
+          }
+        }
+      }
+    }
+    return sortfn;
+  },
+  
+  getInnerText: function(node) {
+    // gets the text we want to use for sorting for a cell.
+    // strips leading and trailing whitespace.
+    // this is *not* a generic getInnerText function; it's special to sorttable.
+    // for example, you can override the cell text with a customkey attribute.
+    // it also gets .value for <input> fields.
+    
+    hasInputs = (typeof node.getElementsByTagName == 'function') &&
+                 node.getElementsByTagName('input').length;
+    
+    if (node.getAttribute("sorttable_customkey") != null) {
+      return node.getAttribute("sorttable_customkey");
+    }
+    else if (typeof node.textContent != 'undefined' && !hasInputs) {
+      return node.textContent.replace(/^\s+|\s+$/g, '');
+    }
+    else if (typeof node.innerText != 'undefined' && !hasInputs) {
+      return node.innerText.replace(/^\s+|\s+$/g, '');
+    }
+    else if (typeof node.text != 'undefined' && !hasInputs) {
+      return node.text.replace(/^\s+|\s+$/g, '');
+    }
+    else {
+      switch (node.nodeType) {
+        case 3:
+          if (node.nodeName.toLowerCase() == 'input') {
+            return node.value.replace(/^\s+|\s+$/g, '');
+          }
+        case 4:
+          return node.nodeValue.replace(/^\s+|\s+$/g, '');
+          break;
+        case 1:
+        case 11:
+          var innerText = '';
+          for (var i = 0; i < node.childNodes.length; i++) {
+            innerText += sorttable.getInnerText(node.childNodes[i]);
+          }
+          return innerText.replace(/^\s+|\s+$/g, '');
+          break;
+        default:
+          return '';
+      }
+    }
+  },
+  
+  reverse: function(tbody) {
+    // reverse the rows in a tbody
+    newrows = [];
+    for (var i=0; i<tbody.rows.length; i++) {
+      newrows[newrows.length] = tbody.rows[i];
+    }
+    for (var i=newrows.length-1; i>=0; i--) {
+       tbody.appendChild(newrows[i]);
+    }
+    delete newrows;
+  },
+  
+  /* sort functions
+     each sort function takes two parameters, a and b
+     you are comparing a[0] and b[0] */
+  /* Numeric order */
+  sort_numeric: function(a,b) {
+	aa = parseFloat(a[0].replace(/[^0-9.\-eE]/g,''));
+	if (isNaN(aa)) aa = 0;
+	bb = parseFloat(b[0].replace(/[^0-9.\-eE]/g,''));
+	if (isNaN(bb)) bb = 0;
+	return aa-bb;
+    },
+//   sort_numeric: function(a,b) {
+//     aa = parseFloat(a[0].replace(/[^0-9.-eE]/g,''));
+//     if (isNaN(aa)) aa = 0;
+//     bb = parseFloat(b[0].replace(/[^0-9.-eE]/g,'')); 
+//     if (isNaN(bb)) bb = 0;    
+//     return aa-bb;
+//   },
+
+  /* alphabetical order */
+  sort_alpha: function(a,b) {
+    if (a[0]==b[0]) return 0;
+    if (a[0]<b[0]) return -1;
+    return 1;
+  },
+
+  /* sort dates formatted as ddmm (day first, month after) */
+  sort_ddmm: function(a,b) {
+    mtch = a[0].match(sorttable.DATE_RE);
+    y = mtch[3]; m = mtch[2]; d = mtch[1];
+    if (m.length == 1) m = '0'+m;
+    if (d.length == 1) d = '0'+d;
+    dt1 = y+m+d;
+    mtch = b[0].match(sorttable.DATE_RE);
+    y = mtch[3]; m = mtch[2]; d = mtch[1];
+    if (m.length == 1) m = '0'+m;
+    if (d.length == 1) d = '0'+d;
+    dt2 = y+m+d;
+    if (dt1==dt2) return 0;
+    if (dt1<dt2) return -1;
+    return 1;
+  },
+
+  /* sort dates formatted as mmdd (month first, day after) */
+  sort_mmdd: function(a,b) {
+    mtch = a[0].match(sorttable.DATE_RE);
+    y = mtch[3]; d = mtch[2]; m = mtch[1];
+    if (m.length == 1) m = '0'+m;
+    if (d.length == 1) d = '0'+d;
+    dt1 = y+m+d;
+    mtch = b[0].match(sorttable.DATE_RE);
+    y = mtch[3]; d = mtch[2]; m = mtch[1];
+    if (m.length == 1) m = '0'+m;
+    if (d.length == 1) d = '0'+d;
+    dt2 = y+m+d;
+    if (dt1==dt2) return 0;
+    if (dt1<dt2) return -1;
+    return 1;
+  },
+  
+  shaker_sort: function(list, comp_func) {
+    // A stable sort function to allow multi-level sorting of data
+    // see: http://en.wikipedia.org/wiki/Cocktail_sort
+    // thanks to Joseph Nahmias
+    var b = 0;
+    var t = list.length - 1;
+    var swap = true;
+
+    while(swap) {
+        swap = false;
+        for(var i = b; i < t; ++i) {
+            if ( comp_func(list[i], list[i+1]) > 0 ) {
+                var q = list[i]; list[i] = list[i+1]; list[i+1] = q;
+                swap = true;
+            }
+        } // for
+        t--;
+
+        if (!swap) break;
+
+        for(var i = t; i > b; --i) {
+            if ( comp_func(list[i], list[i-1]) < 0 ) {
+                var q = list[i]; list[i] = list[i-1]; list[i-1] = q;
+                swap = true;
+            }
+        } // for
+        b++;
+
+    } // while(swap)
+  }  
+}
+
+/* ******************************************************************
+   Supporting functions: bundled here to avoid depending on a library
+   ****************************************************************** */
+
+// Dean Edwards/Matthias Miller/John Resig
+
+/* for Mozilla/Opera9 */
+if (document.addEventListener) {
+    document.addEventListener("DOMContentLoaded", sorttable.init, false);
+}
+
+/* for Internet Explorer */
+/*@cc_on @*/
+/*@if (@_win32)
+    document.write("<script id=__ie_onload defer src=javascript:void(0)><\/script>");
+    var script = document.getElementById("__ie_onload");
+    script.onreadystatechange = function() {
+        if (this.readyState == "complete") {
+            sorttable.init(); // call the onload handler
+        }
+    };
+/*@end @*/
+
+/* for Safari */
+if (/WebKit/i.test(navigator.userAgent)) { // sniff
+    var _timer = setInterval(function() {
+        if (/loaded|complete/.test(document.readyState)) {
+            sorttable.init(); // call the onload handler
+        }
+    }, 10);
+}
+
+/* for other browsers */
+window.onload = sorttable.init;
+
+// written by Dean Edwards, 2005
+// with input from Tino Zijdel, Matthias Miller, Diego Perini
+
+// http://dean.edwards.name/weblog/2005/10/add-event/
+
+function dean_addEvent(element, type, handler) {
+	if (element.addEventListener) {
+		element.addEventListener(type, handler, false);
+	} else {
+		// assign each event handler a unique ID
+		if (!handler.$$guid) handler.$$guid = dean_addEvent.guid++;
+		// create a hash table of event types for the element
+		if (!element.events) element.events = {};
+		// create a hash table of event handlers for each element/event pair
+		var handlers = element.events[type];
+		if (!handlers) {
+			handlers = element.events[type] = {};
+			// store the existing event handler (if there is one)
+			if (element["on" + type]) {
+				handlers[0] = element["on" + type];
+			}
+		}
+		// store the event handler in the hash table
+		handlers[handler.$$guid] = handler;
+		// assign a global event handler to do all the work
+		element["on" + type] = handleEvent;
+	}
+};
+// a counter used to create unique IDs
+dean_addEvent.guid = 1;
+
+function removeEvent(element, type, handler) {
+	if (element.removeEventListener) {
+		element.removeEventListener(type, handler, false);
+	} else {
+		// delete the event handler from the hash table
+		if (element.events && element.events[type]) {
+			delete element.events[type][handler.$$guid];
+		}
+	}
+};
+
+function handleEvent(event) {
+	var returnValue = true;
+	// grab the event object (IE uses a global event object)
+	event = event || fixEvent(((this.ownerDocument || this.document || this).parentWindow || window).event);
+	// get a reference to the hash table of event handlers
+	var handlers = this.events[event.type];
+	// execute each event handler
+	for (var i in handlers) {
+		this.$$handleEvent = handlers[i];
+		if (this.$$handleEvent(event) === false) {
+			returnValue = false;
+		}
+	}
+	return returnValue;
+};
+
+function fixEvent(event) {
+	// add W3C standard event methods
+	event.preventDefault = fixEvent.preventDefault;
+	event.stopPropagation = fixEvent.stopPropagation;
+	return event;
+};
+fixEvent.preventDefault = function() {
+	this.returnValue = false;
+};
+fixEvent.stopPropagation = function() {
+  this.cancelBubble = true;
+}
+
+// Dean's forEach: http://dean.edwards.name/base/forEach.js
+/*
+	forEach, version 1.0
+	Copyright 2006, Dean Edwards
+	License: http://www.opensource.org/licenses/mit-license.php
+*/
+
+// array-like enumeration
+if (!Array.forEach) { // mozilla already supports this
+	Array.forEach = function(array, block, context) {
+		for (var i = 0; i < array.length; i++) {
+			block.call(context, array[i], i, array);
+		}
+	};
+}
+
+// generic enumeration
+Function.prototype.forEach = function(object, block, context) {
+	for (var key in object) {
+		if (typeof this.prototype[key] == "undefined") {
+			block.call(context, object[key], key, object);
+		}
+	}
+};
+
+// character enumeration
+String.forEach = function(string, block, context) {
+	Array.forEach(string.split(""), function(chr, index) {
+		block.call(context, chr, index, string);
+	});
+};
+
+// globally resolve forEach enumeration
+var forEach = function(object, block, context) {
+	if (object) {
+		var resolve = Object; // default
+		if (object instanceof Function) {
+			// functions have a "length" property
+			resolve = Function;
+		} else if (object.forEach instanceof Function) {
+			// the object implements a custom forEach method so use that
+			object.forEach(block, context);
+			return;
+		} else if (typeof object == "string") {
+			// the object is a string
+			resolve = String;
+		} else if (typeof object.length == "number") {
+			// the object is array-like
+			resolve = Array;
+		}
+		resolve.forEach(object, block, context);
+	}
+}
+
+// --> 
+</script>
+<body>
+<h1>One-to-n alignments</h1>
+<p><pre><b>Command:</b> compare-matrices  -v 1 -mode matches -format1 transfac -file1 $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/discovered_motifs/peak-motifs_motifs_discovered.tf -format2 tf -file2 $RSAT/public_html/data/motif_databases/JASPAR/jaspar_core_vertebrates_2013-11.tf -mode matches -DR -uth offset_rank 1 -lth w 5 -lth Wr 0.3 -lth cor 0.75 -lth Ncor 0.4 -return matrix_name,matrix_id,cor,Ncor,logoDP,NIcor,NsEucl,SSD,NSW,match_rank,width,strand,offset,consensus,alignments_1ton -sort Ncor -o $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/discovered_vs_db/peak-motifs_motifs_vs_db_jaspar_core_vertebrates.tab
+</pre></p>
+<h2>One-to-n matrix alignment; reference matrix: oligos_7nt_test_vs_ctrl_m3_shift0	; 8 matrices	; sort_field=rank_mean</h2>
+<p><table class='sortable'>
+<tr><th>Matrix name</th><th>Aligned logos</th><th>cor</th>
+<th>Ncor</th>
+<th>logoDP</th>
+<th>NIcor</th>
+<th>NsEucl</th>
+<th>SSD</th>
+<th>NSW</th>
+<th>rcor</th>
+<th>rNcor</th>
+<th>rlogoDP</th>
+<th>rNIcor</th>
+<th>rNsEucl</th>
+<th>rSSD</th>
+<th>rNSW</th>
+<th>rank_mean</th>
+<th>match_rank</th>
+<th>Aligned matrices</th>
+</tr><tr>
+<td style='background-color: #FFFFFF;'>oligos_7nt_test_vs_ctrl_m3_shift0 (oligos_7nt_test_vs_ctrl_m3)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/oligos_7nt_test_vs_ctrl_m3_shift0.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/oligos_7nt_test_vs_ctrl_m3_shift0.png'></a></td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_7nt_test_vs_ctrl_m3; m=0 (reference); ncol1=13; shift=0; ncol=16; ssCcCCGCCCCss---
+; Alignment reference
+a	247	252	104	141	70	33	57	88	57	56	59	217	245	0	0	0
+c	906	695	1474	1334	1581	1765	36	1687	1552	1596	1596	773	681	0	0	0
+g	617	749	319	428	307	186	1893	181	354	289	285	799	835	0	0	0
+t	262	336	135	129	74	48	46	76	69	91	92	243	271	0	0	0
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0079.3_shift1 (SP1)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0079.3_shift1.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0079.3_shift1.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.901</td>
+<td style='background-color: #FFFFFF;'>0.763</td>
+<td style='background-color: #FFFFFF;'>4.496</td>
+<td style='background-color: #FFFFFF;'>0.760</td>
+<td style='background-color: #FFFFFF;'>0.939</td>
+<td style='background-color: #FFFFFF;'>0.899</td>
+<td style='background-color: #FFFFFF;'>0.959</td>
+<td style='background-color: #FFFFFF;'>1</td>
+<td style='background-color: #FFFFFF;'>1</td>
+<td style='background-color: #FFFFFF;'>7</td>
+<td style='background-color: #FFFFFF;'>1</td>
+<td style='background-color: #FFFFFF;'>3</td>
+<td style='background-color: #FFFFFF;'>3</td>
+<td style='background-color: #FFFFFF;'>3</td>
+<td style='background-color: #FFFFFF;'>2.714</td>
+<td style='background-color: #FFFFFF;'>1</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_7nt_test_vs_ctrl_m3 versus MA0079.3 (SP1); m=1/7; ncol2=11; w=11; offset=1; strand=D; shift=1; score= 2.7143; -gCCCCkCCCCy----
+; cor=0.901; Ncor=0.763; logoDP=4.496; NIcor=0.760; NsEucl=0.939; SSD=0.899; NSW=0.959; rcor=1; rNcor=1; rlogoDP=7; rNIcor=1; rNsEucl=3; rSSD=3; rNSW=3; rank_mean=2.714; match_rank=1
+a	0	857	0	99	0	0	1359	0	0	0	1054	652	0	0	0	0
+c	0	1786	6215	6703	8734	8661	0	8734	8734	6679	6357	4969	0	0	0	0
+g	0	4271	642	0	0	0	4624	0	0	0	0	734	0	0	0	0
+t	0	1820	1877	1932	0	73	2751	0	0	2055	1323	2379	0	0	0	0
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0516.1_shift1 (SP2)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0516.1_shift1.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0516.1_shift1.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.886</td>
+<td style='background-color: #FFFFFF;'>0.665</td>
+<td style='background-color: #FFFFFF;'>4.462</td>
+<td style='background-color: #FFFFFF;'>0.671</td>
+<td style='background-color: #FFFFFF;'>0.940</td>
+<td style='background-color: #FFFFFF;'>1.034</td>
+<td style='background-color: #FFFFFF;'>0.957</td>
+<td style='background-color: #FFFFFF;'>5</td>
+<td style='background-color: #FFFFFF;'>7</td>
+<td style='background-color: #FFFFFF;'>8</td>
+<td style='background-color: #FFFFFF;'>5</td>
+<td style='background-color: #FFFFFF;'>2</td>
+<td style='background-color: #FFFFFF;'>7</td>
+<td style='background-color: #FFFFFF;'>4</td>
+<td style='background-color: #FFFFFF;'>5.429</td>
+<td style='background-color: #FFFFFF;'>3</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_7nt_test_vs_ctrl_m3 versus MA0516.1 (SP2); m=2/7; ncol2=15; w=12; offset=1; strand=D; shift=1; score= 5.4286; -gyCCCGCCyCyyccs
+; cor=0.886; Ncor=0.665; logoDP=4.462; NIcor=0.671; NsEucl=0.940; SSD=1.034; NSW=0.957; rcor=5; rNcor=7; rlogoDP=8; rNIcor=5; rNsEucl=2; rSSD=7; rNSW=4; rank_mean=5.429; match_rank=3
+a	0	160	39	52	0	0	174	0	0	0	206	115	187	226	228	203
+c	0	253	811	1386	1679	1643	0	1686	1656	1108	1196	971	554	717	794	745
+g	0	1028	257	1	7	0	1280	0	0	0	0	99	325	401	408	422
+t	0	245	579	247	0	43	232	0	30	578	284	501	620	342	256	316
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0079.2_shift2 (SP1)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0079.2_shift2.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0079.2_shift2.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.870</td>
+<td style='background-color: #FFFFFF;'>0.670</td>
+<td style='background-color: #FFFFFF;'>3.144</td>
+<td style='background-color: #FFFFFF;'>0.647</td>
+<td style='background-color: #FFFFFF;'>0.928</td>
+<td style='background-color: #FFFFFF;'>1.034</td>
+<td style='background-color: #FFFFFF;'>0.948</td>
+<td style='background-color: #FFFFFF;'>9</td>
+<td style='background-color: #FFFFFF;'>6</td>
+<td style='background-color: #FFFFFF;'>18</td>
+<td style='background-color: #FFFFFF;'>8</td>
+<td style='background-color: #FFFFFF;'>17</td>
+<td style='background-color: #FFFFFF;'>8</td>
+<td style='background-color: #FFFFFF;'>8</td>
+<td style='background-color: #FFFFFF;'>10.571</td>
+<td style='background-color: #FFFFFF;'>8</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_7nt_test_vs_ctrl_m3 versus MA0079.2 (SP1); m=3/7; ncol2=10; w=10; offset=2; strand=D; shift=2; score=10.5714; --CCCCkCCCCC----
+; cor=0.870; Ncor=0.670; logoDP=3.144; NIcor=0.647; NsEucl=0.928; SSD=1.034; NSW=0.948; rcor=9; rNcor=6; rlogoDP=18; rNIcor=8; rNsEucl=17; rSSD=8; rNSW=8; rank_mean=10.571; match_rank=8
+a	0	0	0	0	0	4	2	0	1	0	6	3	0	0	0	0
+c	0	0	32	30	35	27	5	28	31	24	25	26	0	0	0	0
+g	0	0	1	1	0	0	15	1	0	3	0	3	0	0	0	0
+t	0	0	2	4	0	4	13	6	3	8	4	3	0	0	0	0
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0162.2_shift1 (EGR1)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0162.2_shift1.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0162.2_shift1.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.848</td>
+<td style='background-color: #FFFFFF;'>0.678</td>
+<td style='background-color: #FFFFFF;'>3.726</td>
+<td style='background-color: #FFFFFF;'>0.664</td>
+<td style='background-color: #FFFFFF;'>0.932</td>
+<td style='background-color: #FFFFFF;'>1.320</td>
+<td style='background-color: #FFFFFF;'>0.945</td>
+<td style='background-color: #FFFFFF;'>15</td>
+<td style='background-color: #FFFFFF;'>5</td>
+<td style='background-color: #FFFFFF;'>14</td>
+<td style='background-color: #FFFFFF;'>6</td>
+<td style='background-color: #FFFFFF;'>11</td>
+<td style='background-color: #FFFFFF;'>16</td>
+<td style='background-color: #FFFFFF;'>10</td>
+<td style='background-color: #FFFFFF;'>11.000</td>
+<td style='background-color: #FFFFFF;'>9</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_7nt_test_vs_ctrl_m3 versus MA0162.2 (EGR1); m=4/7; ncol2=14; w=12; offset=1; strand=D; shift=1; score=     11; -sccCCgCCCMCkCc-
+; cor=0.848; Ncor=0.678; logoDP=3.726; NIcor=0.664; NsEucl=0.932; SSD=1.320; NSW=0.945; rcor=15; rNcor=5; rlogoDP=14; rNIcor=6; rNsEucl=11; rSSD=16; rNSW=10; rank_mean=11.000; match_rank=9
+a	0	1098	1506	1160	1335	233	2911	0	0	0	3652	0	2368	0	3026	0
+c	0	5728	6847	6049	10431	11574	0	12256	11852	10154	8361	11952	0	9849	5595	0
+g	0	3083	1359	2250	0	0	6840	0	0	611	0	0	6599	1420	1913	0
+t	0	2347	2544	2797	490	449	2505	0	404	1491	243	304	3289	987	1722	0
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0599.1_shift1 (KLF5)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0599.1_shift1.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0599.1_shift1.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.852</td>
+<td style='background-color: #FFFFFF;'>0.655</td>
+<td style='background-color: #FFFFFF;'>4.321</td>
+<td style='background-color: #FFFFFF;'>0.636</td>
+<td style='background-color: #FFFFFF;'>0.920</td>
+<td style='background-color: #FFFFFF;'>1.279</td>
+<td style='background-color: #FFFFFF;'>0.936</td>
+<td style='background-color: #FFFFFF;'>13</td>
+<td style='background-color: #FFFFFF;'>8</td>
+<td style='background-color: #FFFFFF;'>9</td>
+<td style='background-color: #FFFFFF;'>9</td>
+<td style='background-color: #FFFFFF;'>21</td>
+<td style='background-color: #FFFFFF;'>13</td>
+<td style='background-color: #FFFFFF;'>18</td>
+<td style='background-color: #FFFFFF;'>13.000</td>
+<td style='background-color: #FFFFFF;'>11</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_7nt_test_vs_ctrl_m3 versus MA0599.1 (KLF5); m=5/7; ncol2=10; w=10; offset=1; strand=D; shift=1; score=     13; -gCCMCrCCCh-----
+; cor=0.852; Ncor=0.655; logoDP=4.321; NIcor=0.636; NsEucl=0.920; SSD=1.279; NSW=0.936; rcor=13; rNcor=8; rlogoDP=9; rNIcor=9; rNsEucl=21; rSSD=13; rNSW=18; rank_mean=13.000; match_rank=11
+a	0	1429	0	0	3477	0	5051	0	0	0	3915	0	0	0	0	0
+c	0	2023	11900	12008	9569	13611	0	13611	13611	13135	5595	0	0	0	0	0
+g	0	7572	0	0	0	0	5182	0	0	0	0	0	0	0	0	0
+t	0	2587	1711	1603	565	0	3378	0	0	476	4101	0	0	0	0	0
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0079.1_rc_shift1 (SP1_rc)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0079.1_rc_shift1.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0079.1_rc_shift1.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.770</td>
+<td style='background-color: #FFFFFF;'>0.592</td>
+<td style='background-color: #FFFFFF;'>0.961</td>
+<td style='background-color: #FFFFFF;'>-0.075</td>
+<td style='background-color: #FFFFFF;'>0.910</td>
+<td style='background-color: #FFFFFF;'>1.628</td>
+<td style='background-color: #FFFFFF;'>0.919</td>
+<td style='background-color: #FFFFFF;'>32</td>
+<td style='background-color: #FFFFFF;'>13</td>
+<td style='background-color: #FFFFFF;'>32</td>
+<td style='background-color: #FFFFFF;'>33</td>
+<td style='background-color: #FFFFFF;'>29</td>
+<td style='background-color: #FFFFFF;'>23</td>
+<td style='background-color: #FFFFFF;'>29</td>
+<td style='background-color: #FFFFFF;'>27.286</td>
+<td style='background-color: #FFFFFF;'>30</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_7nt_test_vs_ctrl_m3 versus MA0079.1_rc (SP1_rc); m=6/7; ncol2=10; w=10; offset=1; strand=R; shift=1; score=27.2857; -WCMmhsCCym-----
+; cor=0.770; Ncor=0.592; logoDP=0.961; NIcor=-0.075; NsEucl=0.910; SSD=1.628; NSW=0.919; rcor=32; rNcor=13; rlogoDP=32; rNIcor=33; rNsEucl=29; rSSD=23; rNSW=29; rank_mean=27.286; match_rank=30
+a	0	6	0	2	2	2	1	0	0	1	2	0	0	0	0	0
+c	0	0	6	6	5	4	2	8	8	4	4	0	0	0	0	0
+g	0	0	1	0	1	0	5	0	0	1	1	0	0	0	0	0
+t	0	2	1	0	0	2	0	0	0	2	1	0	0	0	0	0
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0039.2_rc_shift1 (Klf4_rc)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0039.2_rc_shift1.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0039.2_rc_shift1.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.791</td>
+<td style='background-color: #FFFFFF;'>0.608</td>
+<td style='background-color: #FFFFFF;'>2.178</td>
+<td style='background-color: #FFFFFF;'>0.045</td>
+<td style='background-color: #FFFFFF;'>0.905</td>
+<td style='background-color: #FFFFFF;'>1.805</td>
+<td style='background-color: #FFFFFF;'>0.910</td>
+<td style='background-color: #FFFFFF;'>29</td>
+<td style='background-color: #FFFFFF;'>11</td>
+<td style='background-color: #FFFFFF;'>28</td>
+<td style='background-color: #FFFFFF;'>27</td>
+<td style='background-color: #FFFFFF;'>34</td>
+<td style='background-color: #FFFFFF;'>30</td>
+<td style='background-color: #FFFFFF;'>32</td>
+<td style='background-color: #FFFFFF;'>27.286</td>
+<td style='background-color: #FFFFFF;'>31</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_7nt_test_vs_ctrl_m3 versus MA0039.2_rc (Klf4_rc); m=7/7; ncol2=10; w=10; offset=1; strand=R; shift=1; score=27.2857; -gCCmCrCCCw-----
+; cor=0.791; Ncor=0.608; logoDP=2.178; NIcor=0.045; NsEucl=0.905; SSD=1.805; NSW=0.910; rcor=29; rNcor=11; rlogoDP=28; rNIcor=27; rNsEucl=34; rSSD=30; rNSW=32; rank_mean=27.286; match_rank=31
+a	0	932	289	125	2042	34	2139	16	13	6	1765	0	0	0	0	0
+c	0	280	3789	3902	2179	4273	11	4281	4304	4237	1022	0	0	0	0	0
+g	0	2858	130	46	80	15	1922	36	13	9	81	0	0	0	0	0
+t	0	254	123	264	42	22	277	14	14	88	1468	0	0	0	0	0
+</pre></td>
+</tr>
+</table></p>
+<h2>One-to-n matrix alignment; reference matrix: oligos_7nt_test_vs_ctrl_m1_shift2	; 4 matrices	; sort_field=rank_mean</h2>
+<p><table class='sortable'>
+<tr><th>Matrix name</th><th>Aligned logos</th><th>cor</th>
+<th>Ncor</th>
+<th>logoDP</th>
+<th>NIcor</th>
+<th>NsEucl</th>
+<th>SSD</th>
+<th>NSW</th>
+<th>rcor</th>
+<th>rNcor</th>
+<th>rlogoDP</th>
+<th>rNIcor</th>
+<th>rNsEucl</th>
+<th>rSSD</th>
+<th>rNSW</th>
+<th>rank_mean</th>
+<th>match_rank</th>
+<th>Aligned matrices</th>
+</tr><tr>
+<td style='background-color: #FFFFFF;'>oligos_7nt_test_vs_ctrl_m1_shift2 (oligos_7nt_test_vs_ctrl_m1)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/oligos_7nt_test_vs_ctrl_m1_shift2.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/oligos_7nt_test_vs_ctrl_m1_shift2.png'></a></td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_7nt_test_vs_ctrl_m1; m=0 (reference); ncol1=14; shift=2; ncol=16; --csGCCCCaGGgcss
+; Alignment reference
+a	0	0	195	244	54	37	19	21	11	808	21	17	123	132	281	174
+c	0	0	548	431	70	1140	1083	1093	1108	179	89	101	283	849	359	410
+g	0	0	314	350	1071	58	138	117	132	248	1147	1134	747	185	425	448
+t	0	0	210	242	72	32	27	36	16	32	10	15	114	101	202	235
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0524.1_shift0 (TFAP2C)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0524.1_shift0.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0524.1_shift0.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.883</td>
+<td style='background-color: #FFFFFF;'>0.717</td>
+<td style='background-color: #FFFFFF;'>5.323</td>
+<td style='background-color: #FFFFFF;'>0.719</td>
+<td style='background-color: #FFFFFF;'>0.944</td>
+<td style='background-color: #FFFFFF;'>1.048</td>
+<td style='background-color: #FFFFFF;'>0.960</td>
+<td style='background-color: #FFFFFF;'>7</td>
+<td style='background-color: #FFFFFF;'>3</td>
+<td style='background-color: #FFFFFF;'>5</td>
+<td style='background-color: #FFFFFF;'>3</td>
+<td style='background-color: #FFFFFF;'>1</td>
+<td style='background-color: #FFFFFF;'>9</td>
+<td style='background-color: #FFFFFF;'>2</td>
+<td style='background-color: #FFFFFF;'>4.286</td>
+<td style='background-color: #FFFFFF;'>2</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_7nt_test_vs_ctrl_m1 versus MA0524.1 (TFAP2C); m=1/3; ncol2=15; w=13; offset=-2; strand=D; shift=0; score= 4.2857; hmydsCCyCAGGsca-
+; cor=0.883; Ncor=0.717; logoDP=5.323; NIcor=0.719; NsEucl=0.944; SSD=1.048; NSW=0.960; rcor=7; rNcor=3; rlogoDP=5; rNIcor=3; rNsEucl=1; rSSD=9; rNSW=2; rank_mean=4.286; match_rank=2
+a	4801	6477	2550	4918	421	0	0	0	1082	16442	191	0	285	4343	8905	0
+c	6752	4693	4943	2009	6040	18426	14817	9317	14790	0	0	0	7908	9235	3259	0
+g	2123	3347	2643	6098	11033	0	0	1237	1768	1195	18235	18426	10222	1788	2536	0
+t	4750	3909	8290	5401	932	0	3609	7872	786	789	0	0	11	3060	3726	0
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0003.2_shift0 (TFAP2A)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0003.2_shift0.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0003.2_shift0.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.841</td>
+<td style='background-color: #FFFFFF;'>0.684</td>
+<td style='background-color: #FFFFFF;'>5.056</td>
+<td style='background-color: #FFFFFF;'>0.681</td>
+<td style='background-color: #FFFFFF;'>0.935</td>
+<td style='background-color: #FFFFFF;'>1.441</td>
+<td style='background-color: #FFFFFF;'>0.945</td>
+<td style='background-color: #FFFFFF;'>16</td>
+<td style='background-color: #FFFFFF;'>4</td>
+<td style='background-color: #FFFFFF;'>6</td>
+<td style='background-color: #FFFFFF;'>4</td>
+<td style='background-color: #FFFFFF;'>7</td>
+<td style='background-color: #FFFFFF;'>20</td>
+<td style='background-color: #FFFFFF;'>11</td>
+<td style='background-color: #FFFFFF;'>9.714</td>
+<td style='background-color: #FFFFFF;'>6</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_7nt_test_vs_ctrl_m1 versus MA0003.2 (TFAP2A); m=2/3; ncol2=15; w=13; offset=-2; strand=D; shift=0; score= 9.7143; maywGCCysAGGsCa-
+; cor=0.841; Ncor=0.684; logoDP=5.056; NIcor=0.681; NsEucl=0.935; SSD=1.441; NSW=0.945; rcor=16; rNcor=4; rlogoDP=6; rNIcor=4; rNsEucl=7; rSSD=20; rNSW=11; rank_mean=9.714; match_rank=6
+a	1387	2141	727	1517	56	0	0	62	346	3738	460	0	116	451	3146	0
+c	1630	1060	1506	519	1199	5098	4762	1736	2729	236	0	0	1443	3672	690	0
+g	851	792	884	985	3712	0	0	85	1715	920	4638	5098	3455	465	168	0
+t	1230	1105	1981	2077	131	0	336	3215	308	204	0	0	84	510	1094	0
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0003.1_shift4 (TFAP2A)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0003.1_shift4.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0003.1_shift4.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.818</td>
+<td style='background-color: #FFFFFF;'>0.526</td>
+<td style='background-color: #FFFFFF;'>3.671</td>
+<td style='background-color: #FFFFFF;'>0.485</td>
+<td style='background-color: #FFFFFF;'>0.909</td>
+<td style='background-color: #FFFFFF;'>1.351</td>
+<td style='background-color: #FFFFFF;'>0.925</td>
+<td style='background-color: #FFFFFF;'>21</td>
+<td style='background-color: #FFFFFF;'>19</td>
+<td style='background-color: #FFFFFF;'>15</td>
+<td style='background-color: #FFFFFF;'>17</td>
+<td style='background-color: #FFFFFF;'>31</td>
+<td style='background-color: #FFFFFF;'>18</td>
+<td style='background-color: #FFFFFF;'>27</td>
+<td style='background-color: #FFFFFF;'>21.143</td>
+<td style='background-color: #FFFFFF;'>19</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_7nt_test_vs_ctrl_m1 versus MA0003.1 (TFAP2A); m=3/3; ncol2=9; w=9; offset=2; strand=D; shift=4; score=21.1429; ----GCCcbrrGs---
+; cor=0.818; Ncor=0.526; logoDP=3.671; NIcor=0.485; NsEucl=0.909; SSD=1.351; NSW=0.925; rcor=21; rNcor=19; rlogoDP=15; rNIcor=17; rNsEucl=31; rSSD=18; rNSW=27; rank_mean=21.143; match_rank=19
+a	0	0	0	0	0	0	0	22	19	55	53	19	9	0	0	0
+c	0	0	0	0	0	185	185	71	57	44	30	16	78	0	0	0
+g	0	0	0	0	185	0	0	46	61	67	91	137	79	0	0	0
+t	0	0	0	0	0	0	0	46	48	19	11	13	19	0	0	0
+</pre></td>
+</tr>
+</table></p>
+<h2>One-to-n matrix alignment; reference matrix: dyads_test_vs_ctrl_m3_shift0	; 2 matrices	; sort_field=rank_mean</h2>
+<p><table class='sortable'>
+<tr><th>Matrix name</th><th>Aligned logos</th><th>cor</th>
+<th>Ncor</th>
+<th>logoDP</th>
+<th>NIcor</th>
+<th>NsEucl</th>
+<th>SSD</th>
+<th>NSW</th>
+<th>rcor</th>
+<th>rNcor</th>
+<th>rlogoDP</th>
+<th>rNIcor</th>
+<th>rNsEucl</th>
+<th>rSSD</th>
+<th>rNSW</th>
+<th>rank_mean</th>
+<th>match_rank</th>
+<th>Aligned matrices</th>
+</tr><tr>
+<td style='background-color: #FFFFFF;'>dyads_test_vs_ctrl_m3_shift0 (dyads_test_vs_ctrl_m3)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/dyads_test_vs_ctrl_m3_shift0.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/dyads_test_vs_ctrl_m3_shift0.png'></a></td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;'><pre>; dyads_test_vs_ctrl_m3; m=0 (reference); ncol1=15; shift=0; ncol=15; ssGCCbsvsGCCtss
+; Alignment reference
+a	159	182	24	26	22	9	102	311	14	30	18	36	92	122	179
+c	456	389	50	1006	972	486	521	367	395	48	1028	924	202	428	334
+g	337	330	1014	67	101	308	384	431	700	1010	56	125	258	392	410
+t	166	217	30	19	23	315	111	9	9	30	16	33	566	176	195
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0003.1_shift2 (TFAP2A)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0003.1_shift2.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0003.1_shift2.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.890</td>
+<td style='background-color: #FFFFFF;'>0.534</td>
+<td style='background-color: #FFFFFF;'>4.042</td>
+<td style='background-color: #FFFFFF;'>0.521</td>
+<td style='background-color: #FFFFFF;'>0.934</td>
+<td style='background-color: #FFFFFF;'>0.705</td>
+<td style='background-color: #FFFFFF;'>0.961</td>
+<td style='background-color: #FFFFFF;'>3</td>
+<td style='background-color: #FFFFFF;'>17</td>
+<td style='background-color: #FFFFFF;'>10</td>
+<td style='background-color: #FFFFFF;'>13</td>
+<td style='background-color: #FFFFFF;'>9</td>
+<td style='background-color: #FFFFFF;'>1</td>
+<td style='background-color: #FFFFFF;'>1</td>
+<td style='background-color: #FFFFFF;'>7.714</td>
+<td style='background-color: #FFFFFF;'>4</td>
+<td style='background-color: #FFFFFF;'><pre>; dyads_test_vs_ctrl_m3 versus MA0003.1 (TFAP2A); m=1/1; ncol2=9; w=9; offset=2; strand=D; shift=2; score= 7.7143; --GCCcbrrGs----
+; cor=0.890; Ncor=0.534; logoDP=4.042; NIcor=0.521; NsEucl=0.934; SSD=0.705; NSW=0.961; rcor=3; rNcor=17; rlogoDP=10; rNIcor=13; rNsEucl=9; rSSD=1; rNSW=1; rank_mean=7.714; match_rank=4
+a	0	0	0	0	0	22	19	55	53	19	9	0	0	0	0
+c	0	0	0	185	185	71	57	44	30	16	78	0	0	0	0
+g	0	0	185	0	0	46	61	67	91	137	79	0	0	0	0
+t	0	0	0	0	0	46	48	19	11	13	19	0	0	0	0
+</pre></td>
+</tr>
+</table></p>
+<h2>One-to-n matrix alignment; reference matrix: oligos_7nt_test_vs_ctrl_m2_shift3	; 3 matrices	; sort_field=rank_mean</h2>
+<p><table class='sortable'>
+<tr><th>Matrix name</th><th>Aligned logos</th><th>cor</th>
+<th>Ncor</th>
+<th>logoDP</th>
+<th>NIcor</th>
+<th>NsEucl</th>
+<th>SSD</th>
+<th>NSW</th>
+<th>rcor</th>
+<th>rNcor</th>
+<th>rlogoDP</th>
+<th>rNIcor</th>
+<th>rNsEucl</th>
+<th>rSSD</th>
+<th>rNSW</th>
+<th>rank_mean</th>
+<th>match_rank</th>
+<th>Aligned matrices</th>
+</tr><tr>
+<td style='background-color: #FFFFFF;'>oligos_7nt_test_vs_ctrl_m2_shift3 (oligos_7nt_test_vs_ctrl_m2)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/oligos_7nt_test_vs_ctrl_m2_shift3.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/oligos_7nt_test_vs_ctrl_m2_shift3.png'></a></td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_7nt_test_vs_ctrl_m2; m=0 (reference); ncol1=11; shift=3; ncol=15; ---skCCTCAGGys-
+; Alignment reference
+a	0	0	0	49	57	0	0	1	0	192	0	0	41	50	0
+c	0	0	0	81	38	239	239	1	240	20	7	2	89	71	0
+g	0	0	0	77	80	1	2	19	1	29	234	239	45	66	0
+t	0	0	0	34	66	1	0	220	0	0	0	0	66	54	0
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0524.1_shift0 (TFAP2C)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0524.1_shift0.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0524.1_shift0.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.866</td>
+<td style='background-color: #FFFFFF;'>0.635</td>
+<td style='background-color: #FFFFFF;'>7.711</td>
+<td style='background-color: #FFFFFF;'>0.649</td>
+<td style='background-color: #FFFFFF;'>0.929</td>
+<td style='background-color: #FFFFFF;'>1.225</td>
+<td style='background-color: #FFFFFF;'>0.944</td>
+<td style='background-color: #FFFFFF;'>10</td>
+<td style='background-color: #FFFFFF;'>10</td>
+<td style='background-color: #FFFFFF;'>1</td>
+<td style='background-color: #FFFFFF;'>7</td>
+<td style='background-color: #FFFFFF;'>14</td>
+<td style='background-color: #FFFFFF;'>10</td>
+<td style='background-color: #FFFFFF;'>12</td>
+<td style='background-color: #FFFFFF;'>9.143</td>
+<td style='background-color: #FFFFFF;'>5</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_7nt_test_vs_ctrl_m2 versus MA0524.1 (TFAP2C); m=1/2; ncol2=15; w=11; offset=-3; strand=D; shift=0; score= 9.1429; hmydsCCyCAGGsca
+; cor=0.866; Ncor=0.635; logoDP=7.711; NIcor=0.649; NsEucl=0.929; SSD=1.225; NSW=0.944; rcor=10; rNcor=10; rlogoDP=1; rNIcor=7; rNsEucl=14; rSSD=10; rNSW=12; rank_mean=9.143; match_rank=5
+a	4801	6477	2550	4918	421	0	0	0	1082	16442	191	0	285	4343	8905
+c	6752	4693	4943	2009	6040	18426	14817	9317	14790	0	0	0	7908	9235	3259
+g	2123	3347	2643	6098	11033	0	0	1237	1768	1195	18235	18426	10222	1788	2536
+t	4750	3909	8290	5401	932	0	3609	7872	786	789	0	0	11	3060	3726
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0003.2_shift0 (TFAP2A)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0003.2_shift0.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0003.2_shift0.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.829</td>
+<td style='background-color: #FFFFFF;'>0.608</td>
+<td style='background-color: #FFFFFF;'>7.182</td>
+<td style='background-color: #FFFFFF;'>0.609</td>
+<td style='background-color: #FFFFFF;'>0.920</td>
+<td style='background-color: #FFFFFF;'>1.565</td>
+<td style='background-color: #FFFFFF;'>0.929</td>
+<td style='background-color: #FFFFFF;'>19</td>
+<td style='background-color: #FFFFFF;'>12</td>
+<td style='background-color: #FFFFFF;'>2</td>
+<td style='background-color: #FFFFFF;'>10</td>
+<td style='background-color: #FFFFFF;'>22</td>
+<td style='background-color: #FFFFFF;'>22</td>
+<td style='background-color: #FFFFFF;'>24</td>
+<td style='background-color: #FFFFFF;'>15.857</td>
+<td style='background-color: #FFFFFF;'>15</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_7nt_test_vs_ctrl_m2 versus MA0003.2 (TFAP2A); m=2/2; ncol2=15; w=11; offset=-3; strand=D; shift=0; score=15.8571; maywGCCysAGGsCa
+; cor=0.829; Ncor=0.608; logoDP=7.182; NIcor=0.609; NsEucl=0.920; SSD=1.565; NSW=0.929; rcor=19; rNcor=12; rlogoDP=2; rNIcor=10; rNsEucl=22; rSSD=22; rNSW=24; rank_mean=15.857; match_rank=15
+a	1387	2141	727	1517	56	0	0	62	346	3738	460	0	116	451	3146
+c	1630	1060	1506	519	1199	5098	4762	1736	2729	236	0	0	1443	3672	690
+g	851	792	884	985	3712	0	0	85	1715	920	4638	5098	3455	465	168
+t	1230	1105	1981	2077	131	0	336	3215	308	204	0	0	84	510	1094
+</pre></td>
+</tr>
+</table></p>
+<h2>One-to-n matrix alignment; reference matrix: dyads_test_vs_ctrl_m2_shift0	; 7 matrices	; sort_field=rank_mean</h2>
+<p><table class='sortable'>
+<tr><th>Matrix name</th><th>Aligned logos</th><th>cor</th>
+<th>Ncor</th>
+<th>logoDP</th>
+<th>NIcor</th>
+<th>NsEucl</th>
+<th>SSD</th>
+<th>NSW</th>
+<th>rcor</th>
+<th>rNcor</th>
+<th>rlogoDP</th>
+<th>rNIcor</th>
+<th>rNsEucl</th>
+<th>rSSD</th>
+<th>rNSW</th>
+<th>rank_mean</th>
+<th>match_rank</th>
+<th>Aligned matrices</th>
+</tr><tr>
+<td style='background-color: #FFFFFF;'>dyads_test_vs_ctrl_m2_shift0 (dyads_test_vs_ctrl_m2)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/dyads_test_vs_ctrl_m2_shift0.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/dyads_test_vs_ctrl_m2_shift0.png'></a></td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;'><pre>; dyads_test_vs_ctrl_m2; m=0 (reference); ncol1=17; shift=0; ncol=17; ssgCCCCGCCCCGCCss
+; Alignment reference
+a	239	229	121	81	76	79	109	103	58	57	71	96	98	88	97	187	179
+c	726	623	262	1223	1188	1203	1191	103	1270	1239	1224	1096	221	1129	1129	679	609
+g	407	484	1065	188	222	230	180	1258	182	216	218	256	1138	270	245	451	559
+t	210	246	134	90	96	70	102	118	72	70	69	134	125	95	111	265	235
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0599.1_shift2 (KLF5)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0599.1_shift2.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0599.1_shift2.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.894</td>
+<td style='background-color: #FFFFFF;'>0.526</td>
+<td style='background-color: #FFFFFF;'>3.877</td>
+<td style='background-color: #FFFFFF;'>0.518</td>
+<td style='background-color: #FFFFFF;'>0.932</td>
+<td style='background-color: #FFFFFF;'>0.936</td>
+<td style='background-color: #FFFFFF;'>0.953</td>
+<td style='background-color: #FFFFFF;'>2</td>
+<td style='background-color: #FFFFFF;'>20</td>
+<td style='background-color: #FFFFFF;'>11</td>
+<td style='background-color: #FFFFFF;'>14</td>
+<td style='background-color: #FFFFFF;'>12</td>
+<td style='background-color: #FFFFFF;'>5</td>
+<td style='background-color: #FFFFFF;'>5</td>
+<td style='background-color: #FFFFFF;'>9.857</td>
+<td style='background-color: #FFFFFF;'>7</td>
+<td style='background-color: #FFFFFF;'><pre>; dyads_test_vs_ctrl_m2 versus MA0599.1 (KLF5); m=1/6; ncol2=10; w=10; offset=2; strand=D; shift=2; score= 9.8571; --gCCMCrCCCh-----
+; cor=0.894; Ncor=0.526; logoDP=3.877; NIcor=0.518; NsEucl=0.932; SSD=0.936; NSW=0.953; rcor=2; rNcor=20; rlogoDP=11; rNIcor=14; rNsEucl=12; rSSD=5; rNSW=5; rank_mean=9.857; match_rank=7
+a	0	0	1429	0	0	3477	0	5051	0	0	0	3915	0	0	0	0	0
+c	0	0	2023	11900	12008	9569	13611	0	13611	13611	13135	5595	0	0	0	0	0
+g	0	0	7572	0	0	0	0	5182	0	0	0	0	0	0	0	0	0
+t	0	0	2587	1711	1603	565	0	3378	0	0	476	4101	0	0	0	0	0
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0516.1_shift2 (SP2)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0516.1_shift2.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0516.1_shift2.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.822</td>
+<td style='background-color: #FFFFFF;'>0.725</td>
+<td style='background-color: #FFFFFF;'>3.755</td>
+<td style='background-color: #FFFFFF;'>0.720</td>
+<td style='background-color: #FFFFFF;'>0.939</td>
+<td style='background-color: #FFFFFF;'>1.699</td>
+<td style='background-color: #FFFFFF;'>0.943</td>
+<td style='background-color: #FFFFFF;'>20</td>
+<td style='background-color: #FFFFFF;'>2</td>
+<td style='background-color: #FFFFFF;'>13</td>
+<td style='background-color: #FFFFFF;'>2</td>
+<td style='background-color: #FFFFFF;'>4</td>
+<td style='background-color: #FFFFFF;'>25</td>
+<td style='background-color: #FFFFFF;'>13</td>
+<td style='background-color: #FFFFFF;'>11.286</td>
+<td style='background-color: #FFFFFF;'>10</td>
+<td style='background-color: #FFFFFF;'><pre>; dyads_test_vs_ctrl_m2 versus MA0516.1 (SP2); m=2/6; ncol2=15; w=15; offset=2; strand=D; shift=2; score=11.2857; --gyCCCGCCyCyyccs
+; cor=0.822; Ncor=0.725; logoDP=3.755; NIcor=0.720; NsEucl=0.939; SSD=1.699; NSW=0.943; rcor=20; rNcor=2; rlogoDP=13; rNIcor=2; rNsEucl=4; rSSD=25; rNSW=13; rank_mean=11.286; match_rank=10
+a	0	0	160	39	52	0	0	174	0	0	0	206	115	187	226	228	203
+c	0	0	253	811	1386	1679	1643	0	1686	1656	1108	1196	971	554	717	794	745
+g	0	0	1028	257	1	7	0	1280	0	0	0	0	99	325	401	408	422
+t	0	0	245	579	247	0	43	232	0	30	578	284	501	620	342	256	316
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0079.3_shift2 (SP1)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0079.3_shift2.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0079.3_shift2.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.857</td>
+<td style='background-color: #FFFFFF;'>0.554</td>
+<td style='background-color: #FFFFFF;'>3.841</td>
+<td style='background-color: #FFFFFF;'>0.551</td>
+<td style='background-color: #FFFFFF;'>0.927</td>
+<td style='background-color: #FFFFFF;'>1.277</td>
+<td style='background-color: #FFFFFF;'>0.942</td>
+<td style='background-color: #FFFFFF;'>11</td>
+<td style='background-color: #FFFFFF;'>15</td>
+<td style='background-color: #FFFFFF;'>12</td>
+<td style='background-color: #FFFFFF;'>11</td>
+<td style='background-color: #FFFFFF;'>18</td>
+<td style='background-color: #FFFFFF;'>12</td>
+<td style='background-color: #FFFFFF;'>15</td>
+<td style='background-color: #FFFFFF;'>13.429</td>
+<td style='background-color: #FFFFFF;'>12</td>
+<td style='background-color: #FFFFFF;'><pre>; dyads_test_vs_ctrl_m2 versus MA0079.3 (SP1); m=3/6; ncol2=11; w=11; offset=2; strand=D; shift=2; score=13.4286; --gCCCCkCCCCy----
+; cor=0.857; Ncor=0.554; logoDP=3.841; NIcor=0.551; NsEucl=0.927; SSD=1.277; NSW=0.942; rcor=11; rNcor=15; rlogoDP=12; rNIcor=11; rNsEucl=18; rSSD=12; rNSW=15; rank_mean=13.429; match_rank=12
+a	0	0	857	0	99	0	0	1359	0	0	0	1054	652	0	0	0	0
+c	0	0	1786	6215	6703	8734	8661	0	8734	8734	6679	6357	4969	0	0	0	0
+g	0	0	4271	642	0	0	0	4624	0	0	0	0	734	0	0	0	0
+t	0	0	1820	1877	1932	0	73	2751	0	0	2055	1323	2379	0	0	0	0
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0079.2_shift3 (SP1)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0079.2_shift3.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0079.2_shift3.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.835</td>
+<td style='background-color: #FFFFFF;'>0.491</td>
+<td style='background-color: #FFFFFF;'>2.940</td>
+<td style='background-color: #FFFFFF;'>0.484</td>
+<td style='background-color: #FFFFFF;'>0.919</td>
+<td style='background-color: #FFFFFF;'>1.297</td>
+<td style='background-color: #FFFFFF;'>0.935</td>
+<td style='background-color: #FFFFFF;'>18</td>
+<td style='background-color: #FFFFFF;'>27</td>
+<td style='background-color: #FFFFFF;'>21</td>
+<td style='background-color: #FFFFFF;'>18</td>
+<td style='background-color: #FFFFFF;'>23</td>
+<td style='background-color: #FFFFFF;'>14</td>
+<td style='background-color: #FFFFFF;'>19</td>
+<td style='background-color: #FFFFFF;'>20.000</td>
+<td style='background-color: #FFFFFF;'>17</td>
+<td style='background-color: #FFFFFF;'><pre>; dyads_test_vs_ctrl_m2 versus MA0079.2 (SP1); m=4/6; ncol2=10; w=10; offset=3; strand=D; shift=3; score=     20; ---CCCCkCCCCC----
+; cor=0.835; Ncor=0.491; logoDP=2.940; NIcor=0.484; NsEucl=0.919; SSD=1.297; NSW=0.935; rcor=18; rNcor=27; rlogoDP=21; rNIcor=18; rNsEucl=23; rSSD=14; rNSW=19; rank_mean=20.000; match_rank=17
+a	0	0	0	0	0	0	4	2	0	1	0	6	3	0	0	0	0
+c	0	0	0	32	30	35	27	5	28	31	24	25	26	0	0	0	0
+g	0	0	0	1	1	0	0	15	1	0	3	0	3	0	0	0	0
+t	0	0	0	2	4	0	4	13	6	3	8	4	3	0	0	0	0
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0039.2_rc_shift2 (Klf4_rc)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0039.2_rc_shift2.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0039.2_rc_shift2.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.848</td>
+<td style='background-color: #FFFFFF;'>0.499</td>
+<td style='background-color: #FFFFFF;'>1.408</td>
+<td style='background-color: #FFFFFF;'>-0.011</td>
+<td style='background-color: #FFFFFF;'>0.919</td>
+<td style='background-color: #FFFFFF;'>1.320</td>
+<td style='background-color: #FFFFFF;'>0.934</td>
+<td style='background-color: #FFFFFF;'>14</td>
+<td style='background-color: #FFFFFF;'>24</td>
+<td style='background-color: #FFFFFF;'>29</td>
+<td style='background-color: #FFFFFF;'>31</td>
+<td style='background-color: #FFFFFF;'>24</td>
+<td style='background-color: #FFFFFF;'>17</td>
+<td style='background-color: #FFFFFF;'>20</td>
+<td style='background-color: #FFFFFF;'>22.714</td>
+<td style='background-color: #FFFFFF;'>23</td>
+<td style='background-color: #FFFFFF;'><pre>; dyads_test_vs_ctrl_m2 versus MA0039.2_rc (Klf4_rc); m=5/6; ncol2=10; w=10; offset=2; strand=R; shift=2; score=22.7143; --gCCmCrCCCw-----
+; cor=0.848; Ncor=0.499; logoDP=1.408; NIcor=-0.011; NsEucl=0.919; SSD=1.320; NSW=0.934; rcor=14; rNcor=24; rlogoDP=29; rNIcor=31; rNsEucl=24; rSSD=17; rNSW=20; rank_mean=22.714; match_rank=23
+a	0	0	932	289	125	2042	34	2139	16	13	6	1765	0	0	0	0	0
+c	0	0	280	3789	3902	2179	4273	11	4281	4304	4237	1022	0	0	0	0	0
+g	0	0	2858	130	46	80	15	1922	36	13	9	81	0	0	0	0	0
+t	0	0	254	123	264	42	22	277	14	14	88	1468	0	0	0	0	0
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0079.1_rc_shift2 (SP1_rc)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0079.1_rc_shift2.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0079.1_rc_shift2.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.760</td>
+<td style='background-color: #FFFFFF;'>0.447</td>
+<td style='background-color: #FFFFFF;'>0.760</td>
+<td style='background-color: #FFFFFF;'>-0.066</td>
+<td style='background-color: #FFFFFF;'>0.910</td>
+<td style='background-color: #FFFFFF;'>1.635</td>
+<td style='background-color: #FFFFFF;'>0.918</td>
+<td style='background-color: #FFFFFF;'>38</td>
+<td style='background-color: #FFFFFF;'>33</td>
+<td style='background-color: #FFFFFF;'>36</td>
+<td style='background-color: #FFFFFF;'>32</td>
+<td style='background-color: #FFFFFF;'>30</td>
+<td style='background-color: #FFFFFF;'>24</td>
+<td style='background-color: #FFFFFF;'>30</td>
+<td style='background-color: #FFFFFF;'>31.857</td>
+<td style='background-color: #FFFFFF;'>35</td>
+<td style='background-color: #FFFFFF;'><pre>; dyads_test_vs_ctrl_m2 versus MA0079.1_rc (SP1_rc); m=6/6; ncol2=10; w=10; offset=2; strand=R; shift=2; score=31.8571; --WCMmhsCCym-----
+; cor=0.760; Ncor=0.447; logoDP=0.760; NIcor=-0.066; NsEucl=0.910; SSD=1.635; NSW=0.918; rcor=38; rNcor=33; rlogoDP=36; rNIcor=32; rNsEucl=30; rSSD=24; rNSW=30; rank_mean=31.857; match_rank=35
+a	0	0	6	0	2	2	2	1	0	0	1	2	0	0	0	0	0
+c	0	0	0	6	6	5	4	2	8	8	4	4	0	0	0	0	0
+g	0	0	0	1	0	1	0	5	0	0	1	1	0	0	0	0	0
+t	0	0	2	1	0	0	2	0	0	0	2	1	0	0	0	0	0
+</pre></td>
+</tr>
+</table></p>
+<h2>One-to-n matrix alignment; reference matrix: oligos_6nt_test_vs_ctrl_m5_shift0	; 3 matrices	; sort_field=rank_mean</h2>
+<p><table class='sortable'>
+<tr><th>Matrix name</th><th>Aligned logos</th><th>cor</th>
+<th>Ncor</th>
+<th>logoDP</th>
+<th>NIcor</th>
+<th>NsEucl</th>
+<th>SSD</th>
+<th>NSW</th>
+<th>rcor</th>
+<th>rNcor</th>
+<th>rlogoDP</th>
+<th>rNIcor</th>
+<th>rNsEucl</th>
+<th>rSSD</th>
+<th>rNSW</th>
+<th>rank_mean</th>
+<th>match_rank</th>
+<th>Aligned matrices</th>
+</tr><tr>
+<td style='background-color: #FFFFFF;'>oligos_6nt_test_vs_ctrl_m5_shift0 (oligos_6nt_test_vs_ctrl_m5)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/oligos_6nt_test_vs_ctrl_m5_shift0.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/oligos_6nt_test_vs_ctrl_m5_shift0.png'></a></td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_6nt_test_vs_ctrl_m5; m=0 (reference); ncol1=24; shift=0; ncol=24; sssccvGCCCCGCCCCvGggCsss
+; Alignment reference
+a	101	91	46	48	64	205	39	44	46	29	40	40	34	20	22	35	240	35	49	49	33	143	74	96
+c	259	251	165	424	440	198	107	499	457	487	472	43	489	506	494	485	168	110	146	147	514	218	261	255
+g	195	204	376	135	119	177	461	84	110	94	82	528	103	97	91	106	187	482	429	421	71	203	236	214
+t	98	107	66	46	30	73	46	26	40	43	59	42	27	30	46	27	58	26	29	36	35	89	82	88
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0079.3_shift6 (SP1)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0079.3_shift6.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0079.3_shift6.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.887</td>
+<td style='background-color: #FFFFFF;'>0.406</td>
+<td style='background-color: #FFFFFF;'>3.477</td>
+<td style='background-color: #FFFFFF;'>0.405</td>
+<td style='background-color: #FFFFFF;'>0.935</td>
+<td style='background-color: #FFFFFF;'>1.033</td>
+<td style='background-color: #FFFFFF;'>0.953</td>
+<td style='background-color: #FFFFFF;'>4</td>
+<td style='background-color: #FFFFFF;'>37</td>
+<td style='background-color: #FFFFFF;'>16</td>
+<td style='background-color: #FFFFFF;'>23</td>
+<td style='background-color: #FFFFFF;'>8</td>
+<td style='background-color: #FFFFFF;'>6</td>
+<td style='background-color: #FFFFFF;'>6</td>
+<td style='background-color: #FFFFFF;'>14.286</td>
+<td style='background-color: #FFFFFF;'>13</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_6nt_test_vs_ctrl_m5 versus MA0079.3 (SP1); m=1/2; ncol2=11; w=11; offset=6; strand=D; shift=6; score=14.2857; ------gCCCCkCCCCy-------
+; cor=0.887; Ncor=0.406; logoDP=3.477; NIcor=0.405; NsEucl=0.935; SSD=1.033; NSW=0.953; rcor=4; rNcor=37; rlogoDP=16; rNIcor=23; rNsEucl=8; rSSD=6; rNSW=6; rank_mean=14.286; match_rank=13
+a	0	0	0	0	0	0	857	0	99	0	0	1359	0	0	0	1054	652	0	0	0	0	0	0	0
+c	0	0	0	0	0	0	1786	6215	6703	8734	8661	0	8734	8734	6679	6357	4969	0	0	0	0	0	0	0
+g	0	0	0	0	0	0	4271	642	0	0	0	4624	0	0	0	0	734	0	0	0	0	0	0	0
+t	0	0	0	0	0	0	1820	1877	1932	0	73	2751	0	0	2055	1323	2379	0	0	0	0	0	0	0
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0516.1_shift6 (SP2)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0516.1_shift6.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0516.1_shift6.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.781</td>
+<td style='background-color: #FFFFFF;'>0.488</td>
+<td style='background-color: #FFFFFF;'>3.445</td>
+<td style='background-color: #FFFFFF;'>0.477</td>
+<td style='background-color: #FFFFFF;'>0.932</td>
+<td style='background-color: #FFFFFF;'>2.107</td>
+<td style='background-color: #FFFFFF;'>0.930</td>
+<td style='background-color: #FFFFFF;'>30</td>
+<td style='background-color: #FFFFFF;'>28</td>
+<td style='background-color: #FFFFFF;'>17</td>
+<td style='background-color: #FFFFFF;'>20</td>
+<td style='background-color: #FFFFFF;'>13</td>
+<td style='background-color: #FFFFFF;'>36</td>
+<td style='background-color: #FFFFFF;'>23</td>
+<td style='background-color: #FFFFFF;'>23.857</td>
+<td style='background-color: #FFFFFF;'>26</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_6nt_test_vs_ctrl_m5 versus MA0516.1 (SP2); m=2/2; ncol2=15; w=15; offset=6; strand=D; shift=6; score=23.8571; ------gyCCCGCCyCyyccs---
+; cor=0.781; Ncor=0.488; logoDP=3.445; NIcor=0.477; NsEucl=0.932; SSD=2.107; NSW=0.930; rcor=30; rNcor=28; rlogoDP=17; rNIcor=20; rNsEucl=13; rSSD=36; rNSW=23; rank_mean=23.857; match_rank=26
+a	0	0	0	0	0	0	160	39	52	0	0	174	0	0	0	206	115	187	226	228	203	0	0	0
+c	0	0	0	0	0	0	253	811	1386	1679	1643	0	1686	1656	1108	1196	971	554	717	794	745	0	0	0
+g	0	0	0	0	0	0	1028	257	1	7	0	1280	0	0	0	0	99	325	401	408	422	0	0	0
+t	0	0	0	0	0	0	245	579	247	0	43	232	0	30	578	284	501	620	342	256	316	0	0	0
+</pre></td>
+</tr>
+</table></p>
+<h2>One-to-n matrix alignment; reference matrix: oligos_6nt_test_vs_ctrl_m3_shift3	; 2 matrices	; sort_field=rank_mean</h2>
+<p><table class='sortable'>
+<tr><th>Matrix name</th><th>Aligned logos</th><th>cor</th>
+<th>Ncor</th>
+<th>logoDP</th>
+<th>NIcor</th>
+<th>NsEucl</th>
+<th>SSD</th>
+<th>NSW</th>
+<th>rcor</th>
+<th>rNcor</th>
+<th>rlogoDP</th>
+<th>rNIcor</th>
+<th>rNsEucl</th>
+<th>rSSD</th>
+<th>rNSW</th>
+<th>rank_mean</th>
+<th>match_rank</th>
+<th>Aligned matrices</th>
+</tr><tr>
+<td style='background-color: #FFFFFF;'>oligos_6nt_test_vs_ctrl_m3_shift3 (oligos_6nt_test_vs_ctrl_m3)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/oligos_6nt_test_vs_ctrl_m3_shift3.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/oligos_6nt_test_vs_ctrl_m3_shift3.png'></a></td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_6nt_test_vs_ctrl_m3; m=0 (reference); ncol1=11; shift=3; ncol=14; ---ssAGGGAGCcg
+; Alignment reference
+a	0	0	0	102	77	451	0	0	1	456	0	9	122	93
+c	0	0	0	158	174	45	9	15	2	60	1	494	171	129
+g	0	0	0	154	219	17	513	506	517	5	521	2	118	210
+t	0	0	0	108	52	9	0	1	2	1	0	17	111	90
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0154.1_shift0 (EBF1)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0154.1_shift0.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0154.1_shift0.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.884</td>
+<td style='background-color: #FFFFFF;'>0.442</td>
+<td style='background-color: #FFFFFF;'>5.690</td>
+<td style='background-color: #FFFFFF;'>0.454</td>
+<td style='background-color: #FFFFFF;'>0.912</td>
+<td style='background-color: #FFFFFF;'>0.766</td>
+<td style='background-color: #FFFFFF;'>0.945</td>
+<td style='background-color: #FFFFFF;'>6</td>
+<td style='background-color: #FFFFFF;'>34</td>
+<td style='background-color: #FFFFFF;'>4</td>
+<td style='background-color: #FFFFFF;'>22</td>
+<td style='background-color: #FFFFFF;'>27</td>
+<td style='background-color: #FFFFFF;'>2</td>
+<td style='background-color: #FFFFFF;'>9</td>
+<td style='background-color: #FFFFFF;'>14.857</td>
+<td style='background-color: #FFFFFF;'>14</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_6nt_test_vs_ctrl_m3 versus MA0154.1 (EBF1); m=1/1; ncol2=10; w=7; offset=-3; strand=D; shift=0; score=14.8571; mCyCmaGGGA----
+; cor=0.884; Ncor=0.442; logoDP=5.690; NIcor=0.454; NsEucl=0.912; SSD=0.766; NSW=0.945; rcor=6; rNcor=34; rlogoDP=4; rNIcor=22; rNsEucl=27; rSSD=2; rNSW=9; rank_mean=14.857; match_rank=14
+a	11	0	1	2	11	16	0	2	0	21	0	0	0	0
+c	9	22	16	20	9	1	0	0	0	0	0	0	0	0
+g	2	0	1	0	0	5	25	23	25	4	0	0	0	0
+t	3	3	7	3	5	3	0	0	0	0	0	0	0	0
+</pre></td>
+</tr>
+</table></p>
+<h2>One-to-n matrix alignment; reference matrix: oligos_6nt_test_vs_ctrl_m1_shift0	; 6 matrices	; sort_field=rank_mean</h2>
+<p><table class='sortable'>
+<tr><th>Matrix name</th><th>Aligned logos</th><th>cor</th>
+<th>Ncor</th>
+<th>logoDP</th>
+<th>NIcor</th>
+<th>NsEucl</th>
+<th>SSD</th>
+<th>NSW</th>
+<th>rcor</th>
+<th>rNcor</th>
+<th>rlogoDP</th>
+<th>rNIcor</th>
+<th>rNsEucl</th>
+<th>rSSD</th>
+<th>rNSW</th>
+<th>rank_mean</th>
+<th>match_rank</th>
+<th>Aligned matrices</th>
+</tr><tr>
+<td style='background-color: #FFFFFF;'>oligos_6nt_test_vs_ctrl_m1_shift0 (oligos_6nt_test_vs_ctrl_m1)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/oligos_6nt_test_vs_ctrl_m1_shift0.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/oligos_6nt_test_vs_ctrl_m1_shift0.png'></a></td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_6nt_test_vs_ctrl_m1; m=0 (reference); ncol1=16; shift=0; ncol=21; sssgCCGCCCCGCCss-----
+; Alignment reference
+a	178	210	115	69	64	74	71	36	50	53	76	63	80	71	162	161	0	0	0	0	0
+c	601	517	356	308	1049	1061	98	1167	1019	1009	1028	156	951	976	568	541	0	0	0	0	0
+g	423	471	827	929	201	178	1129	131	253	246	187	1082	266	251	448	481	0	0	0	0	0
+t	176	180	80	72	64	65	80	44	56	70	87	77	81	80	200	195	0	0	0	0	0
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0079.2_shift7 (SP1)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0079.2_shift7.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0079.2_shift7.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.875</td>
+<td style='background-color: #FFFFFF;'>0.463</td>
+<td style='background-color: #FFFFFF;'>2.457</td>
+<td style='background-color: #FFFFFF;'>0.468</td>
+<td style='background-color: #FFFFFF;'>0.925</td>
+<td style='background-color: #FFFFFF;'>0.919</td>
+<td style='background-color: #FFFFFF;'>0.949</td>
+<td style='background-color: #FFFFFF;'>8</td>
+<td style='background-color: #FFFFFF;'>30</td>
+<td style='background-color: #FFFFFF;'>26</td>
+<td style='background-color: #FFFFFF;'>21</td>
+<td style='background-color: #FFFFFF;'>19</td>
+<td style='background-color: #FFFFFF;'>4</td>
+<td style='background-color: #FFFFFF;'>7</td>
+<td style='background-color: #FFFFFF;'>16.429</td>
+<td style='background-color: #FFFFFF;'>16</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_6nt_test_vs_ctrl_m1 versus MA0079.2 (SP1); m=1/5; ncol2=10; w=9; offset=7; strand=D; shift=7; score=16.4286; -------CCCCkCCCCC----
+; cor=0.875; Ncor=0.463; logoDP=2.457; NIcor=0.468; NsEucl=0.925; SSD=0.919; NSW=0.949; rcor=8; rNcor=30; rlogoDP=26; rNIcor=21; rNsEucl=19; rSSD=4; rNSW=7; rank_mean=16.429; match_rank=16
+a	0	0	0	0	0	0	0	0	0	0	4	2	0	1	0	6	3	0	0	0	0
+c	0	0	0	0	0	0	0	32	30	35	27	5	28	31	24	25	26	0	0	0	0
+g	0	0	0	0	0	0	0	1	1	0	0	15	1	0	3	0	3	0	0	0	0
+t	0	0	0	0	0	0	0	2	4	0	4	13	6	3	8	4	3	0	0	0	0
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0516.1_shift6 (SP2)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0516.1_shift6.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0516.1_shift6.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.856</td>
+<td style='background-color: #FFFFFF;'>0.408</td>
+<td style='background-color: #FFFFFF;'>2.853</td>
+<td style='background-color: #FFFFFF;'>0.401</td>
+<td style='background-color: #FFFFFF;'>0.921</td>
+<td style='background-color: #FFFFFF;'>1.242</td>
+<td style='background-color: #FFFFFF;'>0.938</td>
+<td style='background-color: #FFFFFF;'>12</td>
+<td style='background-color: #FFFFFF;'>35</td>
+<td style='background-color: #FFFFFF;'>23</td>
+<td style='background-color: #FFFFFF;'>24</td>
+<td style='background-color: #FFFFFF;'>20</td>
+<td style='background-color: #FFFFFF;'>11</td>
+<td style='background-color: #FFFFFF;'>17</td>
+<td style='background-color: #FFFFFF;'>20.286</td>
+<td style='background-color: #FFFFFF;'>18</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_6nt_test_vs_ctrl_m1 versus MA0516.1 (SP2); m=2/5; ncol2=15; w=10; offset=6; strand=D; shift=6; score=20.2857; ------gyCCCGCCyCyyccs
+; cor=0.856; Ncor=0.408; logoDP=2.853; NIcor=0.401; NsEucl=0.921; SSD=1.242; NSW=0.938; rcor=12; rNcor=35; rlogoDP=23; rNIcor=24; rNsEucl=20; rSSD=11; rNSW=17; rank_mean=20.286; match_rank=18
+a	0	0	0	0	0	0	160	39	52	0	0	174	0	0	0	206	115	187	226	228	203
+c	0	0	0	0	0	0	253	811	1386	1679	1643	0	1686	1656	1108	1196	971	554	717	794	745
+g	0	0	0	0	0	0	1028	257	1	7	0	1280	0	0	0	0	99	325	401	408	422
+t	0	0	0	0	0	0	245	579	247	0	43	232	0	30	578	284	501	620	342	256	316
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0079.3_shift6 (SP1)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0079.3_shift6.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0079.3_shift6.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.839</td>
+<td style='background-color: #FFFFFF;'>0.494</td>
+<td style='background-color: #FFFFFF;'>2.917</td>
+<td style='background-color: #FFFFFF;'>0.480</td>
+<td style='background-color: #FFFFFF;'>0.917</td>
+<td style='background-color: #FFFFFF;'>1.373</td>
+<td style='background-color: #FFFFFF;'>0.931</td>
+<td style='background-color: #FFFFFF;'>17</td>
+<td style='background-color: #FFFFFF;'>26</td>
+<td style='background-color: #FFFFFF;'>22</td>
+<td style='background-color: #FFFFFF;'>19</td>
+<td style='background-color: #FFFFFF;'>25</td>
+<td style='background-color: #FFFFFF;'>19</td>
+<td style='background-color: #FFFFFF;'>22</td>
+<td style='background-color: #FFFFFF;'>21.429</td>
+<td style='background-color: #FFFFFF;'>20</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_6nt_test_vs_ctrl_m1 versus MA0079.3 (SP1); m=3/5; ncol2=11; w=10; offset=6; strand=D; shift=6; score=21.4286; ------gCCCCkCCCCy----
+; cor=0.839; Ncor=0.494; logoDP=2.917; NIcor=0.480; NsEucl=0.917; SSD=1.373; NSW=0.931; rcor=17; rNcor=26; rlogoDP=22; rNIcor=19; rNsEucl=25; rSSD=19; rNSW=22; rank_mean=21.429; match_rank=20
+a	0	0	0	0	0	0	857	0	99	0	0	1359	0	0	0	1054	652	0	0	0	0
+c	0	0	0	0	0	0	1786	6215	6703	8734	8661	0	8734	8734	6679	6357	4969	0	0	0	0
+g	0	0	0	0	0	0	4271	642	0	0	0	4624	0	0	0	0	734	0	0	0	0
+t	0	0	0	0	0	0	1820	1877	1932	0	73	2751	0	0	2055	1323	2379	0	0	0	0
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0599.1_shift6 (KLF5)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0599.1_shift6.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0599.1_shift6.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.817</td>
+<td style='background-color: #FFFFFF;'>0.510</td>
+<td style='background-color: #FFFFFF;'>2.976</td>
+<td style='background-color: #FFFFFF;'>0.498</td>
+<td style='background-color: #FFFFFF;'>0.912</td>
+<td style='background-color: #FFFFFF;'>1.544</td>
+<td style='background-color: #FFFFFF;'>0.923</td>
+<td style='background-color: #FFFFFF;'>23</td>
+<td style='background-color: #FFFFFF;'>22</td>
+<td style='background-color: #FFFFFF;'>19</td>
+<td style='background-color: #FFFFFF;'>15</td>
+<td style='background-color: #FFFFFF;'>26</td>
+<td style='background-color: #FFFFFF;'>21</td>
+<td style='background-color: #FFFFFF;'>28</td>
+<td style='background-color: #FFFFFF;'>22.000</td>
+<td style='background-color: #FFFFFF;'>21</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_6nt_test_vs_ctrl_m1 versus MA0599.1 (KLF5); m=4/5; ncol2=10; w=10; offset=6; strand=D; shift=6; score=     22; ------gCCMCrCCCh-----
+; cor=0.817; Ncor=0.510; logoDP=2.976; NIcor=0.498; NsEucl=0.912; SSD=1.544; NSW=0.923; rcor=23; rNcor=22; rlogoDP=19; rNIcor=15; rNsEucl=26; rSSD=21; rNSW=28; rank_mean=22.000; match_rank=21
+a	0	0	0	0	0	0	1429	0	0	3477	0	5051	0	0	0	3915	0	0	0	0	0
+c	0	0	0	0	0	0	2023	11900	12008	9569	13611	0	13611	13611	13135	5595	0	0	0	0	0
+g	0	0	0	0	0	0	7572	0	0	0	0	5182	0	0	0	0	0	0	0	0	0
+t	0	0	0	0	0	0	2587	1711	1603	565	0	3378	0	0	476	4101	0	0	0	0	0
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0039.2_rc_shift6 (Klf4_rc)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0039.2_rc_shift6.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0039.2_rc_shift6.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.793</td>
+<td style='background-color: #FFFFFF;'>0.496</td>
+<td style='background-color: #FFFFFF;'>1.341</td>
+<td style='background-color: #FFFFFF;'>-0.002</td>
+<td style='background-color: #FFFFFF;'>0.907</td>
+<td style='background-color: #FFFFFF;'>1.743</td>
+<td style='background-color: #FFFFFF;'>0.913</td>
+<td style='background-color: #FFFFFF;'>28</td>
+<td style='background-color: #FFFFFF;'>25</td>
+<td style='background-color: #FFFFFF;'>30</td>
+<td style='background-color: #FFFFFF;'>30</td>
+<td style='background-color: #FFFFFF;'>33</td>
+<td style='background-color: #FFFFFF;'>28</td>
+<td style='background-color: #FFFFFF;'>31</td>
+<td style='background-color: #FFFFFF;'>29.286</td>
+<td style='background-color: #FFFFFF;'>32</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_6nt_test_vs_ctrl_m1 versus MA0039.2_rc (Klf4_rc); m=5/5; ncol2=10; w=10; offset=6; strand=R; shift=6; score=29.2857; ------gCCmCrCCCw-----
+; cor=0.793; Ncor=0.496; logoDP=1.341; NIcor=-0.002; NsEucl=0.907; SSD=1.743; NSW=0.913; rcor=28; rNcor=25; rlogoDP=30; rNIcor=30; rNsEucl=33; rSSD=28; rNSW=31; rank_mean=29.286; match_rank=32
+a	0	0	0	0	0	0	932	289	125	2042	34	2139	16	13	6	1765	0	0	0	0	0
+c	0	0	0	0	0	0	280	3789	3902	2179	4273	11	4281	4304	4237	1022	0	0	0	0	0
+g	0	0	0	0	0	0	2858	130	46	80	15	1922	36	13	9	81	0	0	0	0	0
+t	0	0	0	0	0	0	254	123	264	42	22	277	14	14	88	1468	0	0	0	0	0
+</pre></td>
+</tr>
+</table></p>
+<h2>One-to-n matrix alignment; reference matrix: oligos_7nt_test_vs_ctrl_m5_shift4	; 3 matrices	; sort_field=rank_mean</h2>
+<p><table class='sortable'>
+<tr><th>Matrix name</th><th>Aligned logos</th><th>cor</th>
+<th>Ncor</th>
+<th>logoDP</th>
+<th>NIcor</th>
+<th>NsEucl</th>
+<th>SSD</th>
+<th>NSW</th>
+<th>rcor</th>
+<th>rNcor</th>
+<th>rlogoDP</th>
+<th>rNIcor</th>
+<th>rNsEucl</th>
+<th>rSSD</th>
+<th>rNSW</th>
+<th>rank_mean</th>
+<th>match_rank</th>
+<th>Aligned matrices</th>
+</tr><tr>
+<td style='background-color: #FFFFFF;'>oligos_7nt_test_vs_ctrl_m5_shift4 (oligos_7nt_test_vs_ctrl_m5)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/oligos_7nt_test_vs_ctrl_m5_shift4.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/oligos_7nt_test_vs_ctrl_m5_shift4.png'></a></td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_7nt_test_vs_ctrl_m5; m=0 (reference); ncol1=12; shift=4; ncol=16; ----CrCACACACACr
+; Alignment reference
+a	0	0	0	0	5	35	0	77	0	80	0	80	0	76	3	27
+c	0	0	0	0	73	9	96	0	101	1	102	0	101	2	86	4
+g	0	0	0	0	4	54	2	25	1	21	0	22	0	24	4	68
+t	0	0	0	0	20	4	4	0	0	0	0	0	1	0	9	3
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0472.1_shift0 (EGR2)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0472.1_shift0.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0472.1_shift0.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.797</td>
+<td style='background-color: #FFFFFF;'>0.548</td>
+<td style='background-color: #FFFFFF;'>7.036</td>
+<td style='background-color: #FFFFFF;'>0.541</td>
+<td style='background-color: #FFFFFF;'>0.908</td>
+<td style='background-color: #FFFFFF;'>2.051</td>
+<td style='background-color: #FFFFFF;'>0.907</td>
+<td style='background-color: #FFFFFF;'>27</td>
+<td style='background-color: #FFFFFF;'>16</td>
+<td style='background-color: #FFFFFF;'>3</td>
+<td style='background-color: #FFFFFF;'>12</td>
+<td style='background-color: #FFFFFF;'>32</td>
+<td style='background-color: #FFFFFF;'>35</td>
+<td style='background-color: #FFFFFF;'>33</td>
+<td style='background-color: #FFFFFF;'>22.571</td>
+<td style='background-color: #FFFFFF;'>22</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_7nt_test_vs_ctrl_m5 versus MA0472.1 (EGR2); m=1/2; ncol2=15; w=11; offset=-4; strand=D; shift=0; score=22.5714; cmcmCrCCCACrCac-
+; cor=0.797; Ncor=0.548; logoDP=7.036; NIcor=0.541; NsEucl=0.908; SSD=2.051; NSW=0.907; rcor=27; rNcor=16; rlogoDP=3; rNIcor=12; rNsEucl=32; rSSD=35; rNSW=33; rank_mean=22.571; match_rank=22
+a	169	337	168	387	26	448	0	152	0	1059	0	460	0	558	127	0
+c	572	460	572	722	1186	0	1246	1094	1169	187	1246	0	1041	302	617	0
+g	291	180	216	65	0	602	0	0	0	0	0	579	114	199	251	0
+t	214	269	290	72	34	196	0	0	77	0	0	207	91	187	251	0
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0006.1_rc_shift8 (Arnt::Ahr_rc)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0006.1_rc_shift8.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0006.1_rc_shift8.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.813</td>
+<td style='background-color: #FFFFFF;'>0.407</td>
+<td style='background-color: #FFFFFF;'>2.375</td>
+<td style='background-color: #FFFFFF;'>-0.002</td>
+<td style='background-color: #FFFFFF;'>0.865</td>
+<td style='background-color: #FFFFFF;'>1.310</td>
+<td style='background-color: #FFFFFF;'>0.891</td>
+<td style='background-color: #FFFFFF;'>24</td>
+<td style='background-color: #FFFFFF;'>36</td>
+<td style='background-color: #FFFFFF;'>27</td>
+<td style='background-color: #FFFFFF;'>29</td>
+<td style='background-color: #FFFFFF;'>38</td>
+<td style='background-color: #FFFFFF;'>15</td>
+<td style='background-color: #FFFFFF;'>37</td>
+<td style='background-color: #FFFFFF;'>29.429</td>
+<td style='background-color: #FFFFFF;'>33</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_7nt_test_vs_ctrl_m5 versus MA0006.1_rc (Arnt::Ahr_rc); m=2/2; ncol2=6; w=6; offset=4; strand=R; shift=8; score=29.4286; --------CACGCr--
+; cor=0.813; Ncor=0.407; logoDP=2.375; NIcor=-0.002; NsEucl=0.865; SSD=1.310; NSW=0.891; rcor=24; rNcor=36; rlogoDP=27; rNIcor=29; rNsEucl=38; rSSD=15; rNSW=37; rank_mean=29.429; match_rank=33
+a	0	0	0	0	0	0	0	0	0	24	1	1	1	11	0	0
+c	0	0	0	0	0	0	0	0	24	0	23	0	23	2	0	0
+g	0	0	0	0	0	0	0	0	0	0	0	23	0	8	0	0
+t	0	0	0	0	0	0	0	0	0	0	0	0	0	3	0	0
+</pre></td>
+</tr>
+</table></p>
+<h2>One-to-n matrix alignment; reference matrix: dyads_test_vs_ctrl_m1_shift0	; 5 matrices	; sort_field=rank_mean</h2>
+<p><table class='sortable'>
+<tr><th>Matrix name</th><th>Aligned logos</th><th>cor</th>
+<th>Ncor</th>
+<th>logoDP</th>
+<th>NIcor</th>
+<th>NsEucl</th>
+<th>SSD</th>
+<th>NSW</th>
+<th>rcor</th>
+<th>rNcor</th>
+<th>rlogoDP</th>
+<th>rNIcor</th>
+<th>rNsEucl</th>
+<th>rSSD</th>
+<th>rNSW</th>
+<th>rank_mean</th>
+<th>match_rank</th>
+<th>Aligned matrices</th>
+</tr><tr>
+<td style='background-color: #FFFFFF;'>dyads_test_vs_ctrl_m1_shift0 (dyads_test_vs_ctrl_m1)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/dyads_test_vs_ctrl_m1_shift0.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/dyads_test_vs_ctrl_m1_shift0.png'></a></td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;'><pre>; dyads_test_vs_ctrl_m1; m=0 (reference); ncol1=24; shift=0; ncol=24; ssCtGCCCtssGGCCaggGCCcsg
+; Alignment reference
+a	40	26	6	29	1	5	7	3	16	23	50	7	5	11	11	82	13	19	8	14	8	13	28	34
+c	76	82	141	38	18	173	169	191	43	70	54	26	28	166	167	50	49	32	26	153	145	139	68	50
+g	57	64	46	36	172	20	22	13	28	110	94	169	163	18	16	51	137	138	157	26	35	33	77	91
+t	34	35	14	104	16	9	9	0	120	4	9	5	11	12	13	24	8	18	16	14	19	22	34	32
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0003.2_rc_shift3 (TFAP2A_rc)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0003.2_rc_shift3.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0003.2_rc_shift3.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.818</td>
+<td style='background-color: #FFFFFF;'>0.511</td>
+<td style='background-color: #FFFFFF;'>0.828</td>
+<td style='background-color: #FFFFFF;'>-0.130</td>
+<td style='background-color: #FFFFFF;'>0.939</td>
+<td style='background-color: #FFFFFF;'>1.701</td>
+<td style='background-color: #FFFFFF;'>0.943</td>
+<td style='background-color: #FFFFFF;'>22</td>
+<td style='background-color: #FFFFFF;'>21</td>
+<td style='background-color: #FFFFFF;'>34</td>
+<td style='background-color: #FFFFFF;'>37</td>
+<td style='background-color: #FFFFFF;'>5</td>
+<td style='background-color: #FFFFFF;'>26</td>
+<td style='background-color: #FFFFFF;'>14</td>
+<td style='background-color: #FFFFFF;'>22.714</td>
+<td style='background-color: #FFFFFF;'>24</td>
+<td style='background-color: #FFFFFF;'><pre>; dyads_test_vs_ctrl_m1 versus MA0003.2_rc (TFAP2A_rc); m=1/4; ncol2=15; w=15; offset=3; strand=R; shift=3; score=22.7143; ---tGsCCTsrGGCwrtk------
+; cor=0.818; Ncor=0.511; logoDP=0.828; NIcor=-0.130; NsEucl=0.939; SSD=1.701; NSW=0.943; rcor=22; rNcor=21; rlogoDP=34; rNIcor=37; rNsEucl=5; rSSD=26; rNSW=14; rank_mean=22.714; match_rank=24
+a	0	0	0	1094	510	84	0	0	204	308	3215	336	0	131	2077	1981	1105	1230	0	0	0	0	0	0
+c	0	0	0	168	465	3455	5098	4638	920	1715	85	0	0	3712	985	884	792	851	0	0	0	0	0	0
+g	0	0	0	690	3672	1443	0	0	236	2729	1736	4762	5098	1199	519	1506	1060	1630	0	0	0	0	0	0
+t	0	0	0	3146	451	116	0	460	3738	346	62	0	0	56	1517	727	2141	1387	0	0	0	0	0	0
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0524.1_rc_shift3 (TFAP2C_rc)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0524.1_rc_shift3.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0524.1_rc_shift3.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.809</td>
+<td style='background-color: #FFFFFF;'>0.506</td>
+<td style='background-color: #FFFFFF;'>0.734</td>
+<td style='background-color: #FFFFFF;'>-0.143</td>
+<td style='background-color: #FFFFFF;'>0.938</td>
+<td style='background-color: #FFFFFF;'>1.755</td>
+<td style='background-color: #FFFFFF;'>0.941</td>
+<td style='background-color: #FFFFFF;'>25</td>
+<td style='background-color: #FFFFFF;'>23</td>
+<td style='background-color: #FFFFFF;'>37</td>
+<td style='background-color: #FFFFFF;'>38</td>
+<td style='background-color: #FFFFFF;'>6</td>
+<td style='background-color: #FFFFFF;'>29</td>
+<td style='background-color: #FFFFFF;'>16</td>
+<td style='background-color: #FFFFFF;'>24.857</td>
+<td style='background-color: #FFFFFF;'>27</td>
+<td style='background-color: #FFFFFF;'><pre>; dyads_test_vs_ctrl_m1 versus MA0524.1_rc (TFAP2C_rc); m=2/4; ncol2=15; w=15; offset=3; strand=R; shift=3; score=24.8571; ---tgsCCTGrGGshrkd------
+; cor=0.809; Ncor=0.506; logoDP=0.734; NIcor=-0.143; NsEucl=0.938; SSD=1.755; NSW=0.941; rcor=25; rNcor=23; rlogoDP=37; rNIcor=38; rNsEucl=6; rSSD=29; rNSW=16; rank_mean=24.857; match_rank=27
+a	0	0	0	3726	3060	11	0	0	789	786	7872	3609	0	932	5401	8290	3909	4750	0	0	0	0	0	0
+c	0	0	0	2536	1788	10222	18426	18235	1195	1768	1237	0	0	11033	6098	2643	3347	2123	0	0	0	0	0	0
+g	0	0	0	3259	9235	7908	0	0	0	14790	9317	14817	18426	6040	2009	4943	4693	6752	0	0	0	0	0	0
+t	0	0	0	8905	4343	285	0	191	16442	1082	0	0	0	421	4918	2550	6477	4801	0	0	0	0	0	0
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0146.1_rc_shift9 (Zfx_rc)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0146.1_rc_shift9.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0146.1_rc_shift9.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.770</td>
+<td style='background-color: #FFFFFF;'>0.449</td>
+<td style='background-color: #FFFFFF;'>2.691</td>
+<td style='background-color: #FFFFFF;'>0.383</td>
+<td style='background-color: #FFFFFF;'>0.928</td>
+<td style='background-color: #FFFFFF;'>2.012</td>
+<td style='background-color: #FFFFFF;'>0.928</td>
+<td style='background-color: #FFFFFF;'>33</td>
+<td style='background-color: #FFFFFF;'>31</td>
+<td style='background-color: #FFFFFF;'>25</td>
+<td style='background-color: #FFFFFF;'>25</td>
+<td style='background-color: #FFFFFF;'>15</td>
+<td style='background-color: #FFFFFF;'>31</td>
+<td style='background-color: #FFFFFF;'>25</td>
+<td style='background-color: #FFFFFF;'>26.429</td>
+<td style='background-color: #FFFFFF;'>28</td>
+<td style='background-color: #FFFFFF;'><pre>; dyads_test_vs_ctrl_m1 versus MA0146.1_rc (Zfx_rc); m=3/4; ncol2=14; w=14; offset=9; strand=R; shift=9; score=26.4286; ---------sAGGCCbvGscsss-
+; cor=0.770; Ncor=0.449; logoDP=2.691; NIcor=0.383; NsEucl=0.928; SSD=2.012; NSW=0.928; rcor=33; rNcor=31; rlogoDP=25; rNIcor=25; rNsEucl=15; rSSD=31; rNSW=25; rank_mean=26.429; match_rank=28
+a	0	0	0	0	0	0	0	0	0	56	479	1	0	1	1	15	144	111	30	60	37	75	70	0
+c	0	0	0	0	0	0	0	0	0	219	0	0	0	477	469	121	182	2	144	298	199	172	179	0
+g	0	0	0	0	0	0	0	0	0	122	2	480	480	3	2	154	125	362	297	49	151	170	177	0
+t	0	0	0	0	0	0	0	0	0	84	0	0	1	0	9	191	30	6	10	72	91	60	50	0
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0146.2_rc_shift9 (Zfx_rc)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0146.2_rc_shift9.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0146.2_rc_shift9.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.769</td>
+<td style='background-color: #FFFFFF;'>0.449</td>
+<td style='background-color: #FFFFFF;'>2.697</td>
+<td style='background-color: #FFFFFF;'>0.383</td>
+<td style='background-color: #FFFFFF;'>0.928</td>
+<td style='background-color: #FFFFFF;'>2.021</td>
+<td style='background-color: #FFFFFF;'>0.928</td>
+<td style='background-color: #FFFFFF;'>34</td>
+<td style='background-color: #FFFFFF;'>32</td>
+<td style='background-color: #FFFFFF;'>24</td>
+<td style='background-color: #FFFFFF;'>26</td>
+<td style='background-color: #FFFFFF;'>16</td>
+<td style='background-color: #FFFFFF;'>32</td>
+<td style='background-color: #FFFFFF;'>26</td>
+<td style='background-color: #FFFFFF;'>27.143</td>
+<td style='background-color: #FFFFFF;'>29</td>
+<td style='background-color: #FFFFFF;'><pre>; dyads_test_vs_ctrl_m1 versus MA0146.2_rc (Zfx_rc); m=4/4; ncol2=14; w=14; offset=9; strand=R; shift=9; score=27.1429; ---------sAGGCCbvGscsss-
+; cor=0.769; Ncor=0.449; logoDP=2.697; NIcor=0.383; NsEucl=0.928; SSD=2.021; NSW=0.928; rcor=34; rNcor=32; rlogoDP=24; rNIcor=26; rNsEucl=16; rSSD=32; rNSW=26; rank_mean=27.143; match_rank=29
+a	0	0	0	0	0	0	0	0	0	56	480	1	0	1	1	15	144	112	30	61	37	75	70	0
+c	0	0	0	0	0	0	0	0	0	218	0	0	0	477	470	122	183	2	144	297	199	173	179	0
+g	0	0	0	0	0	0	0	0	0	122	1	480	481	3	2	153	124	361	297	49	151	170	178	0
+t	0	0	0	0	0	0	0	0	0	84	0	0	0	0	8	191	30	6	10	72	91	59	50	0
+</pre></td>
+</tr>
+</table></p>
+<h2>One-to-n matrix alignment; reference matrix: oligos_6nt_test_vs_ctrl_m4_shift0	; 2 matrices	; sort_field=rank_mean</h2>
+<p><table class='sortable'>
+<tr><th>Matrix name</th><th>Aligned logos</th><th>cor</th>
+<th>Ncor</th>
+<th>logoDP</th>
+<th>NIcor</th>
+<th>NsEucl</th>
+<th>SSD</th>
+<th>NSW</th>
+<th>rcor</th>
+<th>rNcor</th>
+<th>rlogoDP</th>
+<th>rNIcor</th>
+<th>rNsEucl</th>
+<th>rSSD</th>
+<th>rNSW</th>
+<th>rank_mean</th>
+<th>match_rank</th>
+<th>Aligned matrices</th>
+</tr><tr>
+<td style='background-color: #FFFFFF;'>oligos_6nt_test_vs_ctrl_m4_shift0 (oligos_6nt_test_vs_ctrl_m4)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/oligos_6nt_test_vs_ctrl_m4_shift0.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/oligos_6nt_test_vs_ctrl_m4_shift0.png'></a></td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_6nt_test_vs_ctrl_m4; m=0 (reference); ncol1=24; shift=0; ncol=24; sssssscgCGCCCCGCCCvsssss
+; Alignment reference
+a	153	137	120	109	106	88	107	81	62	81	55	67	55	60	59	61	55	35	327	68	105	94	162	157
+c	514	510	621	396	680	723	734	305	887	202	918	840	880	853	158	886	882	934	392	311	313	340	535	476
+g	386	435	329	600	332	316	276	744	207	850	190	239	239	218	941	226	244	200	376	776	732	699	373	418
+t	171	142	154	119	106	97	107	94	68	91	61	78	50	93	66	51	43	55	129	69	74	91	154	173
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0516.1_shift9 (SP2)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0516.1_shift9.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0516.1_shift9.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.772</td>
+<td style='background-color: #FFFFFF;'>0.482</td>
+<td style='background-color: #FFFFFF;'>2.970</td>
+<td style='background-color: #FFFFFF;'>0.488</td>
+<td style='background-color: #FFFFFF;'>0.933</td>
+<td style='background-color: #FFFFFF;'>2.046</td>
+<td style='background-color: #FFFFFF;'>0.932</td>
+<td style='background-color: #FFFFFF;'>31</td>
+<td style='background-color: #FFFFFF;'>29</td>
+<td style='background-color: #FFFFFF;'>20</td>
+<td style='background-color: #FFFFFF;'>16</td>
+<td style='background-color: #FFFFFF;'>10</td>
+<td style='background-color: #FFFFFF;'>34</td>
+<td style='background-color: #FFFFFF;'>21</td>
+<td style='background-color: #FFFFFF;'>23.000</td>
+<td style='background-color: #FFFFFF;'>25</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_6nt_test_vs_ctrl_m4 versus MA0516.1 (SP2); m=1/1; ncol2=15; w=15; offset=9; strand=D; shift=9; score=     23; ---------gyCCCGCCyCyyccs
+; cor=0.772; Ncor=0.482; logoDP=2.970; NIcor=0.488; NsEucl=0.933; SSD=2.046; NSW=0.932; rcor=31; rNcor=29; rlogoDP=20; rNIcor=16; rNsEucl=10; rSSD=34; rNSW=21; rank_mean=23.000; match_rank=25
+a	0	0	0	0	0	0	0	0	0	160	39	52	0	0	174	0	0	0	206	115	187	226	228	203
+c	0	0	0	0	0	0	0	0	0	253	811	1386	1679	1643	0	1686	1656	1108	1196	971	554	717	794	745
+g	0	0	0	0	0	0	0	0	0	1028	257	1	7	0	1280	0	0	0	0	99	325	401	408	422
+t	0	0	0	0	0	0	0	0	0	245	579	247	0	43	232	0	30	578	284	501	620	342	256	316
+</pre></td>
+</tr>
+</table></p>
+<h2>One-to-n matrix alignment; reference matrix: oligos_7nt_test_vs_ctrl_m4_shift6	; 5 matrices	; sort_field=rank_mean</h2>
+<p><table class='sortable'>
+<tr><th>Matrix name</th><th>Aligned logos</th><th>cor</th>
+<th>Ncor</th>
+<th>logoDP</th>
+<th>NIcor</th>
+<th>NsEucl</th>
+<th>SSD</th>
+<th>NSW</th>
+<th>rcor</th>
+<th>rNcor</th>
+<th>rlogoDP</th>
+<th>rNIcor</th>
+<th>rNsEucl</th>
+<th>rSSD</th>
+<th>rNSW</th>
+<th>rank_mean</th>
+<th>match_rank</th>
+<th>Aligned matrices</th>
+</tr><tr>
+<td style='background-color: #FFFFFF;'>oligos_7nt_test_vs_ctrl_m4_shift6 (oligos_7nt_test_vs_ctrl_m4)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/oligos_7nt_test_vs_ctrl_m4_shift6.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/oligos_7nt_test_vs_ctrl_m4_shift6.png'></a></td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;border-right:none'>&nbsp</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_7nt_test_vs_ctrl_m4; m=0 (reference); ncol1=12; shift=6; ncol=18; ------ssGmGGGmGGcG
+; Alignment reference
+a	0	0	0	0	0	0	9	5	1	45	0	1	1	50	0	1	7	4
+c	0	0	0	0	0	0	39	46	8	24	12	12	0	26	6	1	51	6
+g	0	0	0	0	0	0	22	23	66	6	63	63	75	0	70	73	10	52
+t	0	0	0	0	0	0	6	2	1	1	1	0	0	0	0	1	8	14
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0162.2_rc_shift5 (EGR1_rc)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0162.2_rc_shift5.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0162.2_rc_shift5.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.761</td>
+<td style='background-color: #FFFFFF;'>0.652</td>
+<td style='background-color: #FFFFFF;'>0.942</td>
+<td style='background-color: #FFFFFF;'>-0.120</td>
+<td style='background-color: #FFFFFF;'>0.910</td>
+<td style='background-color: #FFFFFF;'>2.332</td>
+<td style='background-color: #FFFFFF;'>0.903</td>
+<td style='background-color: #FFFFFF;'>37</td>
+<td style='background-color: #FFFFFF;'>9</td>
+<td style='background-color: #FFFFFF;'>33</td>
+<td style='background-color: #FFFFFF;'>35</td>
+<td style='background-color: #FFFFFF;'>28</td>
+<td style='background-color: #FFFFFF;'>38</td>
+<td style='background-color: #FFFFFF;'>35</td>
+<td style='background-color: #FFFFFF;'>30.714</td>
+<td style='background-color: #FFFFFF;'>34</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_7nt_test_vs_ctrl_m4 versus MA0162.2_rc (EGR1_rc); m=1/4; ncol2=14; w=12; offset=-1; strand=R; shift=5; score=30.7143; -----gGmGKGGGcGGgg
+; cor=0.761; Ncor=0.652; logoDP=0.942; NIcor=-0.120; NsEucl=0.910; SSD=2.332; NSW=0.903; rcor=37; rNcor=9; rlogoDP=33; rNIcor=35; rNsEucl=28; rSSD=38; rNSW=35; rank_mean=30.714; match_rank=34
+a	0	0	0	0	0	1722	987	3289	304	243	1491	404	0	2505	449	490	2797	2544
+c	0	0	0	0	0	1913	1420	6599	0	0	611	0	0	6840	0	0	2250	1359
+g	0	0	0	0	0	5595	9849	0	11952	8361	10154	11852	12256	0	11574	10431	6049	6847
+t	0	0	0	0	0	3026	0	2368	0	3652	0	0	0	2911	233	1335	1160	1506
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0469.1_rc_shift0 (E2F3_rc)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0469.1_rc_shift0.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0469.1_rc_shift0.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.807</td>
+<td style='background-color: #FFFFFF;'>0.403</td>
+<td style='background-color: #FFFFFF;'>0.591</td>
+<td style='background-color: #FFFFFF;'>0.030</td>
+<td style='background-color: #FFFFFF;'>0.897</td>
+<td style='background-color: #FFFFFF;'>1.705</td>
+<td style='background-color: #FFFFFF;'>0.905</td>
+<td style='background-color: #FFFFFF;'>26</td>
+<td style='background-color: #FFFFFF;'>38</td>
+<td style='background-color: #FFFFFF;'>38</td>
+<td style='background-color: #FFFFFF;'>28</td>
+<td style='background-color: #FFFFFF;'>35</td>
+<td style='background-color: #FFFFFF;'>27</td>
+<td style='background-color: #FFFFFF;'>34</td>
+<td style='background-color: #FFFFFF;'>32.286</td>
+<td style='background-color: #FFFFFF;'>36</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_7nt_test_vs_ctrl_m4 versus MA0469.1_rc (E2F3_rc); m=2/4; ncol2=15; w=9; offset=-6; strand=R; shift=0; score=32.2857; srsygsggGCGGGAr---
+; cor=0.807; Ncor=0.403; logoDP=0.591; NIcor=0.030; NsEucl=0.897; SSD=1.705; NSW=0.905; rcor=26; rNcor=38; rlogoDP=38; rNIcor=28; rNsEucl=35; rSSD=27; rNSW=34; rank_mean=32.286; match_rank=36
+a	259	645	160	274	302	629	460	239	0	309	0	0	0	2549	1149	0	0	0
+c	644	200	582	512	556	742	397	607	0	2240	0	80	0	0	0	0	0	0
+g	718	640	1075	329	1495	903	1327	1703	2549	0	2549	2469	2549	0	1400	0	0	0
+t	305	441	109	811	196	275	365	0	0	0	0	0	0	0	0	0	0	0
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0599.1_rc_shift9 (KLF5_rc)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0599.1_rc_shift9.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0599.1_rc_shift9.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.762</td>
+<td style='background-color: #FFFFFF;'>0.528</td>
+<td style='background-color: #FFFFFF;'>1.176</td>
+<td style='background-color: #FFFFFF;'>-0.082</td>
+<td style='background-color: #FFFFFF;'>0.888</td>
+<td style='background-color: #FFFFFF;'>2.022</td>
+<td style='background-color: #FFFFFF;'>0.888</td>
+<td style='background-color: #FFFFFF;'>36</td>
+<td style='background-color: #FFFFFF;'>18</td>
+<td style='background-color: #FFFFFF;'>31</td>
+<td style='background-color: #FFFFFF;'>34</td>
+<td style='background-color: #FFFFFF;'>37</td>
+<td style='background-color: #FFFFFF;'>33</td>
+<td style='background-color: #FFFFFF;'>38</td>
+<td style='background-color: #FFFFFF;'>32.429</td>
+<td style='background-color: #FFFFFF;'>37</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_7nt_test_vs_ctrl_m4 versus MA0599.1_rc (KLF5_rc); m=3/4; ncol2=10; w=9; offset=3; strand=R; shift=9; score=32.4286; ---------dGGGyGKGG
+; cor=0.762; Ncor=0.528; logoDP=1.176; NIcor=-0.082; NsEucl=0.888; SSD=2.022; NSW=0.888; rcor=36; rNcor=18; rlogoDP=31; rNIcor=34; rNsEucl=37; rSSD=33; rNSW=38; rank_mean=32.429; match_rank=37
+a	0	0	0	0	0	0	0	0	0	4101	476	0	0	3378	0	565	1603	1711
+c	0	0	0	0	0	0	0	0	0	0	0	0	0	5182	0	0	0	0
+g	0	0	0	0	0	0	0	0	0	5595	13135	13611	13611	0	13611	9569	12008	11900
+t	0	0	0	0	0	0	0	0	0	3915	0	0	0	5051	0	3477	0	0
+</pre></td>
+</tr>
+<tr>
+<td style='background-color: #FFFFFF;'>MA0079.3_rc_shift8 (SP1_rc)</td>
+<td style='background-color: #FFFFFF;'><a href='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0079.3_rc_shift8.png'><img border=0 src='peak-motifs_motifs_vs_db_jaspar_core_vertebrates_aligned_logos/MA0079.3_rc_shift8.png'></a></td>
+<td style='background-color: #FFFFFF;'>0.764</td>
+<td style='background-color: #FFFFFF;'>0.588</td>
+<td style='background-color: #FFFFFF;'>0.789</td>
+<td style='background-color: #FFFFFF;'>-0.121</td>
+<td style='background-color: #FFFFFF;'>0.896</td>
+<td style='background-color: #FFFFFF;'>2.158</td>
+<td style='background-color: #FFFFFF;'>0.892</td>
+<td style='background-color: #FFFFFF;'>35</td>
+<td style='background-color: #FFFFFF;'>14</td>
+<td style='background-color: #FFFFFF;'>35</td>
+<td style='background-color: #FFFFFF;'>36</td>
+<td style='background-color: #FFFFFF;'>36</td>
+<td style='background-color: #FFFFFF;'>37</td>
+<td style='background-color: #FFFFFF;'>36</td>
+<td style='background-color: #FFFFFF;'>32.714</td>
+<td style='background-color: #FFFFFF;'>38</td>
+<td style='background-color: #FFFFFF;'><pre>; oligos_7nt_test_vs_ctrl_m4 versus MA0079.3_rc (SP1_rc); m=4/4; ncol2=11; w=10; offset=2; strand=R; shift=8; score=32.7143; --------rGGGGmGGGG
+; cor=0.764; Ncor=0.588; logoDP=0.789; NIcor=-0.121; NsEucl=0.896; SSD=2.158; NSW=0.892; rcor=35; rNcor=14; rlogoDP=35; rNIcor=36; rNsEucl=36; rSSD=37; rNSW=36; rank_mean=32.714; match_rank=38
+a	0	0	0	0	0	0	0	0	2379	1323	2055	0	0	2751	73	0	1932	1877
+c	0	0	0	0	0	0	0	0	734	0	0	0	0	4624	0	0	0	642
+g	0	0	0	0	0	0	0	0	4969	6357	6679	8734	8734	0	8661	8734	6703	6215
+t	0	0	0	0	0	0	0	0	652	1054	0	0	0	1359	0	0	99	0
+</pre></td>
+</tr>
+</table></p>
+</body></html>

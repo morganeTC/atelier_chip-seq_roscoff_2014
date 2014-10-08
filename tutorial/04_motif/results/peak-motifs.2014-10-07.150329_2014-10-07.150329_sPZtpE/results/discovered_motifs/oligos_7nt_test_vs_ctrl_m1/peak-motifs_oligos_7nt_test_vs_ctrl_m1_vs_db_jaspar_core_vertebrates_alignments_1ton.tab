@@ -1,0 +1,30 @@
+; One-to-n matrix alignment; reference matrix: oligos_7nt_test_vs_ctrl_m1_shift2	; 4 matrices	; sort_field=rank_mean
+; oligos_7nt_test_vs_ctrl_m1; m=0 (reference); ncol1=14; shift=2; ncol=16; --csGCCCCaGGgcss
+; Alignment reference
+a	0	0	195	244	54	37	19	21	11	808	21	17	123	132	281	174
+c	0	0	548	431	70	1140	1083	1093	1108	179	89	101	283	849	359	410
+g	0	0	314	350	1071	58	138	117	132	248	1147	1134	747	185	425	448
+t	0	0	210	242	72	32	27	36	16	32	10	15	114	101	202	235
+//
+; oligos_7nt_test_vs_ctrl_m1 versus MA0524.1 (TFAP2C); m=1/3; ncol2=15; w=13; offset=-2; strand=D; shift=0; score=      1; hmydsCCyCAGGsca-
+; cor=0.883; Ncor=0.717; logoDP=5.323; NIcor=0.719; NsEucl=0.944; SSD=1.048; NSW=0.960; rcor=1; rNcor=1; rlogoDP=1; rNIcor=1; rNsEucl=1; rSSD=1; rNSW=1; rank_mean=1.000; match_rank=1
+a	4801	6477	2550	4918	421	0	0	0	1082	16442	191	0	285	4343	8905	0
+c	6752	4693	4943	2009	6040	18426	14817	9317	14790	0	0	0	7908	9235	3259	0
+g	2123	3347	2643	6098	11033	0	0	1237	1768	1195	18235	18426	10222	1788	2536	0
+t	4750	3909	8290	5401	932	0	3609	7872	786	789	0	0	11	3060	3726	0
+//
+; oligos_7nt_test_vs_ctrl_m1 versus MA0003.2 (TFAP2A); m=2/3; ncol2=15; w=13; offset=-2; strand=D; shift=0; score= 2.1429; maywGCCysAGGsCa-
+; cor=0.841; Ncor=0.684; logoDP=5.056; NIcor=0.681; NsEucl=0.935; SSD=1.441; NSW=0.945; rcor=2; rNcor=2; rlogoDP=2; rNIcor=2; rNsEucl=2; rSSD=3; rNSW=2; rank_mean=2.143; match_rank=2
+a	1387	2141	727	1517	56	0	0	62	346	3738	460	0	116	451	3146	0
+c	1630	1060	1506	519	1199	5098	4762	1736	2729	236	0	0	1443	3672	690	0
+g	851	792	884	985	3712	0	0	85	1715	920	4638	5098	3455	465	168	0
+t	1230	1105	1981	2077	131	0	336	3215	308	204	0	0	84	510	1094	0
+//
+; oligos_7nt_test_vs_ctrl_m1 versus MA0003.1 (TFAP2A); m=3/3; ncol2=9; w=9; offset=2; strand=D; shift=4; score= 2.8571; ----GCCcbrrGs---
+; cor=0.818; Ncor=0.526; logoDP=3.671; NIcor=0.485; NsEucl=0.909; SSD=1.351; NSW=0.925; rcor=3; rNcor=3; rlogoDP=3; rNIcor=3; rNsEucl=3; rSSD=2; rNSW=3; rank_mean=2.857; match_rank=3
+a	0	0	0	0	0	0	0	22	19	55	53	19	9	0	0	0
+c	0	0	0	0	0	185	185	71	57	44	30	16	78	0	0	0
+g	0	0	0	0	185	0	0	46	61	67	91	137	79	0	0	0
+t	0	0	0	0	0	0	0	46	48	19	11	13	19	0	0	0
+//
+;

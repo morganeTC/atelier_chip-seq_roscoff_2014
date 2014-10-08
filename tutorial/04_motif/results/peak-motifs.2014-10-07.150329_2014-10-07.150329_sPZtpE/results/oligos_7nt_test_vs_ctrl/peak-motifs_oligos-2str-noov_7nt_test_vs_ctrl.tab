@@ -1,0 +1,67 @@
+; oligo-analysis  -v 1 -quick -i $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/data/sequences/peak-motifs_test_purged_ml30_mis0.fasta -format fasta -sort -lth ratio 1 -lth occ_sig 0 -uth rank 100 -return occ,proba,rank -2str -noov -seqtype dna -l 7 -expfreq $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/oligos_7nt_test_vs_ctrl/peak-motifs_oligos_bg_from_ctrl_7nt-2str-noov.tab -pseudo 0.01 -o $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/oligos_7nt_test_vs_ctrl/peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl.tab
+; Citation: van Helden et al. (1998). J Mol Biol 281(5), 827-42. 
+; Program version              	1.169
+; Quick counting mode          
+; Detection of over-represented words (right-tail test)
+; Oligomer length              	7
+; Input file                   	$RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/data/sequences/peak-motifs_test_purged_ml30_mis0.fasta
+; Input format                 	fasta
+; Output file                  	$RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/oligos_7nt_test_vs_ctrl/peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl.tab
+; Discard overlapping matches
+; Counted on both strands
+; 	grouped by pairs of reverse complements
+; Background model             	exp_file
+; Background estimation method 	Frequency file
+; Expected frequency file      	$RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/oligos_7nt_test_vs_ctrl/peak-motifs_oligos_bg_from_ctrl_7nt-2str-noov.tab
+; Pseudo-frequency             	0.01
+; Pseudo-frequency per oligo   	1.220703125e-06
+; Sequence type                	DNA
+; Nb of sequences              	7041
+; Sum of sequence lengths      	1476646
+; discarded residues           	NA (quick mode)	 (other letters than ACGT)
+; discarded occurrences        	NA (quick mode)	 (contain discarded residues)
+; nb possible positions        	NA (quick mode)
+; total oligo occurrences      	1432340
+; total overlapping occurrences	12106
+; total non overlapping occ    	1420234
+; alphabet size                	4
+; nb possible oligomers        	8192
+; oligomers tested for significance	8192
+;
+; column headers
+;	1	seq            	oligomer sequence
+;	2	identifier     	oligomer identifier
+;	3	exp_freq       	expected relative frequency
+;	4	occ            	observed occurrences
+;	5	exp_occ        	expected occurrences
+;	6	occ_P          	occurrence probability (binomial)
+;	7	occ_E          	E-value for occurrences (binomial)
+;	8	occ_sig        	occurrence significance (binomial)
+;	9	rank           	rank
+;	10	ovl_occ        	number of overlapping occurrences (discarded from the count)
+;	11	forbocc        	forbidden positions (to avoid self-overlap)
+#seq	identifier	exp_freq	occ	exp_occ	occ_P	occ_E	occ_sig	rank	ovl_occ	forbocc
+ccccagg	ccccagg|cctgggg	0.0004740019610	818	678.93	1.2e-07	1.0e-03	2.99	1	0	4908
+cctcagg	cctcagg|cctgagg	0.0003892741370	673	557.57	1.2e-06	9.6e-03	2.02	2	0	4038
+ccgcccc	ccgcccc|ggggcgg	0.0001463877082	281	209.68	1.6e-06	1.3e-02	1.89	3	5	1686
+ctggggc	ctggggc|gccccag	0.0004056548496	689	581.04	7.2e-06	5.9e-02	1.23	4	6	4134
+agggagg	agggagg|cctccct	0.0003717637201	633	532.49	1.2e-05	1.0e-01	0.99	5	14	3798
+acacaca	acacaca|tgtgtgt	0.0004378514227	734	627.15	1.7e-05	1.4e-01	0.85	6	369	4404
+ccccgcc	ccccgcc|ggcgggg	0.0001740654640	317	249.32	2.1e-05	1.7e-01	0.76	7	7	1902
+gcgcgcc	gcgcgcc|ggcgcgc	0.0000328524241	78	47.06	2.3e-05	1.9e-01	0.73	8	19	468
+ccagggc	ccagggc|gccctgg	0.0004785207782	793	685.40	3.2e-05	2.6e-01	0.58	9	2	4758
+cccgccc	cccgccc|gggcggg	0.0001825382465	328	261.46	4.1e-05	3.4e-01	0.47	10	10	1968
+cccaggg	cccaggg|ccctggg	0.0004836044477	798	692.69	4.9e-05	4.0e-01	0.40	11	0	4788
+cacacac	cacacac|gtgtgtg	0.0003649854941	614	522.78	5.5e-05	4.5e-01	0.35	12	339	3684
+gccgccc	gccgccc|gggcggc	0.0001091074656	207	156.28	6.2e-05	5.0e-01	0.30	13	0	1242
+cctgccc	cctgccc|gggcagg	0.0005739807933	934	822.14	7e-05	5.7e-01	0.24	14	19	5604
+ctccctc	ctccctc|gagggag	0.0003418265556	576	489.61	7.7e-05	6.3e-01	0.20	15	18	3456
+agggcag	agggcag|ctgccct	0.0005638134545	915	807.57	0.00011	9.2e-01	0.04	16	15	5490
+; Host name	biow
+; Job started	2014-10-07.150608
+; Job done	2014-10-07.150611
+; Seconds	2.9
+;	user	2.9
+;	system	0.04
+;	cuser	0.68
+;	csystem	0.02

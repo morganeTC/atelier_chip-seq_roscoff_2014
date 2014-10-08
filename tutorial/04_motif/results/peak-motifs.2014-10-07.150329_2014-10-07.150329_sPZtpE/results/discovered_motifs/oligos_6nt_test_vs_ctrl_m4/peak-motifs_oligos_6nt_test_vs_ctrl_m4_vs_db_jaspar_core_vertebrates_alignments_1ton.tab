@@ -1,0 +1,16 @@
+; One-to-n matrix alignment; reference matrix: oligos_6nt_test_vs_ctrl_m4_shift0	; 2 matrices	; sort_field=rank_mean
+; oligos_6nt_test_vs_ctrl_m4; m=0 (reference); ncol1=24; shift=0; ncol=24; sssssscgCGCCCCGCCCvsssss
+; Alignment reference
+a	153	137	120	109	106	88	107	81	62	81	55	67	55	60	59	61	55	35	327	68	105	94	162	157
+c	514	510	621	396	680	723	734	305	887	202	918	840	880	853	158	886	882	934	392	311	313	340	535	476
+g	386	435	329	600	332	316	276	744	207	850	190	239	239	218	941	226	244	200	376	776	732	699	373	418
+t	171	142	154	119	106	97	107	94	68	91	61	78	50	93	66	51	43	55	129	69	74	91	154	173
+//
+; oligos_6nt_test_vs_ctrl_m4 versus MA0516.1 (SP2); m=1/1; ncol2=15; w=15; offset=9; strand=D; shift=9; score=      1; ---------gyCCCGCCyCyyccs
+; cor=0.772; Ncor=0.482; logoDP=2.970; NIcor=0.488; NsEucl=0.933; SSD=2.046; NSW=0.932; rcor=1; rNcor=1; rlogoDP=1; rNIcor=1; rNsEucl=1; rSSD=1; rNSW=1; rank_mean=1.000; match_rank=1
+a	0	0	0	0	0	0	0	0	0	160	39	52	0	0	174	0	0	0	206	115	187	226	228	203
+c	0	0	0	0	0	0	0	0	0	253	811	1386	1679	1643	0	1686	1656	1108	1196	971	554	717	794	745
+g	0	0	0	0	0	0	0	0	0	1028	257	1	7	0	1280	0	0	0	0	99	325	401	408	422
+t	0	0	0	0	0	0	0	0	0	245	579	247	0	43	232	0	30	578	284	501	620	342	256	316
+//
+;

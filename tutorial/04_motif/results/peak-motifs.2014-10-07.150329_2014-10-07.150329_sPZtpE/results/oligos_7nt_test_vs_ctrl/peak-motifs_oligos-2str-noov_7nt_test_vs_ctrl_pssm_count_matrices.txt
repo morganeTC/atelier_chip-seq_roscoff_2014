@@ -1,0 +1,41 @@
+; convert-matrix  -v 1 -i $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/oligos_7nt_test_vs_ctrl/peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm_count_matrices.tf -from transfac -to tab -return counts -o $RSAT/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/oligos_7nt_test_vs_ctrl/peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm_count_matrices.txt
+; Input files
+;	input	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/oligos_7nt_test_vs_ctrl/peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm_count_matrices.tf
+; Input format        	transfac
+; Output files
+;	output	/vh/rsat/rsat/public_html/tmp/apache/2014/10/07/peak-motifs.2014-10-07.150329_2014-10-07.150329_sPZtpE/results/oligos_7nt_test_vs_ctrl/peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm_count_matrices.txt
+; Output format       	tab
+; pseudo-weight       	1
+a	195	244	54	37	19	21	11	808	21	17	123	132	281	174
+c	548	431	70	1140	1083	1093	1108	179	89	101	283	849	359	410
+g	314	350	1071	58	138	117	132	248	1147	1134	747	185	425	448
+t	210	242	72	32	27	36	16	32	10	15	114	101	202	235
+//
+a	49	57	0	0	1	0	192	0	0	41	50
+c	81	38	239	239	1	240	20	7	2	89	71
+g	77	80	1	2	19	1	29	234	239	45	66
+t	34	66	1	0	220	0	0	0	0	66	54
+//
+a	247	252	104	141	70	33	57	88	57	56	59	217	245
+c	906	695	1474	1334	1581	1765	36	1687	1552	1596	1596	773	681
+g	617	749	319	428	307	186	1893	181	354	289	285	799	835
+t	262	336	135	129	74	48	46	76	69	91	92	243	271
+//
+a	9	5	1	45	0	1	1	50	0	1	7	4
+c	39	46	8	24	12	12	0	26	6	1	51	6
+g	22	23	66	6	63	63	75	0	70	73	10	52
+t	6	2	1	1	1	0	0	0	0	1	8	14
+//
+a	5	35	0	77	0	80	0	80	0	76	3	27
+c	73	9	96	0	101	1	102	0	101	2	86	4
+g	4	54	2	25	1	21	0	22	0	24	4	68
+t	20	4	4	0	0	0	0	0	1	0	9	3
+//
+; Host name	biow
+; Job started	2014-10-07.150629
+; Job done	2014-10-07.150629
+; Seconds	0.25
+;	user	0.25
+;	system	0.03
+;	cuser	0
+;	csystem	0

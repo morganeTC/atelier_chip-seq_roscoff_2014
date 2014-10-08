@@ -1,0 +1,58 @@
+; One-to-n matrix alignment; reference matrix: oligos_7nt_test_vs_ctrl_m3_shift0	; 8 matrices	; sort_field=rank_mean
+; oligos_7nt_test_vs_ctrl_m3; m=0 (reference); ncol1=13; shift=0; ncol=16; ssCcCCGCCCCss---
+; Alignment reference
+a	247	252	104	141	70	33	57	88	57	56	59	217	245	0	0	0
+c	906	695	1474	1334	1581	1765	36	1687	1552	1596	1596	773	681	0	0	0
+g	617	749	319	428	307	186	1893	181	354	289	285	799	835	0	0	0
+t	262	336	135	129	74	48	46	76	69	91	92	243	271	0	0	0
+//
+; oligos_7nt_test_vs_ctrl_m3 versus MA0079.3 (SP1); m=1/7; ncol2=11; w=11; offset=1; strand=D; shift=1; score= 1.1429; -gCCCCkCCCCy----
+; cor=0.901; Ncor=0.763; logoDP=4.496; NIcor=0.760; NsEucl=0.939; SSD=0.899; NSW=0.959; rcor=1; rNcor=1; rlogoDP=1; rNIcor=1; rNsEucl=2; rSSD=1; rNSW=1; rank_mean=1.143; match_rank=1
+a	0	857	0	99	0	0	1359	0	0	0	1054	652	0	0	0	0
+c	0	1786	6215	6703	8734	8661	0	8734	8734	6679	6357	4969	0	0	0	0
+g	0	4271	642	0	0	0	4624	0	0	0	0	734	0	0	0	0
+t	0	1820	1877	1932	0	73	2751	0	0	2055	1323	2379	0	0	0	0
+//
+; oligos_7nt_test_vs_ctrl_m3 versus MA0516.1 (SP2); m=2/7; ncol2=15; w=12; offset=1; strand=D; shift=1; score= 2.1429; -gyCCCGCCyCyyccs
+; cor=0.886; Ncor=0.665; logoDP=4.462; NIcor=0.671; NsEucl=0.940; SSD=1.034; NSW=0.957; rcor=2; rNcor=4; rlogoDP=2; rNIcor=2; rNsEucl=1; rSSD=2; rNSW=2; rank_mean=2.143; match_rank=2
+a	0	160	39	52	0	0	174	0	0	0	206	115	187	226	228	203
+c	0	253	811	1386	1679	1643	0	1686	1656	1108	1196	971	554	717	794	745
+g	0	1028	257	1	7	0	1280	0	0	0	0	99	325	401	408	422
+t	0	245	579	247	0	43	232	0	30	578	284	501	620	342	256	316
+//
+; oligos_7nt_test_vs_ctrl_m3 versus MA0079.2 (SP1); m=3/7; ncol2=10; w=10; offset=2; strand=D; shift=2; score= 3.5714; --CCCCkCCCCC----
+; cor=0.870; Ncor=0.670; logoDP=3.144; NIcor=0.647; NsEucl=0.928; SSD=1.034; NSW=0.948; rcor=3; rNcor=3; rlogoDP=5; rNIcor=4; rNsEucl=4; rSSD=3; rNSW=3; rank_mean=3.571; match_rank=3
+a	0	0	0	0	0	4	2	0	1	0	6	3	0	0	0	0
+c	0	0	32	30	35	27	5	28	31	24	25	26	0	0	0	0
+g	0	0	1	1	0	0	15	1	0	3	0	3	0	0	0	0
+t	0	0	2	4	0	4	13	6	3	8	4	3	0	0	0	0
+//
+; oligos_7nt_test_vs_ctrl_m3 versus MA0162.2 (EGR1); m=4/7; ncol2=14; w=12; offset=1; strand=D; shift=1; score= 3.7143; -sccCCgCCCMCkCc-
+; cor=0.848; Ncor=0.678; logoDP=3.726; NIcor=0.664; NsEucl=0.932; SSD=1.320; NSW=0.945; rcor=5; rNcor=2; rlogoDP=4; rNIcor=3; rNsEucl=3; rSSD=5; rNSW=4; rank_mean=3.714; match_rank=4
+a	0	1098	1506	1160	1335	233	2911	0	0	0	3652	0	2368	0	3026	0
+c	0	5728	6847	6049	10431	11574	0	12256	11852	10154	8361	11952	0	9849	5595	0
+g	0	3083	1359	2250	0	0	6840	0	0	611	0	0	6599	1420	1913	0
+t	0	2347	2544	2797	490	449	2505	0	404	1491	243	304	3289	987	1722	0
+//
+; oligos_7nt_test_vs_ctrl_m3 versus MA0599.1 (KLF5); m=5/7; ncol2=10; w=10; offset=1; strand=D; shift=1; score= 4.4286; -gCCMCrCCCh-----
+; cor=0.852; Ncor=0.655; logoDP=4.321; NIcor=0.636; NsEucl=0.920; SSD=1.279; NSW=0.936; rcor=4; rNcor=5; rlogoDP=3; rNIcor=5; rNsEucl=5; rSSD=4; rNSW=5; rank_mean=4.429; match_rank=5
+a	0	1429	0	0	3477	0	5051	0	0	0	3915	0	0	0	0	0
+c	0	2023	11900	12008	9569	13611	0	13611	13611	13135	5595	0	0	0	0	0
+g	0	7572	0	0	0	0	5182	0	0	0	0	0	0	0	0	0
+t	0	2587	1711	1603	565	0	3378	0	0	476	4101	0	0	0	0	0
+//
+; oligos_7nt_test_vs_ctrl_m3 versus MA0039.2_rc (Klf4_rc); m=6/7; ncol2=10; w=10; offset=1; strand=R; shift=1; score= 6.4286; -gCCmCrCCCw-----
+; cor=0.791; Ncor=0.608; logoDP=2.178; NIcor=0.045; NsEucl=0.905; SSD=1.805; NSW=0.910; rcor=6; rNcor=6; rlogoDP=6; rNIcor=6; rNsEucl=7; rSSD=7; rNSW=7; rank_mean=6.429; match_rank=6
+a	0	932	289	125	2042	34	2139	16	13	6	1765	0	0	0	0	0
+c	0	280	3789	3902	2179	4273	11	4281	4304	4237	1022	0	0	0	0	0
+g	0	2858	130	46	80	15	1922	36	13	9	81	0	0	0	0	0
+t	0	254	123	264	42	22	277	14	14	88	1468	0	0	0	0	0
+//
+; oligos_7nt_test_vs_ctrl_m3 versus MA0079.1_rc (SP1_rc); m=7/7; ncol2=10; w=10; offset=1; strand=R; shift=1; score= 6.5714; -WCMmhsCCym-----
+; cor=0.770; Ncor=0.592; logoDP=0.961; NIcor=-0.075; NsEucl=0.910; SSD=1.628; NSW=0.919; rcor=7; rNcor=7; rlogoDP=7; rNIcor=7; rNsEucl=6; rSSD=6; rNSW=6; rank_mean=6.571; match_rank=7
+a	0	6	0	2	2	2	1	0	0	1	2	0	0	0	0	0
+c	0	0	6	6	5	4	2	8	8	4	4	0	0	0	0	0
+g	0	0	1	0	1	0	5	0	0	1	1	0	0	0	0	0
+t	0	2	1	0	0	2	0	0	0	2	1	0	0	0	0	0
+//
+;
