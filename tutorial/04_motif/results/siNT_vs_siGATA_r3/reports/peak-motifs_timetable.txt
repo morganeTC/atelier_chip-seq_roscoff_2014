@@ -1,0 +1,6 @@
+oligos_6nt_test_vs_ctrl	NA
+oligos_6nt_test_vs_ctrl_pssm	NA
+oligos_7nt_test_vs_ctrl	NA
+oligos_7nt_test_vs_ctrl_pssm	NA
+dyads_test_vs_ctrl	NA
+dyads_test_vs_ctrl_pssm	NA

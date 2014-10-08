@@ -1,0 +1,322 @@
+; matrix-scan  -quick -v 1 -seq_format fasta -i $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/data/sequences/peak-motifs_test.fasta -matrix_format transfac -m $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/discovered_motifs/oligos_7nt_test_vs_ctrl_m4/peak-motifs_oligos_7nt_test_vs_ctrl_m4.tf -bg_format inclusive -bgfile $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/composition/peak-motifs_test_inclusive-1str-ovlp_2nt.txt -pseudo 1 -2str -decimals 1 -bg_pseudo 0.01 -n score -lth score 7.5 -origin center -return sites -o $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/discovered_motifs/oligos_7nt_test_vs_ctrl_m4/peak-motifs_oligos_7nt_test_vs_ctrl_m4_sites.tab
+; Quick counting mode          
+; Input files
+;	input	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/data/sequences/peak-motifs_test.fasta
+;	bg	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/composition/peak-motifs_test_inclusive-1str-ovlp_2nt.txt
+; Matrix files
+;	matrix 1	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/discovered_motifs/oligos_7nt_test_vs_ctrl_m4/peak-motifs_oligos_7nt_test_vs_ctrl_m4.tf
+; Sequence format      	fasta
+; Output files
+;	output	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/discovered_motifs/oligos_7nt_test_vs_ctrl_m4/peak-motifs_oligos_7nt_test_vs_ctrl_m4_sites.tab
+; Pseudo counts        	1
+; Background model
+;	Method        	file
+;	Markov order  	1
+;	Strand        	undef
+;	Background pseudo-frequency	0.01
+;	Residue probabilities
+;		a	0.27122
+;		c	0.22904
+;		g	0.22904
+;		t	0.27070
+; Thresholds	lower	upper
+;	score 	7.5  	NA
+; Output columns
+;	1	seq_id
+;	2	ft_type
+;	3	ft_name
+;	4	strand
+;	5	start
+;	6	end
+;	7	sequence
+;	8	weight
+#seq_id	ft_type	ft_name	strand	start	end	sequence	weight
+hg19_chr7_2814422_2814620_+	site	oligos_7nt_test_vs_ctrl_m4	D	38	49	AATATTAATAAT	8.1
+hg19_chr7_2814422_2814620_+	site	oligos_7nt_test_vs_ctrl_m4	R	38	49	ATTATTAATATT	8.1
+hg19_chr7_2874752_2875091_+	site	oligos_7nt_test_vs_ctrl_m4	D	-86	-75	GAGATAAATCTA	7.8
+hg19_chr7_2874752_2875091_+	site	oligos_7nt_test_vs_ctrl_m4	R	-86	-75	TAGATTTATCTC	7.8
+hg19_chr7_4094412_4094780_+	site	oligos_7nt_test_vs_ctrl_m4	D	74	85	GATATTAATCTG	9.0
+hg19_chr7_4094412_4094780_+	site	oligos_7nt_test_vs_ctrl_m4	R	74	85	CAGATTAATATC	9.0
+hg19_chr7_4577482_4577591_+	site	oligos_7nt_test_vs_ctrl_m4	D	23	34	TAAATTAATCAC	8.2
+hg19_chr7_4577482_4577591_+	site	oligos_7nt_test_vs_ctrl_m4	R	23	34	GTGATTAATTTA	8.2
+hg19_chr7_5457402_5457691_+	site	oligos_7nt_test_vs_ctrl_m4	D	-70	-59	CTGATTAATCTT	10.0
+hg19_chr7_5457402_5457691_+	site	oligos_7nt_test_vs_ctrl_m4	R	-70	-59	AAGATTAATCAG	10.0
+hg19_chr7_7899112_7899420_+	site	oligos_7nt_test_vs_ctrl_m4	D	73	84	CAGATTAATTTT	7.5
+hg19_chr7_7899112_7899420_+	site	oligos_7nt_test_vs_ctrl_m4	R	73	84	AAAATTAATCTG	7.6
+hg19_chr7_7997232_7997420_+	site	oligos_7nt_test_vs_ctrl_m4	D	36	47	TTTATTAATCTG	8.5
+hg19_chr7_7997232_7997420_+	site	oligos_7nt_test_vs_ctrl_m4	R	36	47	CAGATTAATAAA	8.5
+hg19_chr7_8364632_8365090_+	site	oligos_7nt_test_vs_ctrl_m4	D	156	167	TAAATTAATCTA	8.9
+hg19_chr7_8364632_8365090_+	site	oligos_7nt_test_vs_ctrl_m4	R	156	167	TAGATTAATTTA	8.9
+hg19_chr7_11755912_11756210_+	site	oligos_7nt_test_vs_ctrl_m4	D	-84	-73	GAGATTAATAGG	8.0
+hg19_chr7_11755912_11756210_+	site	oligos_7nt_test_vs_ctrl_m4	R	-84	-73	CCTATTAATCTC	8.0
+hg19_chr7_11788722_11788890_+	site	oligos_7nt_test_vs_ctrl_m4	D	-44	-33	CTTATTAATCTA	9.0
+hg19_chr7_11788722_11788890_+	site	oligos_7nt_test_vs_ctrl_m4	R	-44	-33	TAGATTAATAAG	9.0
+hg19_chr7_12679922_12680381_+	site	oligos_7nt_test_vs_ctrl_m4	D	103	114	ATAATTAATCCA	7.5
+hg19_chr7_12679922_12680381_+	site	oligos_7nt_test_vs_ctrl_m4	R	103	114	TGGATTAATTAT	7.5
+hg19_chr7_13005682_13005931_+	site	oligos_7nt_test_vs_ctrl_m4	D	31	42	AAGATTAATATA	10.0
+hg19_chr7_13005682_13005931_+	site	oligos_7nt_test_vs_ctrl_m4	R	31	42	TATATTAATCTT	10.0
+hg19_chr7_17081912_17082021_+	site	oligos_7nt_test_vs_ctrl_m4	D	36	47	CAGATTAATAGA	8.0
+hg19_chr7_17081912_17082021_+	site	oligos_7nt_test_vs_ctrl_m4	R	36	47	TCTATTAATCTG	8.0
+hg19_chr7_17245912_17246291_+	site	oligos_7nt_test_vs_ctrl_m4	D	-160	-149	TTGATTAATTTT	7.7
+hg19_chr7_17245912_17246291_+	site	oligos_7nt_test_vs_ctrl_m4	R	-160	-149	AAAATTAATCAA	7.7
+hg19_chr7_17446422_17446701_+	site	oligos_7nt_test_vs_ctrl_m4	D	103	114	CCTATTAATCTC	8.0
+hg19_chr7_17446422_17446701_+	site	oligos_7nt_test_vs_ctrl_m4	R	103	114	GAGATTAATAGG	8.0
+hg19_chr7_17448162_17448540_+	site	oligos_7nt_test_vs_ctrl_m4	D	95	106	CAGATTAATTAT	8.0
+hg19_chr7_17448162_17448540_+	site	oligos_7nt_test_vs_ctrl_m4	R	95	106	ATAATTAATCTG	8.0
+hg19_chr7_17552442_17552650_+	site	oligos_7nt_test_vs_ctrl_m4	D	-37	-26	CTAATTAATCTA	8.2
+hg19_chr7_17552442_17552650_+	site	oligos_7nt_test_vs_ctrl_m4	R	-37	-26	TAGATTAATTAG	8.2
+hg19_chr7_20192062_20192211_+	site	oligos_7nt_test_vs_ctrl_m4	D	59	70	ACTATTAATCAC	8.5
+hg19_chr7_20192062_20192211_+	site	oligos_7nt_test_vs_ctrl_m4	R	59	70	GTGATTAATAGT	8.5
+hg19_chr7_20246202_20246481_+	site	oligos_7nt_test_vs_ctrl_m4	D	-63	-52	TCTATTAATCTC	8.5
+hg19_chr7_20246202_20246481_+	site	oligos_7nt_test_vs_ctrl_m4	R	-63	-52	GAGATTAATAGA	8.5
+hg19_chr7_20597272_20597521_+	site	oligos_7nt_test_vs_ctrl_m4	D	-91	-80	ATGATTAATATA	9.9
+hg19_chr7_20597272_20597521_+	site	oligos_7nt_test_vs_ctrl_m4	R	-91	-80	TATATTAATCAT	9.9
+hg19_chr7_21113882_21114090_+	site	oligos_7nt_test_vs_ctrl_m4	D	72	83	TTTATTAATCCT	8.1
+hg19_chr7_21113882_21114090_+	site	oligos_7nt_test_vs_ctrl_m4	R	72	83	AGGATTAATAAA	8.1
+hg19_chr7_21136302_21136591_+	site	oligos_7nt_test_vs_ctrl_m4	D	89	100	AAAATTAATCAA	7.7
+hg19_chr7_21136302_21136591_+	site	oligos_7nt_test_vs_ctrl_m4	R	89	100	TTGATTAATTTT	7.7
+hg19_chr7_26199322_26199490_+	site	oligos_7nt_test_vs_ctrl_m4	D	-42	-31	ATAATTAATCAA	8.1
+hg19_chr7_26199322_26199490_+	site	oligos_7nt_test_vs_ctrl_m4	R	-42	-31	TTGATTAATTAT	8.1
+hg19_chr7_26624692_26625250_+	site	oligos_7nt_test_vs_ctrl_m4	D	77	88	AAAATTAATCTC	8.0
+hg19_chr7_26624692_26625250_+	site	oligos_7nt_test_vs_ctrl_m4	R	77	88	GAGATTAATTTT	8.0
+hg19_chr7_27386362_27386911_+	site	oligos_7nt_test_vs_ctrl_m4	D	-246	-235	TTTATTAATCAT	8.9
+hg19_chr7_27386362_27386911_+	site	oligos_7nt_test_vs_ctrl_m4	R	-246	-235	ATGATTAATAAA	8.9
+hg19_chr7_27858092_27858350_+	site	oligos_7nt_test_vs_ctrl_m4	D	-92	-81	GTGATTAATAGC	8.2
+hg19_chr7_27858092_27858350_+	site	oligos_7nt_test_vs_ctrl_m4	R	-92	-81	GCTATTAATCAC	8.2
+hg19_chr7_27929542_27929890_+	site	oligos_7nt_test_vs_ctrl_m4	D	31	42	AAGATTAATCTG	10.2
+hg19_chr7_27929542_27929890_+	site	oligos_7nt_test_vs_ctrl_m4	R	31	42	CAGATTAATCTT	10.2
+hg19_chr7_28144432_28144681_+	site	oligos_7nt_test_vs_ctrl_m4	D	-120	-109	AAGATTAAACGT	8.5
+hg19_chr7_28144432_28144681_+	site	oligos_7nt_test_vs_ctrl_m4	R	-120	-109	ACGTTTAATCTT	8.5
+hg19_chr7_28386562_28386970_+	site	oligos_7nt_test_vs_ctrl_m4	D	159	170	TTGATTAATTTA	8.1
+hg19_chr7_28386562_28386970_+	site	oligos_7nt_test_vs_ctrl_m4	R	159	170	TAAATTAATCAA	8.1
+hg19_chr7_29351972_29352340_+	site	oligos_7nt_test_vs_ctrl_m4	D	47	58	AGGATTAATAGT	7.9
+hg19_chr7_29351972_29352340_+	site	oligos_7nt_test_vs_ctrl_m4	R	47	58	ACTATTAATCCT	7.9
+hg19_chr7_29503332_29503870_+	site	oligos_7nt_test_vs_ctrl_m4	D	147	158	ACGATTAATCAT	11.6
+hg19_chr7_29503332_29503870_+	site	oligos_7nt_test_vs_ctrl_m4	R	147	158	ATGATTAATCGT	11.6
+hg19_chr7_30059042_30059430_+	site	oligos_7nt_test_vs_ctrl_m4	D	-189	-178	ATAATTAATATA	7.7
+hg19_chr7_30059042_30059430_+	site	oligos_7nt_test_vs_ctrl_m4	R	-189	-178	TATATTAATTAT	7.7
+hg19_chr7_30212492_30212930_+	site	oligos_7nt_test_vs_ctrl_m4	D	110	121	CGGATTTATCTT	7.7
+hg19_chr7_30212492_30212930_+	site	oligos_7nt_test_vs_ctrl_m4	R	110	121	AAGATAAATCCG	7.7
+hg19_chr7_30388852_30389180_+	site	oligos_7nt_test_vs_ctrl_m4	D	12	23	GCGAATAATCAC	7.7
+hg19_chr7_30388852_30389180_+	site	oligos_7nt_test_vs_ctrl_m4	R	12	23	GTGATTATTCGC	7.8
+hg19_chr7_30987092_30987360_+	site	oligos_7nt_test_vs_ctrl_m4	D	51	62	TTGATTAATCGT	11.3
+hg19_chr7_30987092_30987360_+	site	oligos_7nt_test_vs_ctrl_m4	R	51	62	ACGATTAATCAA	11.3
+hg19_chr7_30987092_30987360_+	site	oligos_7nt_test_vs_ctrl_m4	D	69	80	AAGATTTATCTT	7.5
+hg19_chr7_30987092_30987360_+	site	oligos_7nt_test_vs_ctrl_m4	R	69	80	AAGATAAATCTT	7.5
+hg19_chr7_30987092_30987360_+	site	oligos_7nt_test_vs_ctrl_m4	D	95	106	CTAATTAATCAT	7.7
+hg19_chr7_30987092_30987360_+	site	oligos_7nt_test_vs_ctrl_m4	R	95	106	ATGATTAATTAG	7.7
+hg19_chr7_34148952_34149221_+	site	oligos_7nt_test_vs_ctrl_m4	D	8	19	AAAATTAATCAT	8.0
+hg19_chr7_34148952_34149221_+	site	oligos_7nt_test_vs_ctrl_m4	R	8	19	ATGATTAATTTT	8.0
+hg19_chr7_35201072_35201180_+	site	oligos_7nt_test_vs_ctrl_m4	D	4	15	GAGATTAATTTC	7.9
+hg19_chr7_35201072_35201180_+	site	oligos_7nt_test_vs_ctrl_m4	R	4	15	GAAATTAATCTC	7.9
+hg19_chr7_37952542_37952790_+	site	oligos_7nt_test_vs_ctrl_m4	D	28	39	CAGATTAATATC	9.0
+hg19_chr7_37952542_37952790_+	site	oligos_7nt_test_vs_ctrl_m4	R	28	39	GATATTAATCTG	9.0
+hg19_chr7_39112662_39112831_+	site	oligos_7nt_test_vs_ctrl_m4	D	60	71	AATATTAATAAA	7.8
+hg19_chr7_39112662_39112831_+	site	oligos_7nt_test_vs_ctrl_m4	R	60	71	TTTATTAATATT	7.8
+hg19_chr7_41423962_41424041_+	site	oligos_7nt_test_vs_ctrl_m4	D	7	18	TAGATTAATATT	10.0
+hg19_chr7_41423962_41424041_+	site	oligos_7nt_test_vs_ctrl_m4	R	7	18	AATATTAATCTA	10.0
+hg19_chr7_42926652_42926900_+	site	oligos_7nt_test_vs_ctrl_m4	D	-69	-58	AAGATTAATAGT	8.8
+hg19_chr7_42926652_42926900_+	site	oligos_7nt_test_vs_ctrl_m4	R	-69	-58	ACTATTAATCTT	8.8
+hg19_chr7_45500022_45500270_+	site	oligos_7nt_test_vs_ctrl_m4	D	76	87	AGTATTAATCAT	8.6
+hg19_chr7_45500022_45500270_+	site	oligos_7nt_test_vs_ctrl_m4	R	76	87	ATGATTAATACT	8.6
+hg19_chr7_48065312_48065520_+	site	oligos_7nt_test_vs_ctrl_m4	D	92	103	TAGAATAATCTT	7.8
+hg19_chr7_48065312_48065520_+	site	oligos_7nt_test_vs_ctrl_m4	R	92	103	AAGATTATTCTA	7.8
+hg19_chr7_48351052_48351670_+	site	oligos_7nt_test_vs_ctrl_m4	D	124	135	TATATTAATTCG	7.5
+hg19_chr7_48351052_48351670_+	site	oligos_7nt_test_vs_ctrl_m4	R	124	135	CGAATTAATATA	7.5
+hg19_chr7_50889842_50890151_+	site	oligos_7nt_test_vs_ctrl_m4	D	-49	-38	GAGATTTATCGA	8.2
+hg19_chr7_50889842_50890151_+	site	oligos_7nt_test_vs_ctrl_m4	R	-49	-38	TCGATAAATCTC	8.2
+hg19_chr7_50987302_50987620_+	site	oligos_7nt_test_vs_ctrl_m4	D	-142	-131	AATATTAATATC	8.3
+hg19_chr7_50987302_50987620_+	site	oligos_7nt_test_vs_ctrl_m4	R	-142	-131	GATATTAATATT	8.3
+hg19_chr7_51689852_51690120_+	site	oligos_7nt_test_vs_ctrl_m4	D	0	11	AAGATTAATATC	9.5
+hg19_chr7_51689852_51690120_+	site	oligos_7nt_test_vs_ctrl_m4	R	0	11	GATATTAATCTT	9.5
+hg19_chr7_52339342_52339491_+	site	oligos_7nt_test_vs_ctrl_m4	D	-68	-57	CTGATTAATATA	9.2
+hg19_chr7_52339342_52339491_+	site	oligos_7nt_test_vs_ctrl_m4	R	-68	-57	TATATTAATCAG	9.2
+hg19_chr7_52388982_52389250_+	site	oligos_7nt_test_vs_ctrl_m4	D	-47	-36	TGTATTAATATA	7.8
+hg19_chr7_52388982_52389250_+	site	oligos_7nt_test_vs_ctrl_m4	R	-47	-36	TATATTAATACA	7.8
+hg19_chr7_64712732_64713090_+	site	oligos_7nt_test_vs_ctrl_m4	D	-5	6	TTGATTCATCGT	7.7
+hg19_chr7_64712732_64713090_+	site	oligos_7nt_test_vs_ctrl_m4	R	-5	6	ACGATGAATCAA	7.7
+hg19_chr7_65420732_65420991_+	site	oligos_7nt_test_vs_ctrl_m4	D	-81	-70	CTGATTAATCAT	9.9
+hg19_chr7_65420732_65420991_+	site	oligos_7nt_test_vs_ctrl_m4	R	-81	-70	ATGATTAATCAG	9.9
+hg19_chr7_65732492_65732711_+	site	oligos_7nt_test_vs_ctrl_m4	D	43	54	ACTATTAATCTG	8.2
+hg19_chr7_65732492_65732711_+	site	oligos_7nt_test_vs_ctrl_m4	R	43	54	CAGATTAATAGT	8.2
+hg19_chr7_69278042_69278260_+	site	oligos_7nt_test_vs_ctrl_m4	D	-45	-34	TAGATTAATCCT	10.3
+hg19_chr7_69278042_69278260_+	site	oligos_7nt_test_vs_ctrl_m4	R	-45	-34	AGGATTAATCTA	10.3
+hg19_chr7_69482382_69482611_+	site	oligos_7nt_test_vs_ctrl_m4	D	-102	-91	TAAATTAATCAC	8.2
+hg19_chr7_69482382_69482611_+	site	oligos_7nt_test_vs_ctrl_m4	R	-102	-91	GTGATTAATTTA	8.2
+hg19_chr7_78163212_78163490_+	site	oligos_7nt_test_vs_ctrl_m4	D	112	123	AATATTAATCAA	9.2
+hg19_chr7_78163212_78163490_+	site	oligos_7nt_test_vs_ctrl_m4	R	112	123	TTGATTAATATT	9.2
+hg19_chr7_78933032_78933250_+	site	oligos_7nt_test_vs_ctrl_m4	D	-28	-17	TAGATTAATATA	10.3
+hg19_chr7_78933032_78933250_+	site	oligos_7nt_test_vs_ctrl_m4	R	-28	-17	TATATTAATCTA	10.4
+hg19_chr7_80550622_80550911_+	site	oligos_7nt_test_vs_ctrl_m4	D	-8	3	AAGATTAATCTC	10.7
+hg19_chr7_80550622_80550911_+	site	oligos_7nt_test_vs_ctrl_m4	R	-8	3	GAGATTAATCTT	10.7
+hg19_chr7_80839912_80840161_+	site	oligos_7nt_test_vs_ctrl_m4	D	81	92	ACGATTAAACAA	8.1
+hg19_chr7_80839912_80840161_+	site	oligos_7nt_test_vs_ctrl_m4	R	81	92	TTGTTTAATCGT	8.1
+hg19_chr7_81776872_81777080_+	site	oligos_7nt_test_vs_ctrl_m4	D	42	53	CAGATTAATCAT	10.2
+hg19_chr7_81776872_81777080_+	site	oligos_7nt_test_vs_ctrl_m4	R	42	53	ATGATTAATCTG	10.2
+hg19_chr7_84158462_84158571_+	site	oligos_7nt_test_vs_ctrl_m4	D	-27	-16	AAGATTAATAAT	9.3
+hg19_chr7_84158462_84158571_+	site	oligos_7nt_test_vs_ctrl_m4	R	-27	-16	ATTATTAATCTT	9.3
+hg19_chr7_84240732_84241060_+	site	oligos_7nt_test_vs_ctrl_m4	D	99	110	GGGATTAATAGT	7.7
+hg19_chr7_84240732_84241060_+	site	oligos_7nt_test_vs_ctrl_m4	R	99	110	ACTATTAATCCC	7.7
+hg19_chr7_86720542_86720881_+	site	oligos_7nt_test_vs_ctrl_m4	D	98	109	ATTATTAATAAC	7.7
+hg19_chr7_86720542_86720881_+	site	oligos_7nt_test_vs_ctrl_m4	R	98	109	GTTATTAATAAT	7.7
+hg19_chr7_88354972_88355500_+	site	oligos_7nt_test_vs_ctrl_m4	D	175	186	AATATTAATACT	7.5
+hg19_chr7_88354972_88355500_+	site	oligos_7nt_test_vs_ctrl_m4	R	175	186	AGTATTAATATT	7.5
+hg19_chr7_88666142_88666650_+	site	oligos_7nt_test_vs_ctrl_m4	D	-129	-118	ATGTTTAATCTA	7.9
+hg19_chr7_88666142_88666650_+	site	oligos_7nt_test_vs_ctrl_m4	R	-129	-118	TAGATTAAACAT	7.9
+hg19_chr7_88734092_88734320_+	site	oligos_7nt_test_vs_ctrl_m4	D	-114	-103	TTTATTAATATT	7.8
+hg19_chr7_88734092_88734320_+	site	oligos_7nt_test_vs_ctrl_m4	R	-114	-103	AATATTAATAAA	7.8
+hg19_chr7_91527792_91528540_+	site	oligos_7nt_test_vs_ctrl_m4	D	199	210	AAAATTAATCTA	8.5
+hg19_chr7_91527792_91528540_+	site	oligos_7nt_test_vs_ctrl_m4	R	199	210	TAGATTAATTTT	8.5
+hg19_chr7_91720962_91721100_+	site	oligos_7nt_test_vs_ctrl_m4	D	30	41	TAGATTAATATT	10.0
+hg19_chr7_91720962_91721100_+	site	oligos_7nt_test_vs_ctrl_m4	R	30	41	AATATTAATCTA	10.0
+hg19_chr7_93044362_93044700_+	site	oligos_7nt_test_vs_ctrl_m4	D	-168	-157	GATATTAATCCC	8.5
+hg19_chr7_93044362_93044700_+	site	oligos_7nt_test_vs_ctrl_m4	R	-168	-157	GGGATTAATATC	8.5
+hg19_chr7_94031322_94031680_+	site	oligos_7nt_test_vs_ctrl_m4	D	50	61	GATATTAATCAG	8.7
+hg19_chr7_94031322_94031680_+	site	oligos_7nt_test_vs_ctrl_m4	R	50	61	CTGATTAATATC	8.7
+hg19_chr7_94140312_94140640_+	site	oligos_7nt_test_vs_ctrl_m4	D	60	71	GAGATTAATCAG	9.9
+hg19_chr7_94140312_94140640_+	site	oligos_7nt_test_vs_ctrl_m4	R	60	71	CTGATTAATCTC	9.9
+hg19_chr7_94601932_94602130_+	site	oligos_7nt_test_vs_ctrl_m4	D	14	25	AAGATTAATCTG	10.2
+hg19_chr7_94601932_94602130_+	site	oligos_7nt_test_vs_ctrl_m4	R	14	25	CAGATTAATCTT	10.2
+hg19_chr7_97715572_97716000_+	site	oligos_7nt_test_vs_ctrl_m4	D	-129	-118	CTGATTAATCCC	8.9
+hg19_chr7_97715572_97716000_+	site	oligos_7nt_test_vs_ctrl_m4	R	-129	-118	GGGATTAATCAG	8.9
+hg19_chr7_99425742_99426040_+	site	oligos_7nt_test_vs_ctrl_m4	D	63	74	ATTATTAATATG	7.6
+hg19_chr7_99425742_99426040_+	site	oligos_7nt_test_vs_ctrl_m4	R	63	74	CATATTAATAAT	7.6
+hg19_chr7_99601442_99601971_+	site	oligos_7nt_test_vs_ctrl_m4	D	-58	-47	TAGATTAAACAC	7.7
+hg19_chr7_99601442_99601971_+	site	oligos_7nt_test_vs_ctrl_m4	R	-58	-47	GTGTTTAATCTA	7.7
+hg19_chr7_100539962_100540411_+	site	oligos_7nt_test_vs_ctrl_m4	D	-190	-179	TAAATTAATCAG	7.7
+hg19_chr7_100539962_100540411_+	site	oligos_7nt_test_vs_ctrl_m4	R	-190	-179	CTGATTAATTTA	7.7
+hg19_chr7_101345742_101346180_+	site	oligos_7nt_test_vs_ctrl_m4	D	112	123	GTGATTAATACC	8.3
+hg19_chr7_101345742_101346180_+	site	oligos_7nt_test_vs_ctrl_m4	R	112	123	GGTATTAATCAC	8.3
+hg19_chr7_101524372_101524681_+	site	oligos_7nt_test_vs_ctrl_m4	D	-112	-101	AAGATTTATCTA	7.9
+hg19_chr7_101524372_101524681_+	site	oligos_7nt_test_vs_ctrl_m4	R	-112	-101	TAGATAAATCTT	7.9
+hg19_chr7_101586152_101586271_+	site	oligos_7nt_test_vs_ctrl_m4	D	47	58	GTGATTAATAAC	8.9
+hg19_chr7_101586152_101586271_+	site	oligos_7nt_test_vs_ctrl_m4	R	47	58	GTTATTAATCAC	8.9
+hg19_chr7_101635292_101635470_+	site	oligos_7nt_test_vs_ctrl_m4	D	-60	-49	TAGGTTAATCTA	7.8
+hg19_chr7_101635292_101635470_+	site	oligos_7nt_test_vs_ctrl_m4	R	-60	-49	TAGATTAACCTA	7.8
+hg19_chr7_102080452_102080581_+	site	oligos_7nt_test_vs_ctrl_m4	D	18	29	TAGATTAATTAA	8.6
+hg19_chr7_102080452_102080581_+	site	oligos_7nt_test_vs_ctrl_m4	R	18	29	TTAATTAATCTA	8.6
+hg19_chr7_103912022_103912240_+	site	oligos_7nt_test_vs_ctrl_m4	D	73	84	ATTATTAATCAG	8.5
+hg19_chr7_103912022_103912240_+	site	oligos_7nt_test_vs_ctrl_m4	R	73	84	CTGATTAATAAT	8.5
+hg19_chr7_105967132_105967450_+	site	oligos_7nt_test_vs_ctrl_m4	D	62	73	TTTATTAATCTT	9.0
+hg19_chr7_105967132_105967450_+	site	oligos_7nt_test_vs_ctrl_m4	R	62	73	AAGATTAATAAA	9.0
+hg19_chr7_106362912_106363191_+	site	oligos_7nt_test_vs_ctrl_m4	D	-42	-31	GTGACTAATCGA	7.8
+hg19_chr7_106362912_106363191_+	site	oligos_7nt_test_vs_ctrl_m4	R	-42	-31	TCGATTAGTCAC	7.8
+hg19_chr7_106837632_106837870_+	site	oligos_7nt_test_vs_ctrl_m4	D	-109	-98	TATATTAATAAC	8.3
+hg19_chr7_106837632_106837870_+	site	oligos_7nt_test_vs_ctrl_m4	R	-109	-98	GTTATTAATATA	8.3
+hg19_chr7_106840892_106841110_+	site	oligos_7nt_test_vs_ctrl_m4	D	50	61	ATTATTAATCCA	8.3
+hg19_chr7_106840892_106841110_+	site	oligos_7nt_test_vs_ctrl_m4	R	50	61	TGGATTAATAAT	8.3
+hg19_chr7_106874222_106874840_+	site	oligos_7nt_test_vs_ctrl_m4	D	-58	-47	ATGATTAATTAT	8.4
+hg19_chr7_106874222_106874840_+	site	oligos_7nt_test_vs_ctrl_m4	R	-58	-47	ATAATTAATCAT	8.4
+hg19_chr7_107986492_107986720_+	site	oligos_7nt_test_vs_ctrl_m4	D	94	105	CAGATTAATTTT	7.5
+hg19_chr7_107986492_107986720_+	site	oligos_7nt_test_vs_ctrl_m4	R	94	105	AAAATTAATCTG	7.6
+hg19_chr7_108299292_108299550_+	site	oligos_7nt_test_vs_ctrl_m4	D	78	89	AAGATTAATTTC	8.0
+hg19_chr7_108299292_108299550_+	site	oligos_7nt_test_vs_ctrl_m4	R	78	89	GAAATTAATCTT	8.0
+hg19_chr7_110631142_110631350_+	site	oligos_7nt_test_vs_ctrl_m4	D	-49	-38	AAGATTAATAAA	9.0
+hg19_chr7_110631142_110631350_+	site	oligos_7nt_test_vs_ctrl_m4	R	-49	-38	TTTATTAATCTT	9.0
+hg19_chr7_111624142_111624310_+	site	oligos_7nt_test_vs_ctrl_m4	D	25	36	TAAATTAATCCT	7.6
+hg19_chr7_111624142_111624310_+	site	oligos_7nt_test_vs_ctrl_m4	R	25	36	AGGATTAATTTA	7.6
+hg19_chr7_112969792_112969911_+	site	oligos_7nt_test_vs_ctrl_m4	D	28	39	TGTATTAATATA	7.8
+hg19_chr7_112969792_112969911_+	site	oligos_7nt_test_vs_ctrl_m4	R	28	39	TATATTAATACA	7.8
+hg19_chr7_113032052_113032221_+	site	oligos_7nt_test_vs_ctrl_m4	D	-7	4	GAGATTAATCAT	10.6
+hg19_chr7_113032052_113032221_+	site	oligos_7nt_test_vs_ctrl_m4	R	-7	4	ATGATTAATCTC	10.6
+hg19_chr7_116056842_116057150_+	site	oligos_7nt_test_vs_ctrl_m4	D	49	60	AATATTAATATT	8.4
+hg19_chr7_116056842_116057150_+	site	oligos_7nt_test_vs_ctrl_m4	R	49	60	AATATTAATATT	8.4
+hg19_chr7_116672872_116672961_+	site	oligos_7nt_test_vs_ctrl_m4	D	-15	-4	TAGATTCATCTA	7.9
+hg19_chr7_116672872_116672961_+	site	oligos_7nt_test_vs_ctrl_m4	R	-15	-4	TAGATGAATCTA	7.9
+hg19_chr7_117125272_117125540_+	site	oligos_7nt_test_vs_ctrl_m4	D	77	88	AAGATTAATTTA	8.5
+hg19_chr7_117125272_117125540_+	site	oligos_7nt_test_vs_ctrl_m4	R	77	88	TAAATTAATCTT	8.5
+hg19_chr7_117226392_117226590_+	site	oligos_7nt_test_vs_ctrl_m4	D	86	97	CTTATTAATCTA	9.0
+hg19_chr7_117226392_117226590_+	site	oligos_7nt_test_vs_ctrl_m4	R	86	97	TAGATTAATAAG	9.0
+hg19_chr7_117331742_117332171_+	site	oligos_7nt_test_vs_ctrl_m4	D	-35	-24	AAAATTAATCTA	8.5
+hg19_chr7_117331742_117332171_+	site	oligos_7nt_test_vs_ctrl_m4	R	-35	-24	TAGATTAATTTT	8.5
+hg19_chr7_118261532_118261931_+	site	oligos_7nt_test_vs_ctrl_m4	D	96	107	CATATTAATCCT	8.2
+hg19_chr7_118261532_118261931_+	site	oligos_7nt_test_vs_ctrl_m4	R	96	107	AGGATTAATATG	8.2
+hg19_chr7_122922262_122922611_+	site	oligos_7nt_test_vs_ctrl_m4	D	-174	-163	TAAATTAATCAT	8.4
+hg19_chr7_122922262_122922611_+	site	oligos_7nt_test_vs_ctrl_m4	R	-174	-163	ATGATTAATTTA	8.4
+hg19_chr7_123407602_123407870_+	site	oligos_7nt_test_vs_ctrl_m4	D	83	94	TATATTAATAGT	8.0
+hg19_chr7_123407602_123407870_+	site	oligos_7nt_test_vs_ctrl_m4	R	83	94	ACTATTAATATA	8.0
+hg19_chr7_123712772_123713030_+	site	oligos_7nt_test_vs_ctrl_m4	D	38	49	ATTATTAATCTA	9.7
+hg19_chr7_123712772_123713030_+	site	oligos_7nt_test_vs_ctrl_m4	R	38	49	TAGATTAATAAT	9.7
+hg19_chr7_124330962_124331310_+	site	oligos_7nt_test_vs_ctrl_m4	D	78	89	ATGATTAAACTA	7.9
+hg19_chr7_124330962_124331310_+	site	oligos_7nt_test_vs_ctrl_m4	R	78	89	TAGTTTAATCAT	7.9
+hg19_chr7_124639372_124639530_+	site	oligos_7nt_test_vs_ctrl_m4	D	21	32	CAGATTAATTAC	7.8
+hg19_chr7_124639372_124639530_+	site	oligos_7nt_test_vs_ctrl_m4	R	21	32	GTAATTAATCTG	7.8
+hg19_chr7_126436372_126436660_+	site	oligos_7nt_test_vs_ctrl_m4	D	-65	-54	ATAATTAATCCA	7.5
+hg19_chr7_126436372_126436660_+	site	oligos_7nt_test_vs_ctrl_m4	R	-65	-54	TGGATTAATTAT	7.5
+hg19_chr7_128095562_128095800_+	site	oligos_7nt_test_vs_ctrl_m4	D	-1	10	GAGATTAATACA	8.5
+hg19_chr7_128095562_128095800_+	site	oligos_7nt_test_vs_ctrl_m4	R	-1	10	TGTATTAATCTC	8.5
+hg19_chr7_129493162_129493451_+	site	oligos_7nt_test_vs_ctrl_m4	D	78	89	AAAATTAATCCG	8.2
+hg19_chr7_129493162_129493451_+	site	oligos_7nt_test_vs_ctrl_m4	R	78	89	CGGATTAATTTT	8.2
+hg19_chr7_129497972_129498300_+	site	oligos_7nt_test_vs_ctrl_m4	D	-46	-35	AATATTAATATT	8.4
+hg19_chr7_129497972_129498300_+	site	oligos_7nt_test_vs_ctrl_m4	R	-46	-35	AATATTAATATT	8.4
+hg19_chr7_130600812_130600911_+	site	oligos_7nt_test_vs_ctrl_m4	D	2	13	TCGTTTAATCTT	8.3
+hg19_chr7_130600812_130600911_+	site	oligos_7nt_test_vs_ctrl_m4	R	2	13	AAGATTAAACGA	8.3
+hg19_chr7_132516492_132516710_+	site	oligos_7nt_test_vs_ctrl_m4	D	-92	-81	TCTATTAATCTA	9.0
+hg19_chr7_132516492_132516710_+	site	oligos_7nt_test_vs_ctrl_m4	R	-92	-81	TAGATTAATAGA	9.0
+hg19_chr7_134780172_134780351_+	site	oligos_7nt_test_vs_ctrl_m4	D	-14	-3	CAGATTAATATA	9.4
+hg19_chr7_134780172_134780351_+	site	oligos_7nt_test_vs_ctrl_m4	R	-14	-3	TATATTAATCTG	9.4
+hg19_chr7_134833152_134833501_+	site	oligos_7nt_test_vs_ctrl_m4	D	156	167	AAGATTAATATC	9.5
+hg19_chr7_134833152_134833501_+	site	oligos_7nt_test_vs_ctrl_m4	R	156	167	GATATTAATCTT	9.5
+hg19_chr7_135461882_135462170_+	site	oligos_7nt_test_vs_ctrl_m4	D	-99	-88	ATGATTAATACA	8.5
+hg19_chr7_135461882_135462170_+	site	oligos_7nt_test_vs_ctrl_m4	R	-99	-88	TGTATTAATCAT	8.5
+hg19_chr7_135890482_135890600_+	site	oligos_7nt_test_vs_ctrl_m4	D	-37	-26	AAAATTAATCAT	8.0
+hg19_chr7_135890482_135890600_+	site	oligos_7nt_test_vs_ctrl_m4	R	-37	-26	ATGATTAATTTT	8.0
+hg19_chr7_136584662_136584841_+	site	oligos_7nt_test_vs_ctrl_m4	D	-42	-31	TAGAATAATCAT	7.7
+hg19_chr7_136584662_136584841_+	site	oligos_7nt_test_vs_ctrl_m4	R	-42	-31	ATGATTATTCTA	7.7
+hg19_chr7_136993302_136993571_+	site	oligos_7nt_test_vs_ctrl_m4	D	-102	-91	GATATTAATATC	8.2
+hg19_chr7_136993302_136993571_+	site	oligos_7nt_test_vs_ctrl_m4	R	-102	-91	GATATTAATATC	8.2
+hg19_chr7_137744772_137744871_+	site	oligos_7nt_test_vs_ctrl_m4	D	-4	7	GAAATTAATCAA	7.7
+hg19_chr7_137744772_137744871_+	site	oligos_7nt_test_vs_ctrl_m4	R	-4	7	TTGATTAATTTC	7.7
+hg19_chr7_137746492_137746790_+	site	oligos_7nt_test_vs_ctrl_m4	D	30	41	AAGATTTATCTT	7.5
+hg19_chr7_137746492_137746790_+	site	oligos_7nt_test_vs_ctrl_m4	R	30	41	AAGATAAATCTT	7.5
+hg19_chr7_138636642_138637091_+	site	oligos_7nt_test_vs_ctrl_m4	D	165	176	ATTATTAATAAC	7.7
+hg19_chr7_138636642_138637091_+	site	oligos_7nt_test_vs_ctrl_m4	R	165	176	GTTATTAATAAT	7.7
+hg19_chr7_138930082_138930501_+	site	oligos_7nt_test_vs_ctrl_m4	D	-173	-162	CAGATTAATACT	8.2
+hg19_chr7_138930082_138930501_+	site	oligos_7nt_test_vs_ctrl_m4	R	-173	-162	AGTATTAATCTG	8.2
+hg19_chr7_139657032_139657300_+	site	oligos_7nt_test_vs_ctrl_m4	D	32	43	TCGATTAATTGC	7.9
+hg19_chr7_139657032_139657300_+	site	oligos_7nt_test_vs_ctrl_m4	R	32	43	GCAATTAATCGA	7.9
+hg19_chr7_140064622_140064991_+	site	oligos_7nt_test_vs_ctrl_m4	D	-118	-107	TAGATTAATTCC	7.5
+hg19_chr7_140064622_140064991_+	site	oligos_7nt_test_vs_ctrl_m4	R	-118	-107	GGAATTAATCTA	7.5
+hg19_chr7_141141552_141141731_+	site	oligos_7nt_test_vs_ctrl_m4	D	59	70	ATGATTAATTAA	8.1
+hg19_chr7_141141552_141141731_+	site	oligos_7nt_test_vs_ctrl_m4	R	59	70	TTAATTAATCAT	8.1
+hg19_chr7_141315962_141316190_+	site	oligos_7nt_test_vs_ctrl_m4	D	-50	-39	GTGATTAATAAC	8.9
+hg19_chr7_141315962_141316190_+	site	oligos_7nt_test_vs_ctrl_m4	R	-50	-39	GTTATTAATCAC	8.9
+hg19_chr7_142026342_142026661_+	site	oligos_7nt_test_vs_ctrl_m4	D	-160	-149	AAAATTAATCAT	8.0
+hg19_chr7_142026342_142026661_+	site	oligos_7nt_test_vs_ctrl_m4	R	-160	-149	ATGATTAATTTT	8.0
+hg19_chr7_143691712_143691840_+	site	oligos_7nt_test_vs_ctrl_m4	D	16	27	TAGATTAACCTA	7.8
+hg19_chr7_143691712_143691840_+	site	oligos_7nt_test_vs_ctrl_m4	R	16	27	TAGGTTAATCTA	7.8
+hg19_chr7_144677432_144677640_+	site	oligos_7nt_test_vs_ctrl_m4	D	17	28	TATATTAATATT	8.8
+hg19_chr7_144677432_144677640_+	site	oligos_7nt_test_vs_ctrl_m4	R	17	28	AATATTAATATA	8.8
+hg19_chr7_155162452_155163090_+	site	oligos_7nt_test_vs_ctrl_m4	D	-69	-58	GAGATTATTCGG	7.5
+hg19_chr7_155162452_155163090_+	site	oligos_7nt_test_vs_ctrl_m4	R	-69	-58	CCGAATAATCTC	7.5
+hg19_chr7_156210832_156211190_+	site	oligos_7nt_test_vs_ctrl_m4	D	167	178	TAGTTTAATCTT	7.9
+hg19_chr7_156210832_156211190_+	site	oligos_7nt_test_vs_ctrl_m4	R	167	178	AAGATTAAACTA	7.9
+hg19_chr7_156406942_156407321_+	site	oligos_7nt_test_vs_ctrl_m4	D	-93	-82	ACGATTAATTTA	9.4
+hg19_chr7_156406942_156407321_+	site	oligos_7nt_test_vs_ctrl_m4	R	-93	-82	TAAATTAATCGT	9.4
+hg19_chr7_156724572_156724980_+	site	oligos_7nt_test_vs_ctrl_m4	D	101	112	AAGATTAATCAT	10.7
+hg19_chr7_156724572_156724980_+	site	oligos_7nt_test_vs_ctrl_m4	R	101	112	ATGATTAATCTT	10.7
+hg19_chr7_157005062_157005141_+	site	oligos_7nt_test_vs_ctrl_m4	D	3	14	AGGATTAATAGC	7.6
+hg19_chr7_157005062_157005141_+	site	oligos_7nt_test_vs_ctrl_m4	R	3	14	GCTATTAATCCT	7.6
+hg19_chr7_158231222_158231670_+	site	oligos_7nt_test_vs_ctrl_m4	D	-89	-78	ATGATGAATCGT	8.0
+hg19_chr7_158231222_158231670_+	site	oligos_7nt_test_vs_ctrl_m4	R	-89	-78	ACGATTCATCAT	7.9
+hg19_chr7_158646152_158646340_+	site	oligos_7nt_test_vs_ctrl_m4	D	24	35	ATGATTTATCTA	7.8
+hg19_chr7_158646152_158646340_+	site	oligos_7nt_test_vs_ctrl_m4	R	24	35	TAGATAAATCAT	7.8
+;
+; Matrices
+;	matrix	name                      	ncol	nrow	pseudo	Wmin	Wmax	Wrange
+;	1	oligos_7nt_test_vs_ctrl_m4	12	4	0	-28.500	11.500	40.000	a:0.271 c:0.229 g:0.229 t:0.271 
+; Number of sequences scanned	6991
+; Sum of sequence lengths	1801622
+; N residues           	0
+; Matches per matrix
+;	matrix	name                      	matches	scored
+;	1	oligos_7nt_test_vs_ctrl_m4	270	0
+;		TOTAL          	270	0
+; Host name	biow
+; Job started	2014-10-08.083349
+; Job done	2014-10-08.083352
+; Seconds	0.85
+;	user	0.86
+;	system	0.03
+;	cuser	0.23
+;	csystem	0.02

@@ -1,0 +1,30 @@
+; One-to-n matrix alignment; reference matrix: oligos_7nt_test_vs_ctrl_m1_shift2	; 4 matrices	; sort_field=rank_mean
+; oligos_7nt_test_vs_ctrl_m1; m=0 (reference); ncol1=16; shift=2; ncol=18; --wwcTTTATCTGATAww
+; Alignment reference
+a	0	0	133	133	102	42	41	28	405	14	20	37	33	381	26	326	150	146
+c	0	0	69	94	230	28	29	16	14	15	379	6	25	29	16	40	75	105
+g	0	0	89	72	44	31	29	14	18	16	19	2	357	16	18	35	69	78
+t	0	0	161	153	76	351	353	394	15	407	34	407	37	26	392	51	158	123
+//
+; oligos_7nt_test_vs_ctrl_m1 versus MA0037.2_rc (GATA3_rc); m=1/3; ncol2=8; w=8; offset=2; strand=R; shift=4; score= 1.8571; ----tYTTATCT------
+; cor=0.877; Ncor=0.438; logoDP=2.500; NIcor=0.052; NsEucl=0.904; SSD=1.178; NSW=0.926; rcor=1; rNcor=3; rlogoDP=2; rNIcor=2; rNsEucl=3; rSSD=1; rNSW=1; rank_mean=1.857; match_rank=1
+a	0	0	0	0	0	0	0	0	4628	0	0	0	0	0	0	0	0	0
+c	0	0	0	0	1120	3338	0	0	0	0	4628	0	0	0	0	0	0	0
+g	0	0	0	0	712	0	0	0	0	0	0	0	0	0	0	0	0	0
+t	0	0	0	0	2796	1290	4628	4628	0	4628	0	4628	0	0	0	0	0	0
+//
+; oligos_7nt_test_vs_ctrl_m1 versus MA0035.2_rc (Gata1_rc); m=2/3; ncol2=11; w=11; offset=1; strand=R; shift=3; score=      2; ---yycTTATCWsy----
+; cor=0.797; Ncor=0.548; logoDP=0.468; NIcor=-0.135; NsEucl=0.916; SSD=1.718; NSW=0.922; rcor=2; rNcor=1; rlogoDP=3; rNIcor=3; rNsEucl=1; rSSD=2; rNSW=2; rank_mean=2.000; match_rank=2
+a	0	0	0	585	311	224	63	107	3835	0	0	1177	424	775	0	0	0	0
+c	0	0	0	1099	1360	2296	383	6	109	0	4000	10	1235	1242	0	0	0	0
+g	0	0	0	829	897	681	4	0	29	0	0	31	1633	560	0	0	0	0
+t	0	0	0	1487	1432	799	3550	3887	27	4000	0	2782	708	1423	0	0	0	0
+//
+; oligos_7nt_test_vs_ctrl_m1 versus MA0036.2 (GATA2); m=3/3; ncol2=14; w=12; offset=-2; strand=D; shift=0; score= 2.1429; wrrttCTTATCWsh----
+; cor=0.765; Ncor=0.510; logoDP=5.523; NIcor=0.505; NsEucl=0.913; SSD=2.162; NSW=0.910; rcor=3; rNcor=2; rlogoDP=1; rNIcor=1; rNsEucl=2; rSSD=3; rNSW=3; rank_mean=2.143; match_rank=3
+a	1569	1125	1555	1051	32	9	0	51	4380	0	0	1225	104	1256	0	0	0	0
+c	567	768	729	525	1057	3015	192	0	0	0	4380	0	1765	1185	0	0	0	0
+g	754	1709	1220	427	765	914	0	0	0	0	0	0	1967	224	0	0	0	0
+t	1490	778	876	2377	2526	442	4188	4329	0	4380	0	3155	544	1715	0	0	0	0
+//
+;

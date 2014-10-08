@@ -1,0 +1,94 @@
+; compare-matrices  -v 1 -mode matches -format1 transfac -file1 $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/discovered_motifs/peak-motifs_motifs_discovered.tf -format2 tf -file2 $RSAT/public_html/data/motif_databases/JASPAR/jaspar_core_vertebrates_2013-11.tf -mode matches -DR -uth offset_rank 1 -lth w 5 -lth Wr 0.3 -lth cor 0.75 -lth Ncor 0.4 -return matrix_name,matrix_id,cor,Ncor,logoDP,NIcor,NsEucl,SSD,NSW,match_rank,width,strand,offset,consensus,alignments_1ton -sort Ncor -o $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/discovered_vs_db/peak-motifs_motifs_vs_db_jaspar_core_vertebrates.tab
+; Program version       	1.118
+; Input files
+;	file2 	/vh/rsat/rsat/public_html/data/motif_databases/JASPAR/jaspar_core_vertebrates_2013-11.tf
+;	file1 	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/discovered_motifs/peak-motifs_motifs_discovered.tf
+; Output files
+;	alignments_1ton	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/discovered_vs_db/peak-motifs_motifs_vs_db_jaspar_core_vertebrates_alignments_1ton.tab
+;	match_table_txt	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/discovered_vs_db/peak-motifs_motifs_vs_db_jaspar_core_vertebrates.tab
+;	html_index   	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/discovered_vs_db/peak-motifs_motifs_vs_db_jaspar_core_vertebrates_index.html
+;	alignments_1ton_html	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/discovered_vs_db/peak-motifs_motifs_vs_db_jaspar_core_vertebrates_alignments_1ton.html
+;	match_table_html	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/discovered_vs_db/peak-motifs_motifs_vs_db_jaspar_core_vertebrates.html
+;	prefix       	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/discovered_vs_db/peak-motifs_motifs_vs_db_jaspar_core_vertebrates
+; Matrices
+;	file1	15 matrices	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/discovered_motifs/peak-motifs_motifs_discovered.tf
+;		file1	1	24	121	aaTgAGATAAAaAttaaAaTcTww
+;		file1	2	24	212	watAgAGATAAAaAttaaaawhww
+;		file1	3	24	128	wwaaTtTTTATCAGATAAAwAwww
+;		file1	4	24	151	wwTTAGATGATAAAaattAAaaww
+;		file1	5	24	150	wwcAAGATAAAaattaaaATcTww
+;		file1	6	16	452	wwcTTTATCTGATAww
+;		file1	7	12	474	wwTAGATGATaw
+;		file1	8	15	613	wwcTTTATCTCTAww
+;		file1	9	12	200	wwGATTAATCww
+;		file1	10	15	559	wwtaATGATAAAgww
+;		file1	11	20	417	wwTATCwwwwhwdwyATCww
+;		...	5 more matrices
+;	file2	263 matrices	/vh/rsat/rsat/public_html/data/motif_databases/JASPAR/jaspar_core_vertebrates_2013-11.tf
+;		file2		1		11		26		wwyTGyGGTww
+;		file2		2		9		185		GCCcbrrGs
+;		file2		3		6		20		CACGTG
+;		file2		4		6		24		yGCGTG
+;		file2		5		22		24		hwwrGmACryyvtGTwCchrms
+;		file2		6		11		40		CTAGGTGTGAA
+;		file2		7		20		12		drvkcasygrwGcRkrrCsr
+;		file2		8		14		13		TGAmCTTTGmmCyt
+;		file2		9		12		16		bbkGrTGACGym
+;		file2		10		12		39		rrrTGCAATmcc
+;		file2		11		8		10		TTTsGCGC
+;		...	253 more matrices
+; Column content
+;	1	id1          	Identifier of the first matrix
+;	2	id2          	Identifier of the second matrix
+;	3	name1        	Name of the first matrix
+;	4	name2        	Name of the second matrix
+;	5	cor          	Pearson coefficient of correlation between frequency matrices
+;	6	Ncor         	Normalized correlation. Ncor = cor * Wr
+;	7	logoDP       	Dot product between the logo matrices.
+;	8	NIcor        	Normalized Pearson correlation between the information content matrices. NIcor = Icor * Wr
+;	9	NSW          	Normalized Sandelin-Wasserman similarity. NSW = SW/w
+;	10	SSD          	sum of squared distance.
+;	11	NsEucl       	relative Euclidian similarity. NsEucl = (max(dEucl) - dEucl)/max(dEucl)
+;	12	w1           	Width of the first matrix
+;	13	w2           	Width of the second matrix
+;	14	w            	Alignment length (number of overlapping columns between matrix 1 and matrix 2, as a function of the offset)
+;	15	W            	Total alignment length (overlapping + non-overlapping columns). W = w1 + w2 - w
+;	16	Wr           	Relative alignment length (overlap divided by the total alignemnt length). Wr = w/W
+;	17	wr1          	Alignment length relative to the width of the first matrix. wr1 = w/w1
+;	18	wr2          	Alignment length relative to the width of the second matrix. wr2 = w/w2
+;	19	strand       	"strand", i.e. orientation of matrix 2 relative to matrix 1 (D=direct;  R=reverse)
+;	20	offset       	shift of the second matrix relative to the first matrix (negative:left; positive: right)
+;	21	consensus1   	IUPAC consensus of matrix 1 (dots represent non-aligned columns)
+;	22	consensus2   	IUPAC consensus of matrix 2 (dots represent non-aligned columns)
+;	23	rcor         	Matching rank for cor
+;	24	rNcor        	Matching rank for Ncor
+;	25	rlogoDP      	Matching rank for logoDP
+;	26	rNIcor       	Matching rank for NIcor
+;	27	rNsEucl      	Matching rank for NsEucl
+;	28	rSSD         	Matching rank for SSD
+;	29	rNSW         	Matching rank for NSW
+;	30	rank_mean    	Mean of the matching ranks on all selected metrics
+;	31	match_rank   	Rank of the match (sorting by rank_mean)
+#id1	id2	name1	name2	cor	Ncor	logoDP	NIcor	NSW	SSD	NsEucl	w1	w2	w	W	Wr	wr1	wr2	strand	offset	consensus1	consensus2	rcor	rNcor	rlogoDP	rNIcor	rNsEucl	rSSD	rNSW	rank_mean	match_rank
+oligos_7nt_test_vs_ctrl_m3	MA0035.3	oligos_7nt_test_vs_ctrl_m3	Gata1	0.803	0.589	5.942	0.568	0.913	1.9069	0.91123	15	11	11	15	0.7333	0.7333	1.0000	D	1	         .wcTTTATCTCT...	tyCTTATCTsy                   	4	1	1	1	9	8	8	4.5714	1
+oligos_7nt_test_vs_ctrl_m1	MA0037.2	oligos_7nt_test_vs_ctrl_m1	GATA3	0.877	0.438	2.500	0.052	0.926	1.1782	0.90406	16	8	8	16	0.5000	0.5000	1.0000	R	2	        ..cTTTATCT......	TYTTATCT                      	1	10	5	6	10	1	2	5.0000	2
+oligos_7nt_test_vs_ctrl_m3	MA0037.2	oligos_7nt_test_vs_ctrl_m3	GATA3	0.858	0.458	2.390	0.043	0.917	1.3273	0.89817	15	8	8	15	0.5333	0.5333	1.0000	R	2	         ..cTTTATCT.....	TYTTATCT                      	2	7	6	7	11	3	7	6.1429	3
+oligos_7nt_test_vs_ctrl_m1	MA0035.2	oligos_7nt_test_vs_ctrl_m1	Gata1	0.797	0.548	0.468	-0.135	0.922	1.7178	0.91575	16	11	11	16	0.6875	0.6875	1.0000	R	1	        .wcTTTATCTGA....	YYCTTATCWSY                   	6	3	12	13	4	6	3	6.7143	4
+oligos_7nt_test_vs_ctrl_m3	MA0035.2	oligos_7nt_test_vs_ctrl_m3	Gata1	0.798	0.585	0.537	-0.176	0.920	1.7538	0.91487	15	11	11	15	0.7333	0.7333	1.0000	R	1	         .wcTTTATCTCT...	YYCTTATCWSY                   	5	2	11	14	5	7	5	7.0000	5
+oligos_6nt_test_vs_ctrl_m3	MA0036.2	oligos_6nt_test_vs_ctrl_m3	GATA2	0.784	0.457	1.090	-0.022	0.928	2.0028	0.92852	24	14	14	24	0.5833	0.5833	1.0000	R	10	..........TCAGATAAAwAwww	DSWGATAAGAAYYW                	9	8	10	11	1	9	1	7.0000	6
+oligos_7nt_test_vs_ctrl_m1	MA0036.2	oligos_7nt_test_vs_ctrl_m1	GATA2	0.765	0.510	5.523	0.505	0.910	2.1617	0.91336	16	14	12	18	0.6667	0.7500	0.8571	D	-2	        wwcTTTATCTGA....	..rttCTTATCWsh                	11	5	4	3	7	11	10	7.2857	7
+oligos_6nt_test_vs_ctrl_m2	MA0036.2	oligos_6nt_test_vs_ctrl_m2	GATA2	0.785	0.458	1.215	-0.018	0.921	2.2088	0.92494	24	14	14	24	0.5833	0.5833	1.0000	R	3	...AgAGATAAAaAtta.......	DSWGATAAGAAYYW                	8	6	9	10	2	12	4	7.2857	8
+oligos_7nt_test_vs_ctrl_m4	MA0151.1	oligos_7nt_test_vs_ctrl_m4	ARID3A	0.834	0.417	5.853	0.398	0.900	1.2031	0.87074	12	6	6	12	0.5000	0.5000	1.0000	R	3	            ...ATTAAT...	TTTRAT                        	3	13	2	4	14	2	13	7.2857	9
+oligos_7nt_test_vs_ctrl_m3	MA0036.2	oligos_7nt_test_vs_ctrl_m3	GATA2	0.764	0.539	5.531	0.527	0.908	2.2159	0.91228	15	14	12	17	0.7059	0.8000	0.8571	D	-2	         wwcTTTATCTCT...	..rttCTTATCWsh                	12	4	3	2	8	13	11	7.5714	10
+oligos_6nt_test_vs_ctrl_m1	MA0036.2	oligos_6nt_test_vs_ctrl_m1	GATA2	0.769	0.448	1.262	-0.016	0.919	2.2710	0.92389	24	14	14	24	0.5833	0.5833	1.0000	R	2	..TgAGATAAAaAtta........	DSWGATAAGAAYYW                	10	9	8	9	3	14	6	8.4286	11
+oligos_7nt_test_vs_ctrl_m3	MA0140.1	oligos_7nt_test_vs_ctrl_m3	Tal1::Gata1	0.760	0.434	0.233	0.012	0.913	2.0949	0.91471	15	18	12	21	0.5714	0.8000	0.6667	R	3	         ...TTTATCTCTAww	CTTATCWSYCCS......            	13	11	14	8	6	10	9	10.1429	12
+oligos_7nt_test_vs_ctrl_m4	MA0467.1	oligos_7nt_test_vs_ctrl_m4	Crx	0.792	0.422	0.344	-0.094	0.902	1.5702	0.88924	12	11	8	15	0.5333	0.6667	0.7273	R	4	            ....TTAATCww	YTAATCCY...                   	7	12	13	12	12	4	12	10.2857	13
+oligos_7nt_test_vs_ctrl_m3	MA0033.1	oligos_7nt_test_vs_ctrl_m3	FOXL1	0.751	0.400	1.587	0.205	0.895	1.6757	0.88558	15	8	8	15	0.5333	0.5333	1.0000	R	5	         .....TATCTCTA..	TATRTHWW                      	14	14	7	5	13	5	14	10.2857	14
+; Host name	biow
+; Job started	2014-10-08.083039
+; Job done	2014-10-08.083121
+; Seconds	34.82
+;	user	34.82
+;	system	0.38
+;	cuser	6.15
+;	csystem	0.7

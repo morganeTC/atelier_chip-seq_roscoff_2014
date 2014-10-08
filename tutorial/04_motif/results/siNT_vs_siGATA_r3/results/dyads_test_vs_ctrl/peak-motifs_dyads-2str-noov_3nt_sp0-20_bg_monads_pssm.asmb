@@ -1,0 +1,294 @@
+; pattern-assembly  -v 1 -i $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/dyads_test_vs_ctrl/peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads.tab -2str -maxfl 1 -subst 1 -max_asmb_width 20 -toppat 100 -max_asmb_size 50 -max_asmb_width 20 -max_asmb_nb 5 -o $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/dyads_test_vs_ctrl/peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads_pssm.asmb
+; Input file	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/dyads_test_vs_ctrl/peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads.tab
+; Output file	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/dyads_test_vs_ctrl/peak-motifs_dyads-2str-noov_3nt_sp0-20_bg_monads_pssm.asmb
+; Input score column           	8
+; Output score column          	0
+; Strand-insensitive assembly
+; Max flanking bases           	1
+; Max substitutions            	1
+; Min matches                  	0
+; Min weight                   	0
+; Max assembly size            	50
+; Max assembly width           	20
+; Top number of patterns       	100
+; Number of input patterns     	100
+;
+
+; assembly # 1	seed: atcnnnnnnnnnatc	50 assembled patterns	length 16
+;         alignt	         rev_cpl	score
+tatnnnnnnnnnnatc	gatnnnnnnnnnnata	5.68
+tatnnnnnnnnngat.	.atcnnnnnnnnnata	5.43
+.atcnnnnnnnnnatc	gatnnnnnnnnngat.	16.58
+.atctca.........	.........tgagat.	9.24
+.atcaga.........	.........tctgat.	8.88
+.atctct.........	.........agagat.	8.82
+.atctga.........	.........tcagat.	8.76
+.atcnnnaaa......	......tttnnngat.	7.78
+.atcnnnatc......	......gatnnngat.	6.44
+.atcnntaa.......	.......ttanngat.	6.21
+.atcncta........	........tagngat.	5.67
+.atcngat........	........atcngat.	5.55
+.atcnnnnnnnntat.	.atannnnnnnngat.	5.36
+.atcatc.........	.........gatgat.	5.35
+.atcnnnnaaa.....	.....tttnnnngat.	5.31
+..tctgat........	........atcaga..	8.88
+..tcagat........	........atctga..	8.76
+..tcatct........	........agatga..	8.44
+..tctnnnnnnnnatc	gatnnnnnnnnaga..	7.76
+...ctgata.......	.......tatcag...	6.32
+...cagata.......	.......tatctg...	6.20
+...catcta.......	.......tagatg...	5.24
+....ttatct......	......agataa....	11.54
+....agataa......	......ttatct....	11.54
+....gatnnnatc...	...gatnnnatc....	9.28
+....tgagat......	......atctca....	9.24
+....agagat......	......atctct....	8.82
+....ttatca......	......tgataa....	8.70
+....tgataa......	......ttatca....	8.70
+....agatga......	......tcatct....	8.44
+....tttnnngat...	...atcnnnaaa....	7.78
+....gagata......	......tatctc....	7.36
+....tatctc......	......gagata....	7.36
+....gatnnngat...	...atcnnnatc....	6.44
+....tatcag......	......ctgata....	6.32
+....ttanngat....	....atcnntaa....	6.21
+....tatctg......	......cagata....	6.20
+....gatnncat....	....atgnnatc....	5.93
+....atgnnatc....	....gatnncat....	5.93
+....aagata......	......tatctt....	5.74
+....tatctt......	......aagata....	5.74
+....tagngat.....	.....atcncta....	5.67
+....gatgat......	......atcatc....	5.35
+....tagatg......	......catcta....	5.24
+....atatct......	......agatat....	5.11
+....agatat......	......atatct....	5.11
+.....agannnnnatc	gatnnnnntct.....	5.94
+.....tgannnnnatc	gatnnnnntca.....	5.75
+.....tttnnnngat.	.atcnnnnaaa.....	5.31
+......gatnnnnatc	gatnnnnatc......	5.92
+tatcnnnnnnnnnatc	gatnnnnnnnnngata	16.58	best consensus
+
+; assembly # 2	seed: gatnnnnnnnnnnnnnnnnaaa	50 assembled patterns	length 22
+;               alignt	               rev_cpl	score
+gatnnnnnnnnngat.......	.......atcnnnnnnnnnatc	16.58
+gatnnnnnnnnnnnnnnnnaaa	tttnnnnnnnnnnnnnnnnatc	12.50
+gatnnnnnnnnnngat......	......atcnnnnnnnnnnatc	11.53
+gatnnnatc.............	.............gatnnnatc	9.28
+gatnnnnnnnnnnnnnnnaaa.	.tttnnnnnnnnnnnnnnnatc	8.66
+gatnnnnnnnnaga........	........tctnnnnnnnnatc	7.76
+gatnnnnnnnnnnnnnatt...	...aatnnnnnnnnnnnnnatc	7.00
+gatnnnnnnnnnnnnnngaa..	..ttcnnnnnnnnnnnnnnatc	6.84
+gatnnnnnnnnnntct......	......agannnnnnnnnnatc	6.51
+gatnnngat.............	.............atcnnnatc	6.44
+gatnnnnntct...........	...........agannnnnatc	5.94
+gatnncat..............	..............atgnnatc	5.93
+gatnnnnatc............	............gatnnnnatc	5.92
+.atcnnnnnnnnnatc......	......gatnnnnnnnnngat.	16.58
+.atcnnnnnnnnnnatc.....	.....gatnnnnnnnnnngat.	11.53
+.atctca...............	...............tgagat.	9.24
+.atcaga...............	...............tctgat.	8.88
+.atctct...............	...............agagat.	8.82
+.atctga...............	...............tcagat.	8.76
+.atcnnnnnnnnnnnnnnnaaa	tttnnnnnnnnnnnnnnngat.	8.10
+.atcnnnaaa............	............tttnnngat.	7.78
+.atcnnnnnnnnnnnnnaaa..	..tttnnnnnnnnnnnnngat.	7.59
+.atcnnnnnnnnnnnaga....	....tctnnnnnnnnnnngat.	7.01
+.atcnnnnnnnnnnntct....	....agannnnnnnnnnngat.	6.77
+.atcnnnatc............	............gatnnngat.	6.44
+.atcnntaa.............	.............ttanngat.	6.21
+.atgnnatc.............	.............gatnncat.	5.93
+..ttatct..............	..............agataa..	11.54
+..tgagat..............	..............atctca..	9.24
+..tctgat..............	..............atcaga..	8.88
+..tcagat..............	..............atctga..	8.76
+..ttatca..............	..............tgataa..	8.70
+..tgataa..............	..............ttatca..	8.70
+..tcatct..............	..............agatga..	8.44
+..tttnnngat...........	...........atcnnnaaa..	7.78
+..tctnnnnnnnnatc......	......gatnnnnnnnnaga..	7.76
+..tatctc..............	..............gagata..	7.36
+..tctnnnnnnnnnnngat...	...atcnnnnnnnnnnnaga..	7.01
+..tatcag..............	..............ctgata..	6.32
+..ttanngat............	............atcnntaa..	6.21
+..tatctg..............	..............cagata..	6.20
+..tgannnnnatc.........	.........gatnnnnntca..	5.75
+...agataa.............	.............ttatct...	11.54
+...agagat.............	.............atctct...	8.82
+...agatga.............	.............tcatct...	8.44
+...gagata.............	.............tatctc...	7.36
+...agannnnnnnnnnatc...	...gatnnnnnnnnnntct...	6.51
+...ctgata.............	.............tatcag...	6.32
+...cagata.............	.............tatctg...	6.20
+...agannnnnatc........	........gatnnnnntct...	5.94
+gatnnnnnnnnnnnnnnnnaaa	tttnnnnnnnnnnnnnnnnatc	16.58	best consensus
+
+; assembly # 3	seed: gatnnnnnnnnnnnnnnnnnnaaa	50 assembled patterns	length 24
+;                 alignt	                 rev_cpl	score
+gatnnnnnnnnngat.........	.........atcnnnnnnnnnatc	16.58
+gatnnnnnnnnnnnnnnnnaaa..	..tttnnnnnnnnnnnnnnnnatc	12.50
+gatnnnnnnnnnngat........	........atcnnnnnnnnnnatc	11.53
+gatnnnnnnnnnnnnnnnnnnaaa	tttnnnnnnnnnnnnnnnnnnatc	11.04
+gatnnnatc...............	...............gatnnnatc	9.28
+gatnnnnnnnnnnnnnnnaaa...	...tttnnnnnnnnnnnnnnnatc	8.66
+gatnnnnnnnnaga..........	..........tctnnnnnnnnatc	7.76
+gatnnnnnnnnnnnnnatt.....	.....aatnnnnnnnnnnnnnatc	7.00
+gatnnnnnnnnnnnnnngaa....	....ttcnnnnnnnnnnnnnnatc	6.84
+gatnnnnnnnnnntct........	........agannnnnnnnnnatc	6.51
+gatnnngat...............	...............atcnnnatc	6.44
+.atcnnnnnnnnnatc........	........gatnnnnnnnnngat.	16.58
+.atcnnnnnnnnnnatc.......	.......gatnnnnnnnnnngat.	11.53
+.atctca.................	.................tgagat.	9.24
+.atcaga.................	.................tctgat.	8.88
+.atctct.................	.................agagat.	8.82
+.atctga.................	.................tcagat.	8.76
+.atcnnnnnnnnnnnnnnnaaa..	..tttnnnnnnnnnnnnnnngat.	8.10
+.atcnnnaaa..............	..............tttnnngat.	7.78
+.atcnnnnnnnnnnnnnaaa....	....tttnnnnnnnnnnnnngat.	7.59
+.atcnnnnnnnnnnnaga......	......tctnnnnnnnnnnngat.	7.01
+.atannnnnnnnnnnnnntta...	...taannnnnnnnnnnnnntat.	6.83
+.atcnnnnnnnnnnntct......	......agannnnnnnnnnngat.	6.77
+.atcnnnnnnnnnnnnnnnnaaa.	.tttnnnnnnnnnnnnnnnngat.	6.55
+.atcnnnatc..............	..............gatnnngat.	6.44
+.atcnntaa...............	...............ttanngat.	6.21
+.atcnnnnnnnnnnnnnnnnnaaa	tttnnnnnnnnnnnnnnnnngat.	6.10
+..ttatct................	................agataa..	11.54
+..tgagat................	................atctca..	9.24
+..tctgat................	................atcaga..	8.88
+..tcagat................	................atctga..	8.76
+..ttatca................	................tgataa..	8.70
+..tgataa................	................ttatca..	8.70
+..tcatct................	................agatga..	8.44
+..tttnnngat.............	.............atcnnnaaa..	7.78
+..tctnnnnnnnnatc........	........gatnnnnnnnnaga..	7.76
+..tttnnnnnnnnnnnnngat...	...atcnnnnnnnnnnnnnaaa..	7.59
+..tatctc................	................gagata..	7.36
+..tctnnnnnnnnnnngat.....	.....atcnnnnnnnnnnnaga..	7.01
+..tatcag................	................ctgata..	6.32
+..ttanngat..............	..............atcnntaa..	6.21
+..tatctg................	................cagata..	6.20
+...agataa...............	...............ttatct...	11.54
+...agagat...............	...............atctct...	8.82
+...agatga...............	...............tcatct...	8.44
+...gagata...............	...............tatctc...	7.36
+...agannnnnnnnnnngat....	....atcnnnnnnnnnnntct...	6.77
+...agannnnnnnnnnatc.....	.....gatnnnnnnnnnntct...	6.51
+...ctgata...............	...............tatcag...	6.32
+...cagata...............	...............tatctg...	6.20
+gatnnnnnnnnnnnnnnnnnnaaa	tttnnnnnnnnnnnnnnnnnnatc	16.58	best consensus
+
+; assembly # 4	seed: aaannnnnnnnnnnnnnngat	50 assembled patterns	length 21
+;              alignt	              rev_cpl	score
+aaannnnnnnnnnnnnnngat	atcnnnnnnnnnnnnnnnttt	7.26
+.aagata..............	..............tatctt.	5.74
+..atcnnnnnnnnnatc....	....gatnnnnnnnnngat..	16.58
+..agataa.............	.............ttatct..	11.54
+..atcnnnnnnnnnnatc...	...gatnnnnnnnnnngat..	11.53
+..atctca.............	.............tgagat..	9.24
+..atcaga.............	.............tctgat..	8.88
+..atctct.............	.............agagat..	8.82
+..agagat.............	.............atctct..	8.82
+..atctga.............	.............tcagat..	8.76
+..agatga.............	.............tcatct..	8.44
+..atcnnnaaa..........	..........tttnnngat..	7.78
+..agannnnnnnnnnatc...	...gatnnnnnnnnnntct..	6.51
+..atcnnnatc..........	..........gatnnngat..	6.44
+..atcnntaa...........	...........ttanngat..	6.21
+..agannnnnatc........	........gatnnnnntct..	5.94
+..atgnnatc...........	...........gatnncat..	5.93
+..atcncta............	............tagngat..	5.67
+..atcngat............	............atcngat..	5.55
+...gatnnnnnnnnngat...	...atcnnnnnnnnnatc...	16.58
+...ttatct............	............agataa...	11.54
+...gatnnnatc.........	.........gatnnnatc...	9.28
+...tgagat............	............atctca...	9.24
+...tctgat............	............atcaga...	8.88
+...tcagat............	............atctga...	8.76
+...ttatca............	............tgataa...	8.70
+...tgataa............	............ttatca...	8.70
+...tcatct............	............agatga...	8.44
+...tttnnngat.........	.........atcnnnaaa...	7.78
+...tctnnnnnnnnatc....	....gatnnnnnnnnaga...	7.76
+...gatnnnnnnnnaga....	....tctnnnnnnnnatc...	7.76
+...gagata............	............tatctc...	7.36
+...tatctc............	............gagata...	7.36
+...atcnnnnnnnnnnnaga.	.tctnnnnnnnnnnngat...	7.01
+...gatnnngat.........	.........atcnnnatc...	6.44
+...tatcag............	............ctgata...	6.32
+...ctgata............	............tatcag...	6.32
+...ttanngat..........	..........atcnntaa...	6.21
+...tatctg............	............cagata...	6.20
+...cagata............	............tatctg...	6.20
+...gatnnnnntct.......	.......agannnnnatc...	5.94
+...gatnncat..........	..........atgnnatc...	5.93
+...gatnnnnatc........	........gatnnnnatc...	5.92
+...tgannnnnatc.......	.......gatnnnnntca...	5.75
+...gatnnnnntca.......	.......tgannnnnatc...	5.75
+...tatctt............	............aagata...	5.74
+...tagngat...........	...........atcncta...	5.67
+....tctnnnnnnnnnnngat	atcnnnnnnnnnnnaga....	7.01
+....agannnnnnnnnnngat	atcnnnnnnnnnnntct....	6.77
+.....gatnnnnnnnnnngat	atcnnnnnnnnnnatc.....	11.53
+aaannnnnnnnnnnnnnngat	atcnnnnnnnnnnnnnnnttt	16.58	best consensus
+
+; assembly # 5	seed: gatnnnnnnnnnnnnnnnnnnnaaa	50 assembled patterns	length 25
+;                  alignt	                  rev_cpl	score
+gatnnnnnnnnngat..........	..........atcnnnnnnnnnatc	16.58
+gatnnnnnnnnnnnnnnnnaaa...	...tttnnnnnnnnnnnnnnnnatc	12.50
+gatnnnnnnnnnngat.........	.........atcnnnnnnnnnnatc	11.53
+gatnnnnnnnnnnnnnnnnnnaaa.	.tttnnnnnnnnnnnnnnnnnnatc	11.04
+gatnnnatc................	................gatnnnatc	9.28
+gatnnnnnnnnnnnnnnnaaa....	....tttnnnnnnnnnnnnnnnatc	8.66
+gatnnnnnnnnaga...........	...........tctnnnnnnnnatc	7.76
+gatnnnnnnnnnnnnnnnnnnnaaa	tttnnnnnnnnnnnnnnnnnnnatc	7.15
+gatnnnnnnnnnnnnnatt......	......aatnnnnnnnnnnnnnatc	7.00
+gatnnnnnnnnnnnnnngaa.....	.....ttcnnnnnnnnnnnnnnatc	6.84
+gatnnnnnnnnnntct.........	.........agannnnnnnnnnatc	6.51
+gatnnngat................	................atcnnnatc	6.44
+.atcnnnnnnnnnatc.........	.........gatnnnnnnnnngat.	16.58
+.atcnnnnnnnnnnatc........	........gatnnnnnnnnnngat.	11.53
+.atctca..................	..................tgagat.	9.24
+.atcaga..................	..................tctgat.	8.88
+.atctct..................	..................agagat.	8.82
+.atctga..................	..................tcagat.	8.76
+.atcnnnnnnnnnnnnnnnaaa...	...tttnnnnnnnnnnnnnnngat.	8.10
+.atcnnnaaa...............	...............tttnnngat.	7.78
+.atcnnnnnnnnnnnnnaaa.....	.....tttnnnnnnnnnnnnngat.	7.59
+.atcnnnnnnnnnnnnnnnttt...	...aaannnnnnnnnnnnnnngat.	7.26
+.atcnnnnnnnnnnnaga.......	.......tctnnnnnnnnnnngat.	7.01
+.atannnnnnnnnnnnnntta....	....taannnnnnnnnnnnnntat.	6.83
+.atcnnnnnnnnnnntct.......	.......agannnnnnnnnnngat.	6.77
+.atcnnnnnnnnnnnnnnnnaaa..	..tttnnnnnnnnnnnnnnnngat.	6.55
+.atcnnnatc...............	...............gatnnngat.	6.44
+..ttatct.................	.................agataa..	11.54
+..tgagat.................	.................atctca..	9.24
+..tctgat.................	.................atcaga..	8.88
+..tcagat.................	.................atctga..	8.76
+..ttatca.................	.................tgataa..	8.70
+..tgataa.................	.................ttatca..	8.70
+..tcatct.................	.................agatga..	8.44
+..tttnnngat..............	..............atcnnnaaa..	7.78
+..tctnnnnnnnnatc.........	.........gatnnnnnnnnaga..	7.76
+..tttnnnnnnnnnnnnngat....	....atcnnnnnnnnnnnnnaaa..	7.59
+..tatctc.................	.................gagata..	7.36
+..tctnnnnnnnnnnngat......	......atcnnnnnnnnnnnaga..	7.01
+..ttcnnnnnnnnnnnnnnatc...	...gatnnnnnnnnnnnnnngaa..	6.84
+..taannnnnnnnnnnnnntat...	...atannnnnnnnnnnnnntta..	6.83
+..tatcag.................	.................ctgata..	6.32
+...agataa................	................ttatct...	11.54
+...agagat................	................atctct...	8.82
+...agatga................	................tcatct...	8.44
+...gagata................	................tatctc...	7.36
+...aatnnnnnnnnnnnnnatc...	...gatnnnnnnnnnnnnnatt...	7.00
+...agannnnnnnnnnngat.....	.....atcnnnnnnnnnnntct...	6.77
+...agannnnnnnnnnatc......	......gatnnnnnnnnnntct...	6.51
+...ctgata................	................tatcag...	6.32
+gatnnnnnnnnnnnnnnnnnnnaaa	tttnnnnnnnnnnnnnnnnnnnatc	16.58	best consensus
+; Maximal number of assemblies is reached (5). Remaining patterns: 53.
+; Host name	biow
+; Job started	2014-10-08.082832
+; Job done	2014-10-08.082852
+; Seconds	20.83
+;	user	20.84
+;	system	0.02
+;	cuser	0
+;	csystem	0

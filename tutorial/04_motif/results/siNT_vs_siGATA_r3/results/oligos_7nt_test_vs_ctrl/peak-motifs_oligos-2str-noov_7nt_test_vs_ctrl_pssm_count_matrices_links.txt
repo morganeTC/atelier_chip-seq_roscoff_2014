@@ -1,0 +1,61 @@
+; convert-matrix  -v 1 -i $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/oligos_7nt_test_vs_ctrl/peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm_count_matrices.tf -from tf -to tab -return counts -return logo -logo_format png,pdf -logo_file $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/oligos_7nt_test_vs_ctrl/peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm_count_matrices_logo -o $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/oligos_7nt_test_vs_ctrl/peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm_count_matrices_links.txt
+; Input files
+;	input	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/oligos_7nt_test_vs_ctrl/peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm_count_matrices.tf
+; Input format        	tf
+; Output files
+;	output	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/oligos_7nt_test_vs_ctrl/peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm_count_matrices_links.txt
+; Output format       	tab
+; pseudo-weight       	1
+a	133	133	102	42	41	28	405	14	20	37	33	381	26	326	150	146
+c	69	94	230	28	29	16	14	15	379	6	25	29	16	40	75	105
+g	89	72	44	31	29	14	18	16	19	2	357	16	18	35	69	78
+t	161	153	76	351	353	394	15	407	34	407	37	26	392	51	158	123
+//
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/oligos_7nt_test_vs_ctrl//peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm_count_matrices_logo_m1.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/oligos_7nt_test_vs_ctrl//peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm_count_matrices_logo_m1.pdf
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/oligos_7nt_test_vs_ctrl//peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm_count_matrices_logo_m1_rc.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/oligos_7nt_test_vs_ctrl//peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm_count_matrices_logo_m1_rc.pdf
+a	141	192	34	458	21	451	16	59	432	7	231	160
+c	74	55	15	6	6	6	4	16	7	12	52	85
+g	109	103	28	1	402	10	8	345	12	6	80	57
+t	150	124	397	9	45	7	446	54	23	449	111	172
+//
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/oligos_7nt_test_vs_ctrl//peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm_count_matrices_logo_m2.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/oligos_7nt_test_vs_ctrl//peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm_count_matrices_logo_m2.pdf
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/oligos_7nt_test_vs_ctrl//peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm_count_matrices_logo_m2_rc.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/oligos_7nt_test_vs_ctrl//peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm_count_matrices_logo_m2_rc.pdf
+a	190	179	84	48	42	38	551	18	45	33	49	37	486	197	196
+c	89	122	378	26	37	33	21	25	495	16	451	36	36	118	118
+g	128	80	54	14	39	18	16	8	25	7	45	15	39	101	119
+t	206	232	97	525	495	524	25	562	48	557	68	525	52	197	180
+//
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/oligos_7nt_test_vs_ctrl//peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm_count_matrices_logo_m3.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/oligos_7nt_test_vs_ctrl//peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm_count_matrices_logo_m3.pdf
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/oligos_7nt_test_vs_ctrl//peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm_count_matrices_logo_m3_rc.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/oligos_7nt_test_vs_ctrl//peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm_count_matrices_logo_m3_rc.pdf
+a	62	78	13	184	6	7	185	185	8	29	60	59
+c	35	32	0	4	5	2	6	4	4	158	30	44
+g	44	30	158	4	4	6	2	5	4	0	32	35
+t	59	60	29	8	185	185	7	6	184	13	78	62
+//
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/oligos_7nt_test_vs_ctrl//peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm_count_matrices_logo_m4.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/oligos_7nt_test_vs_ctrl//peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm_count_matrices_logo_m4.pdf
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/oligos_7nt_test_vs_ctrl//peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm_count_matrices_logo_m4_rc.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/oligos_7nt_test_vs_ctrl//peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm_count_matrices_logo_m4_rc.pdf
+a	168	208	113	323	506	48	47	509	9	514	507	439	95	229	166
+c	100	99	61	57	17	14	18	12	12	8	14	29	43	81	122
+g	128	105	69	83	17	9	460	15	13	14	14	23	356	82	77
+t	163	147	316	96	19	488	34	23	525	23	24	68	65	167	194
+//
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/oligos_7nt_test_vs_ctrl//peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm_count_matrices_logo_m5.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/oligos_7nt_test_vs_ctrl//peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm_count_matrices_logo_m5.pdf
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/oligos_7nt_test_vs_ctrl//peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm_count_matrices_logo_m5_rc.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/oligos_7nt_test_vs_ctrl//peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm_count_matrices_logo_m5_rc.pdf
+; Host name	biow
+; Job started	2014-10-08.082759
+; Job done	2014-10-08.082804
+; Seconds	0.33
+;	user	0.33
+;	system	0.06
+;	cuser	3.8
+;	csystem	0.61

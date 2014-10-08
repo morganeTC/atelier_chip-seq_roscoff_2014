@@ -1,0 +1,64 @@
+; pattern-assembly  -v 1 -i $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/oligos_7nt_test_vs_ctrl/peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl.tab -2str -maxfl 1 -subst 1 -max_asmb_width 20 -toppat 100 -max_asmb_size 50 -max_asmb_width 20 -max_asmb_nb 5 -o $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/oligos_7nt_test_vs_ctrl/peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm.asmb
+; Input file	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/oligos_7nt_test_vs_ctrl/peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl.tab
+; Output file	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.082435_2014-10-08.082435_N0FUYh/results/oligos_7nt_test_vs_ctrl/peak-motifs_oligos-2str-noov_7nt_test_vs_ctrl_pssm.asmb
+; Input score column           	8
+; Output score column          	0
+; Strand-insensitive assembly
+; Max flanking bases           	1
+; Max substitutions            	1
+; Min matches                  	0
+; Min weight                   	0
+; Max assembly size            	50
+; Max assembly width           	20
+; Top number of patterns       	100
+; Number of input patterns     	47
+;
+
+; assembly # 1	seed: tatctga	6 assembled patterns	length 12
+;     alignt	     rev_cpl	score
+ctttatc.....	.....gataaag	1.40
+.tttatct....	....agataaa.	3.10
+..ttatctg...	...cagataa..	3.06
+...tatctga..	..tcagata...	5.97
+....atctgat.	.atcagat....	5.83
+.....tctgata	tatcaga.....	3.68
+ctttatctgata	tatcagataaag	5.97	best consensus
+
+; assembly # 2	seed: agatgat	2 assembled patterns	length 8
+; alignt	 rev_cpl	score
+tagatga.	.tcatcta	2.82
+.agatgat	atcatct.	3.98
+tagatgat	atcatcta	3.98	best consensus
+
+; assembly # 3	seed: atctcta	5 assembled patterns	length 11
+;    alignt	    rev_cpl	score
+ctttatc....	....gataaag	1.40
+.tttatct...	...agataaa.	3.10
+..ttatctc..	..gagataa..	1.15
+...tatctct.	.agagata...	2.31
+....atctcta	tagagat....	3.41
+ctttatctcta	tagagataaag	3.41	best consensus
+
+; assembly # 4	seed: attaatc	2 assembled patterns	length 8
+; alignt	 rev_cpl	score
+gattaat.	.attaatc	2.80
+.attaatc	gattaat.	2.80
+gattaatc	gattaatc	2.80	best consensus
+
+; assembly # 5	seed: atgataa	5 assembled patterns	length 11
+;    alignt	    rev_cpl	score
+taatgat....	....atcatta	0.45
+.aatgata...	...tatcatt.	0.20
+..atgataa..	..ttatcat..	2.73
+...tgataaa.	.tttatca...	1.36
+....gataaag	ctttatc....	1.40
+taatgataaag	ctttatcatta	2.73	best consensus
+; Maximal number of assemblies is reached (5). Remaining patterns: 30.
+; Host name	biow
+; Job started	2014-10-08.082736
+; Job done	2014-10-08.082739
+; Seconds	3.44
+;	user	3.44
+;	system	0.02
+;	cuser	0
+;	csystem	0
