@@ -1,0 +1,25 @@
+; convert-matrix  -v 1 -i $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/positions_6nt/peak-motifs_positions-2str-noov_6nt_ci50_pssm_count_matrices.tf -from tf -to tab -return counts -return logo -logo_format png,pdf -logo_file $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/positions_6nt/peak-motifs_positions-2str-noov_6nt_ci50_pssm_count_matrices_logo -o $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/positions_6nt/peak-motifs_positions-2str-noov_6nt_ci50_pssm_count_matrices_links.txt
+; Input files
+;	input	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/positions_6nt/peak-motifs_positions-2str-noov_6nt_ci50_pssm_count_matrices.tf
+; Input format        	tf
+; Output files
+;	output	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/positions_6nt/peak-motifs_positions-2str-noov_6nt_ci50_pssm_count_matrices_links.txt
+; Output format       	tab
+; pseudo-weight       	1
+a	0	0	0	0	0	0	0	0	0	0
+c	6	0	6	0	6	0	6	0	6	0
+g	0	6	0	6	0	6	0	6	0	6
+t	0	0	0	0	0	0	0	0	0	0
+//
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/positions_6nt//peak-motifs_positions-2str-noov_6nt_ci50_pssm_count_matrices_logo_m1.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/positions_6nt//peak-motifs_positions-2str-noov_6nt_ci50_pssm_count_matrices_logo_m1.pdf
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/positions_6nt//peak-motifs_positions-2str-noov_6nt_ci50_pssm_count_matrices_logo_m1_rc.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/positions_6nt//peak-motifs_positions-2str-noov_6nt_ci50_pssm_count_matrices_logo_m1_rc.pdf
+; Host name	biow
+; Job started	2014-10-08.084305
+; Job done	2014-10-08.084305
+; Seconds	0.26
+;	user	0.26
+;	system	0.02
+;	cuser	0.64
+;	csystem	0.12

@@ -1,0 +1,16 @@
+; One-to-n matrix alignment; reference matrix: oligos_7nt_mkv5_m2_shift0	; 2 matrices	; sort_field=rank_mean
+; oligos_7nt_mkv5_m2; m=0 (reference); ncol1=11; shift=0; ncol=13; yyCTGCCTCmg--
+; Alignment reference
+a	136	100	1	20	14	7	1	13	2	315	114	0	0
+c	256	419	890	62	1	865	869	1	890	252	202	0	0
+g	133	118	2	27	877	1	21	30	0	162	401	0	0
+t	368	256	0	784	1	20	2	849	1	164	176	0	0
+//
+; oligos_7nt_mkv5_m2 versus MA0003.1 (TFAP2A); m=1/1; ncol2=9; w=7; offset=4; strand=D; shift=4; score=      1; ----GCCcbrrGs
+; cor=0.773; Ncor=0.416; logoDP=5.145; NIcor=0.401; NsEucl=0.878; SSD=1.454; NSW=0.896; rcor=1; rNcor=1; rlogoDP=1; rNIcor=1; rNsEucl=1; rSSD=1; rNSW=1; rank_mean=1.000; match_rank=1
+a	0	0	0	0	0	0	0	22	19	55	53	19	9
+c	0	0	0	0	0	185	185	71	57	44	30	16	78
+g	0	0	0	0	185	0	0	46	61	67	91	137	79
+t	0	0	0	0	0	0	0	46	48	19	11	13	19
+//
+;

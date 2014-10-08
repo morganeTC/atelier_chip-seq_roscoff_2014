@@ -1,0 +1,52 @@
+; position-analysis -v 1 -i $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/data/sequences/peak-motifs_test_purged_ml30_mis0.fasta -format fasta -sort -return html,chi,sig,distrib,exp_occ,graphs,rank,index -max_graphs 100 -2str -noov -seqtype dna -l 7 -ci 50 -lth_occ 1 -lth_sig 0 -uth_rank 100 -img_format png -title random-genome_fragments-siGATA_template -origin center -max_graphs 20 -o $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/positions_7nt/peak-motifs_positions-2str-noov_7nt_ci50.tab
+; Profiles of expected occurrences
+; Position intervals:
+;	window	[min,max]	mid	seq	occ
+;	1	-10	[-499,-450]	-474.5	2	26
+;	2	-9	[-449,-400]	-424.5	4	160
+;	3	-8	[-399,-350]	-374.5	17	541
+;	4	-7	[-349,-300]	-324.5	47	1634
+;	5	-6	[-299,-250]	-274.5	151	4755
+;	6	-5	[-249,-200]	-224.5	500	16199
+;	7	-4	[-199,-150]	-174.5	1362	45997
+;	8	-3	[-149,-100]	-124.5	3060	110050
+;	9	-2	[-99,-50]	-74.5	5716	222958
+;	10	-1	[-49,0]	-24.5	7041	339537
+;	11	0	[1,50]	25.5	7041	329712
+;	12	1	[51,100]	75.5	5412	204422
+;	13	2	[101,150]	125.5	2816	98404
+;	14	3	[151,200]	175.5	1245	40113
+;	15	4	[201,250]	225.5	450	13810
+;	16	5	[251,300]	275.5	137	4035
+;	17	6	[301,350]	325.5	42	1433
+;	18	7	[351,400]	375.5	16	455
+;	19	8	[401,450]	425.5	4	145
+;	20	9	[451,500]	475.5	1	14
+;
+; column headers
+;	1	seq            	pattern sequence
+;	2	id             	pattern identifier
+;	3	-474.5         	expected occurrences	in window	1	[-499,-450]
+;	4	-424.5         	expected occurrences	in window	2	[-449,-400]
+;	5	-374.5         	expected occurrences	in window	3	[-399,-350]
+;	6	-324.5         	expected occurrences	in window	4	[-349,-300]
+;	7	-274.5         	expected occurrences	in window	5	[-299,-250]
+;	8	-224.5         	expected occurrences	in window	6	[-249,-200]
+;	9	-174.5         	expected occurrences	in window	7	[-199,-150]
+;	10	-124.5         	expected occurrences	in window	8	[-149,-100]
+;	11	-74.5          	expected occurrences	in window	9	[-99,-50]
+;	12	-24.5          	expected occurrences	in window	10	[-49,0]
+;	13	25.5           	expected occurrences	in window	11	[1,50]
+;	14	75.5           	expected occurrences	in window	12	[51,100]
+;	15	125.5          	expected occurrences	in window	13	[101,150]
+;	16	175.5          	expected occurrences	in window	14	[151,200]
+;	17	225.5          	expected occurrences	in window	15	[201,250]
+;	18	275.5          	expected occurrences	in window	16	[251,300]
+;	19	325.5          	expected occurrences	in window	17	[301,350]
+;	20	375.5          	expected occurrences	in window	18	[351,400]
+;	21	425.5          	expected occurrences	in window	19	[401,450]
+;	22	475.5          	expected occurrences	in window	20	[451,500]
+#seq	id	-474.5	-424.5	-374.5	-324.5	-274.5	-224.5	-174.5	-124.5	-74.5	-24.5	25.5	75.5	125.5	175.5	225.5	275.5	325.5	375.5	425.5	475.5
+acagtaa	acagtaa|ttactgt	0.0	0.0	0.1	0.3	0.9	3.1	8.8	21.0	42.6	64.9	63.0	39.0	18.8	7.7	2.6	0.8	0.3	0.1	0.0	0.0
+tgcgaca	tgcgaca|tgtcgca	0.0	0.0	0.0	0.0	0.0	0.1	0.4	0.8	1.7	2.6	2.5	1.6	0.8	0.3	0.1	0.0	0.0	0.0	0.0	0.0
+cgacggc	cgacggc|gccgtcg	0.0	0.0	0.0	0.0	0.0	0.1	0.2	0.5	1.1	1.7	1.6	1.0	0.5	0.2	0.1	0.0	0.0	0.0	0.0	0.0

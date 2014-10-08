@@ -1,0 +1,95 @@
+; position-analysis -v 1 -i $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/data/sequences/peak-motifs_test_purged_ml30_mis0.fasta -format fasta -sort -return html,chi,sig,distrib,exp_occ,graphs,rank,index -max_graphs 100 -2str -noov -seqtype dna -l 6 -ci 50 -lth_occ 1 -lth_sig 0 -uth_rank 100 -img_format png -title random-genome_fragments-siGATA_template -origin center -max_graphs 20 -o $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/positions_6nt/peak-motifs_positions-2str-noov_6nt_ci50.tab
+; Citation: van Helden, et al. (2000).  Nucleic Acids Res 28, 1000-1010.
+; Sequence file                	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/data/sequences/peak-motifs_test_purged_ml30_mis0.fasta
+; Sequence format              	fasta
+; Sequence type                	dna
+; Output file                  	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/positions_6nt/peak-motifs_positions-2str-noov_6nt_ci50.tab
+; Oligo length                 	6
+; Lower threshold on occurrences	1
+; Occurrences counted  on both strands
+; Grouping reverse complements
+; Background model estimation: homogeneous repartition
+; Sequence statistics:
+;	Nb of sequences              	7041
+;	Sum of sequence lengths      	1476646
+;	Min sequence length          	0
+;	Max sequence length          	940
+;	Average sequence length      	209
+;	Possible positions           	2882882
+; Oligonucleotide statistics:
+;	Total occurrences    	1250791
+;	Total overlaps       	10774
+; Position interval parameters:
+;	Position interval    	50
+;	Number of windows    	20
+;	Total positions      	1441441
+;	Degrees of freedom   	19
+; K-mer clustering parameters:
+;	Number of clusters   	0
+;	Clustering method    	complete
+; Position intervals:
+;	window	[min,max]	mid	seq	occ
+;	1	-10	[-499,-450]	-474.5	2	26
+;	2	-9	[-449,-400]	-424.5	4	160
+;	3	-8	[-399,-350]	-374.5	17	541
+;	4	-7	[-349,-300]	-324.5	47	1634
+;	5	-6	[-299,-250]	-274.5	151	4755
+;	6	-5	[-249,-200]	-224.5	500	16199
+;	7	-4	[-199,-150]	-174.5	1362	45997
+;	8	-3	[-149,-100]	-124.5	3060	110050
+;	9	-2	[-99,-50]	-74.5	5716	222958
+;	10	-1	[-49,0]	-24.5	7041	339537
+;	11	0	[1,50]	25.5	7041	331341
+;	12	1	[51,100]	75.5	5412	207018
+;	13	2	[101,150]	125.5	2816	99975
+;	14	3	[151,200]	175.5	1245	40908
+;	15	4	[201,250]	225.5	450	14123
+;	16	5	[251,300]	275.5	137	4130
+;	17	6	[301,350]	325.5	42	1459
+;	18	7	[351,400]	375.5	16	467
+;	19	8	[401,450]	425.5	4	148
+;	20	9	[451,500]	475.5	1	15
+;
+; Column headers
+;	1	seq            	pattern sequence
+;	2	id             	pattern identifier
+;	3	occ            	pattern occurrences
+;	4	over           	overlapping occurrences (discarded)
+;	5	chi2           	observed chi-square
+;	6	df             	degrees of freedom
+;	7	Pval           	P-value (probability for one word to be a false positive)
+;	8	Eval           	E-value; expected number of false positives (Eval = Pval * nb_tests)
+;	9	sig            	Significance (sig = -log10(Eval))
+;	10	rank           	rank of the pattern according to sorting criterion
+;	11	-474.5         	occurrences in window	1	[-499,-450]
+;	12	-424.5         	occurrences in window	2	[-449,-400]
+;	13	-374.5         	occurrences in window	3	[-399,-350]
+;	14	-324.5         	occurrences in window	4	[-349,-300]
+;	15	-274.5         	occurrences in window	5	[-299,-250]
+;	16	-224.5         	occurrences in window	6	[-249,-200]
+;	17	-174.5         	occurrences in window	7	[-199,-150]
+;	18	-124.5         	occurrences in window	8	[-149,-100]
+;	19	-74.5          	occurrences in window	9	[-99,-50]
+;	20	-24.5          	occurrences in window	10	[-49,0]
+;	21	25.5           	occurrences in window	11	[1,50]
+;	22	75.5           	occurrences in window	12	[51,100]
+;	23	125.5          	occurrences in window	13	[101,150]
+;	24	175.5          	occurrences in window	14	[151,200]
+;	25	225.5          	occurrences in window	15	[201,250]
+;	26	275.5          	occurrences in window	16	[251,300]
+;	27	325.5          	occurrences in window	17	[301,350]
+;	28	375.5          	occurrences in window	18	[351,400]
+;	29	425.5          	occurrences in window	19	[401,450]
+;	30	475.5          	occurrences in window	20	[451,500]
+#seq	id	occ	over	chi2	df	Pval	Eval	sig	rank	-474.5	-424.5	-374.5	-324.5	-274.5	-224.5	-174.5	-124.5	-74.5	-24.5	25.5	75.5	125.5	175.5	225.5	275.5	325.5	375.5	425.5	475.5
+gtgata	gtgata|tatcac	262	0	32.7	9	1.5e-04	0.31	0.51	1	0	0	1	0	3	5	17	49	77	131	124	45	40	22	12	3	2	1	0	0
+attgtc	attgtc|gacaat	287	0	32.4	10	3.5e-04	0.72	0.14	2	0	0	0	2	3	7	25	58	73	122	149	92	42	24	15	4	1	0	0	0
+cctgca	cctgca|tgcagg	386	0	31.5	10	4.8e-04	0.99	0.00	3	0	0	0	0	0	14	28	46	118	206	194	119	52	16	18	0	0	0	0	0
+; Host name	biow
+; Job started	2014-10-08.084227
+; Job done	2014-10-08.084256
+; Seconds	28.85
+;	user	28.85
+;	system	0.04
+;	cuser	0
+;	csystem	0

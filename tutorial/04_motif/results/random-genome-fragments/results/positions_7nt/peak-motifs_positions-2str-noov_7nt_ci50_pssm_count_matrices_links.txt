@@ -1,0 +1,34 @@
+; convert-matrix  -v 1 -i $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/positions_7nt/peak-motifs_positions-2str-noov_7nt_ci50_pssm_count_matrices.tf -from tf -to tab -return counts -return logo -logo_format png,pdf -logo_file $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/positions_7nt/peak-motifs_positions-2str-noov_7nt_ci50_pssm_count_matrices_logo -o $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/positions_7nt/peak-motifs_positions-2str-noov_7nt_ci50_pssm_count_matrices_links.txt
+; Input files
+;	input	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/positions_7nt/peak-motifs_positions-2str-noov_7nt_ci50_pssm_count_matrices.tf
+; Input format        	tf
+; Output files
+;	output	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/positions_7nt/peak-motifs_positions-2str-noov_7nt_ci50_pssm_count_matrices_links.txt
+; Output format       	tab
+; pseudo-weight       	1
+a	13	5	2	1	0	0	40	0	36	6	6
+c	39	18	39	1	72	2	18	60	12	34	27
+g	10	39	7	70	0	70	11	10	22	25	31
+t	10	10	24	0	0	0	3	2	2	7	8
+//
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/positions_7nt//peak-motifs_positions-2str-noov_7nt_ci50_pssm_count_matrices_logo_m1.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/positions_7nt//peak-motifs_positions-2str-noov_7nt_ci50_pssm_count_matrices_logo_m1.pdf
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/positions_7nt//peak-motifs_positions-2str-noov_7nt_ci50_pssm_count_matrices_logo_m1_rc.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/positions_7nt//peak-motifs_positions-2str-noov_7nt_ci50_pssm_count_matrices_logo_m1_rc.pdf
+a	0	0	0	0	0	0	1	0	0	0	0
+c	9	6	8	6	7	7	6	8	6	8	5
+g	5	8	6	8	6	7	7	6	8	6	9
+t	0	0	0	0	1	0	0	0	0	0	0
+//
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/positions_7nt//peak-motifs_positions-2str-noov_7nt_ci50_pssm_count_matrices_logo_m2.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/positions_7nt//peak-motifs_positions-2str-noov_7nt_ci50_pssm_count_matrices_logo_m2.pdf
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/positions_7nt//peak-motifs_positions-2str-noov_7nt_ci50_pssm_count_matrices_logo_m2_rc.png
+; logo file:/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/positions_7nt//peak-motifs_positions-2str-noov_7nt_ci50_pssm_count_matrices_logo_m2_rc.pdf
+; Host name	biow
+; Job started	2014-10-08.084355
+; Job done	2014-10-08.084356
+; Seconds	0.27
+;	user	0.27
+;	system	0.03
+;	cuser	1.36
+;	csystem	0.21

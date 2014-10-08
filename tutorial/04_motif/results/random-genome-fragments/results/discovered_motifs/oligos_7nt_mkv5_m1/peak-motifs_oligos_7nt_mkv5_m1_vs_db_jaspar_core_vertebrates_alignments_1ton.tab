@@ -1,0 +1,37 @@
+; One-to-n matrix alignment; reference matrix: oligos_7nt_mkv5_m1_shift3	; 5 matrices	; sort_field=rank_mean
+; oligos_7nt_mkv5_m1; m=0 (reference); ncol1=12; shift=3; ncol=15; ---dtATTTTTAdww
+; Alignment reference
+a	0	0	0	325	297	1277	0	0	0	0	0	1277	451	425	527
+c	0	0	0	181	246	0	0	0	0	0	0	0	106	113	141
+g	0	0	0	350	120	0	0	0	0	0	0	0	339	158	173
+t	0	0	0	421	614	0	1277	1277	1277	1277	1277	0	381	581	436
+//
+; oligos_7nt_mkv5_m1 versus MA0497.1_rc (MEF2C_rc); m=1/4; ncol2=15; w=12; offset=-2; strand=R; shift=1; score=      2; -wkCTATTTTTrgmh
+; cor=0.828; Ncor=0.663; logoDP=0.437; NIcor=-0.188; NsEucl=0.920; SSD=1.822; NSW=0.924; rcor=1; rNcor=1; rlogoDP=4; rNIcor=4; rNsEucl=1; rSSD=2; rNSW=1; rank_mean=2.000; match_rank=1
+a	0	624	250	29	0	2091	70	76	15	230	263	1224	337	760	752
+c	0	126	148	1671	32	0	4	2	87	241	74	0	78	822	573
+g	0	450	836	120	0	62	0	0	0	32	256	985	1412	196	151
+t	0	1009	975	389	2177	56	2135	2131	2107	1706	1616	0	382	431	733
+//
+; oligos_7nt_mkv5_m1 versus MA0052.2_rc (MEF2A_rc); m=2/4; ncol2=15; w=12; offset=-3; strand=R; shift=0; score= 2.2857; rdkCTATTTTTrGmh
+; cor=0.816; Ncor=0.653; logoDP=2.905; NIcor=0.033; NsEucl=0.916; SSD=2.012; NSW=0.916; rcor=3; rNcor=2; rlogoDP=2; rNIcor=2; rNsEucl=2; rSSD=3; rNSW=2; rank_mean=2.286; match_rank=2
+a	476	424	142	33	1	1467	83	116	51	346	119	1000	146	530	465
+c	203	110	112	1160	0	0	0	0	39	119	14	0	32	625	379
+g	449	409	632	49	0	0	0	5	0	0	68	473	1179	149	148
+t	345	530	587	231	1472	6	1390	1352	1383	1008	1272	0	116	169	481
+//
+; oligos_7nt_mkv5_m1 versus MA0465.1_rc (CDX2_rc); m=3/4; ncol2=11; w=8; offset=4; strand=R; shift=7; score= 2.7143; -------tTTTATkr
+; cor=0.819; Ncor=0.437; logoDP=1.051; NIcor=-0.020; NsEucl=0.890; SSD=1.536; NSW=0.904; rcor=2; rNcor=4; rlogoDP=3; rNIcor=3; rNsEucl=3; rSSD=1; rNSW=3; rank_mean=2.714; match_rank=3
+a	0	0	0	0	0	0	0	121	0	0	0	1597	0	68	549
+c	0	0	0	0	0	0	0	313	0	0	0	0	0	0	0
+g	0	0	0	0	0	0	0	150	0	0	0	0	0	832	1048
+t	0	0	0	0	0	0	0	1013	1597	1597	1597	0	1597	697	0
+//
+; oligos_7nt_mkv5_m1 versus MA0052.1 (MEF2A); m=4/4; ncol2=10; w=10; offset=0; strand=D; shift=3; score=      3; ---CTATTTwTAG--
+; cor=0.782; Ncor=0.652; logoDP=9.521; NIcor=0.612; NsEucl=0.889; SSD=2.451; NSW=0.877; rcor=4; rNcor=3; rlogoDP=1; rNIcor=1; rNsEucl=4; rSSD=4; rNSW=4; rank_mean=3.000; match_rank=4
+a	0	0	0	1	0	57	2	9	6	37	2	56	6	0	0
+c	0	0	0	50	0	1	1	0	0	0	0	0	0	0	0
+g	0	0	0	0	0	0	0	0	0	0	0	2	50	0	0
+t	0	0	0	7	58	0	55	49	52	21	56	0	2	0	0
+//
+;

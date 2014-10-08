@@ -1,0 +1,86 @@
+; compare-matrices  -v 1 -format transfac -file $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/discovered_motifs/peak-motifs_motifs_discovered.tf -distinct -mode matches -DR -uth offset_rank 1 -lth w 5 -lth Wr 0.3 -lth cor 0.75 -lth Ncor 0.4 -return matrix_name,matrix_id,cor,Ncor,logoDP,NIcor,NsEucl,SSD,NSW,match_rank,width,strand,offset,consensus,alignments_1ton -sort Ncor -o $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/discovered_motifs/peak-motifs_motifs_disco_compa.tab
+; Program version       	1.118
+; Input files
+;	file2 	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/discovered_motifs/peak-motifs_motifs_discovered.tf
+;	file1 	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/discovered_motifs/peak-motifs_motifs_discovered.tf
+; Output files
+;	alignments_1ton	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/discovered_motifs/peak-motifs_motifs_disco_compa_alignments_1ton.tab
+;	match_table_txt	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/discovered_motifs/peak-motifs_motifs_disco_compa.tab
+;	html_index   	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/discovered_motifs/peak-motifs_motifs_disco_compa_index.html
+;	alignments_1ton_html	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/discovered_motifs/peak-motifs_motifs_disco_compa_alignments_1ton.html
+;	match_table_html	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/discovered_motifs/peak-motifs_motifs_disco_compa.html
+;	prefix       	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/discovered_motifs/peak-motifs_motifs_disco_compa
+; Matrices
+;	file1	17 matrices	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/discovered_motifs/peak-motifs_motifs_discovered.tf
+;		file1	1	10	630	wwCTTTTCwh
+;		file1	2	10	792	wwAAATTAtw
+;		file1	3	12	1005	syCACTGCAmyc
+;		file1	4	13	849	ccAGGCTGGGCtc
+;		file1	5	11	1120	mkCCTCCCrms
+;		file1	6	10	6	CGCGCGCGCG
+;		file1	7	12	1277	dtATTTTTAdww
+;		file1	8	11	893	yyCTGCCTCmg
+;		file1	9	11	789	cyCTGTCTCwa
+;		file1	10	12	733	ccyCCACCTCss
+;		file1	11	12	730	wsaCTCTGTCtc
+;		...	7 more matrices
+;	file2	17 matrices	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/discovered_motifs/peak-motifs_motifs_discovered.tf
+;		file2		1		10		630		wwCTTTTCwh
+;		file2		2		10		792		wwAAATTAtw
+;		file2		3		12		1005		syCACTGCAmyc
+;		file2		4		13		849		ccAGGCTGGGCtc
+;		file2		5		11		1120		mkCCTCCCrms
+;		file2		6		10		6		CGCGCGCGCG
+;		file2		7		12		1277		dtATTTTTAdww
+;		file2		8		11		893		yyCTGCCTCmg
+;		file2		9		11		789		cyCTGTCTCwa
+;		file2		10		12		733		ccyCCACCTCss
+;		file2		11		12		730		wsaCTCTGTCtc
+;		...	7 more matrices
+; Column content
+;	1	id1          	Identifier of the first matrix
+;	2	id2          	Identifier of the second matrix
+;	3	name1        	Name of the first matrix
+;	4	name2        	Name of the second matrix
+;	5	cor          	Pearson coefficient of correlation between frequency matrices
+;	6	Ncor         	Normalized correlation. Ncor = cor * Wr
+;	7	logoDP       	Dot product between the logo matrices.
+;	8	NIcor        	Normalized Pearson correlation between the information content matrices. NIcor = Icor * Wr
+;	9	NSW          	Normalized Sandelin-Wasserman similarity. NSW = SW/w
+;	10	SSD          	sum of squared distance.
+;	11	NsEucl       	relative Euclidian similarity. NsEucl = (max(dEucl) - dEucl)/max(dEucl)
+;	12	w1           	Width of the first matrix
+;	13	w2           	Width of the second matrix
+;	14	w            	Alignment length (number of overlapping columns between matrix 1 and matrix 2, as a function of the offset)
+;	15	W            	Total alignment length (overlapping + non-overlapping columns). W = w1 + w2 - w
+;	16	Wr           	Relative alignment length (overlap divided by the total alignemnt length). Wr = w/W
+;	17	wr1          	Alignment length relative to the width of the first matrix. wr1 = w/w1
+;	18	wr2          	Alignment length relative to the width of the second matrix. wr2 = w/w2
+;	19	strand       	"strand", i.e. orientation of matrix 2 relative to matrix 1 (D=direct;  R=reverse)
+;	20	offset       	shift of the second matrix relative to the first matrix (negative:left; positive: right)
+;	21	consensus1   	IUPAC consensus of matrix 1 (dots represent non-aligned columns)
+;	22	consensus2   	IUPAC consensus of matrix 2 (dots represent non-aligned columns)
+;	23	rcor         	Matching rank for cor
+;	24	rNcor        	Matching rank for Ncor
+;	25	rlogoDP      	Matching rank for logoDP
+;	26	rNIcor       	Matching rank for NIcor
+;	27	rNsEucl      	Matching rank for NsEucl
+;	28	rSSD         	Matching rank for SSD
+;	29	rNSW         	Matching rank for NSW
+;	30	rank_mean    	Mean of the matching ranks on all selected metrics
+;	31	match_rank   	Rank of the match (sorting by rank_mean)
+#id1	id2	name1	name2	cor	Ncor	logoDP	NIcor	NSW	SSD	NsEucl	w1	w2	w	W	Wr	wr1	wr2	strand	offset	consensus1	consensus2	rcor	rNcor	rlogoDP	rNIcor	rNsEucl	rSSD	rNSW	rank_mean	match_rank
+dyads_m1	dyads_m4	dyads_m1	dyads_m4	0.843	0.843	9.410	0.827	0.933	2.2697	0.93734	17	17	17	17	1.0000	1.0000	1.0000	D	0	ccGCCCCCCAGCCCCss	cyGCCCCCCCRCCCCsv    	3	1	3	1	1	3	1	1.8571	1
+dyads_m2	oligos_7nt_mkv5_m1	dyads_m2	oligos_7nt_mkv5_m1	0.850	0.600	10.415	0.563	0.916	2.0065	0.91653	17	12	12	17	0.7059	0.7059	1.0000	D	1	.wTATTTTTATTT....	dtATTTTTAdww         	2	3	1	3	2	2	3	2.2857	2
+oligos_7nt_mkv5_m3	oligos_7nt_mkv5_m5	oligos_7nt_mkv5_m3	oligos_7nt_mkv5_m5	0.872	0.560	7.480	0.521	0.930	1.2621	0.91174	11	12	9	14	0.6429	0.8182	0.7500	D	-3	  cyCTGTCTC..	...CTCTGTCtc 	1	4	6	5	3	1	2	3.1429	3
+oligos_7nt_mkv5_m2	oligos_7nt_mkv5_m3	oligos_7nt_mkv5_m2	oligos_7nt_mkv5_m3	0.767	0.767	8.477	0.785	0.894	2.3376	0.90172	11	11	11	11	1.0000	1.0000	1.0000	D	0	  yyCTGCCTCmg	cyCTGTCTCwa  	5	2	4	2	5	4	4	3.7143	4
+dyads_m4	oligos_7nt_mkv5_m4	dyads_m4	oligos_7nt_mkv5_m4	0.758	0.535	7.780	0.542	0.892	2.5999	0.90499	17	12	12	17	0.7059	0.7059	1.0000	D	5	    .....CCCCCRCCCCsv	ccyCCACCTCss         	6	5	5	4	4	5	5	4.8571	5
+dyads_m3	oligos_7nt_mkv5_m2	dyads_m3	oligos_7nt_mkv5_m2	0.771	0.404	9.694	0.376	0.870	2.8522	0.89144	21	11	11	21	0.5238	0.5238	1.0000	D	3	...CyCwGCCTyCC.......	yyCTGCCTCmg          	4	6	2	6	6	6	6	5.1429	6
+; Host name	biow
+; Job started	2014-10-08.084403
+; Job done	2014-10-08.084406
+; Seconds	1.21
+;	user	1.21
+;	system	0.07
+;	cuser	2.15
+;	csystem	0.36

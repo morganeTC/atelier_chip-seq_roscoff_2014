@@ -1,0 +1,476 @@
+; matrix-scan  -quick -v 1 -seq_format fasta -i $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/data/sequences/peak-motifs_test.fasta -matrix_format transfac -m $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/discovered_motifs/positions_6nt/peak-motifs_positions_6nt.tf -bg_format inclusive -bgfile $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/composition/peak-motifs_test_inclusive-1str-ovlp_2nt.txt -pseudo 1 -2str -decimals 1 -bg_pseudo 0.01 -n score -lth score 7.5 -origin center -return sites -o $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/discovered_motifs/positions_6nt/peak-motifs_positions_6nt_sites.tab
+; Quick counting mode          
+; Input files
+;	input	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/data/sequences/peak-motifs_test.fasta
+;	bg	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/composition/peak-motifs_test_inclusive-1str-ovlp_2nt.txt
+; Matrix files
+;	matrix 1	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/discovered_motifs/positions_6nt/peak-motifs_positions_6nt.tf
+; Sequence format      	fasta
+; Output files
+;	output	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/discovered_motifs/positions_6nt/peak-motifs_positions_6nt_sites.tab
+; Pseudo counts        	1
+; Background model
+;	Method        	file
+;	Markov order  	1
+;	Strand        	undef
+;	Background pseudo-frequency	0.01
+;	Residue probabilities
+;		a	0.29875
+;		c	0.20165
+;		g	0.20165
+;		t	0.29795
+; Thresholds	lower	upper
+;	score 	7.5  	NA
+; Output columns
+;	1	seq_id
+;	2	ft_type
+;	3	ft_name
+;	4	strand
+;	5	start
+;	6	end
+;	7	sequence
+;	8	weight
+#seq_id	ft_type	ft_name	strand	start	end	sequence	weight
+rand_29	site	positions_6nt	D	-21	-12	CGCCACCGCG	8.3
+rand_29	site	positions_6nt	R	-21	-12	CGCGGTGGCG	8.3
+rand_138	site	positions_6nt	D	26	35	CCGGCCCGCG	7.8
+rand_138	site	positions_6nt	R	26	35	CGCGGGCCGG	7.8
+rand_162	site	positions_6nt	D	-69	-60	ATCGCGCCCG	8.4
+rand_162	site	positions_6nt	R	-69	-60	CGGGCGCGAT	8.4
+rand_162	site	positions_6nt	D	-67	-58	CGCGCCCGGC	8.0
+rand_162	site	positions_6nt	R	-67	-58	GCCGGGCGCG	8.0
+rand_257	site	positions_6nt	D	33	42	CGAGATCGCG	8.8
+rand_257	site	positions_6nt	R	33	42	CGCGATCTCG	8.8
+rand_484	site	positions_6nt	D	44	53	GTCGCGCGCT	8.7
+rand_484	site	positions_6nt	R	44	53	AGCGCGCGAC	8.7
+rand_565	site	positions_6nt	D	47	56	CTGCCGCGCG	8.2
+rand_565	site	positions_6nt	R	47	56	CGCGCGGCAG	8.1
+rand_565	site	positions_6nt	D	51	60	CGCGCGGACA	8.5
+rand_565	site	positions_6nt	R	51	60	TGTCCGCGCG	8.5
+rand_565	site	positions_6nt	D	137	146	CGCGGACGCC	8.5
+rand_565	site	positions_6nt	R	137	146	GGCGTCCGCG	8.5
+rand_600	site	positions_6nt	D	-13	-4	CGAGATCGCG	8.8
+rand_600	site	positions_6nt	R	-13	-4	CGCGATCTCG	8.8
+rand_611	site	positions_6nt	D	66	75	ACCGCGCCCG	8.2
+rand_611	site	positions_6nt	R	66	75	CGGGCGCGGT	8.2
+rand_611	site	positions_6nt	D	68	77	CGCGCCCGGC	8.0
+rand_611	site	positions_6nt	R	68	77	GCCGGGCGCG	8.0
+rand_656	site	positions_6nt	D	-104	-95	GGCGCGCGCC	11.7
+rand_656	site	positions_6nt	R	-104	-95	GGCGCGCGCC	11.7
+rand_656	site	positions_6nt	D	-102	-93	CGCGCGCCTA	8.6
+rand_656	site	positions_6nt	R	-102	-93	TAGGCGCGCG	8.6
+rand_746	site	positions_6nt	D	79	88	CGGCCCCGCG	7.8
+rand_746	site	positions_6nt	R	79	88	CGCGGGGCCG	7.8
+rand_746	site	positions_6nt	D	85	94	CGCGCCCCCG	11.3
+rand_746	site	positions_6nt	R	85	94	CGGGGGCGCG	11.2
+rand_746	site	positions_6nt	D	153	162	CGCCCGGCCG	7.8
+rand_746	site	positions_6nt	R	153	162	CGGCCGGGCG	7.8
+rand_1157	site	positions_6nt	D	10	19	TGCGCCCGCG	11.5
+rand_1157	site	positions_6nt	R	10	19	CGCGGGCGCA	11.5
+rand_1157	site	positions_6nt	D	12	21	CGCCCGCGCA	11.5
+rand_1157	site	positions_6nt	R	12	21	TGCGCGGGCG	11.5
+rand_1547	site	positions_6nt	D	-33	-24	GTCGCGTGCG	8.9
+rand_1547	site	positions_6nt	R	-33	-24	CGCACGCGAC	8.9
+rand_1547	site	positions_6nt	D	-31	-22	CGCGTGCGGA	8.5
+rand_1547	site	positions_6nt	R	-31	-22	TCCGCACGCG	8.5
+rand_1680	site	positions_6nt	D	-25	-16	CGGTGGCGCG	8.3
+rand_1680	site	positions_6nt	R	-25	-16	CGCGCCACCG	8.3
+rand_1704	site	positions_6nt	D	-130	-121	CGCGATCTCG	8.8
+rand_1704	site	positions_6nt	R	-130	-121	CGAGATCGCG	8.8
+rand_1738	site	positions_6nt	D	-84	-75	CGAGATCGCG	8.8
+rand_1738	site	positions_6nt	R	-84	-75	CGCGATCTCG	8.8
+rand_1755	site	positions_6nt	D	65	74	GCCGGGCGCG	8.0
+rand_1755	site	positions_6nt	R	65	74	CGCGCCCGGC	8.0
+rand_1755	site	positions_6nt	D	67	76	CGGGCGCGAT	8.4
+rand_1755	site	positions_6nt	R	67	76	ATCGCGCCCG	8.4
+rand_1780	site	positions_6nt	D	-24	-15	CAGGCGCGCG	11.6
+rand_1780	site	positions_6nt	R	-24	-15	CGCGCGCCTG	11.6
+rand_1780	site	positions_6nt	D	-22	-13	GGCGCGCGCC	11.7
+rand_1780	site	positions_6nt	R	-22	-13	GGCGCGCGCC	11.7
+rand_1780	site	positions_6nt	D	-20	-11	CGCGCGCCAC	8.5
+rand_1780	site	positions_6nt	R	-20	-11	GTGGCGCGCG	8.5
+rand_1788	site	positions_6nt	D	-145	-136	ACCGCGCCCG	8.2
+rand_1788	site	positions_6nt	R	-145	-136	CGGGCGCGGT	8.2
+rand_1788	site	positions_6nt	D	-143	-134	CGCGCCCGGC	8.0
+rand_1788	site	positions_6nt	R	-143	-134	GCCGGGCGCG	8.0
+rand_1829	site	positions_6nt	D	-35	-26	CGGCCGGGCG	7.8
+rand_1829	site	positions_6nt	R	-35	-26	CGCCCGGCCG	7.8
+rand_1829	site	positions_6nt	D	-33	-24	GCCGGGCGCG	8.0
+rand_1829	site	positions_6nt	R	-33	-24	CGCGCCCGGC	8.0
+rand_1829	site	positions_6nt	D	-31	-22	CGGGCGCGGG	11.2
+rand_1829	site	positions_6nt	R	-31	-22	CCCGCGCCCG	11.3
+rand_1876	site	positions_6nt	D	-11	-2	CGAGCCCGCG	11.6
+rand_1876	site	positions_6nt	R	-11	-2	CGCGGGCTCG	11.6
+rand_2039	site	positions_6nt	D	65	74	CGACCCCGCG	8.3
+rand_2039	site	positions_6nt	R	65	74	CGCGGGGTCG	8.3
+rand_2080	site	positions_6nt	D	72	81	AATGCGCGCG	8.5
+rand_2080	site	positions_6nt	R	72	81	CGCGCGCATT	8.5
+rand_2080	site	positions_6nt	D	74	83	TGCGCGCGCG	16.8
+rand_2080	site	positions_6nt	R	74	83	CGCGCGCGCA	16.7
+rand_2080	site	positions_6nt	D	76	85	CGCGCGCGCC	16.7
+rand_2080	site	positions_6nt	R	76	85	GGCGCGCGCG	16.7
+rand_2080	site	positions_6nt	D	78	87	CGCGCGCCCA	11.5
+rand_2080	site	positions_6nt	R	78	87	TGGGCGCGCG	11.5
+rand_2143	site	positions_6nt	D	64	73	CGCGATCTCG	8.8
+rand_2143	site	positions_6nt	R	64	73	CGAGATCGCG	8.8
+rand_2183	site	positions_6nt	D	-13	-4	CGGGCGCCCG	11.3
+rand_2183	site	positions_6nt	R	-13	-4	CGGGCGCCCG	11.3
+rand_2183	site	positions_6nt	D	-9	0	CGCCCGGGCG	11.3
+rand_2183	site	positions_6nt	R	-9	0	CGCCCGGGCG	11.3
+rand_2183	site	positions_6nt	D	-7	2	CCCGGGCGCG	11.3
+rand_2183	site	positions_6nt	R	-7	2	CGCGCCCGGG	11.3
+rand_2183	site	positions_6nt	D	-5	4	CGGGCGCGCC	11.5
+rand_2183	site	positions_6nt	R	-5	4	GGCGCGCCCG	11.5
+rand_2475	site	positions_6nt	D	-124	-115	CGCGATCTCG	8.8
+rand_2475	site	positions_6nt	R	-124	-115	CGAGATCGCG	8.8
+rand_2566	site	positions_6nt	D	-108	-99	GCCGGGCGCG	8.0
+rand_2566	site	positions_6nt	R	-108	-99	CGCGCCCGGC	8.0
+rand_2566	site	positions_6nt	D	-106	-97	CGGGCGCGCG	16.5
+rand_2566	site	positions_6nt	R	-106	-97	CGCGCGCCCG	16.5
+rand_2566	site	positions_6nt	D	-104	-95	GGCGCGCGCG	16.7
+rand_2566	site	positions_6nt	R	-104	-95	CGCGCGCGCC	16.7
+rand_2566	site	positions_6nt	D	-102	-93	CGCGCGCGCG	21.8
+rand_2566	site	positions_6nt	R	-102	-93	CGCGCGCGCG	21.8
+rand_2566	site	positions_6nt	D	-100	-91	CGCGCGCGGG	16.5
+rand_2566	site	positions_6nt	R	-100	-91	CCCGCGCGCG	16.5
+rand_2566	site	positions_6nt	D	-98	-89	CGCGCGGGGG	11.2
+rand_2566	site	positions_6nt	R	-98	-89	CCCCCGCGCG	11.3
+rand_2566	site	positions_6nt	D	39	48	CGGACGCTCG	8.6
+rand_2566	site	positions_6nt	R	39	48	CGAGCGTCCG	8.6
+rand_2620	site	positions_6nt	D	-103	-94	GCCGGGCGCG	8.0
+rand_2620	site	positions_6nt	R	-103	-94	CGCGCCCGGC	8.0
+rand_2620	site	positions_6nt	D	-101	-92	CGGGCGCGGT	8.2
+rand_2620	site	positions_6nt	R	-101	-92	ACCGCGCCCG	8.2
+rand_2648	site	positions_6nt	D	79	88	GCCGGGCGCG	8.0
+rand_2648	site	positions_6nt	R	79	88	CGCGCCCGGC	8.0
+rand_2648	site	positions_6nt	D	81	90	CGGGCGCGGT	8.2
+rand_2648	site	positions_6nt	R	81	90	ACCGCGCCCG	8.2
+rand_2657	site	positions_6nt	D	-115	-106	CGCGATCTCG	8.8
+rand_2657	site	positions_6nt	R	-115	-106	CGAGATCGCG	8.8
+rand_2769	site	positions_6nt	D	-87	-78	ACCGCGCCCG	8.2
+rand_2769	site	positions_6nt	R	-87	-78	CGGGCGCGGT	8.2
+rand_2769	site	positions_6nt	D	-85	-76	CGCGCCCGGC	8.0
+rand_2769	site	positions_6nt	R	-85	-76	GCCGGGCGCG	8.0
+rand_2917	site	positions_6nt	D	57	66	CGCGATCTCG	8.8
+rand_2917	site	positions_6nt	R	57	66	CGAGATCGCG	8.8
+rand_2919	site	positions_6nt	D	153	162	ACCGCGCCCG	8.2
+rand_2919	site	positions_6nt	R	153	162	CGGGCGCGGT	8.2
+rand_2919	site	positions_6nt	D	155	164	CGCGCCCGGC	8.0
+rand_2919	site	positions_6nt	R	155	164	GCCGGGCGCG	8.0
+rand_3432	site	positions_6nt	D	49	58	CGCGTGCCCG	11.7
+rand_3432	site	positions_6nt	R	49	58	CGGGCACGCG	11.7
+rand_3468	site	positions_6nt	D	87	96	CGAGATCGCG	8.8
+rand_3468	site	positions_6nt	R	87	96	CGCGATCTCG	8.8
+rand_3471	site	positions_6nt	D	-153	-144	CACGCGGACG	8.7
+rand_3471	site	positions_6nt	R	-153	-144	CGTCCGCGTG	8.7
+rand_3471	site	positions_6nt	D	-151	-142	CGCGGACGAG	8.6
+rand_3471	site	positions_6nt	R	-151	-142	CTCGTCCGCG	8.6
+rand_3471	site	positions_6nt	D	-145	-136	CGAGGCCGCG	8.1
+rand_3471	site	positions_6nt	R	-145	-136	CGCGGCCTCG	8.1
+rand_3471	site	positions_6nt	D	-141	-132	GCCGCGCCCG	8.0
+rand_3471	site	positions_6nt	R	-141	-132	CGGGCGCGGC	8.0
+rand_3471	site	positions_6nt	D	-139	-130	CGCGCCCGGT	8.2
+rand_3471	site	positions_6nt	R	-139	-130	ACCGGGCGCG	8.2
+rand_3471	site	positions_6nt	D	-111	-102	CGCCCGCCGG	7.8
+rand_3471	site	positions_6nt	R	-111	-102	CCGGCGGGCG	7.8
+rand_3471	site	positions_6nt	D	-49	-40	CGCGCCGGCT	8.1
+rand_3471	site	positions_6nt	R	-49	-40	AGCCGGCGCG	8.1
+rand_3471	site	positions_6nt	D	100	109	CGCTGGCGCG	11.6
+rand_3471	site	positions_6nt	R	100	109	CGCGCCAGCG	11.6
+rand_3496	site	positions_6nt	D	-49	-40	CGCGCGGCCG	13.1
+rand_3496	site	positions_6nt	R	-49	-40	CGGCCGCGCG	13.1
+rand_3496	site	positions_6nt	D	-44	-35	GGCCGGCGCG	8.0
+rand_3496	site	positions_6nt	R	-44	-35	CGCGCCGGCC	8.0
+rand_3496	site	positions_6nt	D	-7	2	AGCGGGCGCG	11.5
+rand_3496	site	positions_6nt	R	-7	2	CGCGCCCGCT	11.5
+rand_3496	site	positions_6nt	D	-5	4	CGGGCGCGCC	11.5
+rand_3496	site	positions_6nt	R	-5	4	GGCGCGCCCG	11.5
+rand_3496	site	positions_6nt	D	-3	6	GGCGCGCCGG	8.0
+rand_3496	site	positions_6nt	R	-3	6	CCGGCGCGCC	8.0
+rand_3557	site	positions_6nt	D	1	10	CATGCGCGCG	11.9
+rand_3557	site	positions_6nt	R	1	10	CGCGCGCATG	11.9
+rand_3557	site	positions_6nt	D	3	12	TGCGCGCGCA	11.7
+rand_3557	site	positions_6nt	R	3	12	TGCGCGCGCA	11.7
+rand_3557	site	positions_6nt	D	5	14	CGCGCGCACA	11.9
+rand_3557	site	positions_6nt	R	5	14	TGTGCGCGCG	11.9
+rand_3624	site	positions_6nt	D	-16	-7	CGCGCGACTG	8.6
+rand_3624	site	positions_6nt	R	-16	-7	CAGTCGCGCG	8.6
+rand_3635	site	positions_6nt	D	-121	-112	GCCGCGCGCC	8.2
+rand_3635	site	positions_6nt	R	-121	-112	GGCGCGCGGC	8.2
+rand_3635	site	positions_6nt	D	-119	-110	CGCGCGCCCT	11.5
+rand_3635	site	positions_6nt	R	-119	-110	AGGGCGCGCG	11.5
+rand_3635	site	positions_6nt	D	-111	-102	CTCCCGCGCG	11.6
+rand_3635	site	positions_6nt	R	-111	-102	CGCGCGGGAG	11.6
+rand_3635	site	positions_6nt	D	-109	-100	CCCGCGCGGG	11.3
+rand_3635	site	positions_6nt	R	-109	-100	CCCGCGCGGG	11.3
+rand_3635	site	positions_6nt	D	-107	-98	CGCGCGGGCC	11.5
+rand_3635	site	positions_6nt	R	-107	-98	GGCCCGCGCG	11.5
+rand_3635	site	positions_6nt	D	-86	-77	CGATCGCGTG	8.9
+rand_3635	site	positions_6nt	R	-86	-77	CACGCGATCG	8.9
+rand_3635	site	positions_6nt	D	-40	-31	GGCTCGCGCG	11.8
+rand_3635	site	positions_6nt	R	-40	-31	CGCGCGAGCC	11.8
+rand_3635	site	positions_6nt	D	-38	-29	CTCGCGCGGG	11.6
+rand_3635	site	positions_6nt	R	-38	-29	CCCGCGCGAG	11.6
+rand_3635	site	positions_6nt	D	-36	-27	CGCGCGGGCC	11.5
+rand_3635	site	positions_6nt	R	-36	-27	GGCCCGCGCG	11.5
+rand_3635	site	positions_6nt	D	36	45	TTCCCGCGCG	8.2
+rand_3635	site	positions_6nt	R	36	45	CGCGCGGGAA	8.2
+rand_3635	site	positions_6nt	D	38	47	CCCGCGCGCG	16.5
+rand_3635	site	positions_6nt	R	38	47	CGCGCGCGGG	16.5
+rand_3635	site	positions_6nt	D	40	49	CGCGCGCGCC	16.7
+rand_3635	site	positions_6nt	R	40	49	GGCGCGCGCG	16.7
+rand_3635	site	positions_6nt	D	42	51	CGCGCGCCCG	16.5
+rand_3635	site	positions_6nt	R	42	51	CGGGCGCGCG	16.5
+rand_3635	site	positions_6nt	D	44	53	CGCGCCCGGG	11.3
+rand_3635	site	positions_6nt	R	44	53	CCCGGGCGCG	11.3
+rand_3635	site	positions_6nt	D	46	55	CGCCCGGGCG	11.3
+rand_3635	site	positions_6nt	R	46	55	CGCCCGGGCG	11.3
+rand_3635	site	positions_6nt	D	48	57	CCCGGGCGCG	11.3
+rand_3635	site	positions_6nt	R	48	57	CGCGCCCGGG	11.3
+rand_3635	site	positions_6nt	D	50	59	CGGGCGCGGC	8.0
+rand_3635	site	positions_6nt	R	50	59	GCCGCGCCCG	8.0
+rand_3663	site	positions_6nt	D	-18	-9	CGGCCGGGCG	7.8
+rand_3663	site	positions_6nt	R	-18	-9	CGCCCGGCCG	7.8
+rand_3663	site	positions_6nt	D	-16	-7	GCCGGGCGCG	8.0
+rand_3663	site	positions_6nt	R	-16	-7	CGCGCCCGGC	8.0
+rand_3663	site	positions_6nt	D	-14	-5	CGGGCGCGGT	8.2
+rand_3663	site	positions_6nt	R	-14	-5	ACCGCGCCCG	8.2
+rand_3775	site	positions_6nt	D	48	57	CGAGCGTGCG	12.0
+rand_3775	site	positions_6nt	R	48	57	CGCACGCTCG	12.0
+rand_3794	site	positions_6nt	D	43	52	CGCGATCTCG	8.8
+rand_3794	site	positions_6nt	R	43	52	CGAGATCGCG	8.8
+rand_3811	site	positions_6nt	D	19	28	GCCGGGCGCG	8.0
+rand_3811	site	positions_6nt	R	19	28	CGCGCCCGGC	8.0
+rand_3811	site	positions_6nt	D	21	30	CGGGCGCGGT	8.2
+rand_3811	site	positions_6nt	R	21	30	ACCGCGCCCG	8.2
+rand_3815	site	positions_6nt	D	81	90	CGCCCGGCCG	7.8
+rand_3815	site	positions_6nt	R	81	90	CGGCCGGGCG	7.8
+rand_3818	site	positions_6nt	D	217	226	CGCGGACGCG	13.5
+rand_3818	site	positions_6nt	R	217	226	CGCGTCCGCG	13.5
+rand_3818	site	positions_6nt	D	219	228	CGGACGCGCC	8.5
+rand_3818	site	positions_6nt	R	219	228	GGCGCGTCCG	8.5
+rand_3863	site	positions_6nt	D	-78	-69	CGACCCCGCG	8.3
+rand_3863	site	positions_6nt	R	-78	-69	CGCGGGGTCG	8.3
+rand_3867	site	positions_6nt	D	24	33	GCCGGGCGCG	8.0
+rand_3867	site	positions_6nt	R	24	33	CGCGCCCGGC	8.0
+rand_3867	site	positions_6nt	D	26	35	CGGGCGCGGG	11.2
+rand_3867	site	positions_6nt	R	26	35	CCCGCGCCCG	11.3
+rand_3882	site	positions_6nt	D	-2	7	ACCGCGCCCG	8.2
+rand_3882	site	positions_6nt	R	-2	7	CGGGCGCGGT	8.2
+rand_3882	site	positions_6nt	D	0	9	CGCGCCCGGT	8.2
+rand_3882	site	positions_6nt	R	0	9	ACCGGGCGCG	8.2
+rand_3934	site	positions_6nt	D	6	15	CGGCGGCGCG	9.7
+rand_3934	site	positions_6nt	R	6	15	CGCGCCGCCG	9.7
+rand_3949	site	positions_6nt	D	-200	-191	CGCGCCCGGC	8.0
+rand_3949	site	positions_6nt	R	-200	-191	GCCGGGCGCG	8.0
+rand_4014	site	positions_6nt	D	11	20	TGTGCGCGCG	11.9
+rand_4014	site	positions_6nt	R	11	20	CGCGCGCACA	11.9
+rand_4014	site	positions_6nt	D	13	22	TGCGCGCGTG	11.9
+rand_4014	site	positions_6nt	R	13	22	CACGCGCGCA	11.9
+rand_4014	site	positions_6nt	D	15	24	CGCGCGTGCA	11.9
+rand_4014	site	positions_6nt	R	15	24	TGCACGCGCG	11.9
+rand_4031	site	positions_6nt	D	107	116	CGCGGCCGTG	8.3
+rand_4031	site	positions_6nt	R	107	116	CACGGCCGCG	8.3
+rand_4080	site	positions_6nt	D	-5	4	CGCGATCTCG	8.8
+rand_4080	site	positions_6nt	R	-5	4	CGAGATCGCG	8.8
+rand_4139	site	positions_6nt	D	75	84	CGAGATCGCG	8.8
+rand_4139	site	positions_6nt	R	75	84	CGCGATCTCG	8.8
+rand_4207	site	positions_6nt	D	-37	-28	TGCGCACGCG	11.9
+rand_4207	site	positions_6nt	R	-37	-28	CGCGTGCGCA	11.9
+rand_4207	site	positions_6nt	D	-35	-26	CGCACGCGCG	16.9
+rand_4207	site	positions_6nt	R	-35	-26	CGCGCGTGCG	16.9
+rand_4207	site	positions_6nt	D	-33	-24	CACGCGCGTG	12.1
+rand_4207	site	positions_6nt	R	-33	-24	CACGCGCGTG	12.1
+rand_4207	site	positions_6nt	D	-31	-22	CGCGCGTGTG	12.1
+rand_4207	site	positions_6nt	R	-31	-22	CACACGCGCG	12.1
+rand_4609	site	positions_6nt	D	-74	-65	CGCGCCTCCG	8.2
+rand_4609	site	positions_6nt	R	-74	-65	CGGAGGCGCG	8.1
+rand_4719	site	positions_6nt	D	-97	-88	ACCGCGCCCG	8.2
+rand_4719	site	positions_6nt	R	-97	-88	CGGGCGCGGT	8.2
+rand_4719	site	positions_6nt	D	-95	-86	CGCGCCCGGC	8.0
+rand_4719	site	positions_6nt	R	-95	-86	GCCGGGCGCG	8.0
+rand_4731	site	positions_6nt	D	-132	-123	TGCGCACGCG	11.9
+rand_4731	site	positions_6nt	R	-132	-123	CGCGTGCGCA	11.9
+rand_4731	site	positions_6nt	D	-130	-121	CGCACGCGCG	16.9
+rand_4731	site	positions_6nt	R	-130	-121	CGCGCGTGCG	16.9
+rand_4731	site	positions_6nt	D	-128	-119	CACGCGCGGA	8.5
+rand_4731	site	positions_6nt	R	-128	-119	TCCGCGCGTG	8.5
+rand_4731	site	positions_6nt	D	-126	-117	CGCGCGGACG	13.5
+rand_4731	site	positions_6nt	R	-126	-117	CGTCCGCGCG	13.5
+rand_4731	site	positions_6nt	D	-124	-115	CGCGGACGCC	8.5
+rand_4731	site	positions_6nt	R	-124	-115	GGCGTCCGCG	8.5
+rand_4731	site	positions_6nt	D	-108	-99	GGCGCACGCG	11.9
+rand_4731	site	positions_6nt	R	-108	-99	CGCGTGCGCC	11.9
+rand_4731	site	positions_6nt	D	-106	-97	CGCACGCGCC	11.9
+rand_4731	site	positions_6nt	R	-106	-97	GGCGCGTGCG	11.9
+rand_4731	site	positions_6nt	D	-24	-15	CGCGCCCTCG	11.6
+rand_4731	site	positions_6nt	R	-24	-15	CGAGGGCGCG	11.6
+rand_4757	site	positions_6nt	D	-339	-330	CCGGGGCGCG	7.8
+rand_4757	site	positions_6nt	R	-339	-330	CGCGCCCCGG	7.8
+rand_4772	site	positions_6nt	D	-25	-16	AGCGCTCGCG	11.9
+rand_4772	site	positions_6nt	R	-25	-16	CGCGAGCGCT	11.8
+rand_4772	site	positions_6nt	D	-23	-14	CGCTCGCGAC	8.8
+rand_4772	site	positions_6nt	R	-23	-14	GTCGCGAGCG	8.8
+rand_4837	site	positions_6nt	D	8	17	CGCCCGCCCG	11.3
+rand_4837	site	positions_6nt	R	8	17	CGGGCGGGCG	11.2
+rand_4886	site	positions_6nt	D	36	45	GAGGCGCGCG	8.3
+rand_4886	site	positions_6nt	R	36	45	CGCGCGCCTC	8.3
+rand_4886	site	positions_6nt	D	38	47	GGCGCGCGGT	8.4
+rand_4886	site	positions_6nt	R	38	47	ACCGCGCGCC	8.4
+rand_4886	site	positions_6nt	D	40	49	CGCGCGGTCC	8.5
+rand_4886	site	positions_6nt	R	40	49	GGACCGCGCG	8.5
+rand_4937	site	positions_6nt	D	56	65	CGCGATCTCG	8.8
+rand_4937	site	positions_6nt	R	56	65	CGAGATCGCG	8.8
+rand_5003	site	positions_6nt	D	-55	-46	CGAGGGCGCG	11.6
+rand_5003	site	positions_6nt	R	-55	-46	CGCGCCCTCG	11.6
+rand_5003	site	positions_6nt	D	-25	-16	GCCTCGCGCG	8.3
+rand_5003	site	positions_6nt	R	-25	-16	CGCGCGAGGC	8.3
+rand_5003	site	positions_6nt	D	-23	-14	CTCGCGCGGA	8.4
+rand_5003	site	positions_6nt	R	-23	-14	TCCGCGCGAG	8.4
+rand_5003	site	positions_6nt	D	-21	-12	CGCGCGGACG	13.5
+rand_5003	site	positions_6nt	R	-21	-12	CGTCCGCGCG	13.5
+rand_5003	site	positions_6nt	D	-19	-10	CGCGGACGCC	8.5
+rand_5003	site	positions_6nt	R	-19	-10	GGCGTCCGCG	8.5
+rand_5003	site	positions_6nt	D	-17	-8	CGGACGCCCG	8.3
+rand_5003	site	positions_6nt	R	-17	-8	CGGGCGTCCG	8.3
+rand_5003	site	positions_6nt	D	-13	-4	CGCCCGGGCG	11.3
+rand_5003	site	positions_6nt	R	-13	-4	CGCCCGGGCG	11.3
+rand_5025	site	positions_6nt	D	-74	-65	GGGCCGCGCG	8.0
+rand_5025	site	positions_6nt	R	-74	-65	CGCGCGGCCC	8.0
+rand_5211	site	positions_6nt	D	64	73	GGCGCGGGCG	11.4
+rand_5211	site	positions_6nt	R	64	73	CGCCCGCGCC	11.5
+rand_5211	site	positions_6nt	D	66	75	CGCGGGCGAA	8.2
+rand_5211	site	positions_6nt	R	66	75	TTCGCCCGCG	8.2
+rand_5276	site	positions_6nt	D	-85	-76	CGCGGCCGTG	8.3
+rand_5276	site	positions_6nt	R	-85	-76	CACGGCCGCG	8.3
+rand_5282	site	positions_6nt	D	-12	-3	ACCGCGCCCG	8.2
+rand_5282	site	positions_6nt	R	-12	-3	CGGGCGCGGT	8.2
+rand_5282	site	positions_6nt	D	-10	-1	CGCGCCCGGC	8.0
+rand_5282	site	positions_6nt	R	-10	-1	GCCGGGCGCG	8.0
+rand_5314	site	positions_6nt	D	10	19	CGCGCCACCG	8.3
+rand_5314	site	positions_6nt	R	10	19	CGGTGGCGCG	8.3
+rand_5396	site	positions_6nt	D	-130	-121	CGACAGCGCG	8.6
+rand_5396	site	positions_6nt	R	-130	-121	CGCGCTGTCG	8.6
+rand_5482	site	positions_6nt	D	22	31	CGCGCATGCG	11.9
+rand_5482	site	positions_6nt	R	22	31	CGCATGCGCG	11.9
+rand_5506	site	positions_6nt	D	-27	-18	ACCGCGCCCG	8.2
+rand_5506	site	positions_6nt	R	-27	-18	CGGGCGCGGT	8.2
+rand_5506	site	positions_6nt	D	-25	-16	CGCGCCCGGC	8.0
+rand_5506	site	positions_6nt	R	-25	-16	GCCGGGCGCG	8.0
+rand_5581	site	positions_6nt	D	-144	-135	GGCCGGCGCG	8.0
+rand_5581	site	positions_6nt	R	-144	-135	CGCGCCGGCC	8.0
+rand_5598	site	positions_6nt	D	69	78	CGCGATCTCG	8.8
+rand_5598	site	positions_6nt	R	69	78	CGAGATCGCG	8.8
+rand_5766	site	positions_6nt	D	72	81	CGGGAGCGCG	11.6
+rand_5766	site	positions_6nt	R	72	81	CGCGCTCCCG	11.6
+rand_5766	site	positions_6nt	D	74	83	GGAGCGCGCG	11.8
+rand_5766	site	positions_6nt	R	74	83	CGCGCGCTCC	11.8
+rand_5766	site	positions_6nt	D	76	85	AGCGCGCGGC	8.3
+rand_5766	site	positions_6nt	R	76	85	GCCGCGCGCT	8.3
+rand_5766	site	positions_6nt	D	78	87	CGCGCGGCCG	13.1
+rand_5766	site	positions_6nt	R	78	87	CGGCCGCGCG	13.1
+rand_5766	site	positions_6nt	D	80	89	CGCGGCCGCG	13.1
+rand_5766	site	positions_6nt	R	80	89	CGCGGCCGCG	13.1
+rand_5916	site	positions_6nt	D	29	38	CCCGCTCGCG	11.6
+rand_5916	site	positions_6nt	R	29	38	CGCGAGCGGG	11.6
+rand_5916	site	positions_6nt	D	31	40	CGCTCGCGCC	11.8
+rand_5916	site	positions_6nt	R	31	40	GGCGCGAGCG	11.8
+rand_5921	site	positions_6nt	D	-9	0	ACCGCGCCCG	8.2
+rand_5921	site	positions_6nt	R	-9	0	CGGGCGCGGT	8.2
+rand_5921	site	positions_6nt	D	-7	2	CGCGCCCGGC	8.0
+rand_5921	site	positions_6nt	R	-7	2	GCCGGGCGCG	8.0
+rand_5921	site	positions_6nt	D	-5	4	CGCCCGGCCG	7.8
+rand_5921	site	positions_6nt	R	-5	4	CGGCCGGGCG	7.8
+rand_6035	site	positions_6nt	D	76	85	TGTGCGCGCG	11.9
+rand_6035	site	positions_6nt	R	76	85	CGCGCGCACA	11.9
+rand_6035	site	positions_6nt	D	78	87	TGCGCGCGCG	16.8
+rand_6035	site	positions_6nt	R	78	87	CGCGCGCGCA	16.7
+rand_6035	site	positions_6nt	D	80	89	CGCGCGCGCG	21.8
+rand_6035	site	positions_6nt	R	80	89	CGCGCGCGCG	21.8
+rand_6035	site	positions_6nt	D	82	91	CGCGCGCGCG	21.8
+rand_6035	site	positions_6nt	R	82	91	CGCGCGCGCG	21.8
+rand_6035	site	positions_6nt	D	84	93	CGCGCGCGCA	16.7
+rand_6035	site	positions_6nt	R	84	93	TGCGCGCGCG	16.8
+rand_6035	site	positions_6nt	D	86	95	CGCGCGCAGA	8.4
+rand_6035	site	positions_6nt	R	86	95	TCTGCGCGCG	8.4
+rand_6095	site	positions_6nt	D	-113	-104	CGCGCGGCAG	8.1
+rand_6095	site	positions_6nt	R	-113	-104	CTGCCGCGCG	8.2
+rand_6095	site	positions_6nt	D	-57	-48	CCCGCTCGCG	11.6
+rand_6095	site	positions_6nt	R	-57	-48	CGCGAGCGGG	11.6
+rand_6095	site	positions_6nt	D	-55	-46	CGCTCGCGGG	11.6
+rand_6095	site	positions_6nt	R	-55	-46	CCCGCGAGCG	11.6
+rand_6095	site	positions_6nt	D	-53	-44	CTCGCGGGCG	11.6
+rand_6095	site	positions_6nt	R	-53	-44	CGCCCGCGAG	11.6
+rand_6095	site	positions_6nt	D	-51	-42	CGCGGGCGGG	11.2
+rand_6095	site	positions_6nt	R	-51	-42	CCCGCCCGCG	11.3
+rand_6095	site	positions_6nt	D	4	13	CCCGCGGGCG	11.3
+rand_6095	site	positions_6nt	R	4	13	CGCCCGCGGG	11.3
+rand_6095	site	positions_6nt	D	6	15	CGCGGGCGTG	11.7
+rand_6095	site	positions_6nt	R	6	15	CACGCCCGCG	11.7
+rand_6113	site	positions_6nt	D	-118	-109	CTCGCCGGCG	8.1
+rand_6113	site	positions_6nt	R	-118	-109	CGCCGGCGAG	8.1
+rand_6113	site	positions_6nt	D	102	111	CGGGCCCGCG	11.3
+rand_6113	site	positions_6nt	R	102	111	CGCGGGCCCG	11.3
+rand_6117	site	positions_6nt	D	-186	-177	CGGGCCGGCG	7.8
+rand_6117	site	positions_6nt	R	-186	-177	CGCCGGCCCG	7.8
+rand_6180	site	positions_6nt	D	38	47	CCCGTCCGCG	8.3
+rand_6180	site	positions_6nt	R	38	47	CGCGGACGGG	8.2
+rand_6180	site	positions_6nt	D	40	49	CGTCCGCGCC	8.5
+rand_6180	site	positions_6nt	R	40	49	GGCGCGGACG	8.4
+rand_6195	site	positions_6nt	D	-116	-107	CGAGATCGCG	8.8
+rand_6195	site	positions_6nt	R	-116	-107	CGCGATCTCG	8.8
+rand_6219	site	positions_6nt	D	-94	-85	CGCGAGCGCC	11.8
+rand_6219	site	positions_6nt	R	-94	-85	GGCGCTCGCG	11.8
+rand_6219	site	positions_6nt	D	-35	-26	ATCGCGAGCG	8.7
+rand_6219	site	positions_6nt	R	-35	-26	CGCTCGCGAT	8.7
+rand_6219	site	positions_6nt	D	-33	-24	CGCGAGCGCC	11.8
+rand_6219	site	positions_6nt	R	-33	-24	GGCGCTCGCG	11.8
+rand_6333	site	positions_6nt	D	114	123	CGAGATCGCG	8.8
+rand_6333	site	positions_6nt	R	114	123	CGCGATCTCG	8.8
+rand_6383	site	positions_6nt	D	-9	0	CGGCCGGGCG	7.8
+rand_6383	site	positions_6nt	R	-9	0	CGCCCGGCCG	7.8
+rand_6405	site	positions_6nt	D	39	48	CGCACGCACG	12.1
+rand_6405	site	positions_6nt	R	39	48	CGTGCGTGCG	12.1
+rand_6405	site	positions_6nt	D	43	52	CGCACGCACG	12.1
+rand_6405	site	positions_6nt	R	43	52	CGTGCGTGCG	12.1
+rand_6408	site	positions_6nt	D	-61	-52	TACGTGCGCG	9.1
+rand_6408	site	positions_6nt	R	-61	-52	CGCGCACGTA	9.1
+rand_6408	site	positions_6nt	D	-59	-50	CGTGCGCGCC	11.9
+rand_6408	site	positions_6nt	R	-59	-50	GGCGCGCACG	11.9
+rand_6566	site	positions_6nt	D	84	93	CGAGATCGCG	8.8
+rand_6566	site	positions_6nt	R	84	93	CGCGATCTCG	8.8
+rand_6589	site	positions_6nt	D	127	136	GCCGCGCCCG	8.0
+rand_6589	site	positions_6nt	R	127	136	CGGGCGCGGC	8.0
+rand_6589	site	positions_6nt	D	129	138	CGCGCCCGGC	8.0
+rand_6589	site	positions_6nt	R	129	138	GCCGGGCGCG	8.0
+rand_6627	site	positions_6nt	D	86	95	ACCGCGCCCG	8.2
+rand_6627	site	positions_6nt	R	86	95	CGGGCGCGGT	8.2
+rand_6627	site	positions_6nt	D	88	97	CGCGCCCGGC	8.0
+rand_6627	site	positions_6nt	R	88	97	GCCGGGCGCG	8.0
+rand_6864	site	positions_6nt	D	-3	6	CGCGCCGTCG	10.1
+rand_6864	site	positions_6nt	R	-3	6	CGACGGCGCG	10.1
+rand_6919	site	positions_6nt	D	-109	-100	CGCGATCTCG	8.8
+rand_6919	site	positions_6nt	R	-109	-100	CGAGATCGCG	8.8
+rand_7000	site	positions_6nt	D	-87	-78	CCCGGACGCG	8.3
+rand_7000	site	positions_6nt	R	-87	-78	CGCGTCCGGG	8.3
+rand_7000	site	positions_6nt	D	110	119	GACGCGAGCG	8.8
+rand_7000	site	positions_6nt	R	110	119	CGCTCGCGTC	8.8
+;
+; Matrices
+;	matrix	name         	ncol	nrow	pseudo	Wmin	Wmax	Wrange
+;	1	positions_6nt	10	4	0	-19.500	12.800	32.300	a:0.299 c:0.202 g:0.202 t:0.298 
+; Number of sequences scanned	7041
+; Sum of sequence lengths	1476646
+; N residues           	103394
+; Matches per matrix
+;	matrix	name         	matches	scored
+;	1	positions_6nt  	424	0
+;		TOTAL          	424	0
+; Host name	biow
+; Job started	2014-10-08.084624
+; Job done	2014-10-08.084627
+; Seconds	0.78
+;	user	0.78
+;	system	0.02
+;	cuser	0.23
+;	csystem	0.02

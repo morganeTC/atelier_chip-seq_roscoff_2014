@@ -1,0 +1,52 @@
+; pattern-assembly  -v 1 -i $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/oligos_7nt_mkv5/peak-motifs_oligos-2str-noov_7nt_mkv5.tab -2str -maxfl 1 -subst 1 -max_asmb_width 20 -toppat 100 -max_asmb_size 50 -max_asmb_width 20 -max_asmb_nb 5 -o $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/oligos_7nt_mkv5/peak-motifs_oligos-2str-noov_7nt_mkv5_pssm.asmb
+; Input file	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/oligos_7nt_mkv5/peak-motifs_oligos-2str-noov_7nt_mkv5.tab
+; Output file	/vh/rsat/rsat/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/oligos_7nt_mkv5/peak-motifs_oligos-2str-noov_7nt_mkv5_pssm.asmb
+; Input score column           	8
+; Output score column          	0
+; Strand-insensitive assembly
+; Max flanking bases           	1
+; Max substitutions            	1
+; Min matches                  	0
+; Min weight                   	0
+; Max assembly size            	50
+; Max assembly width           	20
+; Top number of patterns       	100
+; Number of input patterns     	99
+;
+
+; assembly # 1	seed: attttta	2 assembled patterns	length 8
+; alignt	 rev_cpl	score
+attttta.	.taaaaat	25.83
+.tttttaa	ttaaaaa.	0.09
+atttttaa	ttaaaaat	25.83	best consensus
+
+; assembly # 2	seed: ctgcctc	1 assembled patterns	length 7
+;alignt	rev_cpl	score
+ctgcctc	gaggcag	9.12
+ctgcctc	gaggcag	9.12	best consensus
+
+; assembly # 3	seed: ctgtctc	1 assembled patterns	length 7
+;alignt	rev_cpl	score
+ctgtctc	gagacag	7.35
+ctgtctc	gagacag	7.35	best consensus
+
+; assembly # 4	seed: ccacctc	2 assembled patterns	length 8
+; alignt	 rev_cpl	score
+tccacct.	.aggtgga	1.17
+.ccacctc	gaggtgg.	6.43
+tccacctc	gaggtgga	6.43	best consensus
+
+; assembly # 5	seed: ctctgtc	2 assembled patterns	length 8
+; alignt	 rev_cpl	score
+actctgt.	.acagagt	0.04
+.ctctgtc	gacagag.	6.32
+actctgtc	gacagagt	6.32	best consensus
+; Maximal number of assemblies is reached (5). Remaining patterns: 90.
+; Host name	biow
+; Job started	2014-10-08.084059
+; Job done	2014-10-08.084105
+; Seconds	5.36
+;	user	5.36
+;	system	0.01
+;	cuser	0
+;	csystem	0

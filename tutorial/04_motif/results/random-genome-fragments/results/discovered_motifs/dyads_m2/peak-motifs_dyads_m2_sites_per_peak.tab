@@ -1,0 +1,43 @@
+; classfreq  -v 1 -ci 1 -o $RSAT/public_html/tmp/apache/2014/10/08/peak-motifs.2014-10-08.083939_2014-10-08.083939_hIGyA6/results/discovered_motifs/dyads_m2/peak-motifs_dyads_m2_sites_per_peak.tab
+;	min                 	minimum of class interval (inclusive)
+;	max                 	maximum of class interval (exclusive)
+;	center              	center of class interval
+;	n                   	occurrences
+;	n_cum               	cumulative occurrences (inclusive)
+;	n_dcum              	decreasing cumulative occurrences (inclusive)
+;	f                   	frequencies
+;	f_cum               	cumulative frequencies (inclusive)
+;	f_dcum              	decreasing cumulative frequencies (inclusive)
+#[min	max[	center	n	n_cum	n_dcum	f	f_cum	f_dcum
+1	2	1.5	487	487	634	0.76814	0.76814	1.00000
+2	3	2.5	95	582	147	0.14984	0.91798	0.23186
+3	4	3.5	23	605	52	0.03628	0.95426	0.08202
+4	5	4.5	14	619	29	0.02208	0.97634	0.04574
+5	6	5.5	8	627	15	0.01262	0.98896	0.02366
+6	7	6.5	4	631	7	0.00631	0.99527	0.01104
+7	8	7.5	0	631	3	0.00000	0.99527	0.00473
+8	9	8.5	2	633	3	0.00315	0.99842	0.00473
+9	10	9.5	0	633	1	0.00000	0.99842	0.00158
+10	11	10.5	0	633	1	0.00000	0.99842	0.00158
+11	12	11.5	1	634	1	0.00158	1.00000	0.00158
+; Statistics:
+; -----------
+; class interval     	1
+; classes            	11
+; count              	634
+; sum                	893
+; mean               	1.40852
+; median class       	[2..3[
+; var                	0.999
+; std                	0.999364
+; min                	1
+; max                	11
+; range              	10
+; Host name	biow
+; Job started	2014-10-08.084751
+; Job done	2014-10-08.084751
+; Seconds	0.22
+;	user	0.22
+;	system	0.03
+;	cuser	0
+;	csystem	0
