@@ -1,0 +1,46 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+from __future__ import print_function
+import sys
+import os
+from os.path import isfile
+from os.path import basename
+import glob
+import pkgutil
+
+
+#------------------------------------------------------------------------------
+# Load all modules located
+# in cmd directory
+#------------------------------------------------------------------------------
+
+# loading local module
+sys.path.append('cmd/argparsing/sharedParser.py')
+from cmd.argparsing.cmd_manager import CmdManager
+
+# loading all plugins
+import imp
+
+plugins = os.listdir('cmd')
+# selecting some files just for testing
+plugins = [x for x in plugins if x.startswith("cmd_")]
+plugins = [x for x in plugins if x.endswith(".py")]
+
+# Loading all plugins
+# this is a limitation if the number of plugin increase 'dramatically' :)
+for plug in plugins:
+    cmd_module = imp.load_source('cmd_module', 'cmd/' + plug)
+
+args = CmdManager.parse_cmd_args()
+
+#------------------------------------------------------------------------------
+# Get the list of arguments values passed through the command
+#------------------------------------------------------------------------------
+
+arg_to_value = dict(args.__dict__)
+del arg_to_value['command']
+
+fun = CmdManager.fun_by_cmd_name(args.command)
+
+fun(**arg_to_value)
